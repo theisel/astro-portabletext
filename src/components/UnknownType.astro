@@ -1,0 +1,17 @@
+---
+import { PtTypeComponentProps } from "../types";
+import { unknownTypeWarning } from "../warnings";
+
+const { node, isInline } = Astro.props as PtTypeComponentProps;
+const { _type } = node;
+const warning = unknownTypeWarning(_type);
+---
+
+<style>
+  @import "../styles/unknown.css";
+</style>
+{isInline ? (
+  <span data-portabletext-unknown="type">{warning}</span>
+) : (
+  <div data-portabletext-unknown="type">{warning}</div>
+)}

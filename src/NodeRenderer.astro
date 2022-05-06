@@ -1,0 +1,8 @@
+---
+import type { NodeRendererProps } from "./types";
+
+const { component, ...props } = Astro.props as NodeRendererProps;
+const Cmp: any = component;
+---
+
+<Cmp {...props}><slot></slot></Cmp>

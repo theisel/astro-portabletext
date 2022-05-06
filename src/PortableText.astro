@@ -1,0 +1,139 @@
+---
+import {
+  ComponentOrRecord,
+  PortableTextComponents, 
+  PtComponent,
+  PtComponentProps,
+  PortableTextProps,
+  TypedObject
+} from './types';
+
+import {
+  isPortableTextBlock,
+  isPortableTextListItemBlock,
+  isPortableTextToolkitList,
+  isPortableTextToolkitSpan,
+  isPortableTextToolkitTextNode,
+  nestLists,
+  buildMarksTree,
+  LIST_NEST_MODE_HTML
+} from '@portabletext/toolkit';
+
+import { isComponent, mergeComponents } from './utils';
+
+import NodeRenderer from './NodeRenderer.astro'
+
+import Block from './components/Block.astro';
+import HardBreak from './components/HardBreak.astro'
+import List from './components/List.astro';
+import ListItem from './components/ListItem.astro';
+import Raw from './components/Raw.astro'
+import Mark from './components/Mark.astro';
+import UnknownBlockStyle from './components/UnknownBlockStyle.astro'
+import UnknownList from './components/UnknownList.astro'
+import UnknownListItem from './components/UnknownListItem.astro'
+import UnknownMark from './components/UnknownMark.astro'
+import UnknownType from './components/UnknownType.astro'
+
+const { 
+  value, 
+  components: componentOverrides = {}, 
+  listNestingMode = LIST_NEST_MODE_HTML,
+  class: astroClass
+} = Astro.props as PortableTextProps & { class?: string };
+
+const components = mergeComponents({
+  type: UnknownType,
+  unknownType: UnknownType,
+  block: {
+    h1: Block,
+    h2: Block,
+    h3: Block,
+    h4: Block,
+    h5: Block,
+    h6: Block,
+    blockquote: Block,
+    normal: Block
+  },
+  unknownBlockStyle: UnknownBlockStyle,
+  list: List,
+  unknownList: UnknownList,
+  listItem: ListItem,
+  unknownListItem: UnknownListItem,
+  mark: {
+    code: Mark,
+    em: Mark,
+    link: Mark,
+    'strike-through': Mark,
+    strong: Mark,
+    underline: Mark
+  },
+  unknownMark: UnknownMark,
+  hardBreak: HardBreak,
+}, componentOverrides) as PortableTextComponents;
+
+const getComponent = (
+  componentHandler: [prop: 'type' | 'block' | 'list' | 'listItem' | 'mark' | 'hardBreak', recordKey: string], 
+  unknownComponentHandler: 'unknownType' | 'unknownBlockStyle' | 'unknownList' | 'unknownListItem' | 'unknownMark'
+): PtComponent => {
+  const [prop, recordKey] = componentHandler;
+  const componentOrRecord = components[prop] as ComponentOrRecord
+
+  return isComponent(componentOrRecord) 
+    ? componentOrRecord
+    : componentOrRecord[recordKey] ?? components[unknownComponentHandler];
+}
+
+const blocks = Array.isArray(value) ? value : [value];
+const nested = nestLists(blocks, listNestingMode);
+
+const serializeNode = (isInline?: boolean) => (
+  node: TypedObject, 
+  index: number
+): PtComponentProps => asComponentProps(node, index, isInline);
+
+const asComponentProps = (
+  node: any, 
+  index: number = 0, 
+  isInline: boolean = false
+): PtComponentProps => ({
+  node,
+  index,
+  isInline,
+  astroClass: astroClass
+})
+---
+{
+  nested
+    .map((node) => asComponentProps(node))
+    .map(function renderNode(it): any {
+      const { node, ...props } = it;
+
+      return isPortableTextToolkitList(node) ? (
+          <NodeRenderer component={getComponent(['list', node.listItem], 'unknownList')} node={node} {...props}>
+            <Raw value={node.children.map(serializeNode(false)).map(renderNode)} />
+          </NodeRenderer>
+        ) : isPortableTextListItemBlock(node) ? (
+          <NodeRenderer component={getComponent(['listItem', node.listItem], 'unknownListItem')} node={node} {...props}>
+            <Raw value={((children) => {
+              if (node.style && node.style !== 'normal') {
+                const { listItem, ...blockNode } = node;
+                children = renderNode(serializeNode(false)(blockNode, 0));
+              }
+                return children
+              })(buildMarksTree(node).map(serializeNode(true)).map(renderNode))} 
+            />
+          </NodeRenderer>
+        ) : isPortableTextToolkitSpan(node) ? (
+          <NodeRenderer component={getComponent(['mark', node.markType], 'unknownMark')} node={node} {...props}>
+            <Raw value={node.children.map(serializeNode(true)).map(renderNode)} />
+          </NodeRenderer>          
+        ) : isPortableTextBlock(node) ? (
+          <NodeRenderer component={getComponent(['block', node.style ?? 'normal'], 'unknownBlockStyle')} node={node} {...props}>
+            <Raw value={buildMarksTree(node).map(serializeNode(true)).map(renderNode)} />
+          </NodeRenderer>
+        ) : isPortableTextToolkitTextNode(node) ? (
+          <NodeRenderer component={'\n' === node.text ? components['hardBreak'] : Raw} value={node.text} />
+        ) : <NodeRenderer component={getComponent(['type', node._type], 'unknownType')} node={node} {...props} />
+  })
+}

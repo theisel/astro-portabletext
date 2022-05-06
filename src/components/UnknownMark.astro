@@ -1,0 +1,14 @@
+---
+import { PtMarkComponentProps } from "../types";
+import { unknownMarkWarning } from "../warnings";
+
+const { node } = Astro.props as PtMarkComponentProps;
+const { markType } = node;
+const warning = unknownMarkWarning(markType);
+---
+
+<span data-portabletext-unknown="mark">{warning}</span>
+
+<style>
+  @import "../styles/unknown.css";
+</style>

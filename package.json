@@ -1,0 +1,53 @@
+{
+  "name": "astro-portabletext",
+  "version": "0.1.0",
+  "description": "Render Portable Text with Astro",
+  "type": "module",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "files": [
+    "src",
+    "index.ts",
+    "README.md"
+  ],
+  "workspaces": [
+    "demo"
+  ],
+  "keywords": [
+    "astro",
+    "astro-component",
+    "portable-text"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "@portabletext/toolkit": "^1.0.5",
+    "@portabletext/types": "^1.0.3"
+  },
+  "scripts": {
+    "launch-demo": "astro --root demo dev",
+    "install:all": "pnpm recursive install",
+    "format": "prettier -w **/*.{astro,ts,tsx,svelte}",
+    "lint": "eslint . --ext .ts"
+  },
+  "author": "Tom Theisel",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theisel/astro-portabletext.git"
+  },
+  "bugs": {
+    "url": "https://github.com/theisel/astro-portabletext/issues"
+  },
+  "homepage": "https://github.com/theisel/astro-portabletext#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.22.0",
+    "@typescript-eslint/parser": "^5.22.0",
+    "astro": "1.0.0-beta.23",
+    "eslint": "^8.14.0",
+    "prettier": "^2.6.2",
+    "prettier-plugin-astro": "0.1.0-next.4",
+    "prettier-plugin-svelte": "^2.7.0",
+    "svelte": "^3.48.0",
+    "typescript": "^4.6.4"
+  }
+}

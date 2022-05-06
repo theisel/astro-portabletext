@@ -1,0 +1,14 @@
+---
+import { PtListItemComponentProps } from "../types";
+import { unknownListItemStyleWarning } from "../warnings";
+
+const { node } = Astro.props as PtListItemComponentProps;
+const { listItem } = node;
+const warning = unknownListItemStyleWarning(listItem);
+---
+
+<li data-portabletext-unknown="listitem">{warning}</li>
+
+<style>
+  @import "../styles/unknown.css";
+</style>

@@ -1,0 +1,15 @@
+---
+import { PortableText } from "astro-portabletext";
+import Layout from "../layouts/Default.astro";
+import portabletext from "../data/portabletext.json";
+---
+
+<Layout heading="Default + Style Example">
+  <main data-portabletext>
+    <PortableText value={portabletext} />
+  </main>
+</Layout>
+
+<style>
+  @import "../assets/styles.css";
+</style>

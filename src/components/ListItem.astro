@@ -1,0 +1,8 @@
+---
+import type { PtListItemComponentProps } from "../types";
+
+const { astroClass } = Astro.props as PtListItemComponentProps;
+const attrs = { class: astroClass };
+---
+
+<li {...attrs}><slot></slot></li>

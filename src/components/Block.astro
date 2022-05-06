@@ -1,0 +1,19 @@
+---
+import type { PtBlockComponentProps } from '../types';
+import UnknownBlockStyle from './UnknownBlockStyle.astro';
+
+const { node, astroClass, ...props } = Astro.props as PtBlockComponentProps;
+const attrs = { class: astroClass };
+const styleIs = (style: string) => style === node.style;
+---
+{
+  styleIs('h1') ? <h1 {...attrs}><slot /></h1> 
+  : styleIs('h2') ? <h2 {...attrs}><slot /></h2>
+  : styleIs('h3') ? <h3 {...attrs}><slot /></h3>
+  : styleIs('h4') ? <h4 {...attrs}><slot /></h4>
+  : styleIs('h5') ? <h5 {...attrs}><slot /></h5>
+  : styleIs('h6') ? <h6 {...attrs}><slot /></h6>
+  : styleIs('blockquote') ? <blockquote {...attrs}><slot /></blockquote>
+  : styleIs('normal') ? <p {...attrs}><slot /></p>
+  : <UnknownBlockStyle node={node} astroClass={astroClass} {...props} />
+}

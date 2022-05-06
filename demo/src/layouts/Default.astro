@@ -1,0 +1,69 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Astro Portable Text Demo</title>
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <a href="/">Astro Portable Text Demo</a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/default">Default</a></li>
+          <li><a href="/with-style">Default &plus; Style</a></li>
+          <li><a href="/static">Static Counter</a></li>
+          <li><a href="/jsx">JSX Counter</a></li>
+          <li><a href="/svelte">Svelte Counter</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1 class="page-heading">{Astro.props.heading}</h1>
+    <div class="content">
+      <slot></slot>
+    </div>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      nav {
+        background-color: lightgray;
+        margin-bottom: 2rem;
+        padding: 1rem;
+      }
+      ul {
+        display: flex;
+        gap: 1rem;
+        list-style: none;
+      }
+      @media (max-width: 600px) {
+        ul {
+          display: grid;
+        }
+      }
+      li {
+        flex: 1;
+        text-align: center;
+      }
+      .title {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+      .page-heading {
+        font-size: 3rem;
+        outline: darkgrey;
+        border-style: dashed;
+        text-align: center;
+        margin: 1rem 0;
+      }
+      .content {
+        max-width: 720px;
+        margin: 0 auto;
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+---
+import type { PtComponentProps } from "astro-portabletext";
+import { Counter } from "./Counter";
+
+const props = Astro.props as PtComponentProps;
+---
+
+<Counter client:load {...props} />

@@ -1,4 +1,4 @@
-import type { PtTypeComponentProps } from "astro-portabletext";
+import type { PtTypeComponentProps } from "astro-portabletext/types";
 import { createSignal, onCleanup } from "solid-js";
 
 export function Counter(props: PtTypeComponentProps) {

@@ -80,6 +80,8 @@ import { Unicorn } from "@component/Unicorn";
 import { Dinosaur } from "@component/Dinosaur";
 import { Sunny } from "@component/Sunny";
 import { Highlight } from "@component/Highlight";
+import { PageHeading } from "@component/PageHeading";
+import { Bold } from "@component/Bold";
 ---
 
 <PortableText 
@@ -90,29 +92,12 @@ import { Highlight } from "@component/Highlight";
       dinosaur: Dinosaur,
     },
     block: {
-      sunny: Sunny,
+      h1: PageHeading, /* Override default `h1` block style */
+      sunny: Sunny, /* Custom block style */
     },
     mark: {
-      highlight: Highlight,
-    },
-  }}
-/>
-```
-
-## Overwrite Default Component
-Change some default components like so
-```js
-/* .astro file */
----
-import { PortableText } from "astro-portabletext";
-import { PageHeading } from "@component/PageHeading";
----
-
-<PortableText 
-  value={[/* portable text blocks */]}
-  components={{
-    block: {
-      h1: PageHeading,
+      strong: Bold, /* Override default `strong` mark */
+      highlight: Highlight, /* Custom mark */
     },
   }}
 />
@@ -164,7 +149,7 @@ import { Unicorn } from "@component/Unicorn";
 
 ```js
 /* @component/Unicorn.tsx */
-import type { PtTypeComponentProps } from "astro-portabletext";
+import type { PtTypeComponentProps } from "astro-portabletext/types";
 
 export function Unicorn(props: PtTypeComponentProps) {
   const { astroClass = "" } = props;

@@ -31,7 +31,7 @@
     "format": "prettier -w **/*.{astro,ts,tsx,svelte}",
     "lint": "eslint . --ext .ts"
   },
-  "author": "Tom Theisel",
+  "author": "theisel",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/theisel/astro-portabletext.git"

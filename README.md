@@ -1,27 +1,10 @@
 # astro-portabletext
 
-[![License: ISC](https://img.shields.io/badge/License-ISC-green.svg)](https://opensource.org/licenses/ISC)
+[![license](https://badgen.net/badge/license/ISC/green)](https://opensource.org/licenses/ISC)
+[![github](https://badgen.net/github/release/theisel/astro-portabletext)](https://github.com/theisel/astro-portabletext)
+[![npm](https://badgen.net/npm/v/astro-portabletext)](https://www.npmjs.com/package/astro-portabletext)
 
 Render [Portable Text](https://portabletext.org/) with [Astro](https://astro.build/).
-
-We have [react-portabletext](https://github.com/portabletext/react-portabletext) and [svelte-portabletext](https://github.com/portabletext/svelte-portabletext) which can be used to output your [Portable Text](https://github.com/portabletext/portabletext) with [Astro](https://astro.build/). Like so...
-
-```js
-/* .astro file */
----
-import { PortableText } from "@portabletext/react";
----
-
-<PortableText
-  /* client:{load|idle|visible|media|only} needed for hydration */
-  value={[/* ... */]}
-  components={/* ... */}
-/>
-```
-
-However, it will add bloat if **_only_** one or some of the blocks  need hydration.
-
-
 
 ## Install
 ```
@@ -47,32 +30,34 @@ import { PortableText } from "astro-portabletext";
 {
   /* type: Must be defined by you! */,
   block: {
-    h1: /* <h1 class="..."><slot /></h1> */,
-    h2: /* <h2 class="..."><slot /></h2> */,
-    h3: /* <h3 class="..."><slot /></h3> */,
-    h4: /* <h4 class="..."><slot /></h4> */,
-    h5: /* <h5 class="..."><slot /></h5> */,
-    h6: /* <h6 class="..."><slot /></h6> */,
-    blockquote: /* <blockquote class="..."><slot /></blockquote> */,
-    normal: /* <p class="..."><slot /></p> */
+    h1: /* <h1 class={astroClass}><slot /></h1> */,
+    h2: /* <h2 class={astroClass}><slot /></h2> */,
+    h3: /* <h3 class={astroClass}><slot /></h3> */,
+    h4: /* <h4 class={astroClass}><slot /></h4> */,
+    h5: /* <h5 class={astroClass}><slot /></h5> */,
+    h6: /* <h6 class={astroClass}><slot /></h6> */,
+    blockquote: /* <blockquote class={astroClass}><slot /></blockquote> */,
+    normal: /* <p class={astroClass}><slot /></p> */
   },
-  list: /* <ul class="..."><slot /></ul> | <ol class="..."><slot /></ol>*/,
-  listItem: /* <li class="..."><slot /></li> */,
+  list: /* <ul class={astroClass}><slot /></ul> | <ol class="..."><slot /></ol>*/,
+  listItem: /* <li class={astroClass}><slot /></li> */,
   mark: {
-    code: /* <code class="..."><slot /></code> */,
-    em: /* <em class="..."><slot /></em> */,
-    link: /* <a href="..." class="..."><slot /></a> */,
-    'strike-through': /* <del class="..."><slot /></del> */,
-    strong: /* <strong class="..."><slot /></strong> */,
-    underline: /* <span class="..." style="text-decoration: underline;"><slot /></span> */
+    code: /* <code class={astroClass}><slot /></code> */,
+    em: /* <em class={astroClass}><slot /></em> */,
+    link: /* <a href="..." class={astroClass}><slot /></a> */,
+    'strike-through': /* <del class={astroClass}><slot /></del> */,
+    strong: /* <strong class={astroClass}><slot /></strong> */,
+    underline: /* <span class={astroClass} style="text-decoration: underline;"><slot /></span> */
   },
   hardBreak: /* <br /> */,
 }
+
+/* astroClass; see `Using <style> in Astro component` */
 ```
 
-## Merge Components
+## Merge/Override Components
 
-Keep default components and add to them
+Add to them or override a particular one
 ```js
 ---
 import { PortableText } from "astro-portabletext";
@@ -103,7 +88,7 @@ import { Bold } from "@component/Bold";
 />
 ```
 
-## With Handler
+## Custom Handler
 
 Create a handler for better control
 ```js
@@ -148,10 +133,8 @@ import { Unicorn } from "@component/Unicorn";
 ```
 
 ```js
-/* @component/Unicorn.tsx */
-import type { PtTypeComponentProps } from "astro-portabletext/types";
-
-export function Unicorn(props: PtTypeComponentProps) {
+/* @component/Unicorn.jsx */
+export function Unicorn(props) {
   const { astroClass = "" } = props;
 
   return (
@@ -161,3 +144,28 @@ export function Unicorn(props: PtTypeComponentProps) {
   )
 }
 ```
+
+## Typescript
+```js
+/* @component/Unicorn.tsx */
+import type { PtTypeComponentProps } from "astro-portabletext/types";
+
+interface Sparkle extends PtTypeComponentProps {
+  sparkle: string
+}
+
+export function Unicorn(props: Sparkle) {
+  const { sparkle, astroClass = "" } = props;
+
+  return (
+    <div className={`unicorn ${astroClass}`}>
+      /* Do something with {sparkle} */
+    </div>
+  )
+}
+```
+
+## Credits
+[@portabletext/react](https://github.com/portabletext/react-portabletext)
+
+[@portabletext/svelte](https://github.com/portabletext/svelte-portabletext)

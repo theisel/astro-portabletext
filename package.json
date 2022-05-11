@@ -1,38 +1,18 @@
 {
-  "name": "astro-portabletext",
-  "version": "0.2.0",
-  "description": "Render Portable Text with Astro",
+  "name": "astro-portabletext-works",
+  "version": "0.0.0",
   "type": "module",
-  "exports": {
-    ".": "./src/index.ts",
-    "./types": "./src/types.ts"
-  },
-  "files": [
-    "src",
-    "index.ts",
-    "README.md"
-  ],
+  "private": true,
   "workspaces": [
-    "demo",
-    "src"
+    "component",
+    "demo"
   ],
-  "keywords": [
-    "astro",
-    "astro-component",
-    "portable-text"
-  ],
-  "license": "ISC",
-  "dependencies": {
-    "@portabletext/toolkit": "^1.0.5",
-    "@portabletext/types": "^1.0.3"
-  },
   "scripts": {
     "launch-demo": "astro --root demo dev",
     "install:all": "pnpm recursive install",
     "format": "prettier -w **/*.{astro,ts,tsx,svelte}",
     "lint": "eslint . --ext .ts"
   },
-  "author": "theisel",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/theisel/astro-portabletext.git"
@@ -51,5 +31,10 @@
     "prettier-plugin-svelte": "^2.7.0",
     "svelte": "^3.48.0",
     "typescript": "^4.6.4"
-  }
+  },
+  "engines": {
+    "node": "^14.15.0 || >=16.0.0",
+    "pnpm": ">=7.0.0"
+  },
+  "packageManager": "pnpm@7.0.1"
 }

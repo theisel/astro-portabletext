@@ -7,6 +7,6 @@ remove_dist_directory:
 	rm -r dist
 
 npm_publish:
-	npm publish ./dist --dry-run
+	npm publish ./dist
 
 publish: prepare_dist_directory npm_publish remove_dist_directory

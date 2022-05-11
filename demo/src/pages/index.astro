@@ -2,4 +2,22 @@
 import Layout from "../layouts/Default.astro";
 ---
 
-<Layout />
+<Layout>
+  <main>
+    <p>Choose an example by clicking on one of the above links</p>
+  </main>
+</Layout>
+
+<style>
+  main {
+    font-size: 1.5rem;
+  }
+  p {
+    text-align: center;
+  }
+  @media (max-width: 640px) {
+    p {
+      text-align: left;
+    }
+  }
+</style>

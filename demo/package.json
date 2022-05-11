@@ -15,5 +15,13 @@
     "astro-portabletext": "workspace:*",
     "solid-js": "^1.3.17",
     "svelte": "^3.48.0"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@babel/core",
+        "vite"
+      ]
+    }
   }
 }

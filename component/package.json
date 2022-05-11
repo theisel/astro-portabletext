@@ -1,0 +1,21 @@
+{
+  "name": "astro-portabletext",
+  "version": "0.2.0",
+  "type": "module",
+  "description": "Render Portable Text with Astro",
+  "keywords": [
+    "astro",
+    "astro-component",
+    "portable-text",
+    "typescript"
+  ],
+  "license": "ISC",
+  "exports": {
+    ".": "./index.ts",
+    "./types": "./types.ts"
+  },
+  "dependencies": {
+    "@portabletext/toolkit": "^1.0.5",
+    "@portabletext/types": "^1.0.3"
+  }
+}

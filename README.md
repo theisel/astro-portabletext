@@ -147,7 +147,7 @@ export function Unicorn(props) {
 
 ## Typescript
 ```js
-/* @component/Greet.tsx */
+/* @component/Greeting.tsx */
 import type { PtTypeComponentProps, TypedObject } from "astro-portabletext/types";
 
 interface Greet extends TypedObject {

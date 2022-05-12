@@ -147,21 +147,15 @@ export function Unicorn(props) {
 
 ## Typescript
 ```js
-/* @component/Unicorn.tsx */
-import type { PtTypeComponentProps } from "astro-portabletext/types";
+/* @component/Greet.tsx */
+import type { PtTypeComponentProps, TypedObject } from "astro-portabletext/types";
 
-interface Sparkle extends PtTypeComponentProps {
-  sparkle: string
+interface Greet extends TypedObject {
+  message: string
 }
 
-export function Unicorn(props: Sparkle) {
-  const { sparkle, astroClass = "" } = props;
-
-  return (
-    <div className={`unicorn ${astroClass}`}>
-      /* Do something with {sparkle} */
-    </div>
-  )
+export function Greeting(props: PtTypeComponentProps<Greet>) {
+  return <p>Hello {props.node.message}</p>
 }
 ```
 

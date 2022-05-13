@@ -28,6 +28,7 @@
     "@typescript-eslint/parser": "^5.22.0",
     "astro": "1.0.0-beta.23",
     "eslint": "^8.14.0",
+    "husky": "^8.0.1",
     "prettier": "^2.6.2",
     "prettier-plugin-astro": "0.1.0-next.4",
     "prettier-plugin-svelte": "^2.7.0",

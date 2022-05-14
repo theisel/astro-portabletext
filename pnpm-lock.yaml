@@ -9,7 +9,7 @@ specifiers:
   eslint: ^8.14.0
   husky: ^8.0.1
   prettier: ^2.6.2
-  prettier-plugin-astro: 0.1.0-next.4
+  prettier-plugin-astro: 0.0.12
   prettier-plugin-svelte: ^2.7.0
   svelte: ^3.48.0
   typescript: ^4.6.4
@@ -23,7 +23,7 @@ devDependencies:
   eslint: 8.15.0
   husky: 8.0.1
   prettier: 2.6.2
-  prettier-plugin-astro: 0.1.0-next.4
+  prettier-plugin-astro: 0.0.12
   prettier-plugin-svelte: 2.7.0_kkjbqzpydplecjtkxrgomroeru
   svelte: 3.48.0
   typescript: 4.6.4
@@ -36,13 +36,6 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': 0.1.1
       '@jridgewell/trace-mapping': 0.3.11
-    dev: true
-
-  /@astrojs/compiler/0.13.2:
-    resolution: {integrity: sha512-0Un4CtLbhJljisFf9WaxK1TSV1oakR3Mh4x1Uyg1JHdyQ5te/1xcq+PWVaOyQc4lq4z8MYNFQb7hG66m0CeMtw==}
-    dependencies:
-      tsm: 2.2.1
-      uvu: 0.5.3
     dev: true
 
   /@astrojs/compiler/0.14.2:
@@ -93,6 +86,17 @@ packages:
       unist-util-visit: 4.1.0
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@astrojs/parser/0.22.2:
+    resolution: {integrity: sha512-j4p5a1BXDObVsrNyDvooJQPWoomb0WZk63rKeE3MaZcqq4g9x50sqq+EPMkesgDvCcWFgHSo07i4y1Do3Qj69A==}
+    engines: {node: ^14.15.0 || >=16.0.0, npm: '>=6.14.0'}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+    dependencies:
+      '@types/node': 14.18.18
+      acorn: 8.7.1
+      locate-character: 2.0.5
+      magic-string: 0.25.9
     dev: true
 
   /@astrojs/prism/0.4.1:
@@ -696,6 +700,10 @@ packages:
     resolution: {integrity: sha512-3TGCfOcy8R8mMQ4CNSNOe3PG66HttvjcLzCoOpvXvDtfWOTi+uT/rxeOKm/qEwbM4SNe1O/PjdiBK2YcTjU4OQ==}
     dependencies:
       '@types/unist': 2.0.6
+    dev: true
+
+  /@types/node/14.18.18:
+    resolution: {integrity: sha512-B9EoJFjhqcQ9OmQrNorItO+OwEOORNn3S31WuiHvZY/dm9ajkB7AKD/8toessEtHHNL+58jofbq7hMMY9v4yig==}
     dev: true
 
   /@types/node/17.0.32:
@@ -2892,6 +2900,10 @@ packages:
       strip-bom: 3.0.0
     dev: true
 
+  /locate-character/2.0.5:
+    resolution: {integrity: sha512-n2GmejDXtOPBAZdIiEFy5dJ5N38xBCXLNOtw2WpB9kGh6pnrEuKlwYI+Tkpofc4wDtVXHtoAOJaMRlYG/oYaxg==}
+    dev: true
+
   /locate-path/5.0.0:
     resolution: {integrity: sha512-t7hw9pI+WvuwNJXwk5zVHpyhIqzg2qTlklJOf0mVxGSbe3Fp2VieZcduNYjaLDoy6p9uGpQEGWG87WpMKlNq8g==}
     engines: {node: '>=8'}
@@ -3846,14 +3858,13 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-astro/0.1.0-next.4:
-    resolution: {integrity: sha512-M1Pi6e8+yxa8I+bDCnGXdGI8XywNiHKA9tQwGvBaBYme0pcm2BUV+Tv9rxvQLqUyLMC2A4dzWa7JbcwwpSKEig==}
-    engines: {node: ^14.13.1 || >=16.0.0, npm: '>=6.14.0'}
+  /prettier-plugin-astro/0.0.12:
+    resolution: {integrity: sha512-ZSNvHuyQ+fxgqA4qoiOf2FvN8FdWcBrAmnik3gPL466TFtMcOV2hVNVVErBcnG/qMyPf7WLwPvBLtTyWpDEUHg==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0, npm: '>=6.14.0'}
     dependencies:
-      '@astrojs/compiler': 0.13.2
+      '@astrojs/parser': 0.22.2
       prettier: 2.6.2
       sass-formatter: 0.7.3
-      synckit: 0.6.2
     dev: true
 
   /prettier-plugin-svelte/2.7.0_kkjbqzpydplecjtkxrgomroeru:
@@ -4457,13 +4468,6 @@ packages:
       pascal-case: 3.1.2
       svelte: 3.48.0
       typescript: 4.6.4
-    dev: true
-
-  /synckit/0.6.2:
-    resolution: {integrity: sha512-Vhf+bUa//YSTYKseDiiEuQmhGCoIF3CVBhunm3r/DQnYiGT4JssmnKQc44BIyOZRK2pKjXXAgbhfmbeoC9CJpA==}
-    engines: {node: '>=12.20'}
-    dependencies:
-      tslib: 2.4.0
     dev: true
 
   /text-extensions/1.9.0:

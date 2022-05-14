@@ -1,12 +1,12 @@
+<div>
+  <img src="https://raw.githubusercontent.com/theisel/astro-portabletext/main/logo.svg" width="240" alt="astro-portabletext logo">
+</div> 
+
 # astro-portabletext
 
 [![license](https://badgen.net/badge/license/ISC/green)](https://opensource.org/licenses/ISC)
 [![github](https://badgen.net/github/release/theisel/astro-portabletext)](https://github.com/theisel/astro-portabletext)
 [![npm](https://badgen.net/npm/v/astro-portabletext)](https://www.npmjs.com/package/astro-portabletext)
-
-<div style="padding: 1rem 0;">
-  <img src="https://raw.githubusercontent.com/theisel/astro-portabletext/main/logo.svg" width="250" alt="astro-portabletext logo">
-</div>
 
 Render [Portable Text](https://portabletext.org/) with [Astro](https://astro.build/).
 

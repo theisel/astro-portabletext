@@ -1,3 +1,4 @@
+#!make
 prepare_dist_directory:
 	mkdir dist 
 	cp -r ./component/. ./dist
@@ -10,3 +11,8 @@ npm_publish:
 	npm publish ./dist
 
 publish: prepare_dist_directory npm_publish remove_dist_directory
+
+.PHONY: prepare_dist_directory
+.PHONY: remove_dist_directory
+.PHONY: npm_publish
+.PHONY: publish

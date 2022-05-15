@@ -8,7 +8,7 @@ remove_dist_directory:
 	rm -r dist
 
 npm_publish:
-	npm publish ./dist
+	npx changeset publish
 
 publish: prepare_dist_directory npm_publish remove_dist_directory
 

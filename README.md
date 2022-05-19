@@ -5,7 +5,6 @@
 # astro-portabletext
 
 [![license](https://badgen.net/badge/license/ISC/green)](https://opensource.org/licenses/ISC)
-[![github](https://badgen.net/github/release/theisel/astro-portabletext)](https://github.com/theisel/astro-portabletext)
 [![npm](https://badgen.net/npm/v/astro-portabletext)](https://www.npmjs.com/package/astro-portabletext)
 
 Render [Portable Text](https://portabletext.org/) with [Astro](https://astro.build/).

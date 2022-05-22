@@ -27,7 +27,7 @@
     "@commitlint/config-conventional": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^5.25.0",
     "@typescript-eslint/parser": "^5.25.0",
-    "astro": "1.0.0-beta.27",
+    "astro": "1.0.0-beta.31",
     "eslint": "^8.16.0",
     "husky": "^8.0.1",
     "prettier": "^2.6.2",

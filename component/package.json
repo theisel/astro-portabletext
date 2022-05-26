@@ -10,6 +10,15 @@
     "typescript"
   ],
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theisel/astro-portabletext.git",
+    "directory": "component"
+  },
+  "bugs": {
+    "url": "https://github.com/theisel/astro-portabletext/issues"
+  },
+  "homepage": "https://github.com/theisel/astro-portabletext#readme",
   "exports": {
     ".": "./index.ts",
     "./types": "./types.ts"

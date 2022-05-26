@@ -1,5 +1,5 @@
 <div>
-  <img src="logo.svg" width="240" alt="astro-portabletext logo">
+  <img src="https://raw.githubusercontent.com/theisel/astro-portabletext/main/logo.svg" width="240" alt="astro-portabletext logo">
 </div> 
 
 # astro-portabletext

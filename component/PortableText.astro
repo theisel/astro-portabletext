@@ -133,7 +133,9 @@ const asComponentProps = (
             <Raw value={buildMarksTree(node).map(serializeNode(true)).map(renderNode)} />
           </NodeRenderer>
         ) : isPortableTextToolkitTextNode(node) ? (
-          <NodeRenderer component={'\n' === node.text ? components['hardBreak'] : Raw} value={node.text} />
+        '\n' === node.text &&  components['hardBreak'] 
+          ? <NodeRenderer component={components['hardBreak']} node={node} />
+          : <Fragment set:text={node.text} />
         ) : <NodeRenderer component={getComponent(['type', node._type], 'unknownType')} node={node} {...props} />
   })
 }

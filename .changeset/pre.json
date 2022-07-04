@@ -1,0 +1,11 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "astro-portabletext": "0.2.2",
+    "demo": "0.0.1"
+  },
+  "changesets": [
+    "plenty-chairs-clap"
+  ]
+}

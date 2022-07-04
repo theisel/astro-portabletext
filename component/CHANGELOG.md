@@ -1,5 +1,17 @@
 # astro-portabletext
 
+## 0.2.3-next.0
+
+### Patch Changes
+
+- - Sets `normal` as default block style
+
+  - Fixes mark type `link`
+
+  - Fixes unescaped strings
+
+  - Removes whitespace around strings
+
 ## 0.2.2
 
 ### Patch Changes

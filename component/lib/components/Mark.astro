@@ -11,7 +11,7 @@ const markTypeIs = (markType: string) => markType === node.markType;
 ) : markTypeIs("em") ? (
   <em {...attrs}><slot /></em>
 ) : markTypeIs("link") ? (
-  <a href={node?.markDef?.href} {...attrs}><slot /></a>
+  <a href={node.markDef?.href} {...attrs}><slot /></a>
 ) : markTypeIs("strike-through") ? (
   <del {...attrs}><slot /></del>
 ) : markTypeIs("strong") ? (

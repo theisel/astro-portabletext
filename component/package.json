@@ -20,8 +20,8 @@
   },
   "homepage": "https://github.com/theisel/astro-portabletext#readme",
   "exports": {
-    ".": "./index.ts",
-    "./types": "./types.ts"
+    ".": "./lib/index.ts",
+    "./types": "./lib/types.ts"
   },
   "scripts": {
     "build-fixture": "astro --root test/fixture/ build",

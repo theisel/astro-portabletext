@@ -5,7 +5,9 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        "astro-portabletext": fileURLToPath(new URL("../../", import.meta.url)),
+        "astro-portabletext": fileURLToPath(
+          new URL("../../lib/", import.meta.url)
+        ),
       },
     },
   },

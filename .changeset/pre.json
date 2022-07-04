@@ -6,6 +6,7 @@
     "demo": "0.0.1"
   },
   "changesets": [
+    "breezy-fireants-promise",
     "plenty-chairs-clap"
   ]
 }

@@ -1,5 +1,13 @@
 # astro-portabletext
 
+## 0.2.3-next.1
+
+### Patch Changes
+
+- - Changes entry file extension to `.js`
+
+  - Adds missing `main` field in package.json
+
 ## 0.2.3-next.0
 
 ### Patch Changes

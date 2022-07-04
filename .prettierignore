@@ -1,2 +1,6 @@
 dist
+
+# Components
+component/components/Block.astro
 component/components/Raw.astro
+component/components/Mark.astro

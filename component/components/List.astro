@@ -1,13 +1,18 @@
 ---
-import type { PtListComponentProps } from '../types';
+import type { PtListComponentProps } from "../types";
 
 const { node, astroClass } = Astro.props as PtListComponentProps;
 const { listItem } = node;
-const attrs = {'class': astroClass};
+const attrs = { class: astroClass };
 const listItemIs = (it: string) => it === listItem;
 ---
-{listItemIs('number') ? (
-  <ol {...attrs}><slot /></ol>
+
+{listItemIs("number") ? (
+  <ol {...attrs}>
+    <slot />
+  </ol>
 ) : (
-  <ul {...attrs}><slot /></ul>
+  <ul {...attrs}>
+    <slot />
+  </ul>
 )}

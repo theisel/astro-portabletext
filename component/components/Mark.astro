@@ -1,16 +1,23 @@
 ---
-import UnknownMark from './UnknownMark.astro';
+import UnknownMark from "./UnknownMark.astro";
 
-const { node, astroClass, ...props } = Astro.props
+const { node, astroClass, ...props } = Astro.props;
 const attrs = { class: astroClass };
-const markTypeIs = (markType: string) => markType === node.markType
+const markTypeIs = (markType: string) => markType === node.markType;
 ---
-{
-  markTypeIs('code') ? <code {...attrs}><slot /></code>
-  : markTypeIs('em') ? <em {...attrs}><slot /></em>
-  : markTypeIs('link') ? <a href={node?.markDef?.href} {...attrs}><slot /></a>
-  : markTypeIs('strike-through') ? <del {...attrs}><slot /></del>
-  : markTypeIs('strong') ? <strong {...attrs}><slot /></strong>
-  : markTypeIs('underline') ? <span style="text-decoration: underline;" {...attrs}><slot /></span>
-  : <UnknownMark node={node} astroClass={astroClass} {...props} />
-}
+
+{markTypeIs("code") ? (
+  <code {...attrs}><slot /></code>
+) : markTypeIs("em") ? (
+  <em {...attrs}><slot /></em>
+) : markTypeIs("link") ? (
+  <a href={node?.markDef?.href} {...attrs}><slot /></a>
+) : markTypeIs("strike-through") ? (
+  <del {...attrs}><slot /></del>
+) : markTypeIs("strong") ? (
+  <strong {...attrs}><slot /></strong>
+) : markTypeIs("underline") ? (
+  <span style="text-decoration: underline;" {...attrs}><slot /></span>
+) : (
+  <UnknownMark node={node} astroClass={astroClass} {...props} />
+)}

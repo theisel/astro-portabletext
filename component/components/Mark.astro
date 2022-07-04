@@ -1,19 +1,14 @@
 ---
-import type { PtMarkComponentProps, PortableTextMark } from '../types';
 import UnknownMark from './UnknownMark.astro';
 
-interface Link extends PortableTextMark {
-  href: string
-}
-
-const { node, astroClass, ...props } = Astro.props as PtMarkComponentProps
+const { node, astroClass, ...props } = Astro.props
 const attrs = { class: astroClass };
 const markTypeIs = (markType: string) => markType === node.markType
 ---
 {
   markTypeIs('code') ? <code {...attrs}><slot /></code>
   : markTypeIs('em') ? <em {...attrs}><slot /></em>
-  : markTypeIs('link') ? <a href={(node as Link).href} {...attrs}><slot /></a>
+  : markTypeIs('link') ? <a href={node?.markDef?.href} {...attrs}><slot /></a>
   : markTypeIs('strike-through') ? <del {...attrs}><slot /></del>
   : markTypeIs('strong') ? <strong {...attrs}><slot /></strong>
   : markTypeIs('underline') ? <span style="text-decoration: underline;" {...attrs}><slot /></span>

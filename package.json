@@ -3,10 +3,6 @@
   "version": "0.0.0",
   "type": "module",
   "private": true,
-  "workspaces": [
-    "component",
-    "demo"
-  ],
   "scripts": {
     "launch-demo": "astro --root demo dev",
     "install:all": "pnpm recursive install",

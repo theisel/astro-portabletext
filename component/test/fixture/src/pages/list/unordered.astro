@@ -1,0 +1,21 @@
+---
+import Layout from "../../layouts/Default.astro";
+import { PortableText } from "astro-portabletext";
+
+const blocks = [
+  {
+    _type: "block",
+    listItem: "bullet",
+    children: [
+      {
+        _type: "span",
+        text: "List Item 1",
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <PortableText value={blocks} />
+</Layout>

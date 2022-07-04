@@ -1,0 +1,21 @@
+---
+import Layout from "../../layouts/Default.astro";
+import { PortableText } from "astro-portabletext";
+
+const blocks = [
+  {
+    _type: "block",
+    style: "normal",
+    children: [
+      {
+        _type: "span",
+        text: "I'm a paragraph",
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <PortableText value={blocks} />
+</Layout>

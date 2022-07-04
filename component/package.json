@@ -23,8 +23,17 @@
     ".": "./index.ts",
     "./types": "./types.ts"
   },
+  "scripts": {
+    "build-fixture": "astro --root test/fixture/ build",
+    "test-fixture": "uvu test .test.js",
+    "test": "pnpm build-fixture && pnpm test-fixture"
+  },
   "dependencies": {
     "@portabletext/toolkit": "^1.0.5",
     "@portabletext/types": "^1.0.3"
+  },
+  "devDependencies": {
+    "cheerio": "1.0.0-rc.12",
+    "uvu": "^0.5.5"
   }
 }

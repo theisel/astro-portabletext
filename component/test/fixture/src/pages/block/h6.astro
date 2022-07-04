@@ -1,0 +1,21 @@
+---
+import Layout from "../../layouts/Default.astro";
+import { PortableText } from "astro-portabletext";
+
+const blocks = [
+  {
+    _type: "block",
+    style: "h6",
+    children: [
+      {
+        _type: "span",
+        text: "Heading L6",
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <PortableText value={blocks} />
+</Layout>

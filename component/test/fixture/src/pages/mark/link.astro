@@ -1,0 +1,28 @@
+---
+import Layout from "../../layouts/Default.astro";
+import { PortableText } from "astro-portabletext";
+
+const blocks = [
+  {
+    _type: "block",
+    children: [
+      {
+        _type: "span",
+        text: "test.com",
+        marks: ["link-key"],
+      },
+    ],
+    markDefs: [
+      {
+        _key: "link-key",
+        _type: "link",
+        href: "https://test.com/",
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <PortableText value={blocks} />
+</Layout>

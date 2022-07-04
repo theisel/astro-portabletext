@@ -19,8 +19,9 @@
     "url": "https://github.com/theisel/astro-portabletext/issues"
   },
   "homepage": "https://github.com/theisel/astro-portabletext#readme",
+  "main": "./lib/index.js",
   "exports": {
-    ".": "./lib/index.ts",
+    ".": "./lib/index.js",
     "./types": "./lib/types.ts"
   },
   "files": [

@@ -129,7 +129,7 @@ const asComponentProps = (
             <Raw value={node.children.map(serializeNode(true)).map(renderNode)} />
           </NodeRenderer>          
         ) : isPortableTextBlock(node) ? (
-          <NodeRenderer component={getComponent(['block', node.style ?? 'normal'], 'unknownBlockStyle')} node={node} {...props}>
+          <NodeRenderer component={getComponent(['block', node.style ?? 'normal'], 'unknownBlockStyle')} node={{style: 'normal', ...node}} {...props}>
             <Raw value={buildMarksTree(node).map(serializeNode(true)).map(renderNode)} />
           </NodeRenderer>
         ) : isPortableTextToolkitTextNode(node) ? (

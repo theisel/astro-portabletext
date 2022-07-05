@@ -1,5 +1,21 @@
 # astro-portabletext
 
+## 0.2.3
+
+### Patch Changes
+
+- 8ef55a1: - Changes entry file extension to `.js`
+
+  - Adds missing `main` field in package.json
+
+- 07ca7a4: - Sets `normal` as default block style
+
+  - Fixes mark type `link`
+
+  - Fixes unescaped strings
+
+  - Removes whitespace around strings
+
 ## 0.2.3-next.1
 
 ### Patch Changes

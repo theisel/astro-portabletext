@@ -1,7 +1,7 @@
 ---
-import type { PtListItemComponentProps } from "../types";
+import type { ListItem, Props } from "../types";
 
-const { astroClass } = Astro.props as PtListItemComponentProps;
+const { astroClass } = Astro.props as Props<ListItem>;
 const attrs = { class: astroClass };
 ---
 

@@ -1,7 +1,7 @@
 ---
-import type { PtListComponentProps } from "../types";
+import type { List, Props } from "../types";
 
-const { node, astroClass } = Astro.props as PtListComponentProps;
+const { node, astroClass } = Astro.props as Props<List>;
 const { listItem } = node;
 const attrs = { class: astroClass };
 const listItemIs = (it: string) => it === listItem;

@@ -28,9 +28,12 @@
     "lib"
   ],
   "scripts": {
-    "build-fixture": "astro --root test/fixture/ build",
-    "test-fixture": "uvu test .test.js",
-    "test": "pnpm build-fixture && pnpm test-fixture"
+    "build-fixture": "astro --root test/components/fixture/ build",
+    "test-component": "pnpm build-fixture && npx uvu test/components .test.js",
+    "test-lib": "npx uvu -r tsm test/lib ",
+    "test-ts": "npx tsc --noEmit test/*.test-ts.ts",
+    "test-all": "pnpm test-component && pnpm test-lib && pnpm test-ts",
+    "test": "pnpm test-all"
   },
   "dependencies": {
     "@portabletext/toolkit": "^1.0.5",
@@ -38,6 +41,8 @@
   },
   "devDependencies": {
     "cheerio": "1.0.0-rc.12",
+    "ts-toolbelt": "^9.6.0",
+    "tsm": "^2.2.1",
     "uvu": "^0.5.5"
   }
 }

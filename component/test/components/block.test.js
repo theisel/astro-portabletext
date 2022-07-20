@@ -1,6 +1,6 @@
 import { suite } from "uvu";
 import * as assert from "uvu/assert";
-import { fetchContent } from "./utils.mjs";
+import { fetchContent } from "../utils.mjs";
 
 const block = suite("block");
 

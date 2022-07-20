@@ -6,7 +6,7 @@ export default defineConfig({
     resolve: {
       alias: {
         "astro-portabletext": fileURLToPath(
-          new URL("../../lib/", import.meta.url)
+          new URL("../../../lib/", import.meta.url)
         ),
       },
     },

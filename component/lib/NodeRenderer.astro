@@ -1,5 +1,10 @@
 ---
-import type { NodeRendererProps } from "./types";
+import type { Component } from "./types";
+
+interface NodeRendererProps {
+  component: Component;
+  [key: string]: any;
+}
 
 const { component, ...props } = Astro.props as NodeRendererProps;
 const Cmp: any = component;

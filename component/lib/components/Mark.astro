@@ -1,9 +1,12 @@
 ---
-import UnknownMark from "./UnknownMark.astro";
+import { Mark, Props } from "../types";
+import { throwError } from "../internal";
+import { unknownMarkWarning } from "../warnings";
 
-const { node, astroClass, ...props } = Astro.props;
+const { node, astroClass } = Astro.props as Props<Mark>;
 const attrs = { class: astroClass };
 const markTypeIs = (markType: string) => markType === node.markType;
+const err = unknownMarkWarning(node.markType);
 ---
 
 {markTypeIs("code") ? (
@@ -11,7 +14,7 @@ const markTypeIs = (markType: string) => markType === node.markType;
 ) : markTypeIs("em") ? (
   <em {...attrs}><slot /></em>
 ) : markTypeIs("link") ? (
-  <a href={node.markDef?.href} {...attrs}><slot /></a>
+  <a href={(node as unknown as Mark<{ href: string }>).markDef.href} {...attrs}><slot /></a>
 ) : markTypeIs("strike-through") ? (
   <del {...attrs}><slot /></del>
 ) : markTypeIs("strong") ? (
@@ -19,5 +22,5 @@ const markTypeIs = (markType: string) => markType === node.markType;
 ) : markTypeIs("underline") ? (
   <span style="text-decoration: underline;" {...attrs}><slot /></span>
 ) : (
-  <UnknownMark node={node} astroClass={astroClass} {...props} />
+  throwError(err)
 )}

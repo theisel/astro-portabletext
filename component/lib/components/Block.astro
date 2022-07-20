@@ -1,10 +1,12 @@
 ---
-import type { PtBlockComponentProps } from "../types";
-import UnknownBlockStyle from "./UnknownBlockStyle.astro";
+import type { BlockStyle, Props } from "../types";
+import { throwError } from "../internal";
+import { unknownBlockStyleWarning } from "../warnings";
 
-const { node, astroClass, ...props } = Astro.props as PtBlockComponentProps;
+const { node, astroClass } = Astro.props as Props<BlockStyle>;
 const attrs = { class: astroClass };
 const styleIs = (style: string) => style === node.style;
+const err = unknownBlockStyleWarning(node.style);
 ---
 
 {styleIs("h1") ? (
@@ -24,5 +26,5 @@ const styleIs = (style: string) => style === node.style;
 ) : styleIs("normal") ? (
   <p {...attrs}><slot /></p>
 ) : (
-  <UnknownBlockStyle node={node} astroClass={astroClass} {...props} />
+  throwError(err)
 )}

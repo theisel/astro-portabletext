@@ -57,9 +57,15 @@ const components = mergeComponents(
       normal: Block,
     },
     unknownBlockStyle: UnknownBlockStyle,
-    list: List,
+    list: {
+      bullet: List,
+      number: List,
+    },
     unknownList: UnknownList,
-    listItem: ListItem,
+    listItem: {
+      bullet: ListItem,
+      number: ListItem,
+    },
     unknownListItem: UnknownListItem,
     mark: {
       code: Mark,

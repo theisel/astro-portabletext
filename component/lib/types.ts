@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 import type {
   ToolkitListNestMode,
+  ToolkitNestedPortableTextSpan,
   ToolkitPortableTextList,
+  ToolkitPortableTextListItem,
+  ToolkitTextNode,
 } from "@portabletext/toolkit";
 
 import type {
@@ -10,24 +12,24 @@ import type {
   PortableTextBlock,
   PortableTextBlockStyle,
   PortableTextListItemBlock,
-  PortableTextListItemType,
+  PortableTextMarkDefinition,
   TypedObject,
 } from "@portabletext/types";
 
 export type { TypedObject } from "@portabletext/types";
 
 /**
- * Properties for the Astro Portable Text component
+ * Properties for the `astro-portabletext` component
  *
- * @template PtNode Portable Text node
+ * @template Value Portable Text payload
  */
 export interface PortableTextProps<
-  PtNode extends TypedObject = PortableTextBlock | ArbitraryTypedObject
+  Value extends TypedObject = ArbitraryTypedObject
 > {
   /**
    * Portable Text blocks
    */
-  value: PtNode | PtNode[];
+  value: Value | Value[];
 
   /**
    * Components for rendering
@@ -46,49 +48,49 @@ export interface PortableTextProps<
  */
 export type PortableTextComponents = {
   /**
-   * {Astro, Svelte, JSX} component to handle user-defined type
+   * How user-defined types should be rendered
    */
-  type: ComponentOrRecord<PtTypeComponent>;
+  type: ComponentOrRecord;
   /**
-   * {Astro, Svelte, JSX} component to handle unknown user-defined type
+   * Used when a `type` handler isn't found
    */
-  unknownType: PtTypeComponent;
+  unknownType: Component;
   /**
-   * {Astro, Svelte, JSX} component to handle (_type == 'block')
+   * How blocks should be rendered
    */
-  block: ComponentOrRecord<PtBlockComponent, PortableTextBlockStyle>;
+  block: ComponentOrRecord<BlockStyle | Block>;
   /**
-   * {Astro, Svelte, JSX} component to handle unknown (_type == 'block') style
+   * Used when a `block` handler isn't found
    */
-  unknownBlockStyle: PtBlockComponent;
+  unknownBlockStyle: Component<BlockStyle | Block>;
   /**
-   * {Astro, Svelte, JSX} component to handle (_type == 'list')
+   * How lists should be rendered
    */
-  list: ComponentOrRecord<PtListComponent, PortableTextListItemType>;
+  list: ComponentOrRecord<List>;
   /**
-   * {Astro, Svelte, JSX} component to handle unknown (_type == 'list')
+   * Used when a `list` handler isn't found
    */
-  unknownList: PtListComponent;
+  unknownList: Component<List>;
   /**
-   * {Astro, Svelte, JSX} component to handle (_type == 'listItem')
+   * How list items should be rendered
    */
-  listItem: ComponentOrRecord<PtListItemComponent, PortableTextListItemType>;
+  listItem: ComponentOrRecord<ListItem>;
   /**
-   * {Astro, Svelte, JSX} component to handle unknown (_type == 'listItem')
+   * Used when a `listItem` handler isn't found
    */
-  unknownListItem: PtListItemComponent;
+  unknownListItem: Component<ListItem>;
   /**
-   * {Astro, Svelte, JSX} component to handle mark
+   * How marked text should be rendered
    */
-  mark: ComponentOrRecord<PtMarkComponent>;
+  mark: ComponentOrRecord<Mark>;
   /**
-   * {Astro, Svelte, JSX} component to handle unknown mark
+   * Used when a `mark` handler isn't found
    */
-  unknownMark: PtMarkComponent;
+  unknownMark: Component<Mark>;
   /**
-   * {Astro, Svelte, JSX} component to handle breaks
+   * How line breaks should be rendered
    */
-  hardBreak: PtComponent;
+  hardBreak: Component<ToolkitTextNode>;
 };
 
 /**
@@ -97,9 +99,110 @@ export type PortableTextComponents = {
 export type SomePortableTextComponents = Partial<PortableTextComponents>;
 
 /**
- * Properties for generic Portable Text {Astro, Svelte, JSX} component
+ * Component Props
  *
- * @template PtNode Type of Portable Text data this component will receive in its `node` property
+ * @template N Type of Portable Text payload that this component will receive on its `node` property
+ */
+export interface Props<
+  N extends Node | Record<string, any> = ArbitraryTypedObject
+> {
+  /**
+   * Portable Text node
+   */
+  node: N extends TypedObject ? N : N & TypedObject;
+
+  /**
+   * Index within its parent
+   */
+  index: number;
+
+  /**
+   * Whether the component should be layed out as inline or block element
+   */
+  isInline: boolean;
+
+  /**
+   * Set when `style` is used within an Astro component, should be used when defined.
+   */
+  astroClass: string | undefined;
+}
+
+/**
+ * Generic Portable Text component
+ *
+ * @template N Portable Text node type
+ */
+export type Component<
+  N extends Node | Record<string, any> = ArbitraryTypedObject
+> = (props: Props<N>) => any | Promise<(props: Props<N>) => any>;
+
+/**
+ * For internal use
+ */
+export type ComponentOrRecord<
+  N extends Node | Record<string, any> = ArbitraryTypedObject
+> = Component<N> | Record<string, Component<N>>;
+
+/**
+ * Portable Text node types
+ */
+export type Node = Block | BlockStyle | List | ListItem | Mark | TypedObject;
+
+/**
+ * Alias for {@link PortableTextBlock}
+ *
+ * @example
+ * import type { Block, Props } from "astro-portabletext/types";
+ * const { node } = Astro.props as Props<Block>;
+ */
+export type Block = PortableTextBlock;
+
+/**
+ * @example
+ * import type { BlockStyle, Props } from "astro-portabletext/types";
+ * const { node } = Astro.props as Props<BlockStyle>;
+ */
+export interface BlockStyle extends Block {
+  style: "normal" | PortableTextBlockStyle;
+}
+
+/**
+ * Alias for {@link ToolkitPortableTextList}
+ *
+ * @example
+ * import type { List, Props } from "astro-portabletext/types";
+ * const { node } = Astro.props as Props<List>;
+ */
+export type List = ToolkitPortableTextList;
+
+/**
+ * Alias for {@link ToolkitPortableTextListItem}
+ *
+ * @example
+ * import type { ListItem, Props } from "astro-portabletext/types";
+ * const { node } = Astro.props as Props<ListItem>;
+ */
+export type ListItem = ToolkitPortableTextListItem;
+
+/**
+ * @template MarkDef Object defining what the `markDef` property will receive
+ *
+ * @example
+ * import type { Mark, Props } from "astro-portabletext/types";
+ * type Greet = Mark<{ msg: string }>;
+ * const { node } = Astro.props as Props<Greet>;
+ */
+export interface Mark<
+  MarkDef extends Record<string, any> | undefined = undefined
+> extends ToolkitNestedPortableTextSpan {
+  markDef: MarkDef extends Record<string, any>
+    ? MarkDef & PortableTextMarkDefinition
+    : undefined;
+  markKey: string;
+}
+
+/**
+ * @deprecated Use {@link Props} instead
  */
 export interface PtComponentProps<
   PtNode extends TypedObject = PortableTextBlock | ArbitraryTypedObject
@@ -126,83 +229,140 @@ export interface PtComponentProps<
 }
 
 /**
- * Generic Portable Text {Astro, Svelte, JSX, etc.} component
+ * @deprecated Use {@link Component} instead
  */
 export type PtComponent<Props extends PtComponentProps = PtComponentProps> = (
   props: Props
 ) => any;
 
 /**
- * Intended for internal use
+ * @deprecated See example to migrate
+ *
+ * @example
+ * import type { BlockStyle, Props } from "astro-portabletext/types"
+ * const { node, ...rest } = Astro.props as Props<BlockStyle>
  */
-export type ComponentOrRecord<
-  Cmp extends PtComponent<any> = PtComponent,
-  Key extends string = string
-> = Cmp | Record<Key, Cmp>;
+export type PtBlockComponentProps = PtComponentProps<
+  { style: "normal" | string } & PortableTextBlock
+>;
 
 /**
- * Props for {@link PtBlockComponent}
- */
-export type PtBlockComponentProps = PtComponentProps<PortableTextBlock>;
-
-/**
- * Block Component
+ * @deprecated See example to migrate
+ *
+ * @example
+ * import type { BlockStyle, Component } from "astro-portabletext/types"
+ * const Cmp: Component<BlockStyle> = (props) => { ... }
  */
 export type PtBlockComponent = PtComponent<PtBlockComponentProps>;
 
 /**
- * Props for {@link PtListComponent}
+ * @deprecated See example to migrate
+ *
+ * @example
+ * import type { List, Props } from "astro-portabletext/types"
+ * const { node, ...rest } = Astro.props as Props<List>
  */
 export type PtListComponentProps = PtComponentProps<ToolkitPortableTextList>;
 
 /**
- * List Component
+ * @deprecated See example to migrate
+ *
+ * @example
+ * import type { List, Component } from "astro-portabletext/types"
+ * const Cmp: Component<List> = (props) => { ... }
  */
 export type PtListComponent = PtComponent<PtListComponentProps>;
 
 /**
- * Props for {@link PtListItemComponent}
+ * @deprecated See example to migrate
+ *
+ * @example
+ * import type { ListItem, Props } from "astro-portabletext/types"
+ * const { node, ...rest } = Astro.props as Props<ListItem>
  */
 export type PtListItemComponentProps =
   PtComponentProps<PortableTextListItemBlock>;
 
 /**
- * List Item Component
+ * @deprecated See example to migrate
+ *
+ * @example
+ * import type { ListItem, Component } from "astro-portabletext/types"
+ * const Cmp: Component<ListItem> = (props) => { ... }
  */
 export type PtListItemComponent = PtComponent<PtListItemComponentProps>;
 
-export interface PortableTextMark extends TypedObject {
-  markType: string;
-}
-
 /**
- * Props for {@link PtMarkComponent}
+ * @deprecated Use {@link Mark}
  */
-export type PtMarkComponentProps = PtComponentProps<PortableTextMark>;
+export type PortableTextMark<
+  MarkDef extends Record<string, any> | undefined = undefined
+> = Mark<MarkDef>;
 
 /**
- * Mark Component
+ * @deprecated See example to migrate
+ *
+ * @example
+ * import type { Mark, Props } from "astro-portabletext/types"
+ * type Greet = Mark<{ message: string }>
+ * const { node, ...rest } = Astro.props as Props<Greet>
+ */
+export type PtMarkComponentProps<
+  MarkDef extends PortableTextMark = PortableTextMark
+> = PtComponentProps<MarkDef>;
+
+/**
+ * @deprecated See example to migrate
+ *
+ * @example
+ * import type { Mark, Component } from "astro-portabletext/types"
+ * type Greet = Mark<{ message: string }>
+ * const Cmp: Component<Greet> = (props) => { ... }
  */
 export type PtMarkComponent = PtComponent<PtMarkComponentProps>;
 
 /**
- * Props for {@link PtTypeComponent}
+ * @deprecated See examples to migrate
  *
- * @template PtNode Portable Text node (_type: user-defined)
+ * @example
+ * import type { TypedObject, Props } from "astro-portabletext/types"
+ * interface Greet extends TypedObject {
+ *   message: string
+ * }
+ * const { node, ...rest } = Astro.props as Props<Greet>
+ *
+ * @example
+ * import type { Props } from "astro-portabletext/types"
+ * type Greet = { message: string }
+ * const { node, ...rest } = Astro.props as Props<Greet>
  */
 export type PtTypeComponentProps<
   PtNode extends TypedObject = ArbitraryTypedObject
 > = PtComponentProps<PtNode>;
 
 /**
- * User-defined _type component
+ * @deprecated See examples to migrate
+ *
+ * @example
+ * import type { Component } from "astro-portabletext/types"
+ * type Greet = { message: string }
+ * const Cmp: Component<Greet> = (props) => { ... }
+
+ * @example
+ * import type { TypedObject, Component } from "astro-portabletext/types"
+ * interface Greet extends TypedObject {
+ *   message: string
+ * }
+ * const Cmp: Component<Greet> = (props) => { ... }
  */
 export type PtTypeComponent = PtComponent<PtTypeComponentProps>;
 
 /**
- * Props for Portable Text node renderer
+ * @deprecated Internal use only
+ *
+ * Moved to NodeRenderer component
  */
 export interface NodeRendererProps {
-  component: PtComponent;
+  component: Component;
   [key: string]: any;
 }

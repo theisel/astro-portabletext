@@ -2,8 +2,8 @@
 import {
   ComponentOrRecord,
   PortableTextComponents,
-  PtComponent,
-  PtComponentProps,
+  Component,
+  Props,
   PortableTextProps,
   TypedObject,
 } from "./types";
@@ -92,7 +92,7 @@ const getComponent = (
     | "unknownList"
     | "unknownListItem"
     | "unknownMark"
-): PtComponent => {
+): Component => {
   const [prop, recordKey] = componentHandler;
   const componentOrRecord = components[prop] as ComponentOrRecord;
 
@@ -106,14 +106,14 @@ const nested = nestLists(blocks, listNestingMode);
 
 const serializeNode =
   (isInline?: boolean) =>
-  (node: TypedObject, index: number): PtComponentProps =>
+  (node: TypedObject, index: number): Props =>
     asComponentProps(node, index, isInline);
 
 const asComponentProps = (
   node: any,
   index: number = 0,
   isInline: boolean = false
-): PtComponentProps => ({
+): Props => ({
   node,
   index,
   isInline,

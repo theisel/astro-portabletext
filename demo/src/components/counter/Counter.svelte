@@ -1,8 +1,9 @@
 <script lang="ts">
+  import type { Props } from "astro-portabletext/types";
   import { onDestroy } from "svelte";
 
-  let astroClass: string;
-  let isInline: boolean;
+  const { astroClass, isInline } = $$props as Props;
+
   let count: number = 0;
 
   const interval = setInterval(() => {
@@ -10,8 +11,6 @@
   }, 1000);
 
   onDestroy(() => clearInterval(interval));
-
-  export { astroClass, isInline };
 </script>
 
 {#if isInline}

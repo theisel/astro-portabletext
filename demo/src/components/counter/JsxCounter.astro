@@ -1,8 +1,8 @@
 ---
-import type { PtComponentProps } from "astro-portabletext/types";
+import type { Props } from "astro-portabletext/types";
 import { Counter } from "./Counter";
 
-const props = Astro.props as PtComponentProps;
+const props = Astro.props as Props;
 ---
 
 <Counter client:load {...props} />

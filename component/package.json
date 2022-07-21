@@ -20,15 +20,16 @@
   },
   "homepage": "https://github.com/theisel/astro-portabletext#readme",
   "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "exports": {
     ".": "./lib/index.js",
-    "./types": "./lib/types.ts"
+    "./utils": "./lib/utils.js",
+    "./types": "./lib/types.d.ts"
   },
-  "files": [
-    "lib"
-  ],
   "scripts": {
+    "compile": "tsc",
     "build-fixture": "astro --root test/components/fixture/ build",
+    "prepare": "pnpm compile",
     "test-component": "pnpm build-fixture && npx uvu test/components .test.js",
     "test-lib": "npx uvu -r tsm test/lib ",
     "test-ts": "npx tsc --noEmit test/*.test-ts.ts",

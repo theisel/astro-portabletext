@@ -7,7 +7,7 @@
     "launch-demo": "astro --root demo dev",
     "install:all": "pnpm recursive install",
     "format": "prettier -w **/*.{astro,js,jsx,ts,tsx,svelte}",
-    "lint": "eslint . --ext .ts"
+    "lint": "npx eslint ."
   },
   "repository": {
     "type": "git",

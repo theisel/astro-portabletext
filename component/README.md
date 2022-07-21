@@ -1,6 +1,6 @@
 <div>
   <img src="../logo.svg" width="240" alt="astro-portabletext logo">
-</div> 
+</div>
 
 # astro-portabletext
 
@@ -10,28 +10,34 @@
 Render [Portable Text](https://portabletext.org/) with [Astro](https://astro.build/)
 
 ## Install
+
 ```
 npm install astro-portabletext --save-dev
 ```
 
 ## Usage
+
 ```js
 /* .astro file */
 ---
 import { PortableText } from "astro-portabletext";
 ---
 
-<PortableText 
-  value={[/* portable text blocks */]} 
+<PortableText
+  value={[/* portable text blocks */]}
   components={/* custom components */}
 />
 ```
 
 ## Default Components
+
 **astro-portabletext** components will render the following
+
 ```js
 {
-  /* type: Must be defined by you! */,
+  type: {
+    /* custom types go here */
+  },
   block: {
     h1: /* <h1 class={astroClass}><slot /></h1> */,
     h2: /* <h2 class={astroClass}><slot /></h2> */,
@@ -42,8 +48,14 @@ import { PortableText } from "astro-portabletext";
     blockquote: /* <blockquote class={astroClass}><slot /></blockquote> */,
     normal: /* <p class={astroClass}><slot /></p> */
   },
-  list: /* <ul class={astroClass}><slot /></ul> | <ol class="..."><slot /></ol>*/,
-  listItem: /* <li class={astroClass}><slot /></li> */,
+  list: {
+    bullet: /* <ul class={astroClass}><slot /></ul> */,
+    number: /* <ol class={astroClass}><slot /></ol> */,
+  },
+  listItem: {
+    bullet: /* <li class={astroClass}><slot /></li> */,
+    number: /* <li class={astroClass}><slot /></li> */,
+  },
   mark: {
     code: /* <code class={astroClass}><slot /></code> */,
     em: /* <em class={astroClass}><slot /></em> */,
@@ -60,7 +72,6 @@ import { PortableText } from "astro-portabletext";
 
 ## Merge/Override Components
 
-Add to them or override a particular one
 ```js
 ---
 import { PortableText } from "astro-portabletext";
@@ -72,7 +83,7 @@ import { PageHeading } from "@component/PageHeading";
 import { Bold } from "@component/Bold";
 ---
 
-<PortableText 
+<PortableText
   value={[/* portable text blocks */]}
   components={{
     type: {
@@ -93,7 +104,6 @@ import { Bold } from "@component/Bold";
 
 ## Custom Handler
 
-Create a handler for better control
 ```js
 /* .astro file */
 ---
@@ -103,7 +113,7 @@ import { Block } from "@handler/Block"
 import { Mark } from "@handler/Mark"
 ---
 
-<PortableText 
+<PortableText
   value={[/* portable text blocks */]}
   components={{
     type: Type,
@@ -119,11 +129,11 @@ import { Mark } from "@handler/Mark"
 /* .astro file */
 ---
 import { PortableText } from "astro-portabletext";
-import { Unicorn } from "@component/Unicorn";
+import { Unicorn } from "@component/Unicorn.astro";
 ---
 
-<PortableText 
-  value={[/* portable text blocks */]} 
+<PortableText
+  value={[/* portable text blocks */]}
   components={{
     type: {
       unicorn: Unicorn
@@ -137,34 +147,54 @@ import { Unicorn } from "@component/Unicorn";
 ```
 
 ```js
-/* @component/Unicorn.jsx */
-export function Unicorn(props) {
-  const { astroClass = "" } = props;
+/* @component/Unicorn.astro */
+---
+const { astroClass = "" } = Astro.props;
+---
 
-  return (
-    <div className={`unicorn ${astroClass}`}>
-      /* ... */
-    </div>
-  )
-}
+<div class={`unicorn ${astroClass}`}>
+  <!-- more html -->
+</div>
 ```
 
 ## Typescript
 
+### `components.type`
+
 ```js
 /* @component/Greeting.tsx */
-import type { PtTypeComponentProps, TypedObject } from "astro-portabletext/types";
+---
+import type { TypedObject, Props } from "astro-portabletext";
 
 interface Greet extends TypedObject {
-  message: string
+  message: string;
 }
+/* OR */
+type Greet = { message: string };
 
-export function Greeting(props: PtTypeComponentProps<Greet>) {
-  return <p>Hello {props.node.message}</p>
-}
+const { node } = Astro.props as Props<Greet>;
+---
+
+<h1>{node.message}</h1>
+
 ```
 
-## Credits
+### `components.mark`
+
+```js
+/* @component/Greeting.tsx */
+---
+import type { Mark, Props } from "astro-portabletext";
+
+type Greet = Mark<{ message: string }>;
+
+const { node } = Astro.props as Props<Greet>;
+---
+
+<p>{node.markDef.message}</p>
+```
+
+## Alternatives
 
 [@portabletext/react](https://github.com/portabletext/react-portabletext)
 

@@ -5,12 +5,11 @@ import { unknownBlockStyleWarning } from "../warnings";
 const { node, isInline } = Astro.props as PtBlockComponentProps;
 const warning = unknownBlockStyleWarning(node.style ?? "normal");
 ---
-
-<style>
-  @import "../styles/unknown.css";
-</style>
 {isInline ? (
   <span data-portabletext-unknown="blockstyle">{warning}</span>
 ) : (
   <div data-portabletext-unknown="blockstyle">{warning}</div>
 )}
+<style is:inline>
+  @import "../styles/unknown.css";
+</style>

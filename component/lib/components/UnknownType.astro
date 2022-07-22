@@ -1,8 +1,8 @@
 ---
-import { PtTypeComponentProps } from "../types";
+import { Props } from "../types";
 import { unknownTypeWarning } from "../warnings";
 
-const { node, isInline } = Astro.props as PtTypeComponentProps;
+const { node, isInline } = Astro.props as Props;
 const { _type } = node;
 const warning = unknownTypeWarning(_type);
 ---

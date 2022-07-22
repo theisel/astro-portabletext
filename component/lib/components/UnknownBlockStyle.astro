@@ -1,9 +1,9 @@
 ---
-import { PtBlockComponentProps } from "../types";
+import { Props, BlockStyle } from "../types";
 import { unknownBlockStyleWarning } from "../warnings";
 
-const { node, isInline } = Astro.props as PtBlockComponentProps;
-const warning = unknownBlockStyleWarning(node.style ?? "normal");
+const { node, isInline } = Astro.props as Props<BlockStyle>;
+const warning = unknownBlockStyleWarning(node.style);
 ---
 {isInline ? (
   <span data-portabletext-unknown="blockstyle">{warning}</span>

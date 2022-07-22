@@ -1,8 +1,8 @@
 ---
-import { PtListItemComponentProps } from "../types";
+import { Props, ListItem } from "../types";
 import { unknownListItemStyleWarning } from "../warnings";
 
-const { node } = Astro.props as PtListItemComponentProps;
+const { node } = Astro.props as Props<ListItem>;
 const { listItem } = node;
 const warning = unknownListItemStyleWarning(listItem);
 ---

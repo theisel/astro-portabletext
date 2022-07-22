@@ -29,7 +29,7 @@
   "scripts": {
     "compile": "tsc",
     "build-fixture": "astro --root test/components/fixture/ build",
-    "prepare": "pnpm compile",
+    "prepublishOnly": "pnpm compile",
     "test-component": "pnpm build-fixture && npx uvu test/components .test.js",
     "test-lib": "npx uvu -r tsm test/lib ",
     "test-ts": "npx tsc --noEmit test/*.test-ts.ts",

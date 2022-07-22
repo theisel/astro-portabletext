@@ -1,6 +1,6 @@
 {
   "name": "astro-portabletext",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "type": "module",
   "description": "Render Portable Text with Astro",
   "keywords": [

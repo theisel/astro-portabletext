@@ -1,5 +1,11 @@
 # astro-portabletext
 
+## 0.2.4
+
+### Patch Changes
+
+- 70d85d4: Fixes css imports #2
+
 ## 0.2.3
 
 ### Patch Changes

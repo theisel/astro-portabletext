@@ -3,8 +3,7 @@ import { Props } from "../types";
 import { unknownTypeWarning } from "../warnings";
 
 const { node, isInline } = Astro.props as Props;
-const { _type } = node;
-const warning = unknownTypeWarning(_type);
+const warning = unknownTypeWarning(node._type);
 ---
 
 {isInline ? (
@@ -12,3 +11,9 @@ const warning = unknownTypeWarning(_type);
 ) : (
   <div data-portabletext-unknown="type">{warning}</div>
 )}
+
+<style>
+  [data-portabletext-unknown="type"] {
+    display: none;
+  }
+</style>

@@ -1,12 +1,1 @@
----
-import { Props, BlockStyle } from "../types";
-import { unknownBlockStyleWarning } from "../warnings";
-
-const { node, isInline } = Astro.props as Props<BlockStyle>;
-const warning = unknownBlockStyleWarning(node.style);
----
-{isInline ? (
-  <span data-portabletext-unknown="blockstyle">{warning}</span>
-) : (
-  <div data-portabletext-unknown="blockstyle">{warning}</div>
-)}
+<p data-portabletext-unknown="blockstyle"><slot></slot></p>

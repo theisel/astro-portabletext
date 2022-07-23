@@ -1,10 +1,1 @@
----
-import { Props, Mark } from "../types";
-import { unknownMarkWarning } from "../warnings";
-
-const { node } = Astro.props as Props<Mark>;
-const { markType } = node;
-const warning = unknownMarkWarning(markType);
----
-
-<span data-portabletext-unknown="mark">{warning}</span>
+<span data-portabletext-unknown="mark"><slot></slot></span>

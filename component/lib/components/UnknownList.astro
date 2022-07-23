@@ -1,10 +1,1 @@
----
-import { Props, List } from "../types";
-import { unknownListStyleWarning } from "../warnings";
-
-const { node } = Astro.props as Props<List>;
-const { listItem } = node;
-const warning = unknownListStyleWarning(listItem);
----
-
-<ul data-portabletext-unknown="list">{warning}</ul>
+<ul data-portabletext-unknown="list"><slot></slot></ul>

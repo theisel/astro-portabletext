@@ -7,7 +7,11 @@ const warning = unknownTypeWarning(node._type);
 ---
 
 {isInline ? (
-  <span style="display:none" data-portabletext-unknown="type">{warning}</span>
+  <span style="display:none" data-portabletext-unknown="type">
+    {warning}
+  </span>
 ) : (
-  <div style="display:none" data-portabletext-unknown="type">{warning}</div>
+  <div style="display:none" data-portabletext-unknown="type">
+    {warning}
+  </div>
 )}

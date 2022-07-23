@@ -2,4 +2,4 @@
 const { value } = Astro.props as { value: any };
 ---
 
-{value}
+<Fragment set:html={value} />

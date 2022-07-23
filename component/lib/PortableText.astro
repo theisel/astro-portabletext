@@ -1,14 +1,5 @@
 ---
 import {
-  ComponentOrRecord,
-  PortableTextComponents,
-  Component,
-  Props,
-  PortableTextProps,
-  TypedObject,
-} from "./types";
-
-import {
   isPortableTextBlock,
   isPortableTextListItemBlock,
   isPortableTextToolkitList,
@@ -19,7 +10,28 @@ import {
   LIST_NEST_MODE_HTML,
 } from "@portabletext/toolkit";
 
+import mitt from "mitt";
+
+import {
+  ComponentOrRecord,
+  PortableTextComponents,
+  Component,
+  Props,
+  PortableTextProps,
+  TypedObject,
+  NodeType,
+} from "./types";
+
 import { isComponent, mergeComponents } from "./internal";
+
+import {
+  printWarning,
+  unknownTypeWarning,
+  unknownMarkWarning,
+  unknownBlockStyleWarning,
+  unknownListStyleWarning,
+  unknownListItemStyleWarning,
+} from "./warnings";
 
 import NodeRenderer from "./NodeRenderer.astro";
 
@@ -39,6 +51,7 @@ const {
   value,
   components: componentOverrides = {},
   listNestingMode = LIST_NEST_MODE_HTML,
+  onMissingComponent = printWarning,
   class: astroClass,
 } = Astro.props as PortableTextProps & { class?: string };
 
@@ -81,24 +94,75 @@ const components = mergeComponents(
   componentOverrides
 ) as PortableTextComponents;
 
-const getComponent = (
-  componentHandler: [
-    prop: "type" | "block" | "list" | "listItem" | "mark" | "hardBreak",
-    recordKey: string
-  ],
-  unknownComponentHandler:
+const noop = () => {};
+const missingComponentHandler = onMissingComponent || noop;
+
+const emitter = mitt<{
+  unknownType: string;
+  unknownBlockStyle: string;
+  unknownList: string;
+  unknownListItem: string;
+  unknownMark: string;
+}>();
+
+emitter.on("unknownType", (type: string) => {
+  missingComponentHandler(unknownTypeWarning(type), {
+    nodeType: NodeType.BLOCK,
+    type: type,
+  });
+});
+
+emitter.on("unknownBlockStyle", (style: string) => {
+  missingComponentHandler(unknownBlockStyleWarning(style), {
+    nodeType: NodeType.BLOCK_STYLE,
+    type: style,
+  });
+});
+
+emitter.on("unknownList", (listItem: string) => {
+  missingComponentHandler(unknownListStyleWarning(listItem), {
+    nodeType: NodeType.LIST_STYLE,
+    type: listItem,
+  });
+});
+
+emitter.on("unknownListItem", (listItem: string) => {
+  missingComponentHandler(unknownListStyleWarning(listItem), {
+    nodeType: NodeType.LIST_ITEM_STYLE,
+    type: listItem,
+  });
+});
+
+emitter.on("unknownMark", (markType: string) => {
+  missingComponentHandler(unknownMarkWarning(markType), {
+    nodeType: NodeType.MARK,
+    type: markType,
+  });
+});
+
+const provideComponent = (
+  type: "type" | "block" | "list" | "listItem" | "mark",
+  fallback:
     | "unknownType"
     | "unknownBlockStyle"
     | "unknownList"
     | "unknownListItem"
-    | "unknownMark"
+    | "unknownMark",
+  key: string
 ): Component => {
-  const [prop, recordKey] = componentHandler;
-  const componentOrRecord = components[prop] as ComponentOrRecord;
+  const componentOrRecord = components[type] as ComponentOrRecord;
 
-  return isComponent(componentOrRecord)
-    ? componentOrRecord
-    : componentOrRecord[recordKey] ?? components[unknownComponentHandler];
+  if (isComponent(componentOrRecord)) {
+    return componentOrRecord;
+  }
+
+  if (key in componentOrRecord) {
+    return componentOrRecord[key];
+  }
+
+  emitter.emit(fallback, key);
+
+  return components[fallback] as Component;
 };
 
 const blocks = Array.isArray(value) ? value : [value];
@@ -128,7 +192,7 @@ const asComponentProps = (
 
     return isPortableTextToolkitList(node) ? (
       <NodeRenderer
-        component={getComponent(["list", node.listItem], "unknownList")}
+        component={provideComponent("list", "unknownList", node.listItem)}
         node={node}
         {...props}
       >
@@ -136,7 +200,11 @@ const asComponentProps = (
       </NodeRenderer>
     ) : isPortableTextListItemBlock(node) ? (
       <NodeRenderer
-        component={getComponent(["listItem", node.listItem], "unknownListItem")}
+        component={provideComponent(
+          "listItem",
+          "unknownListItem",
+          node.listItem
+        )}
         node={node}
         {...props}
       >
@@ -152,7 +220,7 @@ const asComponentProps = (
       </NodeRenderer>
     ) : isPortableTextToolkitSpan(node) ? (
       <NodeRenderer
-        component={getComponent(["mark", node.markType], "unknownMark")}
+        component={provideComponent("mark", "unknownMark", node.markType)}
         node={node}
         {...props}
       >
@@ -160,9 +228,10 @@ const asComponentProps = (
       </NodeRenderer>
     ) : isPortableTextBlock(node) ? (
       <NodeRenderer
-        component={getComponent(
-          ["block", node.style ?? "normal"],
-          "unknownBlockStyle"
+        component={provideComponent(
+          "block",
+          "unknownBlockStyle",
+          node.style ?? "normal"
         )}
         node={{ style: "normal", ...node }}
         {...props}
@@ -179,7 +248,7 @@ const asComponentProps = (
       )
     ) : (
       <NodeRenderer
-        component={getComponent(["type", node._type], "unknownType")}
+        component={provideComponent("type", "unknownType", node._type)}
         node={node}
         {...props}
       />

@@ -37,6 +37,14 @@ export interface PortableTextProps<
   components: PortableTextComponents;
 
   /**
+   * This handler is called when faced with unknown types.
+   *
+   * Prints a warning message to the console by default.
+   * Use `false` to disable.
+   */
+  onMissingComponent?: MissingComponentHandler | false;
+
+  /**
    * A 'nice to have', default is 'html'
    * Refer to {@link https://portabletext.github.io/toolkit/modules.html#ToolkitListNestMode}
    */
@@ -199,6 +207,19 @@ export interface Mark<
     ? MarkDef & PortableTextMarkDefinition
     : undefined;
   markKey: string;
+}
+
+export type MissingComponentHandler = (
+  message: string,
+  context: { type: string; nodeType: NodeType }
+) => void;
+
+export enum NodeType {
+  BLOCK = "block",
+  BLOCK_STYLE = "blockStyle",
+  LIST_STYLE = "listStyle",
+  LIST_ITEM_STYLE = "listItemStyle",
+  MARK = "mark",
 }
 
 /**

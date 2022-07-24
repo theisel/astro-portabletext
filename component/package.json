@@ -28,7 +28,7 @@
   },
   "scripts": {
     "compile": "tsc",
-    "build-fixture": "astro --root test/components/fixture/ build",
+    "build-fixture": "astro --root test/components/fixture/ build --silent",
     "prepublishOnly": "pnpm compile",
     "test-component": "pnpm build-fixture && npx uvu test/components .test.js",
     "test-lib": "npx uvu -r tsm test/lib ",

@@ -1,9 +1,12 @@
 {
-  "**/*.{mjs,js,jsx,ts,tsx}": [
-    "pnpm format",
+  "**/*.{js,jsx,mjs,ts,tsx}": [
+    "npx prettier -w **/*.{js,jsx,mjs,ts,tsx}",
     "pnpm lint"
   ],
   "**/*.astro": [
-    "pnpm format"
+    "npx prettier -w **/*.astro"
+  ],
+  "**/*.svelte": [
+    "npx prettier -w **/*.svelte"
   ]
 }

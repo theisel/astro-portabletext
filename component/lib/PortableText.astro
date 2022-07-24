@@ -57,7 +57,7 @@ const {
 
 const components = mergeComponents(
   {
-    type: UnknownType,
+    type: {},
     unknownType: UnknownType,
     block: {
       h1: Block,
@@ -127,7 +127,7 @@ emitter.on("unknownList", (listItem: string) => {
 });
 
 emitter.on("unknownListItem", (listItem: string) => {
-  missingComponentHandler(unknownListStyleWarning(listItem), {
+  missingComponentHandler(unknownListItemStyleWarning(listItem), {
     nodeType: NodeType.LIST_ITEM_STYLE,
     type: listItem,
   });

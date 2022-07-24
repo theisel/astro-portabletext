@@ -1,0 +1,9 @@
+{
+  "**/*.{mjs,js,jsx,ts,tsx}": [
+    "pnpm format",
+    "pnpm lint"
+  ],
+  "**/*.astro": [
+    "pnpm format"
+  ]
+}

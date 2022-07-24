@@ -43,12 +43,14 @@ importers:
       '@portabletext/toolkit': ^1.0.5
       '@portabletext/types': ^1.0.3
       cheerio: 1.0.0-rc.12
+      mitt: ^3.0.0
       ts-toolbelt: ^9.6.0
       tsm: ^2.2.2
       uvu: ^0.5.6
     dependencies:
       '@portabletext/toolkit': 1.0.5
       '@portabletext/types': 1.0.3
+      mitt: 3.0.0
     devDependencies:
       cheerio: 1.0.0-rc.12
       ts-toolbelt: 9.6.0
@@ -4256,6 +4258,10 @@ packages:
   /minimist/1.2.6:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
     dev: true
+
+  /mitt/3.0.0:
+    resolution: {integrity: sha512-7dX2/10ITVyqh4aOSVI9gdape+t9l2/8QxHrFmUXu4EEUpdlxl6RudZUPZoc+zuY2hk1j7XxVroIVIan/pD/SQ==}
+    dev: false
 
   /mixme/0.5.4:
     resolution: {integrity: sha512-3KYa4m4Vlqx98GPdOHghxSdNtTvcP8E0kkaJ5Dlh+h2DRzF7zpuVVcA8B0QpKd11YJeP9QQ7ASkKzOeu195Wzw==}

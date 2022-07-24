@@ -29,6 +29,15 @@ mark("link", async () => {
   assert.is($el.text(), "test.com");
 });
 
+mark("link_missing_href", async () => {
+  const $ = await fetchContent("mark/link-missing-href");
+  const $el = $("a");
+
+  assert.is($el.length, 1);
+  assert.is($el.attr("href"), undefined);
+  assert.is($el.text(), "test.com");
+});
+
 mark("strike-through", async () => {
   const $ = await fetchContent("mark/strike-through");
   const $el = $("del");

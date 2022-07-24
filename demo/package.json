@@ -13,8 +13,8 @@
     "@astrojs/solid-js": "^0.4.1",
     "@astrojs/svelte": "^0.4.1",
     "astro-portabletext": "workspace:*",
-    "solid-js": "^1.4.6",
-    "svelte": "^3.48.0"
+    "solid-js": "^1.4.8",
+    "svelte": "^3.49.0"
   },
   "pnpm": {
     "peerDependencyRules": {

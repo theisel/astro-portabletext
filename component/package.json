@@ -43,7 +43,7 @@
   "devDependencies": {
     "cheerio": "1.0.0-rc.12",
     "ts-toolbelt": "^9.6.0",
-    "tsm": "^2.2.1",
-    "uvu": "^0.5.5"
+    "tsm": "^2.2.2",
+    "uvu": "^0.5.6"
   }
 }

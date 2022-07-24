@@ -4,6 +4,7 @@
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
+  "ignorePatterns": ["**/*.d.ts"],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "env": { "node": true }

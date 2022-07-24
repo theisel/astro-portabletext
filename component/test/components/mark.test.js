@@ -53,4 +53,14 @@ mark("underline", async () => {
   assert.is($el.attr("style"), "text-decoration: underline;");
 });
 
+mark("unknown", async () => {
+  const $ = await fetchContent("mark/unknown");
+  const $el = $("[data-portabletext-unknown]");
+
+  assert.is($el.length, 1);
+  assert.is($el.attr("data-portabletext-unknown"), "mark");
+  assert.is($el.text(), "highlighted");
+  assert.is($el[0].name, "span");
+});
+
 mark.run();

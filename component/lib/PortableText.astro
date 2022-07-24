@@ -1,5 +1,14 @@
 ---
 import {
+  ComponentOrRecord,
+  PortableTextComponents,
+  Component,
+  Props,
+  PortableTextProps,
+  TypedObject,
+} from "./types";
+
+import {
   isPortableTextBlock,
   isPortableTextListItemBlock,
   isPortableTextToolkitList,
@@ -10,28 +19,7 @@ import {
   LIST_NEST_MODE_HTML,
 } from "@portabletext/toolkit";
 
-import mitt from "mitt";
-
-import {
-  ComponentOrRecord,
-  PortableTextComponents,
-  Component,
-  Props,
-  PortableTextProps,
-  TypedObject,
-  NodeType,
-} from "./types";
-
 import { isComponent, mergeComponents } from "./internal";
-
-import {
-  printWarning,
-  unknownTypeWarning,
-  unknownMarkWarning,
-  unknownBlockStyleWarning,
-  unknownListStyleWarning,
-  unknownListItemStyleWarning,
-} from "./warnings";
 
 import NodeRenderer from "./NodeRenderer.astro";
 
@@ -51,7 +39,6 @@ const {
   value,
   components: componentOverrides = {},
   listNestingMode = LIST_NEST_MODE_HTML,
-  onMissingComponent = printWarning,
   class: astroClass,
 } = Astro.props as PortableTextProps & { class?: string };
 
@@ -94,75 +81,24 @@ const components = mergeComponents(
   componentOverrides
 ) as PortableTextComponents;
 
-const noop = () => {};
-const missingComponentHandler = onMissingComponent || noop;
-
-const emitter = mitt<{
-  unknownType: string;
-  unknownBlockStyle: string;
-  unknownList: string;
-  unknownListItem: string;
-  unknownMark: string;
-}>();
-
-emitter.on("unknownType", (type: string) => {
-  missingComponentHandler(unknownTypeWarning(type), {
-    nodeType: NodeType.BLOCK,
-    type: type,
-  });
-});
-
-emitter.on("unknownBlockStyle", (style: string) => {
-  missingComponentHandler(unknownBlockStyleWarning(style), {
-    nodeType: NodeType.BLOCK_STYLE,
-    type: style,
-  });
-});
-
-emitter.on("unknownList", (listItem: string) => {
-  missingComponentHandler(unknownListStyleWarning(listItem), {
-    nodeType: NodeType.LIST_STYLE,
-    type: listItem,
-  });
-});
-
-emitter.on("unknownListItem", (listItem: string) => {
-  missingComponentHandler(unknownListItemStyleWarning(listItem), {
-    nodeType: NodeType.LIST_ITEM_STYLE,
-    type: listItem,
-  });
-});
-
-emitter.on("unknownMark", (markType: string) => {
-  missingComponentHandler(unknownMarkWarning(markType), {
-    nodeType: NodeType.MARK,
-    type: markType,
-  });
-});
-
-const provideComponent = (
-  type: "type" | "block" | "list" | "listItem" | "mark",
-  fallback:
+const getComponent = (
+  componentHandler: [
+    prop: "type" | "block" | "list" | "listItem" | "mark" | "hardBreak",
+    recordKey: string
+  ],
+  unknownComponentHandler:
     | "unknownType"
     | "unknownBlockStyle"
     | "unknownList"
     | "unknownListItem"
-    | "unknownMark",
-  key: string
+    | "unknownMark"
 ): Component => {
-  const componentOrRecord = components[type] as ComponentOrRecord;
+  const [prop, recordKey] = componentHandler;
+  const componentOrRecord = components[prop] as ComponentOrRecord;
 
-  if (isComponent(componentOrRecord)) {
-    return componentOrRecord;
-  }
-
-  if (key in componentOrRecord) {
-    return componentOrRecord[key];
-  }
-
-  emitter.emit(fallback, key);
-
-  return components[fallback] as Component;
+  return isComponent(componentOrRecord)
+    ? componentOrRecord
+    : componentOrRecord[recordKey] ?? components[unknownComponentHandler];
 };
 
 const blocks = Array.isArray(value) ? value : [value];
@@ -188,11 +124,11 @@ const asComponentProps = (
 {nested
   .map((node) => asComponentProps(node))
   .map(function renderNode(it): any {
-    const { node, ...props } = it
+    const { node, ...props } = it;
 
     return isPortableTextToolkitList(node) ? (
       <NodeRenderer
-        component={provideComponent("list", "unknownList", node.listItem)}
+        component={getComponent(["list", node.listItem], "unknownList")}
         node={node}
         {...props}
       >
@@ -200,27 +136,23 @@ const asComponentProps = (
       </NodeRenderer>
     ) : isPortableTextListItemBlock(node) ? (
       <NodeRenderer
-        component={provideComponent(
-          "listItem",
-          "unknownListItem",
-          node.listItem
-        )}
+        component={getComponent(["listItem", node.listItem], "unknownListItem")}
         node={node}
         {...props}
       >
         <Raw
           value={((children) => {
             if (node.style && node.style !== "normal") {
-              const { listItem, ...blockNode } = node
-              children = renderNode(serializeNode(false)(blockNode, 0))
+              const { listItem, ...blockNode } = node;
+              children = renderNode(serializeNode(false)(blockNode, 0));
             }
-            return children
+            return children;
           })(buildMarksTree(node).map(serializeNode(true)).map(renderNode))}
         />
       </NodeRenderer>
     ) : isPortableTextToolkitSpan(node) ? (
       <NodeRenderer
-        component={provideComponent("mark", "unknownMark", node.markType)}
+        component={getComponent(["mark", node.markType], "unknownMark")}
         node={node}
         {...props}
       >
@@ -228,10 +160,9 @@ const asComponentProps = (
       </NodeRenderer>
     ) : isPortableTextBlock(node) ? (
       <NodeRenderer
-        component={provideComponent(
-          "block",
-          "unknownBlockStyle",
-          node.style ?? "normal"
+        component={getComponent(
+          ["block", node.style ?? "normal"],
+          "unknownBlockStyle"
         )}
         node={{ style: "normal", ...node }}
         {...props}
@@ -248,9 +179,9 @@ const asComponentProps = (
       )
     ) : (
       <NodeRenderer
-        component={provideComponent("type", "unknownType", node._type)}
+        component={getComponent(["type", node._type], "unknownType")}
         node={node}
         {...props}
       />
-    )
+    );
   })}

@@ -87,4 +87,13 @@ block("with style", async () => {
   assert.not($el.attribs.class?.indexOf("astro-"), -1);
 });
 
+block("unknown", async () => {
+  const $ = await fetchContent("block/unknown");
+  const $el = $("[data-portabletext-unknown]");
+
+  assert.is($el.length, 1);
+  assert.is($el.attr("data-portabletext-unknown"), "blockstyle");
+  assert.is($el[0].name, "p");
+});
+
 block.run();

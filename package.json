@@ -6,7 +6,7 @@
   "scripts": {
     "launch-demo": "astro --root demo dev",
     "install:all": "pnpm recursive install",
-    "format": "prettier -w **/*.{astro,js,jsx,ts,tsx,svelte}",
+    "format": "prettier -w **/*.{astro,js,jsx,mjs,svelte,ts,tsx}",
     "lint": "npx eslint .",
     "prepare": "husky install"
   },

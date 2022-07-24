@@ -18,4 +18,12 @@ list("ul", async () => {
   assert.is($el.length, 1);
 });
 
+list("unknown", async () => {
+  const $ = await fetchContent("list/unknown");
+  const $el = $("ul");
+
+  assert.is($el.length, 1);
+  assert.is($el.attr("data-portabletext-unknown"), "list");
+});
+
 list.run();

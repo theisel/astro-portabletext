@@ -34,6 +34,7 @@
     "test-lib": "npx uvu -r tsm test/lib ",
     "test-ts": "npx tsc --noEmit test/*.test-ts.ts",
     "test-all": "pnpm test-component && pnpm test-lib && pnpm test-ts",
+    "test:ci": "pnpm test-component && pnpm test-lib",
     "test": "pnpm test-all"
   },
   "dependencies": {

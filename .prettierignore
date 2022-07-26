@@ -1,4 +1,5 @@
 dist
+.github
 
 # Components
 component/lib/components/Block.astro

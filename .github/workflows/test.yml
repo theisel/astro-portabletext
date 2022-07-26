@@ -2,25 +2,36 @@ name: test
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main", "dev/next"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main", "dev/next"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [14.15, 16.0]
+        node-version: [14, 16]
+      fail-fast: false
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup Node ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
-    - run: pnpm test
-    - run: pnpm lint
+      - uses: actions/checkout@v3
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Setup Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run test
+        run: pnpm test
+
+      - name: Run linter
+        run: pnpm lint

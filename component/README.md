@@ -12,7 +12,7 @@ Render [Portable Text](https://portabletext.org/) with [Astro](https://astro.bui
 ## Install
 
 ```
-npm install astro-portabletext --save-dev
+npm install astro-portabletext
 ```
 
 ## Usage
@@ -26,6 +26,8 @@ import { PortableText } from "astro-portabletext";
 <PortableText
   value={[/* portable text blocks */]}
   components={/* custom components */}
+  onMissingComponent=/* Optional: function or false to disable; default prints to console */
+  listNestingMode=/* Optional: `html` or `direct`; default `html` */
 />
 ```
 
@@ -123,7 +125,7 @@ import { Mark } from "@handler/Mark"
 />
 ```
 
-## Using `<style>` in Astro component
+## Style Component
 
 ```js
 /* .astro file */
@@ -194,7 +196,23 @@ const { node } = Astro.props as Props<Greet>;
 <p>{node.markDef.message}</p>
 ```
 
-## Alternatives
+### tsconfig w. `NodeNext`
+
+```json
+{
+  "compilerOptions": {
+    "moduleResolution": "NodeNext"
+  }
+}
+```
+
+```js
+---
+import type { Props } from "astro-portabletext/types";
+---
+```
+
+## See also
 
 [@portabletext/react](https://github.com/portabletext/react-portabletext)
 

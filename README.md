@@ -1,6 +1,6 @@
 <div>
   <img src="https://raw.githubusercontent.com/theisel/astro-portabletext/main/logo.svg" width="240" alt="astro-portabletext logo">
-</div> 
+</div>
 
 # astro-portabletext
 
@@ -10,14 +10,17 @@
 Render [Portable Text](https://portabletext.org/) with [Astro](https://astro.build/).
 
 ## Install
+
 ```
-npm install astro-portabletext --save-dev
+npm install astro-portabletext
 ```
 
 ## Usage
+
 Documentation can be found [here](component/README.md).
 
-## Credits
+## See also
+
 [@portabletext/react](https://github.com/portabletext/react-portabletext)
 
 [@portabletext/svelte](https://github.com/portabletext/svelte-portabletext)

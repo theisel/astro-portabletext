@@ -1,0 +1,29 @@
+---
+import Layout from "../../layouts/Default.astro";
+import { PortableText } from "astro-portabletext";
+import MyH1 from "../../components/MyH1.astro";
+
+const blocks = [
+  {
+    _type: "block",
+    style: "h1",
+    children: [
+      {
+        _type: "span",
+        text: "Heading L1",
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <PortableText
+    value={blocks}
+    components={{
+      block: {
+        h1: MyH1,
+      },
+    }}
+  />
+</Layout>

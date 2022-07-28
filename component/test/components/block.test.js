@@ -96,4 +96,11 @@ block("unknown", async () => {
   assert.is($el[0].name, "p");
 });
 
+block("override", async () => {
+  const $ = await fetchContent("block/override");
+  const $el = $("[data-myh1-cmp]");
+
+  assert.is($el.length, 1);
+});
+
 block.run();

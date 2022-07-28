@@ -1,0 +1,33 @@
+---
+import Layout from "../../layouts/Default.astro";
+import { PortableText } from "astro-portabletext";
+import Grid from "../../components/Grid.astro";
+
+const blocks = [
+  {
+    _type: "block",
+    style: "grid",
+    children: [
+      {
+        _type: "span",
+        text: "1",
+      },
+      {
+        _type: "span",
+        text: "2",
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <PortableText
+    value={blocks}
+    components={{
+      block: {
+        grid: Grid,
+      },
+    }}
+  />
+</Layout>

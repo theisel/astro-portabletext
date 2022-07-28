@@ -103,4 +103,11 @@ block("override", async () => {
   assert.is($el.length, 1);
 });
 
+block("merge", async () => {
+  const $ = await fetchContent("block/merge");
+  const $el = $("[data-grid-cmp]");
+
+  assert.is($el.length, 1);
+});
+
 block.run();

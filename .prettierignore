@@ -1,5 +1,11 @@
+# Directories
 dist
+.changeset
+.husky
 .github
+
+# Files
+pnpm-lock.yaml
 
 # Components
 component/lib/components/Block.astro

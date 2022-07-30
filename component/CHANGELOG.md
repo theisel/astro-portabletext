@@ -1,5 +1,19 @@
 # astro-portabletext
 
+## 0.3.0
+
+### Minor Changes
+
+- 900d39a: Feat: New types added and deprecated some types
+- 900d39a: PortableText `components.list` and `components.listItem` are now an object for easy merge/override
+- 900d39a: Feat: Unhandled `style` in `Block` component and unhandled `markType` in `Mark` component now throws an error
+- 900d39a: Replaces warning message with \<slot /\>
+- 900d39a: Unknown `components.type` is hidden by default
+
+### Patch Changes
+
+- 900d39a: Adds `onMissingComponent` prop to `PortableText`
+
 ## 0.3.0-next.0
 
 ### Minor Changes

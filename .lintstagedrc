@@ -1,12 +1,8 @@
 {
-  "**/*.{js,jsx,mjs,ts,tsx}": [
-    "pnpm exec prettier -w **/*.{js,jsx,mjs,ts,tsx}",
+  "*": [
+    "pnpm exec prettier --ignore-unknown --write"
+  ],
+  "*.{js,jsx,mjs,ts,tsx}": [
     "pnpm lint"
-  ],
-  "**/*.astro": [
-    "pnpm exec prettier -w **/*.astro"
-  ],
-  "**/*.svelte": [
-    "pnpm exec prettier -w **/*.svelte"
   ]
 }

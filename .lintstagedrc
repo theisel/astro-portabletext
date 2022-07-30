@@ -1,12 +1,12 @@
 {
   "**/*.{js,jsx,mjs,ts,tsx}": [
-    "npx prettier -w **/*.{js,jsx,mjs,ts,tsx}",
+    "pnpm exec prettier -w **/*.{js,jsx,mjs,ts,tsx}",
     "pnpm lint"
   ],
   "**/*.astro": [
-    "npx prettier -w **/*.astro"
+    "pnpm exec prettier -w **/*.astro"
   ],
   "**/*.svelte": [
-    "npx prettier -w **/*.svelte"
+    "pnpm exec prettier -w **/*.svelte"
   ]
 }

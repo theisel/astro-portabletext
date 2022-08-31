@@ -1,8 +1,0 @@
----
-import type { ListItem, Props } from "../types";
-
-const { astroClass } = Astro.props as Props<ListItem>;
-const attrs = { class: astroClass };
----
-
-<li {...attrs}><slot /></li>

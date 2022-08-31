@@ -1,0 +1,13 @@
+---
+import type { Component } from "../lib/types";
+
+export interface Props {
+  component: Component;
+  [key: string]: any;
+}
+
+const { component, ...props } = Astro.props as Props;
+const Cmp: any = component;
+---
+
+<Cmp {...props}><slot /></Cmp>

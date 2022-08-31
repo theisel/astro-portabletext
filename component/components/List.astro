@@ -1,0 +1,21 @@
+---
+import type { List, Props as $ } from "../lib/types";
+
+export type Props = $<List>;
+
+const { node, class: cls } = Astro.props as Props;
+const attrs = { class: cls };
+const listItemIs = (listItem: string) => listItem === node.listItem;
+---
+
+{
+  listItemIs("number") ? (
+    <ol {...attrs}>
+      <slot />
+    </ol>
+  ) : (
+    <ul {...attrs}>
+      <slot />
+    </ul>
+  )
+}

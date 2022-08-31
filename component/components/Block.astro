@@ -1,0 +1,34 @@
+---
+import type { BlockStyle, Props as $ } from "../lib/types";
+import { throwError } from "../lib/internal";
+import { unknownBlockStyleWarning } from "../lib/warnings";
+
+export type Props = $<BlockStyle>;
+
+const { node, class: cls } = Astro.props as Props;
+const attrs = { class: cls };
+const styleIs = (style: string) => style === node.style;
+const err = unknownBlockStyleWarning(node.style);
+---
+
+{
+  styleIs("h1") ? (
+    <h1 {...attrs}><slot /></h1>
+  ) : styleIs("h2") ? (
+    <h2 {...attrs}><slot /></h2>
+  ) : styleIs("h3") ? (
+    <h3 {...attrs}><slot /></h3>
+  ) : styleIs("h4") ? (
+    <h4 {...attrs}><slot /></h4>
+  ) : styleIs("h5") ? (
+    <h5 {...attrs}><slot /></h5>
+  ) : styleIs("h6") ? (
+    <h6 {...attrs}><slot /></h6>
+  ) : styleIs("blockquote") ? (
+    <blockquote {...attrs}><slot /></blockquote>
+  ) : styleIs("normal") ? (
+    <p {...attrs}><slot /></p>
+  ) : (
+    throwError(err)
+  )
+}

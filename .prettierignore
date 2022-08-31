@@ -8,6 +8,7 @@ dist
 pnpm-lock.yaml
 
 # Components
-component/lib/components/Block.astro
-component/lib/components/Raw.astro
-component/lib/components/Mark.astro
+component/components/Block.astro
+component/components/Mark.astro
+component/components/PortableText.astro
+component/components/Raw.astro

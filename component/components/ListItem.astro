@@ -1,0 +1,10 @@
+---
+import type { ListItem, Props as $ } from "../lib/types";
+
+export type Props = $<ListItem>;
+
+const { class: cls } = Astro.props as Props;
+const attrs = { class: cls };
+---
+
+<li {...attrs}><slot /></li>

@@ -1,0 +1,7 @@
+---
+export type Props = { value: any }
+
+const { value } = Astro.props as Props;
+---
+
+<Fragment set:html={value} />

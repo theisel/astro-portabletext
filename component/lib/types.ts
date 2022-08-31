@@ -209,6 +209,17 @@ export interface Mark<
   markKey: string;
 }
 
+/**
+ * Alias to `ToolkitTextNode`
+ *
+ * @see {@link https://portabletext.github.io/toolkit/interfaces/ToolkitTextNode.html}
+ *
+ * @example
+ * import type { TextNode, Props } from "astro-portabletext/types";
+ * const props = Astro.props as Props<TextNode>;
+ */
+export type TextNode = ToolkitTextNode;
+
 export type MissingComponentHandler = (
   message: string,
   context: { type: string; nodeType: NodeType }

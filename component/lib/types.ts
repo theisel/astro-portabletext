@@ -66,11 +66,11 @@ export type PortableTextComponents = {
   /**
    * How blocks should be rendered
    */
-  block: ComponentOrRecord<BlockStyle | Block>;
+  block: ComponentOrRecord<BlockStyle> | ComponentOrRecord<Block>;
   /**
    * Used when a `block` handler isn't found
    */
-  unknownBlockStyle: Component<BlockStyle | Block>;
+  unknownBlockStyle: Component<BlockStyle> | Component<Block>;
   /**
    * How lists should be rendered
    */

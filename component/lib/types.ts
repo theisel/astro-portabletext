@@ -11,7 +11,6 @@ import type {
   ArbitraryTypedObject,
   PortableTextBlock,
   PortableTextBlockStyle,
-  PortableTextListItemBlock,
   PortableTextMarkDefinition,
   TypedObject,
 } from "@portabletext/types";
@@ -19,7 +18,7 @@ import type {
 export type { TypedObject } from "@portabletext/types";
 
 /**
- * Properties for the `astro-portabletext` component
+ * Properties for the `PortableText` component
  *
  * @template Value Portable Text payload
  */
@@ -34,7 +33,7 @@ export interface PortableTextProps<
   /**
    * Components for rendering
    */
-  components: PortableTextComponents;
+  components?: SomePortableTextComponents;
 
   /**
    * This function is called when faced with unknown types.
@@ -45,8 +44,7 @@ export interface PortableTextProps<
   onMissingComponent?: MissingComponentHandler | false;
 
   /**
-   * A 'nice to have', default is 'html'
-   * Refer to {@link https://portabletext.github.io/toolkit/modules.html#ToolkitListNestMode}
+   * `html` or `direct`
    */
   listNestingMode?: ToolkitListNestMode;
 }
@@ -54,7 +52,7 @@ export interface PortableTextProps<
 /**
  * Object defining how Portable Text types should be rendered
  */
-export type PortableTextComponents = {
+export interface PortableTextComponents {
   /**
    * How user-defined types should be rendered
    */
@@ -98,8 +96,8 @@ export type PortableTextComponents = {
   /**
    * How line breaks should be rendered
    */
-  hardBreak: Component<ToolkitTextNode>;
-};
+  hardBreak: Component<TextNode>;
+}
 
 /**
  * Object defining how some Portable Text types should be rendered
@@ -112,23 +110,20 @@ export type SomePortableTextComponents = Partial<PortableTextComponents>;
  * @template N Type of Portable Text payload that this component will receive on its `node` property
  */
 export interface Props<
-  N extends Node | Record<string, any> = ArbitraryTypedObject
+  N extends TypedObject | Record<string, any> = ArbitraryTypedObject
 > {
   /**
    * Portable Text node
    */
   node: N extends TypedObject ? N : N & TypedObject;
-
   /**
    * Index within its parent
    */
   index: number;
-
   /**
    * Whether the component should be layed out as inline or block element
    */
   isInline: boolean;
-
   /**
    * Set when `style` is used within an Astro component, should be used when defined.
    */
@@ -141,58 +136,60 @@ export interface Props<
 
 /**
  * Generic Portable Text component
- *
+ * @internal
  * @template N Portable Text node type
  */
 export type Component<
-  N extends Node | Record<string, any> = ArbitraryTypedObject
-> = (props: Props<N>) => any | Promise<(props: Props<N>) => any>;
+  N extends TypedObject | Record<string, any> = ArbitraryTypedObject
+> = (props: Props<N>) => any;
 
 /**
  * For internal use
+ * @internal
  */
 export type ComponentOrRecord<
-  N extends Node | Record<string, any> = ArbitraryTypedObject
+  N extends TypedObject | Record<string, any> = ArbitraryTypedObject
 > = Component<N> | Record<string, Component<N>>;
 
 /**
- * Portable Text node types
- */
-export type Node = Block | BlockStyle | List | ListItem | Mark | TypedObject;
-
-/**
- * Alias for {@link PortableTextBlock}
+ * Alias to `PortableTextBlock`
+ *
+ * @see {@link https://portabletext.github.io/types/interfaces/PortableTextBlock.html}
  *
  * @example
  * import type { Block, Props } from "astro-portabletext/types";
- * const { node } = Astro.props as Props<Block>;
+ * const props = Astro.props as Props<Block>;
  */
 export type Block = PortableTextBlock;
 
 /**
  * @example
  * import type { BlockStyle, Props } from "astro-portabletext/types";
- * const { node } = Astro.props as Props<BlockStyle>;
+ * const props = Astro.props as Props<BlockStyle>;
  */
 export interface BlockStyle extends Block {
   style: "normal" | PortableTextBlockStyle;
 }
 
 /**
- * Alias for {@link ToolkitPortableTextList}
+ * Alias to `ToolkitPortableTextList`
+ *
+ * @see {@link https://portabletext.github.io/toolkit/modules.html#ToolkitPortableTextList}
  *
  * @example
  * import type { List, Props } from "astro-portabletext/types";
- * const { node } = Astro.props as Props<List>;
+ * const props = Astro.props as Props<List>;
  */
 export type List = ToolkitPortableTextList;
 
 /**
- * Alias for {@link ToolkitPortableTextListItem}
+ * Alias to `ToolkitPortableTextListItem`
+ *
+ * @see {@link https://portabletext.github.io/toolkit/interfaces/ToolkitPortableTextListItem.html}
  *
  * @example
  * import type { ListItem, Props } from "astro-portabletext/types";
- * const { node } = Astro.props as Props<ListItem>;
+ * const props = Astro.props as Props<ListItem>;
  */
 export type ListItem = ToolkitPortableTextListItem;
 
@@ -202,7 +199,7 @@ export type ListItem = ToolkitPortableTextListItem;
  * @example
  * import type { Mark, Props } from "astro-portabletext/types";
  * type Greet = Mark<{ msg: string }>;
- * const { node } = Astro.props as Props<Greet>;
+ * const props = Astro.props as Props<Greet>;
  */
 export interface Mark<
   MarkDef extends Record<string, any> | undefined = undefined

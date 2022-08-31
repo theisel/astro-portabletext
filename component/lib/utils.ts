@@ -1,6 +1,7 @@
 import type { Node, BlockStyle } from "./types";
 
-/** @typedef {import("./types").BlockStyle} BlockStyle */
+export { toPlainText } from "@portabletext/toolkit";
+export { mergeComponents } from "./internal";
 
 /**
  * Checks if (node) is of {@link BlockStyle}

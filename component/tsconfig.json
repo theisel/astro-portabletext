@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext", "DOM"],
+    "importsNotUsedAsValues": "error",
+    "isolatedModules": true,
     "declaration": true,
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "strict": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["lib"],
-  "exclude": ["lib/index.d.ts"]
+  "include": ["lib"]
 }

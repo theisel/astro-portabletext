@@ -19,12 +19,24 @@
     "url": "https://github.com/theisel/astro-portabletext/issues"
   },
   "homepage": "https://github.com/theisel/astro-portabletext#readme",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
   "exports": {
     ".": "./lib/index.js",
-    "./utils": "./lib/utils.js",
-    "./types": "./lib/types.d.ts"
+    "./components": "./lib/components.js",
+    "./types": "./lib/types.js",
+    "./utils": "./lib/utils.js"
+  },
+  "typesVersions": {
+    "*": {
+      "components": [
+        "lib/components.d.ts"
+      ],
+      "types": [
+        "lib/types.d.ts"
+      ],
+      "utils": [
+        "lib/utils.d.ts"
+      ]
+    }
   },
   "scripts": {
     "build:fixture": "astro --root test/components/fixture/ build --silent",

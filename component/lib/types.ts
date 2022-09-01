@@ -132,6 +132,10 @@ export interface Props<
   /**
    * Set when `style` is used within an Astro component, should be used when defined.
    */
+  class?: string;
+  /**
+   * @deprecated Use `class`
+   */
   astroClass: string | undefined;
 }
 

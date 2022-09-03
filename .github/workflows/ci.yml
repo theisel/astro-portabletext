@@ -1,42 +1,61 @@
-name: test
+name: CI
 
 on:
   push:
-    branches: 
+    branches:
       - main
+      - next
 
   pull_request:
-    branches: 
-      - main
     paths-ignore:
-      - "**/*.md"
+      - '**/*.md'
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   test:
+    name: Test
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         node-version: [14, 16]
-      fail-fast: false
-
+      
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup pnpm
+      - name: Setup PNPM
         uses: pnpm/action-setup@v2.2.2
 
       - name: Setup Node ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "pnpm"
+          cache: 'pnpm'
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: pnpm install
 
-      - name: Run test
+      - name: Run Test
         run: pnpm test:ci
 
-      - name: Run linter
-        run: pnpm lint
+  should_release:
+    name: Should Release
+    needs: test
+    runs-on: ubuntu-latest
+    
+    if: github.event_name == 'push'
+
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
+        if: |
+          github.ref == 'refs/heads/main' && !hashFiles('.changeset/pre.json')
+          ||
+          github.ref == 'refs/heads/next' && hashFiles('.changeset/pre.json')
+        with:
+          token: ${{ secrets.CI_TOKEN }}
+          event-type: release
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+          

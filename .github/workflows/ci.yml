@@ -40,20 +40,38 @@ jobs:
       - name: Run Test
         run: pnpm test:ci
 
-  should_release:
-    name: Should Release
-    needs: test
+
+  is_prerelease:
+    name: Is Prerelease
+    runs-on: ubuntu-latest
+    
+    outputs:
+      status: ${{ steps.check.outputs.files_exists }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Check File Exists
+        id: check
+        uses: andstor/file-existence-action@v1
+        with:
+          files: ".changeset/pre.json"
+        
+  dispatch_release:
+    name: Dispatch Release
+    needs: [test, is_prerelease]
     runs-on: ubuntu-latest
     
     if: github.event_name == 'push'
 
     steps:
-      - name: Repository Dispatch
-        uses: peter-evans/repository-dispatch@v2
+      - uses: actions/checkout@v3
+
+      - uses: peter-evans/repository-dispatch@v2
         if: |
-          github.ref == 'refs/heads/main' && !hashFiles('.changeset/pre.json')
+          github.ref == 'refs/heads/main' && needs.is_prerelease.outputs.status != 'true'
           ||
-          github.ref == 'refs/heads/next' && hashFiles('.changeset/pre.json')
+          github.ref == 'refs/heads/next' && needs.is_prerelease.outputs.status == 'true'
         with:
           token: ${{ secrets.CI_TOKEN }}
           event-type: release

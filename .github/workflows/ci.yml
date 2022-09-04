@@ -1,42 +1,79 @@
-name: test
+name: CI
 
 on:
   push:
-    branches: 
+    branches:
       - main
+      - next
 
   pull_request:
-    branches: 
-      - main
     paths-ignore:
-      - "**/*.md"
+      - '**/*.md'
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   test:
+    name: Test
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         node-version: [14, 16]
-      fail-fast: false
-
+      
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup pnpm
+      - name: Setup PNPM
         uses: pnpm/action-setup@v2.2.2
 
       - name: Setup Node ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "pnpm"
+          cache: 'pnpm'
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: pnpm install
 
-      - name: Run test
+      - name: Run Test
         run: pnpm test:ci
 
-      - name: Run linter
-        run: pnpm lint
+
+  is_prerelease:
+    name: Is Prerelease
+    runs-on: ubuntu-latest
+    
+    outputs:
+      status: ${{ steps.check.outputs.files_exists }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Check File Exists
+        id: check
+        uses: andstor/file-existence-action@v1
+        with:
+          files: ".changeset/pre.json"
+        
+  dispatch_release:
+    name: Dispatch Release
+    needs: [test, is_prerelease]
+    runs-on: ubuntu-latest
+    
+    if: github.event_name == 'push'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: peter-evans/repository-dispatch@v2
+        if: |
+          github.ref == 'refs/heads/main' && needs.is_prerelease.outputs.status != 'true'
+          ||
+          github.ref == 'refs/heads/next' && needs.is_prerelease.outputs.status == 'true'
+        with:
+          token: ${{ secrets.CI_TOKEN }}
+          event-type: release
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+          

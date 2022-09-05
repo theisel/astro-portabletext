@@ -5,5 +5,10 @@
     "astro-portabletext": "0.3.0",
     "demo": "0.0.1"
   },
-  "changesets": []
+  "changesets": [
+    "chatty-glasses-turn",
+    "chatty-wolves-sip",
+    "dry-dingos-applaud",
+    "stale-dodos-judge"
+  ]
 }

@@ -1,5 +1,14 @@
 # astro-portabletext
 
+## 0.4.0-next.0
+
+### Minor Changes
+
+- 1c102cf: Feat: Made `mergeComponents` and `toPlainText` functions available to be used.
+- f8b9a06: Removed deprecated types
+- ddc12ce: Feat: Added `class` property to `Props` type and deprecated `astroClass`
+- a6bfa8e: Feat: Made `Block`, `List`, `ListItem` and `Mark` components available to be used to help extend custom components.
+
 ## 0.3.0
 
 ### Minor Changes

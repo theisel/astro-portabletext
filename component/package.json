@@ -20,6 +20,7 @@
     "url": "https://github.com/theisel/astro-portabletext/issues"
   },
   "homepage": "https://github.com/theisel/astro-portabletext#readme",
+  "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
     "./components": "./lib/components.js",
@@ -28,6 +29,9 @@
   },
   "typesVersions": {
     "*": {
+      ".": [
+        "lib/index.d.ts"
+      ],
       "components": [
         "lib/components.d.ts"
       ],

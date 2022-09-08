@@ -131,7 +131,7 @@ export interface Props<
   /**
    * @deprecated Use `class`
    */
-  astroClass: string | undefined;
+  astroClass?: string;
 }
 
 /**

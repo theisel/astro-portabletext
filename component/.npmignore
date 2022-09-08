@@ -1,6 +1,0 @@
-*.ts
-!*.d.ts
-docs/
-scripts/
-tsconfig.json
-test/

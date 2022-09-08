@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "lib",
     "importsNotUsedAsValues": "error",
     "isolatedModules": true,
     "declaration": true,
@@ -9,5 +10,5 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["lib"]
+  "include": ["src"]
 }

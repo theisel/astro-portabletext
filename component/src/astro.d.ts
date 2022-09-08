@@ -1,7 +1,7 @@
 declare module "*.astro" {
   type Props = any;
-  const component: (props: Props) => any;
+  const Component: (props: Props) => any;
 
-  export default component;
+  export default Component;
   export type { Props };
 }

@@ -39,6 +39,10 @@
       ]
     }
   },
+  "files": [
+    "components",
+    "lib"
+  ],
   "scripts": {
     "build:fixture": "astro --root test/components/fixture/ build --silent",
     "check": "astro check --root components",

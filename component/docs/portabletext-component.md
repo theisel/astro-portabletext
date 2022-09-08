@@ -1,4 +1,4 @@
-[**`astro-portabletext`**](../README.md) > [**`docs`**](./README.md)
+[**`astro-portabletext`**](../README.md) > [**`docs`**](README.md)
 
 # `PortableText` Component
 
@@ -47,7 +47,7 @@ Override/extend the default components.
 }
 ```
 
-See [Extending Components](./extending-components.md) and [Merge/Override Components](./merge-override-components.md) for examples.
+See [Extending Components](extending-components.md) and [Merge/Override Components](merge-override-components.md) for examples.
 
 ### `onMissingComponent`
 
@@ -61,6 +61,8 @@ Disable warning message or handle unknown types.
 
 ### `listNestingMode`
 
-**T `html` | `direct`**
+**T `string`**
+
+- `html` or `direct`
 
 See [ToolkitListNestMode](https://portabletext.github.io/toolkit/modules.html#ToolkitListNestMode)

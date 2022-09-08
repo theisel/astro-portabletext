@@ -1,4 +1,4 @@
-[**`astro-portabletext`**](../README.md) > [**`docs`**](./README.md)
+[**`astro-portabletext`**](../README.md) > [**`docs`**](README.md)
 
 # Types
 
@@ -23,7 +23,7 @@ import type {/* select type */} "astro-portabletext/types";
 ### Definition
 
 ```ts
-export interface Props<
+interface Props<
   N extends TypedObject | Record<string, any> = ArbitraryTypedObject
 > {
   /**
@@ -63,12 +63,12 @@ const props = Astro.props as Props;
 
 ## _interface_ BlockStyle _extends_ [Block](#type-block--portabletextblock)
 
-**BlockStyle** props is passed in to all `block` components.
+**BlockStyle** is passed in to `block` components on [Props](#interface-propsn) `node` property.
 
 ### Definition
 
 ```ts
-export interface BlockStyle extends Block {
+interface BlockStyle extends Block {
   style: "normal" | PortableTextBlockStyle;
 }
 ```
@@ -88,14 +88,14 @@ const props = Astro.props as Props;
 
 ## _type_ Block = PortableTextBlock;
 
-Use [BlockStyle](#interface-blockstyle-extends-blocktype-block--portabletextblock) for `block` components as `style` property is always set.
+Use [BlockStyle](#interface-blockstyle-extends-blocktype-block--portabletextblock) within `block` components as `style` property is always set.
 
 See [PortableTextBlock](https://portabletext.github.io/types/interfaces/PortableTextBlock.html) for details.
 
 ### Definition
 
 ```ts
-export type Block = PortableTextBlock;
+type Block = PortableTextBlock;
 ```
 
 ### Example
@@ -113,14 +113,14 @@ const props = Astro.props as Props;
 
 ## type List = ToolkitPortableTextList;
 
-**List** props is passed in to all `list` components.
+**List** is passed in to `list` components on [Props](#interface-propsn) `node` property.
 
 See [ToolkitPortableTextList](https://portabletext.github.io/toolkit/modules.html#ToolkitPortableTextList) for details.
 
 ### Definition
 
 ```ts
-export type List = ToolkitPortableTextList;
+type List = ToolkitPortableTextList;
 ```
 
 ### Example
@@ -138,14 +138,14 @@ const props = Astro.props as Props;
 
 ## type ListItem = ToolkitPortableTextListItem;
 
-**ListItem** props is passed in to all `listItem` components.
+**ListItem** is passed in to `listItem` components on [Props](#interface-propsn) `node` property.
 
 See [ToolkitPortableTextListItem](https://portabletext.github.io/toolkit/interfaces/ToolkitPortableTextListItem.html) for details.
 
 ### Definition
 
 ```ts
-export type ListItem = ToolkitPortableTextListItem;
+type ListItem = ToolkitPortableTextListItem;
 ```
 
 ### Example
@@ -163,14 +163,13 @@ const props = Astro.props as Props;
 
 ## _interface_ Mark _extends_ ToolkitNestedPortableTextSpan
 
-**Mark** props is passed in to all `mark` components.
+**Mark** is passed in to `mark` components on [Props](#interface-propsn) `node` property.
 
 ### Definition
 
 ```ts
-export interface Mark<
-  MarkDef extends Record<string, any> | undefined = undefined
-> extends ToolkitNestedPortableTextSpan {
+interface Mark<MarkDef extends Record<string, any> | undefined = undefined>
+  extends ToolkitNestedPortableTextSpan {
   markDef: MarkDef extends Record<string, any>
     ? MarkDef & PortableTextMarkDefinition
     : undefined;
@@ -215,7 +214,7 @@ const props = Astro.props as Props;
 ### Definition
 
 ```ts
-export type TextNode = ToolkitTextNode;
+type TextNode = ToolkitTextNode;
 ```
 
 ### Example

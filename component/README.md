@@ -1,5 +1,5 @@
 <div>
-  <img src="../logo.svg" width="240" alt="astro-portabletext logo">
+  <img src="https://github.com/theisel/astro-portabletext/raw/main/logo.svg" width="240" alt="astro-portabletext logo">
 </div>
 
 # astro-portabletext
@@ -24,12 +24,12 @@ npm install astro-portabletext
 
 ## Usage
 
-| Import                          | Description                                                                                                                       |
-| :------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------- |
-| `astro-portabletext`            | For `PortableText` component. <br>See [PortableText Component](./docs/portabletext-component.md) for details.                     |
-| `astro-portabletext/components` | For `Block`, `List`, `ListItem` and `Mark` components. <br> See [Extending Components](./docs/extending-components.md) for usage. |
-| `astro-portabletext/types`      | For Typescript [types](https://github.com/theisel/astro-portabletext/blob/main/component/lib/types.ts)                            |
-| `astro-portabletext/utils`      | For [utility](https://github.com/theisel/astro-portabletext/blob/main/component/lib/utils.ts) functions                           |
+| Import                          | Description                                                                                                                     |
+| :------------------------------ | :------------------------------------------------------------------------------------------------------------------------------ |
+| `astro-portabletext`            | For `PortableText` component. <br>See [PortableText Component](docs/portabletext-component.md) for details.                     |
+| `astro-portabletext/components` | For `Block`, `List`, `ListItem` and `Mark` components. <br> See [Extending Components](docs/extending-components.md) for usage. |
+| `astro-portabletext/types`      | For Typescript [types](docs/types.md)                                                                                           |
+| `astro-portabletext/utils`      | For [utility](docs/utils.md) functions                                                                                          |
 
 ```ts
 /* .astro file */
@@ -84,7 +84,7 @@ import { PortableText } from "astro-portabletext";
 
 ## Documentation
 
-See [documentation](./docs/README.md) for advanced usage and examples.
+See [documentation](docs/README.md) for advanced usage and examples.
 
 ## License
 

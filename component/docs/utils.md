@@ -1,4 +1,4 @@
-[**`astro-portabletext`**](../README.md) > [**`docs`**](./README.md)
+[**`astro-portabletext`**](../README.md) > [**`docs`**](README.md)
 
 # Utils
 
@@ -20,7 +20,7 @@ See [https://portabletext.github.io/toolkit/modules.html#toPlainText](https://po
 
 &#9656; **mergeComponents**(`components`, `overrides`): `object`
 
-| Name       | Type     | Description                                                      |
-| :--------- | :------- | :--------------------------------------------------------------- |
-| components | `object` | See [components](./portabletext-component.md#components) options |
-| overrides  | `object` | See [components](./portabletext-component.md#components) options |
+| Name       | Type     | Description                                                    |
+| :--------- | :------- | :------------------------------------------------------------- |
+| components | `object` | See [components](portabletext-component.md#components) options |
+| overrides  | `object` | See [components](portabletext-component.md#components) options |

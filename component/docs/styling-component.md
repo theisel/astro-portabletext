@@ -1,4 +1,4 @@
-[**`astro-portabletext`**](../README.md) > [**`docs`**](./README.md)
+[**`astro-portabletext`**](../README.md) > [**`docs`**](README.md)
 
 # Styling Component
 
@@ -23,4 +23,4 @@ import Map from "path/to/Map.astro";
 </style>
 ```
 
-Refer back to [Hydration](./hydration.md) to see how `.map` is used.
+Refer back to [Hydration](hydration.md) to see how `.map` is used.

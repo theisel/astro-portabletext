@@ -1,5 +1,13 @@
 # astro-portabletext
 
+## 0.4.0-next.1
+
+### Patch Changes
+
+- 130921c: Changed property `astroClass` on `Props` type to `optional`.
+
+  Related to #ddc12ce and #a6bfa8e.
+
 ## 0.4.0-next.0
 
 ### Minor Changes

@@ -1,6 +1,6 @@
-import { test } from "uvu";
+import { suite, test } from "uvu";
 import * as assert from "uvu/assert";
-import { isBlockStyle } from "../../src/utils";
+import { isBlockStyle, mergeComponents } from "../../src/utils";
 
 test("isBlockStyle", () => {
   // _type `block`
@@ -13,3 +13,61 @@ test("isBlockStyle", () => {
 });
 
 test.run();
+
+// ----------------------------------------------------------------------------
+// Test `mergeComponents`
+// ----------------------------------------------------------------------------
+const testMergeComponents = suite("mergeComponents");
+
+testMergeComponents("should merge components", () => {
+  const a = {
+    block: {
+      h1: () => null,
+      h2: () => null,
+    },
+  };
+
+  const b = {
+    block: {
+      h2: () => null,
+    },
+  };
+
+  const c = mergeComponents(a, b);
+
+  assert.equal(c, { block: { h1: a.block.h1, h2: b.block.h2 } });
+});
+
+testMergeComponents("should override components", () => {
+  const a = {
+    block: {
+      h1: () => null,
+      h2: () => null,
+    },
+  };
+
+  const b = {
+    block: () => null,
+  };
+
+  const c = mergeComponents(a, b);
+
+  assert.equal(c, { block: b.block });
+});
+
+testMergeComponents("should extend components", () => {
+  const a = {
+    block: () => null,
+    mark: () => null,
+  };
+
+  const b = {
+    type: () => null,
+  };
+
+  const c = mergeComponents(a, b);
+
+  assert.equal(c, { block: a.block, mark: a.mark, type: b.type });
+});
+
+testMergeComponents.run();

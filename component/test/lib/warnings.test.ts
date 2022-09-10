@@ -6,7 +6,7 @@ import {
   unknownListStyleWarning,
   unknownListItemStyleWarning,
   unknownBlockStyleWarning,
-} from "../../lib/warnings";
+} from "../../src/warnings";
 
 test("unknownTypeWarning", () => {
   assert.type(unknownTypeWarning("custom"), "string");

@@ -1,6 +1,6 @@
 import { test } from "uvu";
 import * as assert from "uvu/assert";
-import { isBlockStyle } from "../../lib/utils";
+import { isBlockStyle } from "../../src/utils";
 
 test("isBlockStyle", () => {
   // _type `block`

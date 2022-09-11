@@ -1,18 +1,26 @@
-import { suite, test } from "uvu";
+import { suite } from "uvu";
 import * as assert from "uvu/assert";
 import { isBlockStyle, mergeComponents } from "../../src/utils";
 
-test("isBlockStyle", () => {
-  // _type `block`
-  assert.ok(isBlockStyle({ _type: "block", style: "normal" }));
-  assert.not.ok(isBlockStyle({ _type: "block" }));
+// ----------------------------------------------------------------------------
+// Test `isBlockStyle`
+// ----------------------------------------------------------------------------
 
-  // _type `custom`
-  assert.ok(isBlockStyle({ _type: "custom", style: "normal" }));
-  assert.not.ok(isBlockStyle({ _type: "custom" }));
+const testIsBlockStyle = suite("isBlockStyle");
+
+testIsBlockStyle("returns true for block style", () => {
+  const node = { _type: "block", style: "normal" };
+
+  assert.ok(isBlockStyle(node));
 });
 
-test.run();
+testIsBlockStyle("returns false for non-block style", () => {
+  const node = { _type: "block" };
+
+  assert.not.ok(isBlockStyle(node));
+});
+
+testIsBlockStyle.run();
 
 // ----------------------------------------------------------------------------
 // Test `mergeComponents`

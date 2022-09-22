@@ -109,13 +109,11 @@ export type SomePortableTextComponents = Partial<PortableTextComponents>;
  *
  * @template N Type of Portable Text payload that this component will receive on its `node` property
  */
-export interface Props<
-  N extends TypedObject | Record<string, any> = ArbitraryTypedObject
-> {
+export interface Props<N extends TypedObject = ArbitraryTypedObject> {
   /**
    * Portable Text node
    */
-  node: N extends TypedObject ? N : N & TypedObject;
+  node: N;
   /**
    * Index within its parent
    */
@@ -135,17 +133,17 @@ export interface Props<
  * @internal
  * @template N Portable Text node type
  */
-export type Component<
-  N extends TypedObject | Record<string, any> = ArbitraryTypedObject
-> = (props: Props<N>) => any;
+export type Component<N extends TypedObject = ArbitraryTypedObject> = (
+  props: Props<N>
+) => any;
 
 /**
  * For internal use
  * @internal
  */
-export type ComponentOrRecord<
-  N extends TypedObject | Record<string, any> = ArbitraryTypedObject
-> = Component<N> | Record<string, Component<N>>;
+export type ComponentOrRecord<N extends TypedObject = ArbitraryTypedObject> =
+  | Component<N>
+  | Record<string, Component<N>>;
 
 /**
  * Alias to `PortableTextBlock`

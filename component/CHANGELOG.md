@@ -1,5 +1,23 @@
 # astro-portabletext
 
+## 0.4.0-next.2
+
+### Minor Changes
+
+- d1b38ea: **BREAKING** `Props<N>` type `N` parameter should extend `TypedObject`.
+
+  ```diff
+  - import type { Props as $ } from "astro-portabletext/types";
+  + import type { Props as $, TypedObject } from "astro-portabletext/types";
+
+  - interface Greet {
+  + interface Greet extends TypedObject {
+    greeting: string;
+  };
+
+  export type Props = $<Greet>;
+  ```
+
 ## 0.4.0-next.1
 
 ### Patch Changes

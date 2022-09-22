@@ -1,8 +1,5 @@
-import type {
-  Component,
-  ComponentOrRecord,
-  SomePortableTextComponents,
-} from "./types";
+import type { ArbitraryTypedObject, TypedObject } from "@portabletext/types";
+import type { Props, SomePortableTextComponents } from "./types";
 
 /**
  * Helper for component to throw an error
@@ -59,3 +56,21 @@ export function mergeComponents<
 
   return cmps as unknown as MergedComponents;
 }
+
+/**
+ * Generic Portable Text component
+ * @internal
+ * @template N Portable Text node type
+ */
+export type Component<N extends TypedObject = ArbitraryTypedObject> = (
+  props: Props<N>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+) => any;
+
+/**
+ * For internal use
+ * @internal
+ */
+export type ComponentOrRecord<N extends TypedObject = ArbitraryTypedObject> =
+  | Component<N>
+  | Record<string, Component<N>>;

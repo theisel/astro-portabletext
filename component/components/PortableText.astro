@@ -14,12 +14,13 @@ import mitt from "mitt";
 
 import type {
   Block as PortableTextBlock,
-  Component,
   PortableTextComponents,
   PortableTextProps,
   Props as ComponentProps,
   TypedObject
 } from "../lib/types";
+
+import type { Component } from "../lib/internal";
 
 import { NodeType } from "../lib/types";
 import { isComponent, mergeComponents } from "../lib/internal";

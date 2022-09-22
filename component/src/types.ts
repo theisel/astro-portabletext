@@ -15,6 +15,8 @@ import type {
   TypedObject,
 } from "@portabletext/types";
 
+import type { Component, ComponentOrRecord } from "./internal";
+
 export type { TypedObject } from "@portabletext/types";
 
 /**
@@ -127,23 +129,6 @@ export interface Props<N extends TypedObject = ArbitraryTypedObject> {
    */
   class?: string | undefined | null;
 }
-
-/**
- * Generic Portable Text component
- * @internal
- * @template N Portable Text node type
- */
-export type Component<N extends TypedObject = ArbitraryTypedObject> = (
-  props: Props<N>
-) => any;
-
-/**
- * For internal use
- * @internal
- */
-export type ComponentOrRecord<N extends TypedObject = ArbitraryTypedObject> =
-  | Component<N>
-  | Record<string, Component<N>>;
 
 /**
  * Alias to `PortableTextBlock`

@@ -1,7 +1,9 @@
 ---
-export type Props = { value: any }
+export interface Props { 
+  value: any 
+}
 
-const { value } = Astro.props as Props;
+const { value } = Astro.props;
 ---
 
 <Fragment set:html={value} />

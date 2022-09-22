@@ -5,8 +5,7 @@ import { unknownMarkWarning } from "../lib/warnings";
 
 export type Props = $<Mark>;
 
-const { node, class: cls } = Astro.props as Props;
-const attrs = { class: cls };
+const { node, index, isInline, ...attrs } = Astro.props;
 const markTypeIs = (markType: string) => markType === node.markType;
 const err = unknownMarkWarning(node.markType);
 ---

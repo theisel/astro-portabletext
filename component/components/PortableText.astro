@@ -252,6 +252,7 @@ const asComponentProps = (
           <NodeRenderer
             component={components["hardBreak"] as Component}
             node={node}
+            {...props}
           />
         ) : (
           <Fragment set:text={node.text} />

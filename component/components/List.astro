@@ -3,8 +3,7 @@ import type { List, Props as $ } from "../lib/types";
 
 export type Props = $<List>;
 
-const { node, class: cls } = Astro.props as Props;
-const attrs = { class: cls };
+const { node, index, isInline, ...attrs } = Astro.props;
 const listItemIs = (listItem: string) => listItem === node.listItem;
 ---
 

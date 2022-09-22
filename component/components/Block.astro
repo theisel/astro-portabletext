@@ -5,8 +5,7 @@ import { unknownBlockStyleWarning } from "../lib/warnings";
 
 export type Props = $<BlockStyle>;
 
-const { node, class: cls } = Astro.props as Props;
-const attrs = { class: cls };
+const { node, index, isInline, ...attrs } = Astro.props;
 const styleIs = (style: string) => style === node.style;
 const err = unknownBlockStyleWarning(node.style);
 ---

@@ -3,8 +3,7 @@ import type { ListItem, Props as $ } from "../lib/types";
 
 export type Props = $<ListItem>;
 
-const { class: cls } = Astro.props as Props;
-const attrs = { class: cls };
+const { node, index, isInline, ...attrs } = Astro.props;
 ---
 
 <li {...attrs}><slot /></li>

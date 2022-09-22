@@ -1,9 +1,9 @@
 ---
-import type { Component } from "../lib/types";
+import type { Props as ComponentProps } from "../lib/types";
+import type { Component } from "../lib/internal";
 
-export interface Props {
+export interface Props extends ComponentProps {
   component: Component;
-  [key: string]: any;
 }
 
 const { component, ...props } = Astro.props as Props;

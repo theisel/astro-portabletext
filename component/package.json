@@ -5,6 +5,7 @@
   "description": "Render Portable Text with Astro",
   "keywords": [
     "astro",
+    "withastro",
     "astro-component",
     "portable-text",
     "typescript",

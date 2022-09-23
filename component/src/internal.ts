@@ -74,3 +74,13 @@ export type Component<N extends TypedObject = ArbitraryTypedObject> = (
 export type ComponentOrRecord<N extends TypedObject = ArbitraryTypedObject> =
   | Component<N>
   | Record<string, Component<N>>;
+
+/**
+ * @internal
+ */
+export type NodeType =
+  | "block"
+  | "blockStyle"
+  | "listStyle"
+  | "listItemStyle"
+  | "mark";

@@ -15,7 +15,7 @@ import type {
   TypedObject,
 } from "@portabletext/types";
 
-import type { Component, ComponentOrRecord } from "./internal";
+import type { Component, ComponentOrRecord, NodeType } from "./internal";
 
 export type { TypedObject } from "@portabletext/types";
 
@@ -204,11 +204,3 @@ export type MissingComponentHandler = (
   message: string,
   context: { type: string; nodeType: NodeType }
 ) => void;
-
-export enum NodeType {
-  BLOCK = "block",
-  BLOCK_STYLE = "blockStyle",
-  LIST_STYLE = "listStyle",
-  LIST_ITEM_STYLE = "listItemStyle",
-  MARK = "mark",
-}

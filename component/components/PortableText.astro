@@ -22,7 +22,6 @@ import type {
 
 import type { Component } from "../lib/internal";
 
-import { NodeType } from "../lib/types";
 import { isComponent, mergeComponents } from "../lib/internal";
 
 import {
@@ -109,35 +108,35 @@ const emitter = mitt<{
 
 emitter.on("unknownType", (type: string) => {
   missingComponentHandler(unknownTypeWarning(type), {
-    nodeType: NodeType.BLOCK,
+    nodeType: "block",
     type: type,
   });
 });
 
 emitter.on("unknownBlockStyle", (style: string) => {
   missingComponentHandler(unknownBlockStyleWarning(style), {
-    nodeType: NodeType.BLOCK_STYLE,
+    nodeType: "blockStyle",
     type: style,
   });
 });
 
 emitter.on("unknownList", (listItem: string) => {
   missingComponentHandler(unknownListStyleWarning(listItem), {
-    nodeType: NodeType.LIST_STYLE,
+    nodeType: "listStyle",
     type: listItem,
   });
 });
 
 emitter.on("unknownListItem", (listItem: string) => {
   missingComponentHandler(unknownListItemStyleWarning(listItem), {
-    nodeType: NodeType.LIST_ITEM_STYLE,
+    nodeType: "listItemStyle",
     type: listItem,
   });
 });
 
 emitter.on("unknownMark", (markType: string) => {
   missingComponentHandler(unknownMarkWarning(markType), {
-    nodeType: NodeType.MARK,
+    nodeType: "mark",
     type: markType,
   });
 });

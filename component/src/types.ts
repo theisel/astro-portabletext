@@ -131,17 +131,22 @@ export interface Props<N extends TypedObject = ArbitraryTypedObject> {
 }
 
 /**
- * Alias to `PortableTextBlock`
+ * Alias to `PortableTextBlock` with `style` set to `normal`
  *
  * @see {@link https://portabletext.github.io/types/interfaces/PortableTextBlock.html}
  *
  * @example
- * import type { Block, Props } from "astro-portabletext/types";
- * const props = Astro.props as Props<Block>;
+ * import type { Block, Props as $ } from "astro-portabletext/types";
+ *
+ * export type Props = $<Block>;
  */
-export type Block = PortableTextBlock;
+export interface Block extends PortableTextBlock {
+  style: "normal" | PortableTextBlockStyle;
+}
 
 /**
+ * @deprecated Use `Block` instead
+ *
  * @example
  * import type { BlockStyle, Props } from "astro-portabletext/types";
  * const props = Astro.props as Props<BlockStyle>;

@@ -1,5 +1,14 @@
 # astro-portabletext
 
+## 0.4.0-next.4
+
+### Minor Changes
+
+- c6cbd3b: Redefined `Block` type with property `style` set to `normal`.
+
+  - `style` is set to `normal` when `undefined` during render phase.
+  - Depreacted `BlockStyle` in favour for `Block`.
+
 ## 0.4.0-next.3
 
 ### Minor Changes

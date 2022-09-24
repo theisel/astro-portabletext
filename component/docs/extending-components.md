@@ -24,7 +24,7 @@ import Quote from "path/to/Quote.astro";
 
 export type { BlockProps as Props };
 
-const props = Astro.props as BlockProps;
+const props = Astro.props;
 const styleIs = (style: string) => style === props.node.style;
 
 const Cmp = styleIs("billboard") ? (
@@ -32,7 +32,7 @@ const Cmp = styleIs("billboard") ? (
 ) : styleIs("blockquote") ? (  // Override default
   Quote
 ) : (
-  Block  // Fallback to `astro-portabletext` Block component
+  Block  // Fallback to `astro-portabletext`
 )
 ---
 
@@ -51,7 +51,7 @@ import SquareListStyle from "path/to/SquareListStyle.astro";
 
 export type { ListProps as Props };
 
-const props = Astro.props as ListProps;
+const props = Astro.props;
 const listItemIs = (listItem: string) => listItem === props.node.listItem;
 
 const Cmp = listItemIs("square") ? (
@@ -59,7 +59,7 @@ const Cmp = listItemIs("square") ? (
 ) ? listItemIs("bullet") ? ( // Override default
   BulletListStyle
 ) : (
-  List  // Fallback to `astro-portabletext` List component
+  List  // Fallback to `astro-portabletext`
 )
 ---
 
@@ -78,7 +78,7 @@ import Hightlight from "path/to/Highlight.astro";
 
 export type { MarkProps as Props };
 
-const props = Astro.props as MarkProps;
+const props = Astro.props;
 const markTypeIs = (markType: string) => markType === props.node.markType;
 
 const Cmp = markTypeIs("hightlight") ? (
@@ -86,7 +86,7 @@ const Cmp = markTypeIs("hightlight") ? (
 ) : markTypeIs("em") ? ( // Override default
   Emphasis
 ) : (
-  Mark // Fallback to `astro-portabletext` Mark component
+  Mark // Fallback to `astro-portabletext`
 )
 ---
 
@@ -98,24 +98,26 @@ const Cmp = markTypeIs("hightlight") ? (
 ```ts
 /* MyPortableText.astro */
 ---
-import type { PortableTextProps } from "astro-portabletext";
+import type { PortableTextProps } from "astro-portabletext/types";
 import { PortableText } from "astro-portabletext";
 // Custom components
 import MyBlock from "path/to/MyBlock.astro";
 import MyList from "path/to/MyList.astro";
 import MyMark from "path/to/MyMark.astro";
+// Lib
+import { mergeComponents } from "astro-portabletext/utils";
 
-export interface Props {
-  value: PortableTextProps["value"]
-}
+type ComponentProps = Pick<PortableTextProps, "value" | "components">
 
-const { value } = Astro.props as Props;
+export interface Props extends ComponentProps {}
 
-const components = {
+const { value, components: overrideComponents = {} } = Astro.props;
+
+const components = mergeComponents({
   block: MyBlock,
   list: MyList,
   mark: MyMark,
-}
+}, overrideComponents)
 ---
 
 <PortableText value={value} components={components} />
@@ -127,7 +129,8 @@ const components = {
 import MyPortableText from "path/to/MyPortableText.astro";
 
 const value = /* provide value */
+const components = /* provide components */
 ---
 
-<MyPortableText value={value} />
+<MyPortableText value={value} components={components} />
 ```

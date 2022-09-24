@@ -3,9 +3,9 @@ import * as assert from "uvu/assert";
 import {
   unknownTypeWarning,
   unknownMarkWarning,
-  unknownListStyleWarning,
-  unknownListItemStyleWarning,
-  unknownBlockStyleWarning,
+  unknownListWarning,
+  unknownListItemWarning,
+  unknownBlockWarning,
 } from "../../src/warnings";
 
 test("unknownTypeWarning", () => {
@@ -16,16 +16,16 @@ test("unknownMarkWarning", () => {
   assert.type(unknownMarkWarning("em"), "string");
 });
 
-test("unknownListStyleWarning", () => {
-  assert.type(unknownListStyleWarning("bullet"), "string");
+test("unknownListWarning", () => {
+  assert.type(unknownListWarning("bullet"), "string");
 });
 
-test("unknownListItemStyleWarning", () => {
-  assert.type(unknownListItemStyleWarning("bullet"), "string");
+test("unknownListItemWarning", () => {
+  assert.type(unknownListItemWarning("bullet"), "string");
 });
 
-test("unknownBlockStyleWarning", () => {
-  assert.type(unknownBlockStyleWarning("normal"), "string");
+test("unknownBlockWarning", () => {
+  assert.type(unknownBlockWarning("normal"), "string");
 });
 
 test.run();

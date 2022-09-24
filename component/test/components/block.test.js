@@ -92,7 +92,7 @@ block("unknown", async () => {
   const $el = $("[data-portabletext-unknown]");
 
   assert.is($el.length, 1);
-  assert.is($el.attr("data-portabletext-unknown"), "blockstyle");
+  assert.is($el.attr("data-portabletext-unknown"), "block");
   assert.is($el[0].name, "p");
 });
 

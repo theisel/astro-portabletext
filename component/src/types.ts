@@ -70,7 +70,7 @@ export interface PortableTextComponents {
   /**
    * Used when a `block` handler isn't found
    */
-  unknownBlockStyle: Component<BlockStyle> | Component<Block>;
+  unknownBlock: Component<BlockStyle> | Component<Block>;
   /**
    * How lists should be rendered
    */

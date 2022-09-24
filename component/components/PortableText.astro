@@ -28,9 +28,9 @@ import {
   printWarning,
   unknownTypeWarning,
   unknownMarkWarning,
-  unknownBlockStyleWarning,
-  unknownListStyleWarning,
-  unknownListItemStyleWarning,
+  unknownBlockWarning,
+  unknownListWarning,
+  unknownListItemWarning,
 } from "../lib/warnings";
 
 import NodeRenderer from "./NodeRenderer.astro";
@@ -40,7 +40,7 @@ import List from "./List.astro";
 import ListItem from "./ListItem.astro";
 import Raw from "./Raw.astro";
 import Mark from "./Mark.astro";
-import UnknownBlockStyle from "./UnknownBlockStyle.astro";
+import UnknownBlock from "./UnknownBlock.astro";
 import UnknownList from "./UnknownList.astro";
 import UnknownListItem from "./UnknownListItem.astro";
 import UnknownMark from "./UnknownMark.astro";
@@ -70,7 +70,7 @@ const components = mergeComponents(
       blockquote: Block,
       normal: Block,
     },
-    unknownBlockStyle: UnknownBlockStyle,
+    unknownBlock: UnknownBlock,
     list: {
       bullet: List,
       number: List,
@@ -100,7 +100,7 @@ const missingComponentHandler = onMissingComponent || noop;
 
 const emitter = mitt<{
   unknownType: string;
-  unknownBlockStyle: string;
+  unknownBlock: string;
   unknownList: string;
   unknownListItem: string;
   unknownMark: string;
@@ -108,28 +108,28 @@ const emitter = mitt<{
 
 emitter.on("unknownType", (type: string) => {
   missingComponentHandler(unknownTypeWarning(type), {
-    nodeType: "block",
+    nodeType: "type",
     type: type,
   });
 });
 
-emitter.on("unknownBlockStyle", (style: string) => {
-  missingComponentHandler(unknownBlockStyleWarning(style), {
-    nodeType: "blockStyle",
+emitter.on("unknownBlock", (style: string) => {
+  missingComponentHandler(unknownBlockWarning(style), {
+    nodeType: "block",
     type: style,
   });
 });
 
 emitter.on("unknownList", (listItem: string) => {
-  missingComponentHandler(unknownListStyleWarning(listItem), {
-    nodeType: "listStyle",
+  missingComponentHandler(unknownListWarning(listItem), {
+    nodeType: "list",
     type: listItem,
   });
 });
 
 emitter.on("unknownListItem", (listItem: string) => {
-  missingComponentHandler(unknownListItemStyleWarning(listItem), {
-    nodeType: "listItemStyle",
+  missingComponentHandler(unknownListItemWarning(listItem), {
+    nodeType: "listItem",
     type: listItem,
   });
 });
@@ -145,7 +145,7 @@ const provideComponent = (
   type: "type" | "block" | "list" | "listItem" | "mark",
   fallback:
     | "unknownType"
-    | "unknownBlockStyle"
+    | "unknownBlock"
     | "unknownList"
     | "unknownListItem"
     | "unknownMark",
@@ -238,7 +238,7 @@ const asComponentProps = (
         <NodeRenderer
           component={provideComponent(
             "block",
-            "unknownBlockStyle",
+            "unknownBlock",
             node.style ?? "normal"
           )}
           node={{ style: "normal", ...node }}

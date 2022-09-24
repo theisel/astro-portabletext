@@ -1,13 +1,13 @@
 ---
 import type { BlockStyle, Props as $ } from "../lib/types";
 import { throwError } from "../lib/internal";
-import { unknownBlockStyleWarning } from "../lib/warnings";
+import { unknownBlockWarning } from "../lib/warnings";
 
 export type Props = $<BlockStyle>;
 
 const { node, index, isInline, ...attrs } = Astro.props;
 const styleIs = (style: string) => style === node.style;
-const err = unknownBlockStyleWarning(node.style);
+const err = unknownBlockWarning(node.style);
 ---
 
 {

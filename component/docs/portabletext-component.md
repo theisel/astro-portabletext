@@ -32,7 +32,7 @@ Override/extend the default components.
   unknownType: Component,
   // block style
   block: { [style]: Component } | Component,
-  unknownBlockStyle: Component,
+  unknownBlock: Component,
   // list
   list: { [listItem]: Component } | Component,
   unknownList: Component,

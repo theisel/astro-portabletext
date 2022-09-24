@@ -78,9 +78,4 @@ export type ComponentOrRecord<N extends TypedObject = ArbitraryTypedObject> =
 /**
  * @internal
  */
-export type NodeType =
-  | "block"
-  | "blockStyle"
-  | "listStyle"
-  | "listItemStyle"
-  | "mark";
+export type NodeType = "type" | "block" | "list" | "listItem" | "mark";

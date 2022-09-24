@@ -1,5 +1,44 @@
 # astro-portabletext
 
+## 0.4.0-next.3
+
+### Minor Changes
+
+- 11ffafc: **BREAKING** Changed `NodeType` type from `enum` to `string`
+
+  - This effects `PortableText` prop `onMissingComponent` handler
+
+- 9753535: Brings in consistent naming, which reflects **Portable Text** node types.
+
+  **_T_ NodeType**
+
+  ```diff
+  - type NodeType = "block" | "blockStyle" | "listStyle" | "listItemStyle" | "mark";
+  + type NodeType = "type" | "block" | "list" | "listItem" | "mark";
+  ```
+
+  **_T_ PortableTextComponents**
+
+  | Property  | Counterpart                        |
+  | :-------- | :--------------------------------- |
+  | type      | unknownType                        |
+  | block     | ~~unknownBlockStyle~~ unknownBlock |
+  | list      | unknownList                        |
+  | listItem  | unknownListItem                    |
+  | mark      | unknownMark                        |
+  | hardBreak |                                    |
+
+  **PortableText**
+
+  ```diff
+  <PortableText
+    components={{
+  -   unknownBlockStyle: /* custom component */;
+  +   unknownBlock: /* custom component */;
+    }}
+  >
+  ```
+
 ## 0.4.0-next.2
 
 ### Minor Changes

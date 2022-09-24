@@ -53,30 +53,30 @@ import { PortableText } from "astro-portabletext";
     /* custom types go here */
   },
   block: {
-    h1: /* <h1 class={astroClass}><slot /></h1> */,
-    h2: /* <h2 class={astroClass}><slot /></h2> */,
-    h3: /* <h3 class={astroClass}><slot /></h3> */,
-    h4: /* <h4 class={astroClass}><slot /></h4> */,
-    h5: /* <h5 class={astroClass}><slot /></h5> */,
-    h6: /* <h6 class={astroClass}><slot /></h6> */,
-    blockquote: /* <blockquote class={astroClass}><slot /></blockquote> */,
-    normal: /* <p class={astroClass}><slot /></p> */
+    h1: /* <h1 {...attrs}><slot /></h1> */,
+    h2: /* <h2 {...attrs}><slot /></h2> */,
+    h3: /* <h3 {...attrs}><slot /></h3> */,
+    h4: /* <h4 {...attrs}><slot /></h4> */,
+    h5: /* <h5 {...attrs}><slot /></h5> */,
+    h6: /* <h6 {...attrs}><slot /></h6> */,
+    blockquote: /* <blockquote {...attrs}><slot /></blockquote> */,
+    normal: /* <p {...attrs}><slot /></p> */
   },
   list: {
-    bullet: /* <ul class={astroClass}><slot /></ul> */,
-    number: /* <ol class={astroClass}><slot /></ol> */,
+    bullet: /* <ul {...attrs}><slot /></ul> */,
+    number: /* <ol {...attrs}><slot /></ol> */,
   },
   listItem: {
-    bullet: /* <li class={astroClass}><slot /></li> */,
-    number: /* <li class={astroClass}><slot /></li> */,
+    bullet: /* <li {...attrs}><slot /></li> */,
+    number: /* <li {...attrs}><slot /></li> */,
   },
   mark: {
-    code: /* <code class={astroClass}><slot /></code> */,
-    em: /* <em class={astroClass}><slot /></em> */,
-    link: /* <a href="..." class={astroClass}><slot /></a> */,
-    'strike-through': /* <del class={astroClass}><slot /></del> */,
-    strong: /* <strong class={astroClass}><slot /></strong> */,
-    underline: /* <span class={astroClass} style="text-decoration: underline;"><slot /></span> */
+    code: /* <code {...attrs}><slot /></code> */,
+    em: /* <em {...attrs}><slot /></em> */,
+    link: /* <a {...attrs} href="..."><slot /></a> */,
+    'strike-through': /* <del {...attrs}><slot /></del> */,
+    strong: /* <strong {...attrs}><slot /></strong> */,
+    underline: /* <span {...attrs} style="text-decoration: underline;"><slot /></span> */
   },
   hardBreak: /* <br /> */,
 }

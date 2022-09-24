@@ -2,7 +2,7 @@
 "astro-portabletext": minor
 ---
 
-Brings in consistent naming, which reflects **Portable Text** node types.
+**BREAKING** Brings in consistent naming, which reflects **Portable Text** node types.
 
 
 **_T_ NodeType**

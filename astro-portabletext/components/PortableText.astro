@@ -18,7 +18,7 @@ import type {
   PortableTextComponents,
   PortableTextProps,
   Props as ComponentProps,
-  TypedObject
+  TypedObject,
 } from "../lib/types";
 
 import type { Component } from "../lib/internal";
@@ -175,11 +175,13 @@ const serializeNode =
   (node: TypedObject, index: number = 0) =>
     asComponentProps(node, index, isInline);
 
-const serializeChildren = (node: TypedObject & { children: TypedObject[] }, isInline: boolean) => 
-  node.children.map(serializeNode(isInline));
+const serializeChildren = (
+  node: TypedObject & { children: TypedObject[] },
+  isInline: boolean
+) => node.children.map(serializeNode(isInline));
 
 const serializeMarksTree = (node: PortableTextBlock) =>
-  buildMarksTree(node).map(serializeNode(true))
+  buildMarksTree(node).map(serializeNode(true));
 
 const asComponentProps = (
   node: TypedObject,
@@ -189,7 +191,7 @@ const asComponentProps = (
   node,
   index,
   isInline,
-  class: astroClass
+  class: astroClass,
 });
 ---
 
@@ -218,13 +220,15 @@ const asComponentProps = (
           {...props}
         >
           <Raw
-            value={serializeMarksTree(node).map(renderNode).map((children) => {
-              if (node.style !== "normal") {
-                const { listItem, ...blockNode } = node;
-                children = renderNode(serializeNode(false)(blockNode, 0));
-              }
-              return children;
-            })}
+            value={serializeMarksTree(node)
+              .map(renderNode)
+              .map((children) => {
+                if (node.style !== "normal") {
+                  const { listItem, ...blockNode } = node;
+                  children = renderNode(serializeNode(false)(blockNode, 0));
+                }
+                return children;
+              })}
           />
         </NodeRenderer>
       ) : isPortableTextToolkitSpan(node) ? (

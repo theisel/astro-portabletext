@@ -12,17 +12,32 @@ const err = unknownMarkWarning(node.markType);
 
 {
   markTypeIs("code") ? (
-    <code {...attrs}><slot /></code>
+    <code {...attrs}>
+      <slot />
+    </code>
   ) : markTypeIs("em") ? (
-    <em {...attrs}><slot /></em>
+    <em {...attrs}>
+      <slot />
+    </em>
   ) : markTypeIs("link") ? (
-    <a href={(node as unknown as Mark<{ href: string }>).markDef.href} {...attrs}><slot /></a>
+    <a
+      href={(node as unknown as Mark<{ href: string }>).markDef.href}
+      {...attrs}
+    >
+      <slot />
+    </a>
   ) : markTypeIs("strike-through") ? (
-    <del {...attrs}><slot /></del>
+    <del {...attrs}>
+      <slot />
+    </del>
   ) : markTypeIs("strong") ? (
-    <strong {...attrs}><slot /></strong>
+    <strong {...attrs}>
+      <slot />
+    </strong>
   ) : markTypeIs("underline") ? (
-    <span style="text-decoration: underline;" {...attrs}><slot /></span>
+    <span style="text-decoration: underline;" {...attrs}>
+      <slot />
+    </span>
   ) : (
     throwError(err)
   )

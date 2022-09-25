@@ -47,7 +47,9 @@ import UnknownListItem from "./UnknownListItem.astro";
 import UnknownMark from "./UnknownMark.astro";
 import UnknownType from "./UnknownType.astro";
 
-export type { PortableTextProps as Props };
+export interface Props extends PortableTextProps {
+  class?: astroHTML.JSX.HTMLAttributes["class"];
+}
 
 const {
   value,
@@ -55,7 +57,7 @@ const {
   listNestingMode = LIST_NEST_MODE_HTML,
   onMissingComponent = printWarning,
   class: astroClass,
-} = Astro.props as PortableTextProps & { class?: string };
+} = Astro.props;
 
 const components = mergeComponents(
   {

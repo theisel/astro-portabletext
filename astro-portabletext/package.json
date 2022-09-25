@@ -1,0 +1,71 @@
+{
+  "name": "astro-portabletext",
+  "version": "0.4.0-next.5",
+  "type": "module",
+  "description": "Render Portable Text with Astro",
+  "keywords": [
+    "astro",
+    "withastro",
+    "astro-component",
+    "portable-text",
+    "typescript",
+    "ui"
+  ],
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theisel/astro-portabletext.git",
+    "directory": "component"
+  },
+  "bugs": {
+    "url": "https://github.com/theisel/astro-portabletext/issues"
+  },
+  "homepage": "https://github.com/theisel/astro-portabletext#readme",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./components": "./lib/components.js",
+    "./types": "./lib/types.js",
+    "./utils": "./lib/utils.js"
+  },
+  "typesVersions": {
+    "*": {
+      ".": [
+        "lib/index.d.ts"
+      ],
+      "components": [
+        "lib/components.d.ts"
+      ],
+      "types": [
+        "lib/types.d.ts"
+      ],
+      "utils": [
+        "lib/utils.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "components",
+    "lib"
+  ],
+  "scripts": {
+    "build:fixture": "astro --root test/components/fixture/ build --silent",
+    "check": "astro check --root components",
+    "compile": "tsc",
+    "prepublishOnly": "pnpm compile",
+    "test:component": "pnpm build:fixture && pnpm exec uvu test/components .test.js",
+    "test:lib": "pnpm exec uvu -r tsm test/lib ",
+    "test:ci": "./scripts/ci.sh",
+    "test": "pnpm test:ci"
+  },
+  "dependencies": {
+    "@portabletext/toolkit": "^1.0.5",
+    "@portabletext/types": "^1.0.3",
+    "mitt": "^3.0.0"
+  },
+  "devDependencies": {
+    "cheerio": "1.0.0-rc.12",
+    "tsm": "^2.2.2",
+    "uvu": "^0.5.6"
+  }
+}

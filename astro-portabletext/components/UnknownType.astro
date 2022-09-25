@@ -1,0 +1,21 @@
+---
+import type { Props } from "../lib/types";
+import { unknownTypeWarning } from "../lib/warnings";
+
+export type { Props };
+
+const { node, isInline } = Astro.props as Props;
+const warning = unknownTypeWarning(node._type);
+---
+
+{
+  isInline ? (
+    <span style="display:none" data-portabletext-unknown="type">
+      {warning}
+    </span>
+  ) : (
+    <div style="display:none" data-portabletext-unknown="type">
+      {warning}
+    </div>
+  )
+}

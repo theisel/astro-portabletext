@@ -1,3 +1,0 @@
-lib/*.js
-lib/*.d.ts
-!lib/index.d.ts

@@ -6,9 +6,8 @@
 import type {/* select type */} "astro-portabletext/types";
 ```
 
-- [Props](#interface-props)
-- [BlockStyle](#interface-blockstyle-extends-blocktype-block--portabletextblock)
-- [Block](#type-block--portabletextblock)
+- [Props](#interface-propsn)
+- [Block](#interface-block-extends-portabletextblock)
 - [List](#type-list--toolkitportabletextlist)
 - [ListItem](#type-listitem--toolkitportabletextlistitem)
 - [Mark](#interface-mark-extends-toolkitnestedportabletextspan)
@@ -23,13 +22,11 @@ import type {/* select type */} "astro-portabletext/types";
 ### Definition
 
 ```ts
-interface Props<
-  N extends TypedObject | Record<string, any> = ArbitraryTypedObject
-> {
+export interface Props<N extends TypedObject = ArbitraryTypedObject> {
   /**
    * Portable Text node
    */
-  node: N extends TypedObject ? N : N & TypedObject;
+  node: N;
   /**
    * Index within its parent
    */
@@ -41,11 +38,7 @@ interface Props<
   /**
    * Set when `style` is used within an Astro component, should be used when defined.
    */
-  class?: string;
-  /**
-   * @deprecated Use `class`
-   */
-  astroClass: string | undefined;
+  class?: string | undefined | null;
 }
 ```
 
@@ -53,49 +46,28 @@ interface Props<
 
 ```ts
 ---
-import type { Props } from "astro-portabletex/types";
+import type { Props as ComponentProps } from "astro-portabletex/types";
 
-const props = Astro.props as Props;
+export type Props = ComponentProps;
+
+const props = Astro.props;
 ---
 ```
 
 ---
 
-## _interface_ BlockStyle _extends_ [Block](#type-block--portabletextblock)
+## _interface_ Block _extends_ PortableTextBlock
 
-**BlockStyle** is passed in to `block` components on [Props](#interface-propsn) `node` property.
-
-### Definition
-
-```ts
-interface BlockStyle extends Block {
-  style: "normal" | PortableTextBlockStyle;
-}
-```
-
-### Example
-
-```ts
-/* .astro */
-import type { BlockStyle, Props as $ } from "astro-portabletext/types";
-
-export type Props = $<BlockStyle>;
-
-const props = Astro.props as Props;
-```
-
----
-
-## _type_ Block = PortableTextBlock;
-
-Use [BlockStyle](#interface-blockstyle-extends-blocktype-block--portabletextblock) within `block` components as `style` property is always set.
+**Block** is passed in to `block` components on [Props](#interface-propsn) `node` property.
 
 See [PortableTextBlock](https://portabletext.github.io/types/interfaces/PortableTextBlock.html) for details.
 
 ### Definition
 
 ```ts
-type Block = PortableTextBlock;
+interface Block extends PortableTextBlock {
+  style: "normal" | PortableTextBlockStyle;
+}
 ```
 
 ### Example
@@ -106,7 +78,7 @@ import type { Block, Props as $ } from "astro-portabletext/types";
 
 export type Props = $<Block>;
 
-const props = Astro.props as Props;
+const props = Astro.props;
 ```
 
 ---
@@ -131,7 +103,7 @@ import type { List, Props as $ } from "astro-portabletext/types";
 
 export type Props = $<List>;
 
-const props = Astro.props as Props;
+const props = Astro.props;
 ```
 
 ---
@@ -156,7 +128,7 @@ import type { ListItem, Props as $ } from "astro-portabletext/types";
 
 export type Props = $<ListItem>;
 
-const props = Astro.props as Props;
+const props = Astro.props;
 ```
 
 ---
@@ -164,6 +136,8 @@ const props = Astro.props as Props;
 ## _interface_ Mark _extends_ ToolkitNestedPortableTextSpan
 
 **Mark** is passed in to `mark` components on [Props](#interface-propsn) `node` property.
+
+See [ToolkitNestedPortableTextSpan](https://portabletext.github.io/toolkit/interfaces/ToolkitNestedPortableTextSpan.html) for details.
 
 ### Definition
 
@@ -187,7 +161,7 @@ type Greet = Mark<{ msg: string }>;
 
 export type Props = $<Greet>;
 
-const props = Astro.props as Props;
+const props = Astro.props;
 ```
 
 ### Example 2
@@ -202,7 +176,7 @@ interface Greet extends Mark {
 
 export type Props = $<Greet>;
 
-const props = Astro.props as Props;
+const props = Astro.props;
 ```
 
 ---
@@ -225,5 +199,5 @@ import type { TextNode, Props as $ } from "astro-portabletext/types";
 
 export type Props = $<TextNode>;
 
-const props = Astro.props as Props;
+const props = Astro.props;
 ```

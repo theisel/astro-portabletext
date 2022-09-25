@@ -4,9 +4,9 @@
 
 ```ts
 /* Map.tsx */
-import type { Props as $ } from "astro-portabletext/types";
+import type { Props as $, TypedObject } from "astro-portabletext/types";
 
-interface MapProps = {
+interface MapProps extends TypedObject {
   /* some values */
 }
 
@@ -32,7 +32,7 @@ import { Map } from "./Map";
 
 export type { Props };
 
-const props = Astro.props as Props;
+const props = Astro.props;
 ---
 
 <Map client:idle {...props} />

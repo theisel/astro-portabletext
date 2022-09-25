@@ -23,7 +23,7 @@ Portable Text payload
 
 **T `object`**
 
-Override/extend the default components.
+Override/extend default components.
 
 ```js
 {
@@ -51,9 +51,9 @@ See [Extending Components](extending-components.md) and [Merge/Override Componen
 
 ### `onMissingComponent`
 
-**T `function` | `false`**
+**T `function` | `boolean`**
 
-Disable warning message or handle unknown types.
+Disable warning messages or handle unknown types.
 
 - `function` to handle unknown types.
 - `false` to disable warning messages.

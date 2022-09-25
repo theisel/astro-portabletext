@@ -107,9 +107,10 @@ import MyMark from "path/to/MyMark.astro";
 // Lib
 import { mergeComponents } from "astro-portabletext/utils";
 
-type ComponentProps = Pick<PortableTextProps, "value" | "components">
-
-export interface Props extends ComponentProps {}
+export interface Props {
+  value: PortableTextProps["value"];
+  components?: PortableTextProps["components"];
+}
 
 const { value, components: overrideComponents = {} } = Astro.props;
 

@@ -1,5 +1,11 @@
 # astro-portabletext
 
+## 0.4.0-next.5
+
+### Patch Changes
+
+- 8644be2: Fixes [object Generator] output error
+
 ## 0.4.0-next.4
 
 ### Minor Changes

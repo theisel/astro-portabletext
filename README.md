@@ -17,7 +17,11 @@ npm install astro-portabletext
 
 ## Usage
 
-Documentation can be found [here](component/README.md).
+Documentation can be found [here](astro-portabletext/README.md).
+
+## License
+
+ISC
 
 ## See also
 

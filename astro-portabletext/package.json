@@ -15,7 +15,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/theisel/astro-portabletext.git",
-    "directory": "component"
+    "directory": "astro-portabletext"
   },
   "bugs": {
     "url": "https://github.com/theisel/astro-portabletext/issues"

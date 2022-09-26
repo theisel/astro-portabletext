@@ -1,5 +1,16 @@
 # astro-portabletext
 
+## 0.4.1
+
+### Patch Changes
+
+- 29815b8: Fixes PortableText `onMissingComponent` prop to accept boolean
+
+  ```diff
+  - onMissingComponent?: MissingComponentHandler | false;
+  + onMissingComponent?: MissingComponentHandler | boolean;
+  ```
+
 ## 0.4.0
 
 ### Minor Changes

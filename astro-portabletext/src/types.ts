@@ -43,7 +43,7 @@ export interface PortableTextProps<
    * Prints a warning message to the console by default.
    * Pass `false` to disable.
    */
-  onMissingComponent?: MissingComponentHandler | false;
+  onMissingComponent?: MissingComponentHandler | boolean;
 
   /**
    * `html` or `direct`

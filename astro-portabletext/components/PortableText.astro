@@ -55,7 +55,7 @@ const {
   value,
   components: componentOverrides = {},
   listNestingMode = LIST_NEST_MODE_HTML,
-  onMissingComponent = printWarning,
+  onMissingComponent = true,
   class: astroClass,
 } = Astro.props;
 
@@ -99,7 +99,13 @@ const components = mergeComponents(
 ) as PortableTextComponents;
 
 const noop = () => {};
-const missingComponentHandler = onMissingComponent || noop;
+
+const missingComponentHandler = ((handler: unknown) => {
+  if (typeof handler === "function") {
+    return handler;
+  }
+  return !handler ? noop : printWarning;
+})(onMissingComponent);
 
 const emitter = mitt<{
   unknownType: string;

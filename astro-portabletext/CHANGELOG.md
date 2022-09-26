@@ -1,5 +1,70 @@
 # astro-portabletext
 
+## 0.4.0
+
+### Minor Changes
+
+- 1c102cf: Feat: Made `mergeComponents` and `toPlainText` functions available to be used.
+- f8b9a06: Removed deprecated types
+- c6cbd3b: Redefined `Block` type with property `style` set to `normal`.
+
+  - `style` is set to `normal` when `undefined` during render phase.
+  - Depreacted `BlockStyle` in favour for `Block`.
+
+- a6bfa8e: Feat: Made `Block`, `List`, `ListItem` and `Mark` components available to be used to help extend custom components.
+- 11ffafc: **BREAKING** Changed `NodeType` type from `enum` to `string`
+
+  - This effects `PortableText` prop `onMissingComponent` handler
+
+- d1b38ea: **BREAKING** `Props<N>` type `N` parameter should extend `TypedObject`.
+
+  ```diff
+  - import type { Props as $ } from "astro-portabletext/types";
+  + import type { Props as $, TypedObject } from "astro-portabletext/types";
+
+  - interface Greet {
+  + interface Greet extends TypedObject {
+    greeting: string;
+  };
+
+  export type Props = $<Greet>;
+  ```
+
+- 9753535: **BREAKING** Brings in consistent naming, which reflects **Portable Text** node types.
+
+  **_T_ NodeType**
+
+  ```diff
+  - type NodeType = "block" | "blockStyle" | "listStyle" | "listItemStyle" | "mark";
+  + type NodeType = "type" | "block" | "list" | "listItem" | "mark";
+  ```
+
+  **_T_ PortableTextComponents**
+
+  | Property  | Counterpart                        |
+  | :-------- | :--------------------------------- |
+  | type      | unknownType                        |
+  | block     | ~~unknownBlockStyle~~ unknownBlock |
+  | list      | unknownList                        |
+  | listItem  | unknownListItem                    |
+  | mark      | unknownMark                        |
+  | hardBreak |                                    |
+
+  **PortableText**
+
+  ```diff
+  <PortableText
+    components={{
+  -   unknownBlockStyle: /* custom component */;
+  +   unknownBlock: /* custom component */;
+    }}
+  >
+  ```
+
+### Patch Changes
+
+- 8644be2: Fixes [object Generator] output error
+
 ## 0.4.0-next.5
 
 ### Patch Changes

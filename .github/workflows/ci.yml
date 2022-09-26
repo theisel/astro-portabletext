@@ -42,37 +42,11 @@ jobs:
 
       - name: Run Test
         run: pnpm test:ci
-
-  should_release:
-    name: Should Release
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-
-    outputs:
-      status: ${{ steps.status.outputs.status }}
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Find Prerelease File
-        id: find_prerelease_file
-        uses: andstor/file-existence-action@v1
-        with:
-          files: ".changeset/pre.json"
-
-      - name: Validate
-        id: status
-        if: |
-          github.ref == 'refs/heads/main' && steps.find_prerelease_file.outputs.files_exists != 'true'
-          ||
-          github.ref == 'refs/heads/next' && steps.find_prerelease_file.outputs.files_exists == 'true'
-        run: |
-          echo "::set-output name=status::ok"
-        
+   
   dispatch_release:
     name: Dispatch Release
-    needs: [test, should_release]
-    if: needs.should_release.outputs.status == 'ok'
+    needs: [test]
+    if: github.event_name == 'push'
     uses: ./.github/workflows/release.yml
     secrets: inherit
     with:

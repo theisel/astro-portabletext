@@ -66,11 +66,11 @@ export interface PortableTextComponents {
   /**
    * How blocks should be rendered
    */
-  block: ComponentOrRecord<BlockStyle> | ComponentOrRecord<Block>;
+  block: ComponentOrRecord<Block>;
   /**
    * Used when a `block` handler isn't found
    */
-  unknownBlock: Component<BlockStyle> | Component<Block>;
+  unknownBlock: Component<Block>;
   /**
    * How lists should be rendered
    */
@@ -141,17 +141,6 @@ export interface Props<N extends TypedObject = ArbitraryTypedObject> {
  * export type Props = $<Block>;
  */
 export interface Block extends PortableTextBlock {
-  style: "normal" | PortableTextBlockStyle;
-}
-
-/**
- * @deprecated Use `Block` instead
- *
- * @example
- * import type { BlockStyle, Props } from "astro-portabletext/types";
- * const props = Astro.props as Props<BlockStyle>;
- */
-export interface BlockStyle extends Block {
   style: "normal" | PortableTextBlockStyle;
 }
 

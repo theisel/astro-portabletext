@@ -56,7 +56,7 @@ const listItemIs = (listItem: string) => listItem === props.node.listItem;
 
 const Cmp = listItemIs("square") ? (
   SquareListStyle
-) ? listItemIs("bullet") ? ( // Override default
+) : listItemIs("bullet") ? ( // Override default
   BulletListStyle
 ) : (
   List  // Fallback to `astro-portabletext`

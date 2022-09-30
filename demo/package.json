@@ -11,9 +11,9 @@
   },
   "devDependencies": {
     "@astrojs/solid-js": "^1.1.0",
-    "@astrojs/svelte": "^1.0.0",
-    "astro-portabletext": "workspace:*",
-    "solid-js": "^1.5.6",
+    "@astrojs/svelte": "^1.0.1",
+    "astro-portabletext": "workspace:^0.4.1",
+    "solid-js": "^1.5.7",
     "svelte": "^3.50.1"
   },
   "pnpm": {

@@ -27,7 +27,7 @@
     "@types/node": "^18.7.23",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
-    "astro": "1.4.0",
+    "astro": "1.4.2",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.1",

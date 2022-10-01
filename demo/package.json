@@ -9,10 +9,10 @@
     "build": "astro build",
     "preview": "astro preview"
   },
-  "devDependencies": {
+  "dependencies": {
     "@astrojs/solid-js": "^1.1.0",
     "@astrojs/svelte": "^1.0.1",
-    "astro-portabletext": "^0.4.1",
+    "astro-portabletext": "workspace:*",
     "solid-js": "^1.5.7",
     "svelte": "^3.50.1"
   },

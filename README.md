@@ -4,10 +4,13 @@
 
 # astro-portabletext
 
-[![license](https://flat.badgen.net/badge/license/ISC/green)](https://opensource.org/licenses/ISC)
-[![npm](https://flat.badgen.net/npm/v/astro-portabletext)](https://www.npmjs.com/package/astro-portabletext)
+![license](https://img.shields.io/npm/l/astro-portabletext?style=flat-square)
+[![build](https://img.shields.io/github/workflow/status/theisel/astro-portabletext/CI?style=flat-square)](https://github.com/theisel/astro-portabletext/actions)
+[![npm](https://img.shields.io/npm/v/astro-portabletext?style=flat-square)](https://www.npmjs.com/package/astro-portabletext)
 
 Render [Portable Text](https://portabletext.org/) with [Astro](https://astro.build/).
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/theisel/astro-portabletext/tree/main/demo)
 
 ## Install
 

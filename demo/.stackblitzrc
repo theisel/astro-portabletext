@@ -1,4 +1,4 @@
 {
   "installDependencies": false,
-  "startCommand": "pnpm install astro astro-portabletext && pnpm install && pnpm start"
+  "startCommand": "pnpm install astro astro-portabletext@latest && pnpm install && pnpm start"
 }

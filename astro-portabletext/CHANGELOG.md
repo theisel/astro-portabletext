@@ -1,5 +1,21 @@
 # astro-portabletext
 
+## 0.5.0
+
+### Minor Changes
+
+- cfaaf38: **BREAKING**
+
+  - Removed deprecated `BlockStyle` type; use `Block` type instead
+  - Removed deprecated `isBlockStyle`; a utility _type guard_ function which is tied to `BlockStyle`
+    and has no purpose
+
+### Patch Changes
+
+- 46c62f6: Fixes #13 `UnknownType.astro` failed during build
+- 7809f2f: Fixes error thrown in `block`, `list`, `listItem`, `mark` and `type`
+  components to fall back to their `unknown` counterpart.
+
 ## 0.4.1
 
 ### Patch Changes

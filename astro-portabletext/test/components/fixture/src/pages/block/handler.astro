@@ -1,0 +1,27 @@
+---
+import Layout from "../../layouts/Default.astro";
+import { PortableText } from "astro-portabletext";
+import { Block } from "astro-portabletext/components";
+
+const blocks = [
+  {
+    _type: "block",
+    style: "bordered",
+    children: [
+      {
+        _type: "span",
+        text: "Heading L1",
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <PortableText
+    value={blocks}
+    components={{
+      block: Block,
+    }}
+  />
+</Layout>

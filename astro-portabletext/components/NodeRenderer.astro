@@ -1,13 +1,59 @@
 ---
-import type { Props as ComponentProps } from "../lib/types";
-import type { Component } from "../lib/internal";
+import { Component, isComponent, NodeType } from "../lib/internal";
+import type {
+  MissingComponentHandler,
+  PortableTextComponents,
+} from "../lib/types";
+import { getWarningMessage } from "../lib/warnings";
+import Renderer from "./Renderer.astro";
 
-export interface Props extends ComponentProps {
-  component: Component;
+export interface Props {
+  nodeType: NodeType;
+  type: string;
+  components: PortableTextComponents;
+  componentProps: any;
+  onMissingComponent: MissingComponentHandler;
 }
 
-const { component, ...props } = Astro.props as Props;
-const Cmp: any = component;
+const {
+  nodeType,
+  type,
+  components,
+  componentProps: props,
+  onMissingComponent,
+} = Astro.props;
+
+const unknownType = ((str) => {
+  return `unknown${str}` as keyof PortableTextComponents;
+})(nodeType[0].toUpperCase() + nodeType.slice(1));
+
+const provideComponent = (
+  type: keyof PortableTextComponents,
+  key?: string
+): Component => {
+  const componentOrRecord = components[type];
+
+  if (isComponent(componentOrRecord)) {
+    return componentOrRecord;
+  }
+
+  if (key && key in componentOrRecord) {
+    return componentOrRecord[key as keyof typeof componentOrRecord];
+  }
+
+  return components[unknownType] as Component;
+};
+
+const Primary = provideComponent(nodeType, type);
+const Secondary = provideComponent(unknownType);
+
+// If they're the same, then the component is missing
+if (Primary === Secondary) {
+  onMissingComponent(getWarningMessage(nodeType, type), { nodeType, type });
+}
 ---
 
-<Cmp {...props}><slot /></Cmp>
+<Renderer onError={(err) => onMissingComponent(err, { nodeType, type })}>
+  <Primary slot="primary" {...props}><slot /></Primary>
+  <Secondary slot="secondary" {...props}><slot /></Secondary>
+</Renderer>

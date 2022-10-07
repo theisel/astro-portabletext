@@ -10,7 +10,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/solid-js": "^1.1.0",
+    "@astrojs/solid-js": "^1.1.1",
     "@astrojs/svelte": "^1.0.1",
     "astro-portabletext": "workspace:*",
     "solid-js": "^1.5.7",

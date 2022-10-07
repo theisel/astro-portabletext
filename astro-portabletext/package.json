@@ -60,8 +60,7 @@
   },
   "dependencies": {
     "@portabletext/toolkit": "^1.0.6",
-    "@portabletext/types": "^1.0.3",
-    "mitt": "^3.0.0"
+    "@portabletext/types": "^1.0.3"
   },
   "devDependencies": {
     "cheerio": "1.0.0-rc.12",

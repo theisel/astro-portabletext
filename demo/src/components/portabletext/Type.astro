@@ -1,0 +1,22 @@
+---
+import type { Props as ComponentProps } from "astro-portabletext/types";
+import { JsxCounter, SvelteCounter } from "../counter";
+
+export type Props = ComponentProps;
+
+const props = Astro.props;
+const typeIs = (type: string) => type === props.node._type;
+
+// Throw an error or print to console
+const missingComponent = () => {
+  throw new Error(`No component found for this type: ${props.node._type}`);
+};
+
+const Cmp = typeIs("jsxCounter")
+  ? JsxCounter
+  : typeIs("svelteCounter")
+  ? SvelteCounter
+  : missingComponent();
+---
+
+<Cmp {...props} />

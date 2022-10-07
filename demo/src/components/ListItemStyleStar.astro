@@ -1,0 +1,22 @@
+---
+import { ListItemProps } from "astro-portabletext/components";
+
+export type Props = ListItemProps;
+
+const { node, index, isInline, ...attrs } = Astro.props;
+---
+
+<li {...attrs} data-listitem><slot /></li>
+
+<style>
+  li {
+    list-style: none;
+  }
+  li::before {
+    content: "✦";
+    color: goldenrod;
+    margin-right: -0.75rem;
+    left: -1.25rem;
+    position: relative;
+  }
+</style>

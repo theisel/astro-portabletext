@@ -1,8 +1,5 @@
 [
   {
-    "_type": "counter"
-  },
-  {
     "_type": "block",
     "style": "h1",
     "children": [
@@ -86,7 +83,7 @@
         "text": " leo urna "
       },
       {
-        "_type": "counter"
+        "_type": "jsxCounter"
       },
       {
         "_type": "span",
@@ -139,7 +136,7 @@
       {
         "_type": "span",
         "marks": ["code"],
-        "text": "const hey = () => 'there'"
+        "text": "const hey = () => \"there\""
       }
     ]
   },
@@ -193,35 +190,46 @@
   },
   {
     "_type": "block",
-    "style": "h2",
+    "style": "normal",
     "level": 1,
-    "listItem": "bullet",
+    "listItem": "star",
     "children": [
       {
         "_type": "span",
-        "text": "Styled unordered list item"
+        "text": "Starred list item 1"
       }
     ]
   },
   {
     "_type": "block",
-    "style": "unicorn",
+    "style": "normal",
     "level": 1,
-    "listItem": "bullet",
+    "listItem": "star",
     "children": [
       {
         "_type": "span",
-        "text": "Styled unordered list item"
+        "text": "Starred list item 2"
       }
     ]
   },
   {
+    "_type": "jsxCounter"
+  },
+  {
+    "_type": "svelteCounter"
+  },
+
+  {
     "_type": "block",
-    "style": "unicorn",
+    "style": "fancyBorder",
     "children": [
       {
         "_type": "span",
-        "text": "sit amet cursus sit amet dictum sit amet justo donec"
+        "text": "What a fancy border!"
+      },
+      {
+        "_type": "span",
+        "text": " 👊"
       }
     ]
   }

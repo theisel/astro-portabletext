@@ -1,0 +1,24 @@
+---
+export type { Props } from "astro-portabletext/types";
+
+const props = Astro.props;
+---
+
+{
+  props.isInline ? (
+    <span class="unicorn">
+      <slot />
+    </span>
+  ) : (
+    <div class="unicorn">
+      <slot />
+    </div>
+  )
+}
+
+<style>
+  .unicorn::before {
+    content: "🦄";
+    margin: 0 0.25rem;
+  }
+</style>

@@ -2,28 +2,15 @@ import type { Props } from "astro-portabletext/types";
 import { createSignal, onCleanup } from "solid-js";
 
 export function Counter(props: Props) {
-  const { isInline, astroClass } = props;
+  const { node, index, isInline, ...attrs } = props;
   const [count, setCount] = createSignal(0);
   const timer = setInterval(() => setCount(count() + 1), 1000);
 
   onCleanup(() => clearInterval(timer));
 
-  const Block = () => (
-    <div
-      class={astroClass}
-      data-portabletext-type="counter"
-      style="display: grid; justify-items: center;"
-    >
-      <h2>Block Counter</h2>
-      <p>{count}</p>
-    </div>
-  );
+  const Block = () => <div {...attrs}>{count}</div>;
+  const Inline = () => <span {...attrs}>{count}</span>;
+  const Cmp = isInline ? Inline : Block;
 
-  const Inline = () => (
-    <span class={astroClass} data-portabletext-type="counter">
-      <strong>Inline Counter</strong> {count}
-    </span>
-  );
-
-  return isInline ? <Inline /> : <Block />;
+  return <Cmp />;
 }

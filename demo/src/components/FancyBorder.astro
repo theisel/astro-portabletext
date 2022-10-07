@@ -1,0 +1,68 @@
+---
+export type { Props } from "astro-portabletext/types";
+
+const props = Astro.props;
+
+const throwError = () => {
+  throw new Error("Space component can only be [block] not [inline]");
+};
+---
+
+{
+  !props.isInline ? (
+    <div data-cmp="fancyborder">
+      <slot />
+    </div>
+  ) : (
+    throwError()
+  )
+}
+
+<style>
+  :root {
+    --borderPrimaryColor: lightseagreen;
+    --borderImpactColor: olive;
+    --borderPrimaryStyle: dashed;
+    --borderImpactStyle: dotted;
+  }
+
+  [data-cmp="fancyborder"] {
+    border: 2px;
+    border-color: var(--borderPrimaryColor);
+    border-style: var(--borderPrimaryStyle);
+    display: grid;
+    justify-content: center;
+    margin: 2rem 0;
+    position: relative;
+    padding: 3rem;
+    animation: border 2s infinite;
+  }
+
+  @keyframes border {
+    0%,
+    25%,
+    50%,
+    75%,
+    100% {
+      border-color: var(--borderPrimaryColor);
+      border-style: var(--borderPrimaryStyle);
+    }
+    0%,
+    100% {
+      border-top-color: var(--borderImpactColor);
+      border-top-style: var(--borderImpactStyle);
+    }
+    25% {
+      border-right-color: var(--borderImpactColor);
+      border-right-style: var(--borderImpactStyle);
+    }
+    50% {
+      border-bottom-color: var(--borderImpactColor);
+      border-bottom-style: var(--borderImpactStyle);
+    }
+    75% {
+      border-left-color: var(--borderImpactColor);
+      border-left-style: var(--borderImpactStyle);
+    }
+  }
+</style>

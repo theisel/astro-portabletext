@@ -10,63 +10,52 @@ const packageName = "astro-portabletext";
   </head>
   <body>
     <header>
-      <div class="title">
-        <a href="/">{packageName}</a>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="/default">Default</a></li>
-          <li><a href="/with-style">Default &plus; Style</a></li>
-          <li><a href="/static">Static Counter</a></li>
-          <li><a href="/jsx">JSX Counter</a></li>
-          <li><a href="/svelte">Svelte Counter</a></li>
-        </ul>
-      </nav>
+      <p class="page-title">
+        <a
+          href="https://github.com/theisel/astro-portabletext"
+          title={`${packageName} Github page`}>{packageName}</a
+        >
+      </p>
+      <p class="intro">A simple demonstration</p>
     </header>
-    <h1 class="page-heading">{Astro.props.heading}</h1>
-    <div class="content">
+    <main>
       <slot />
-    </div>
+    </main>
     <style>
-      * {
+      body {
         margin: 0;
-        padding: 0;
       }
-      nav {
-        background-color: lightgray;
-        margin-bottom: 2rem;
-        padding: 1rem;
-      }
-      ul {
-        display: flex;
-        gap: 1rem;
-        list-style: none;
-      }
-      @media (max-width: 600px) {
-        ul {
-          display: grid;
-        }
-      }
-      li {
-        flex: 1;
-        text-align: center;
-      }
-      .title {
-        text-align: center;
-        font-size: 2rem;
-        font-weight: bold;
-        margin-bottom: 1rem;
-      }
-      .page-heading {
-        font-size: 3rem;
-        outline: darkgrey;
-        border-style: dashed;
-        text-align: center;
-        margin: 1rem 0;
-      }
-      .content {
+      main {
         max-width: 720px;
-        margin: 0 auto;
+        margin: 0 auto 3rem auto;
+      }
+      header {
+        border-bottom: 2px solid;
+        font-size: 2rem;
+        text-align: center;
+      }
+      .page-title {
+        font-weight: bold;
+        font-size: 2.5rem;
+        margin: 2rem 0;
+      }
+      .intro {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+    </style>
+    <style is:global>
+      h1 {
+        color: salmon;
+      }
+      h2 {
+        color: olivedrab;
+      }
+      blockquote {
+        border-left: 8px solid #ccc;
+        margin-left: 0;
+        margin-right: 2rem;
+        padding-left: 2rem;
       }
     </style>
   </body>

@@ -1,0 +1,33 @@
+---
+import { PortableText } from "astro-portabletext";
+import { mergeComponents } from "astro-portabletext/utils";
+import Block from "./Block.astro";
+import List from "./List.astro";
+import ListItem from "./ListItem.astro";
+import Mark from "./Mark.astro";
+import Type from "./Type.astro";
+
+type PortableTextProps = Parameters<typeof PortableText>[0];
+
+export interface Props {
+  value: PortableTextProps["value"];
+  components?: PortableTextProps["components"];
+}
+
+const defaultComponents = {
+  block: Block,
+  list: List,
+  listItem: ListItem,
+  mark: Mark,
+  type: Type,
+};
+
+const { value, components = {}, ...attrs } = Astro.props;
+
+const portableTextProps = {
+  value: value,
+  components: mergeComponents(defaultComponents, components),
+};
+---
+
+<PortableText {...portableTextProps} {...attrs} />

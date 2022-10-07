@@ -1,23 +1,19 @@
 ---
+import { PortableText } from "../components/portabletext";
 import Layout from "../layouts/Default.astro";
+import value from "../data/portabletext.json";
 ---
 
 <Layout>
-  <main>
-    <p>Choose an example by clicking on one of the above links</p>
-  </main>
+  <PortableText value={value} />
 </Layout>
 
 <style>
-  main {
-    font-size: 1.5rem;
-  }
-  p {
-    text-align: center;
-  }
-  @media (max-width: 640px) {
-    p {
-      text-align: left;
-    }
+  code {
+    background: darkslategray;
+    border-radius: 0.25rem;
+    color: white;
+    display: block;
+    padding: 0.5rem;
   }
 </style>

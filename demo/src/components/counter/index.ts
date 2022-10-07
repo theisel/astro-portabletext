@@ -1,6 +1,4 @@
-import SvelteCounter from "./Counter.svelte";
-import { Counter as JsxCounter } from "./Counter";
-import AstroJsxCounter from "./JsxCounter.astro";
-import AstroSvelteCounter from "./SvelteCounter.astro";
+import JsxCounter from "./JsxCounter.astro";
+import SvelteCounter from "./SvelteCounter.astro";
 
-export { SvelteCounter, JsxCounter, AstroJsxCounter, AstroSvelteCounter };
+export { JsxCounter, SvelteCounter };

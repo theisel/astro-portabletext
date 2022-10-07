@@ -1,0 +1,12 @@
+---
+import { Block } from "astro-portabletext/components";
+import FancyBorder from "../FancyBorder.astro";
+
+export type Props = Parameters<typeof Block>[0];
+
+const props = Astro.props;
+const styleIs = (style: string) => style === props.node.style;
+const Cmp = styleIs("fancyBorder") ? FancyBorder : Block;
+---
+
+<Cmp {...props}><slot /></Cmp>

@@ -2,7 +2,7 @@
   import type { Props } from "astro-portabletext/types";
   import { onDestroy } from "svelte";
 
-  const { astroClass, isInline } = $$props as Props;
+  const { node, index, isInline, ...attrs } = $$restProps as Props;
 
   let count: number = 0;
 
@@ -14,20 +14,7 @@
 </script>
 
 {#if isInline}
-  <span class={astroClass} data-portabletext-type="counter">
-    <strong>Inline Counter</strong>
-    {count}
-  </span>
+  <span {...attrs}>{count}</span>
 {:else}
-  <div class={astroClass} data-portabletext-type="counter">
-    <h2>Block Counter</h2>
-    <p>{count}</p>
-  </div>
+  <div {...attrs}>{count}</div>
 {/if}
-
-<style>
-  div[data-portabletext-type="counter"] {
-    display: grid;
-    justify-items: center;
-  }
-</style>

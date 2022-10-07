@@ -1,0 +1,13 @@
+---
+import { Mark } from "astro-portabletext/components";
+import Unicorn from "../Unicorn.astro";
+
+export type Props = Parameters<typeof Mark>[0];
+
+const props = Astro.props;
+const markTypeIs = (markType: string) => markType === props.node.markType;
+
+const Cmp = markTypeIs("unicorn") ? Unicorn : Mark;
+---
+
+<Cmp {...props}><slot /></Cmp>

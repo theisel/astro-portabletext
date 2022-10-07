@@ -1,0 +1,15 @@
+---
+import { ListProps } from "astro-portabletext/components";
+
+export type Props = ListProps;
+
+const { node, index, isInline, ...attrs } = Astro.props;
+---
+
+<ul {...attrs}><slot /></ul>
+
+<style>
+  li::before {
+    color: yellow;
+  }
+</style>

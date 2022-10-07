@@ -1,8 +1,40 @@
 ---
-import type { Props } from "astro-portabletext/types";
+import type { Props as $ } from "astro-portabletext/types";
 import Counter from "./Counter.svelte";
 
-const props = Astro.props as Props;
+export type Props = $;
+
+const props = Astro.props;
+const { isInline } = props;
 ---
 
-<Counter client:load {...props} />
+{
+  isInline ? (
+    <span>
+      <span>Svelte Inline Counter</span>
+      <Counter client:idle {...props} />
+    </span>
+  ) : (
+    <div>
+      <h4>Svelte Block Counter</h4>
+      <Counter client:idle {...props} />
+    </div>
+  )
+}
+
+<style>
+  div,
+  span {
+    background: lightsteelblue;
+  }
+  div {
+    display: grid;
+    justify-content: center;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  h4 {
+    border: 2px dotted;
+    padding: 2px;
+  }
+</style>

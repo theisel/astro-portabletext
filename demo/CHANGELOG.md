@@ -1,5 +1,13 @@
 # demo
 
+## 0.0.3
+
+### Patch Changes
+
+- Updated dependencies [fb3cdf5]
+- Updated dependencies [1c205e7]
+  - astro-portabletext@0.6.0
+
 ## 0.0.2
 
 ### Patch Changes

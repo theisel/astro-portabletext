@@ -1,5 +1,33 @@
 # astro-portabletext
 
+## 0.6.0
+
+### Minor Changes
+
+- 1c205e7: Feat: `usePortableText` to get context for the current Portable Text node.
+
+  ```ts
+  ---
+  import { Props as ComponentProps } from "astro-portabletext/types";
+  import { usePortableText } from "astro-portabletext/utils";
+
+  export type Props = ComponentProps;
+
+  const props = Astro.props;
+  const { node } = props;
+  const { next } = usePortableText(node);
+  const FallbackComponent = next();
+  ---
+
+  <FallbackComponent {...props}>
+    <slot />
+  </FallbackComponent>
+  ```
+
+### Patch Changes
+
+- fb3cdf5: Fixes: #14 Client-side components are no longer reactive
+
 ## 0.5.0
 
 ### Minor Changes

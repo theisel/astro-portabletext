@@ -6,7 +6,6 @@ import type {
   PortableTextComponents,
 } from "../lib/types";
 import { setContext } from "../lib/context";
-import Renderer from "./Renderer.astro";
 
 export interface Props {
   nodeType: NodeType;
@@ -66,7 +65,6 @@ setContext(props.node, {
 });
 ---
 
-<Renderer onError={(err) => onMissingComponent(err, { nodeType, type })}>
-  <Primary slot="primary" {...props}><slot /></Primary>
-  <Secondary slot="secondary" {...props}><slot /></Secondary>
-</Renderer>
+<Primary {...props}>
+  <slot />
+</Primary>

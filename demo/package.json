@@ -14,7 +14,7 @@
     "@astrojs/svelte": "^1.0.1",
     "astro-portabletext": "workspace:*",
     "solid-js": "^1.5.7",
-    "svelte": "^3.50.1"
+    "svelte": "^3.51.0"
   },
   "pnpm": {
     "peerDependencyRules": {

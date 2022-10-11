@@ -1,7 +1,13 @@
 ---
 import type { Props as $, List } from "../lib/types";
+import { usePortableText } from "../lib/utils";
 
 export type Props = $<List>;
+
+const { node } = Astro.props;
+const { onMissingComponent } = usePortableText(node);
+
+onMissingComponent();
 ---
 
 <ul data-portabletext-unknown="list"><slot /></ul>

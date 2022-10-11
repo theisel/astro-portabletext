@@ -1,13 +1,14 @@
 ---
 import type { Mark, Props as $ } from "../lib/types";
-import { throwError } from "../lib/internal";
-import { unknownMarkWarning } from "../lib/warnings";
+import { usePortableText } from "../lib/utils";
 
 export type Props = $<Mark>;
 
-const { node, index, isInline, ...attrs } = Astro.props;
+const props = Astro.props;
+const { node, index, isInline, ...attrs } = props;
+const { next } = usePortableText(node);
 const markTypeIs = (markType: string) => markType === node.markType;
-const err = unknownMarkWarning(node.markType);
+const UnknownMark = next();
 ---
 
 {
@@ -24,6 +25,6 @@ const err = unknownMarkWarning(node.markType);
   ) : markTypeIs("underline") ? (
     <span style="text-decoration: underline;" {...attrs}><slot /></span>
   ) : (
-    throwError(err)
+    <UnknownMark {...props}><slot /></UnknownMark>
   )
 }

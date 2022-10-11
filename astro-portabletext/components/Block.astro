@@ -1,13 +1,14 @@
 ---
 import type { Block, Props as $ } from "../lib/types";
-import { throwError } from "../lib/internal";
-import { unknownBlockWarning } from "../lib/warnings";
+import { usePortableText } from "../lib/utils";
 
 export type Props = $<Block>;
 
-const { node, index, isInline, ...attrs } = Astro.props;
+const props = Astro.props;
+const { node, index, isInline, ...attrs } = props;
+const { next } = usePortableText(node);
 const styleIs = (style: string) => style === node.style;
-const err = unknownBlockWarning(node.style);
+const UnknownBlock = next();
 ---
 
 {
@@ -28,6 +29,6 @@ const err = unknownBlockWarning(node.style);
   ) : styleIs("normal") ? (
     <p {...attrs}><slot /></p>
   ) : (
-    throwError(err)
+    <UnknownBlock {...props}><slot /></UnknownBlock>
   )
 }

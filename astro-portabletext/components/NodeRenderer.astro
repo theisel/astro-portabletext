@@ -1,10 +1,11 @@
 ---
 import { Component, isComponent, NodeType } from "../lib/internal";
+import { getWarningMessage } from "../lib/warnings";
 import type {
   MissingComponentHandler,
   PortableTextComponents,
 } from "../lib/types";
-import { getWarningMessage } from "../lib/warnings";
+import { setContext } from "../lib/context";
 import Renderer from "./Renderer.astro";
 
 export interface Props {
@@ -47,10 +48,22 @@ const provideComponent = (
 const Primary = provideComponent(nodeType, type);
 const Secondary = provideComponent(unknownType);
 
-// If they're the same, then the component is missing
-if (Primary === Secondary) {
-  onMissingComponent(getWarningMessage(nodeType, type), { nodeType, type });
-}
+Object.defineProperties(props, {
+  $$key: { value: Symbol("astro-portabletext"), writable: false },
+  node: { value: props.node, writable: false },
+  index: { value: props.index, writable: false },
+  isInline: { value: props.isInline, writable: false },
+});
+
+setContext(props.node, {
+  next: () => Secondary,
+  getWarningMessage: () => getWarningMessage(nodeType, type),
+  onMissingComponent: (message?: string) =>
+    onMissingComponent(message ?? getWarningMessage(nodeType, type), {
+      nodeType,
+      type,
+    }),
+});
 ---
 
 <Renderer onError={(err) => onMissingComponent(err, { nodeType, type })}>

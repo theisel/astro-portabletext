@@ -18,9 +18,9 @@ Render [Portable Text](https://portabletext.org/) with [Astro](https://astro.bui
 npm install astro-portabletext
 ```
 
-## Usage
+## Documentation
 
-Documentation can be found [here](astro-portabletext/README.md).
+`How` and `examples` can be found [here](astro-portabletext/README.md "astro-portabletext documentation").
 
 ## License
 

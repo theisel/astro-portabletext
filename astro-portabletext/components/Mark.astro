@@ -8,7 +8,7 @@ const props = Astro.props;
 const { node, index, isInline, ...attrs } = props;
 const { next } = usePortableText(node);
 const markTypeIs = (markType: string) => markType === node.markType;
-const UnknownMark = next();
+const Next = next();
 ---
 
 {
@@ -25,6 +25,6 @@ const UnknownMark = next();
   ) : markTypeIs("underline") ? (
     <span style="text-decoration: underline;" {...attrs}><slot /></span>
   ) : (
-    <UnknownMark {...props}><slot /></UnknownMark>
+    <Next {...props}><slot /></Next>
   )
 }

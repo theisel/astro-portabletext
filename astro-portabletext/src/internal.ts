@@ -60,20 +60,17 @@ export function mergeComponents<
 /**
  * Generic Portable Text component
  * @internal
- * @template N Portable Text node type
  */
-export type Component<N extends TypedObject = ArbitraryTypedObject> = (
-  props: Props<N>
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-) => any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type Component<P extends Props = Props> = (props: P) => any;
 
 /**
  * For internal use
  * @internal
  */
-export type ComponentOrRecord<N extends TypedObject = ArbitraryTypedObject> =
-  | Component<N>
-  | Record<string, Component<N>>;
+export type ComponentOrRecord<P extends Props = Props> =
+  | Component<P>
+  | Record<string, Component<P>>;
 
 /**
  * @internal

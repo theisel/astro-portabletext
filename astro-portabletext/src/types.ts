@@ -66,39 +66,39 @@ export interface PortableTextComponents {
   /**
    * How blocks should be rendered
    */
-  block: ComponentOrRecord<Block>;
+  block: ComponentOrRecord<Props<Block>>;
   /**
    * Used when a `block` handler isn't found
    */
-  unknownBlock: Component<Block>;
+  unknownBlock: Component<Props<Block>>;
   /**
    * How lists should be rendered
    */
-  list: ComponentOrRecord<List>;
+  list: ComponentOrRecord<Props<List>>;
   /**
    * Used when a `list` handler isn't found
    */
-  unknownList: Component<List>;
+  unknownList: Component<Props<List>>;
   /**
    * How list items should be rendered
    */
-  listItem: ComponentOrRecord<ListItem>;
+  listItem: ComponentOrRecord<Props<ListItem>>;
   /**
    * Used when a `listItem` handler isn't found
    */
-  unknownListItem: Component<ListItem>;
+  unknownListItem: Component<Props<ListItem>>;
   /**
    * How marked text should be rendered
    */
-  mark: ComponentOrRecord<Mark>;
+  mark: ComponentOrRecord<Props<Mark>>;
   /**
    * Used when a `mark` handler isn't found
    */
-  unknownMark: Component<Mark>;
+  unknownMark: Component<Props<Mark>>;
   /**
    * How line breaks should be rendered
    */
-  hardBreak: Component<TextNode>;
+  hardBreak: Component<Props<TextNode>>;
 }
 
 /**

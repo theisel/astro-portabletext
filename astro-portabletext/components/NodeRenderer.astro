@@ -6,7 +6,7 @@ import type {
   PortableTextComponents,
   Props as ComponentProps,
 } from "../lib/types";
-import { setContext } from "../lib/context";
+import { hasContext, setContext } from "../lib/context";
 import Empty from "./Empty.astro";
 
 export interface Props {
@@ -49,10 +49,13 @@ const provideComponent = (
 const Cmp = provideComponent(nodeType, type);
 const NextCmp = provideComponent(unknownType);
 
-Object.defineProperty(props.node, "$$key", {
-  value: Symbol("astro-portabletext"),
-  writable: false,
-});
+// Astro renders twice, 1 for the client and 1 for the server
+if (!("$$key" in props.node)) {
+  Object.defineProperty(props.node, "$$key", {
+    value: Symbol(),
+    writable: false,
+  });
+}
 
 const next = (
   (cmps) => () =>

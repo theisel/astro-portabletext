@@ -1,4 +1,3 @@
-import type { ArbitraryTypedObject, TypedObject } from "@portabletext/types";
 import type { Props, SomePortableTextComponents } from "./types";
 
 /**

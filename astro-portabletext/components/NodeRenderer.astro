@@ -4,14 +4,16 @@ import { getWarningMessage } from "../lib/warnings";
 import type {
   MissingComponentHandler,
   PortableTextComponents,
+  Props as ComponentProps,
 } from "../lib/types";
 import { setContext } from "../lib/context";
+import Empty from "./Empty.astro";
 
 export interface Props {
   nodeType: NodeType;
   type: string;
   components: PortableTextComponents;
-  componentProps: any;
+  componentProps: ComponentProps;
   onMissingComponent: MissingComponentHandler;
 }
 
@@ -44,18 +46,27 @@ const provideComponent = (
   return components[unknownType] as Component;
 };
 
-const Primary = provideComponent(nodeType, type);
-const Secondary = provideComponent(unknownType);
+const Cmp = provideComponent(nodeType, type);
+const NextCmp = provideComponent(unknownType);
 
-Object.defineProperties(props, {
-  $$key: { value: Symbol("astro-portabletext"), writable: false },
-  node: { value: props.node, writable: false },
-  index: { value: props.index, writable: false },
-  isInline: { value: props.isInline, writable: false },
+Object.defineProperty(props.node, "$$key", {
+  value: Symbol("astro-portabletext"),
+  writable: false,
 });
 
+const next = (
+  (cmps) => () =>
+    cmps.shift() ?? Empty
+)(
+  Cmp === NextCmp
+    ? [
+        /* leave empty to avoid duplicating output */
+      ]
+    : [NextCmp]
+);
+
 setContext(props.node, {
-  next: () => Secondary,
+  next: next,
   getWarningMessage: () => getWarningMessage(nodeType, type),
   onMissingComponent: (message?: string) =>
     onMissingComponent(message ?? getWarningMessage(nodeType, type), {
@@ -65,6 +76,6 @@ setContext(props.node, {
 });
 ---
 
-<Primary {...props}>
+<Cmp {...props}>
   <slot />
-</Primary>
+</Cmp>

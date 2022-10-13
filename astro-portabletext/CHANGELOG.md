@@ -1,5 +1,14 @@
 # astro-portabletext
 
+## 0.6.1
+
+### Patch Changes
+
+- f10099f: Perf: Flushes `context` at end of `PortableText` render
+- ab96ddc: Fixes build failing.
+
+  - Cannot redefine property: `$key`
+
 ## 0.6.0
 
 ### Minor Changes

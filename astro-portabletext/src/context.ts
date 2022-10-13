@@ -1,5 +1,4 @@
 import type { Component } from "./internal";
-import type { MissingComponentHandler } from "./types";
 
 interface Context {
   next: () => Component;
@@ -7,14 +6,13 @@ interface Context {
   onMissingComponent: (message?: string) => void;
 }
 
-export const context = new Map<unknown, Context>();
+const context = new Map<unknown, Context>();
 
-export const setContext = (key: unknown, value: Context) => {
-  context.set(key, value);
-};
+export const setContext = context.set.bind(context);
 
 export const hasContext = context.has.bind(context);
 
-export const getContext = (node: unknown): Context => {
-  return context.get(node) ?? ({} as Context);
-};
+export const getContext = (node: unknown): Context =>
+  context.get(node) ?? ({} as Context);
+
+export const flushContext = context.clear.bind(context);

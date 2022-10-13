@@ -21,7 +21,6 @@ import type {
 } from "../lib/types";
 
 import type { NodeType } from "../lib/internal";
-
 import { isComponent, mergeComponents } from "../lib/internal";
 
 import { printWarning } from "../lib/warnings";
@@ -38,6 +37,7 @@ import UnknownList from "./UnknownList.astro";
 import UnknownListItem from "./UnknownListItem.astro";
 import UnknownMark from "./UnknownMark.astro";
 import UnknownType from "./UnknownType.astro";
+import { flushContext } from "../lib/context";
 
 export interface Props extends PortableTextProps {
   class?: astroHTML.JSX.HTMLAttributes["class"];
@@ -127,65 +127,72 @@ const asComponentProps = (
   class: astroClass,
 });
 
+const $ = (it: unknown) => {
+  flushContext();
+  return it;
+};
+
 const Br = isComponent(components["hardBreak"])
   ? components["hardBreak"]
   : HardBreak;
 ---
 
 {
-  nestLists(blocks, listNestingMode)
-    .map((node) => asComponentProps(node, 0, false))
-    .map(function renderNode(it) {
-      const { node, ...props } = it;
+  $(
+    nestLists(blocks, listNestingMode)
+      .map((node) => asComponentProps(node, 0, false))
+      .map(function renderNode(it) {
+        const { node, ...props } = it;
 
-      const nodeRendererProps = (nodeType: NodeType, type: string) => {
-        if ("block" === nodeType) {
-          it.node.style = type; // Ensure style is set
-        }
+        const nodeRendererProps = (nodeType: NodeType, type: string) => {
+          if ("block" === nodeType) {
+            node.style = type; // Ensure style is set
+          }
 
-        return {
-          nodeType,
-          type,
-          components,
-          componentProps: it,
-          onMissingComponent: missingComponentHandler,
+          return {
+            nodeType,
+            type,
+            components,
+            componentProps: it,
+            onMissingComponent: missingComponentHandler,
+          };
         };
-      };
 
-      return isPortableTextToolkitList(node) ? (
-        <NodeRenderer {...nodeRendererProps("list", node.listItem)}>
-          <Raw value={serializeChildren(node, false).map(renderNode)} />
-        </NodeRenderer>
-      ) : isPortableTextListItemBlock(node) ? (
-        <NodeRenderer {...nodeRendererProps("listItem", node.listItem)}>
-          <Raw
-            value={serializeMarksTree(node)
-              .map(renderNode)
-              .map((children) => {
-                if (node.style !== "normal") {
-                  const { listItem, ...blockNode } = node;
-                  children = renderNode(serializeNode(false)(blockNode, 0));
-                }
-                return children;
-              })}
-          />
-        </NodeRenderer>
-      ) : isPortableTextToolkitSpan(node) ? (
-        <NodeRenderer {...nodeRendererProps("mark", node.markType)}>
-          <Raw value={serializeChildren(node, true).map(renderNode)} />
-        </NodeRenderer>
-      ) : isPortableTextBlock(node) ? (
-        <NodeRenderer {...nodeRendererProps("block", node.style ?? "normal")}>
-          <Raw value={serializeMarksTree(node).map(renderNode)} />
-        </NodeRenderer>
-      ) : isPortableTextToolkitTextNode(node) ? (
-        "\n" === node.text && components["hardBreak"] ? (
-          <Br node={node} {...props} />
+        return isPortableTextToolkitList(node) ? (
+          <NodeRenderer {...nodeRendererProps("list", node.listItem)}>
+            <Raw value={serializeChildren(node, false).map(renderNode)} />
+          </NodeRenderer>
+        ) : isPortableTextListItemBlock(node) ? (
+          <NodeRenderer {...nodeRendererProps("listItem", node.listItem)}>
+            <Raw
+              value={serializeMarksTree(node)
+                .map(renderNode)
+                .map((children) => {
+                  if (node.style !== "normal") {
+                    const { listItem, ...blockNode } = node;
+                    children = renderNode(serializeNode(false)(blockNode, 0));
+                  }
+                  return children;
+                })}
+            />
+          </NodeRenderer>
+        ) : isPortableTextToolkitSpan(node) ? (
+          <NodeRenderer {...nodeRendererProps("mark", node.markType)}>
+            <Raw value={serializeChildren(node, true).map(renderNode)} />
+          </NodeRenderer>
+        ) : isPortableTextBlock(node) ? (
+          <NodeRenderer {...nodeRendererProps("block", node.style ?? "normal")}>
+            <Raw value={serializeMarksTree(node).map(renderNode)} />
+          </NodeRenderer>
+        ) : isPortableTextToolkitTextNode(node) ? (
+          "\n" === node.text && components["hardBreak"] ? (
+            <Br node={node} {...props} />
+          ) : (
+            <Fragment set:text={node.text} />
+          )
         ) : (
-          <Fragment set:text={node.text} />
-        )
-      ) : (
-        <NodeRenderer {...nodeRendererProps("type", node._type)} />
-      );
-    })
+          <NodeRenderer {...nodeRendererProps("type", node._type)} />
+        );
+      })
+  )
 }

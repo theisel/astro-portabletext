@@ -1,7 +1,4 @@
 {
-  "*": [
-    "pnpm exec prettier --ignore-unknown --write"
-  ],
   "*.{js,jsx,mjs,ts,tsx}": [
     "pnpm lint"
   ]

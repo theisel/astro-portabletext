@@ -13,9 +13,17 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
+  format:
+    name: Format
+    uses: ./.github/workflows/format.yml
+    secrets: inherit
+    with:
+      ref: ${{ github.head_ref || github.ref }}
+
   test:
     name: Test
     runs-on: ubuntu-latest
+    needs: [format]
 
     strategy:
       fail-fast: false
@@ -36,9 +44,6 @@ jobs:
 
       - name: Install Dependencies
         run: pnpm install
-
-      - name: Format
-        run: pnpm format
 
       - name: Run Test
         run: pnpm test:ci

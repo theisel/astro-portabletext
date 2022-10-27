@@ -1,0 +1,38 @@
+name: 'Format Code'
+
+on:
+  workflow_call:
+    inputs:
+      ref:
+        required: true
+        type: string
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.ref }}
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2.2.2
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Format code
+        run: pnpm format
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: ${{ inputs.ref }}
+          commit_message: '[ci] format'

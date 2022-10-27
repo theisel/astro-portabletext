@@ -4,7 +4,7 @@
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
-  "ignorePatterns": ["**/*.d.ts", ".github/*"],
+  "ignorePatterns": ["**/*.d.ts", ".github/*", "dist"],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "env": { "node": true }

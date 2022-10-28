@@ -6,9 +6,11 @@ export type Props = $<Block>;
 
 const props = Astro.props;
 const { node, index, isInline, ...attrs } = props;
-const { next } = usePortableText(node);
 const styleIs = (style: string) => style === node.style;
-const Next = next();
+
+const { getUnknownComponent } = usePortableText(node);
+
+const UnknownStyle = getUnknownComponent();
 ---
 
 {
@@ -29,6 +31,6 @@ const Next = next();
   ) : styleIs("normal") ? (
     <p {...attrs}><slot /></p>
   ) : (
-    <Next {...props}><slot /></Next>
+    <UnknownStyle {...props}><slot /></UnknownStyle>
   )
 }

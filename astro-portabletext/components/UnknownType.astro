@@ -5,10 +5,10 @@ import { usePortableText } from "../lib/utils";
 export type Props = ComponentProps;
 
 const { node, isInline } = Astro.props;
-const { onMissingComponent, getWarningMessage } = usePortableText(node);
+const { getWarningMessage, notifyMissingComponentHandler } = usePortableText(node);
 const warning = getWarningMessage();
 
-onMissingComponent(warning);
+notifyMissingComponentHandler(warning);
 ---
 
 {

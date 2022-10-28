@@ -5,9 +5,9 @@ import { usePortableText } from "../lib/utils";
 export type Props = $<Block>;
 
 const { node } = Astro.props;
-const { onMissingComponent } = usePortableText(node);
+const { notifyMissingComponentHandler } = usePortableText(node);
 
-onMissingComponent();
+notifyMissingComponentHandler();
 ---
 
 <p data-portabletext-unknown="block"><slot /></p>

@@ -10,4 +10,3 @@ pnpm-lock.yaml
 # Components
 astro-portabletext/components/Block.astro
 astro-portabletext/components/Mark.astro
-astro-portabletext/components/Raw.astro

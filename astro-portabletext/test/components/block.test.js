@@ -52,8 +52,16 @@ block("with style `h6`", async () => {
   assert.is($el.text(), "Heading L6");
 });
 
-block("handler", async () => {
-  const $ = await fetchContent("block/handler");
+block("custom-handler", async () => {
+  const $ = await fetchContent("block/custom-handler");
+  const $el = $("[data-portabletext-unknown]");
+
+  assert.is($el.length, 1);
+  assert.is($el.attr("data-portabletext-unknown"), "block");
+});
+
+block("default-handler", async () => {
+  const $ = await fetchContent("block/default-handler");
   const $el = $("[data-portabletext-unknown]");
 
   assert.is($el.length, 1);

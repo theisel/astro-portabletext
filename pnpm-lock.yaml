@@ -41,13 +41,13 @@ importers:
   astro-portabletext:
     specifiers:
       '@portabletext/toolkit': ^1.0.6
-      '@portabletext/types': ^1.0.3
+      '@portabletext/types': ^2.0.0
       cheerio: 1.0.0-rc.12
       tsm: ^2.2.2
       uvu: ^0.5.6
     dependencies:
       '@portabletext/toolkit': 1.0.6
-      '@portabletext/types': 1.0.3
+      '@portabletext/types': 2.0.0
     devDependencies:
       cheerio: 1.0.0-rc.12
       tsm: 2.2.2
@@ -1025,6 +1025,11 @@ packages:
   /@portabletext/types/1.0.3:
     resolution: {integrity: sha512-SDDsdury2SaTI2D5Ea6o+Y39SSZMYHRMWJHxkxYl3yzFP0n/0EknOhoXcoaV+bxGr2dTTqZi2TOEj+uWYuavSw==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dev: false
+
+  /@portabletext/types/2.0.0:
+    resolution: {integrity: sha512-AjbCPt9x9U0XFwLuVnIxweBrDAlKKcPJRVkpckjMk77VKEQoYvX2dITf5QtQf1TlLIx8zHJFtMcLmiqDJiGuLg==}
+    engines: {node: ^14.13.1 || >=16.0.0 || >=18.0.0}
     dev: false
 
   /@proload/core/0.3.3:

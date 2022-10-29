@@ -6,6 +6,7 @@
     "demo": "0.0.1"
   },
   "changesets": [
-    "giant-mugs-look"
+    "giant-mugs-look",
+    "wise-wasps-explain"
   ]
 }

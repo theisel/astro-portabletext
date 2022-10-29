@@ -1,5 +1,11 @@
 # astro-portabletext
 
+## 0.7.0-next.1
+
+### Minor Changes
+
+- aa3201a: Updated dependency `@portabletext/types` from v1 to v2
+
 ## 0.7.0-next.0
 
 ### Minor Changes

@@ -20,7 +20,7 @@ npm install astro-portabletext
 
 ## Documentation
 
-`How` and `examples` can be found [here](astro-portabletext/README.md "astro-portabletext documentation").
+`How to` and `examples` can be found [here](astro-portabletext/README.md "astro-portabletext documentation").
 
 ## License
 

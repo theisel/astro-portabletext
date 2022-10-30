@@ -6,6 +6,7 @@
     "demo": "0.0.1"
   },
   "changesets": [
+    "eighty-parrots-walk",
     "giant-mugs-look",
     "shy-donkeys-judge",
     "wise-wasps-explain"

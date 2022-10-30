@@ -4,6 +4,13 @@ import { fetchContent } from "../utils.mjs";
 
 const list = suite("list");
 
+list("menu", async () => {
+  const $ = await fetchContent("list/menu");
+  const $el = $("menu");
+
+  assert.is($el.length, 1);
+});
+
 list("ol", async () => {
   const $ = await fetchContent("list/ordered");
   const $el = $("ol");

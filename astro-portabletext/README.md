@@ -69,6 +69,7 @@ import { PortableText } from "astro-portabletext";
   list: {
     bullet: /* <ul {...attrs}><slot /></ul> */,
     number: /* <ol {...attrs}><slot /></ol> */,
+    menu: /* <menu {...attrs}><slot /></menu> */,
   },
   listItem: {
     bullet: /* <li {...attrs}><slot /></li> */,

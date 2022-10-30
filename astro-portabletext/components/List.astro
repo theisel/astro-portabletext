@@ -8,7 +8,11 @@ const listItemIs = (listItem: string) => listItem === node.listItem;
 ---
 
 {
-  listItemIs("number") ? (
+  listItemIs("menu") ? (
+    <menu {...attrs}>
+      <slot />
+    </menu>
+  ) : listItemIs("number") ? (
     <ol {...attrs}>
       <slot />
     </ol>

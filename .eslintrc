@@ -7,5 +7,6 @@
   "ignorePatterns": ["**/*.d.ts", ".github/*", "dist"],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
-  "env": { "node": true }
+  "env": { "node": true },
+  "globals": { "globalThis": true }
 }

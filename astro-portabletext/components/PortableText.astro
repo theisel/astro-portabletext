@@ -24,7 +24,9 @@ import type { Component } from "../lib/internal";
 import { isComponent, mergeComponents } from "../lib/internal";
 
 import { getWarningMessage, printWarning } from "../lib/warnings";
-import context, { key as nodeTypeRef } from "../lib/context";
+
+import type { Context } from "../lib/context";
+import { key as contextRef } from "../lib/context";
 
 import Block from "./Block.astro";
 import HardBreak from "./HardBreak.astro";
@@ -133,8 +135,6 @@ const provideComponent = (nodeType: keyof typeof components, type: string) => {
     : components[nodeType][type as keyof typeof component];
 };
 
-const use = <T, R>(it: T, fn: (it: T) => R) => fn(it);
-
 const prepareForRender = (props: ComponentProps) => {
   const { node } = props;
 
@@ -147,7 +147,7 @@ const prepareForRender = (props: ComponentProps) => {
     component,
     children
   ) => {
-    Object.defineProperty(props.node, nodeTypeRef, {
+    Object.defineProperty(props.node, contextRef, {
       value: nodeSpec,
     });
 
@@ -155,88 +155,87 @@ const prepareForRender = (props: ComponentProps) => {
   };
 
   return isPortableTextToolkitList(node)
-    ? use(
-        { nodeType: "list" as keyof typeof components, type: node.listItem },
-        (spec) => {
-          return $(
-            spec,
-            provideComponent(spec.nodeType, spec.type) ??
-              components.unknownList,
-            serializeChildren(node, false)
-          );
-        }
-      )
+    ? ((spec) =>
+        $(
+          spec,
+          provideComponent(spec.nodeType, spec.type) ?? components.unknownList,
+          serializeChildren(node, false)
+        ))({ nodeType: "list" as keyof typeof components, type: node.listItem })
     : isPortableTextListItemBlock(node)
-    ? use(
-        {
-          nodeType: "listItem" as keyof typeof components,
-          type: node.listItem,
-        },
-        (spec) => {
-          return $(
-            spec,
-            provideComponent(spec.nodeType, spec.type) ??
-              components.unknownListItem,
-            serializeMarksTree(node).map((children) => {
-              if (node.style !== "normal") {
-                const { listItem, ...blockNode } = node;
-                children = serializeNode(false)(blockNode, 0);
-              }
-              return children;
-            })
-          );
-        }
-      )
+    ? ((spec) =>
+        $(
+          spec,
+          provideComponent(spec.nodeType, spec.type) ??
+            components.unknownListItem,
+          serializeMarksTree(node).map((children) => {
+            if (node.style !== "normal") {
+              const { listItem, ...blockNode } = node;
+              children = serializeNode(false)(blockNode, 0);
+            }
+            return children;
+          })
+        ))({
+        nodeType: "listItem" as keyof typeof components,
+        type: node.listItem,
+      })
     : isPortableTextToolkitSpan(node)
-    ? use(
-        { nodeType: "mark" as keyof typeof components, type: node.markType },
-        (spec) => {
-          return $(
-            spec,
-            provideComponent(spec.nodeType, spec.type) ??
-              components.unknownMark,
-            serializeChildren(node, true)
-          );
-        }
-      )
+    ? ((spec) =>
+        $(
+          spec,
+          provideComponent(spec.nodeType, spec.type) ?? components.unknownMark,
+          serializeChildren(node, true)
+        ))({ nodeType: "mark" as keyof typeof components, type: node.markType })
     : isPortableTextBlock(node)
-    ? use(
-        {
-          nodeType: "block" as keyof typeof components,
-          type: node.style ?? "normal",
-        },
-        (spec) => {
-          props.node = { style: spec.type, ...node };
+    ? ((spec) => {
+        props.node = { style: spec.type, ...node };
 
-          return $(
-            spec,
-            provideComponent(spec.nodeType, spec.type) ??
-              components.unknownBlock,
-            serializeMarksTree(node)
-          );
-        }
-      )
+        return $(
+          spec,
+          provideComponent(spec.nodeType, spec.type) ?? components.unknownBlock,
+          serializeMarksTree(node)
+        );
+      })({
+        nodeType: "block" as keyof typeof components,
+        type: node.style ?? "normal",
+      })
     : isPortableTextToolkitTextNode(node)
-    ? $(
-        { nodeType: "text", type: null },
-        "\n" === node.text && isComponent(components.hardBreak)
-          ? components.hardBreak
-          : node.text
-      )
-    : use(
-        { nodeType: "type" as keyof typeof components, type: node._type },
-        (spec) => {
-          return $(
-            spec,
-            provideComponent(spec.nodeType, spec.type) ?? components.unknownType
-          );
-        }
-      );
+    ? ((spec) =>
+        $(
+          spec,
+          "\n" === node.text && isComponent(components.hardBreak)
+            ? components.hardBreak
+            : node.text
+        ))({ nodeType: "text", type: null })
+    : ((spec) =>
+        $(
+          spec,
+          provideComponent(spec.nodeType, spec.type) ?? components.unknownType
+        ))({ nodeType: "type" as keyof typeof components, type: node._type });
+};
+
+(globalThis as any)[contextRef] = (node: TypedObject): Context => {
+  const notifyMissingComponentHandler = (message?: string) => {
+    provideMissingComponentHandler(
+      message ?? provideWarningMessage(node),
+      (node as any)[contextRef]
+    );
+  };
+
+  return {
+    getDefaultComponent: provideDefaultComponent.bind(null, node),
+    getUnknownComponent: provideUnknownComponent.bind(null, node),
+    getWarningMessage: provideWarningMessage.bind(null, node),
+    notifyMissingComponentHandler: notifyMissingComponentHandler,
+    /** @deprecated Use `getDefaultComponent` */
+    next: () => provideDefaultComponent(node),
+    /** @deprecated Use `notifyMissingComponentHandler` */
+    onMissingComponent: notifyMissingComponentHandler,
+  };
 };
 
 // Set `provideDefaultComponent` on context
-context.provideDefaultComponent = (node: TypedObject): any => {
-  const { nodeType } = (node as any)[nodeTypeRef];
+const provideDefaultComponent = (node: TypedObject): any => {
+  const { nodeType } = (node as any)[contextRef];
 
   return nodeType === "list" || isPortableTextToolkitList(node)
     ? List
@@ -255,8 +254,8 @@ context.provideDefaultComponent = (node: TypedObject): any => {
 };
 
 // Set `provideUnknownComponent` on context
-context.provideUnknownComponent = (node: TypedObject) => {
-  const { nodeType } = (node as any)[nodeTypeRef];
+const provideUnknownComponent = (node: TypedObject) => {
+  const { nodeType } = (node as any)[contextRef];
 
   return (
     nodeType === "list" || isPortableTextToolkitList(node)
@@ -278,14 +277,14 @@ context.provideUnknownComponent = (node: TypedObject) => {
 };
 
 // Set `provideWarningMessage` on context
-context.provideWarningMessage = (node: TypedObject) => {
-  const { nodeType, type } = (node as any)[nodeTypeRef];
+const provideWarningMessage = (node: TypedObject) => {
+  const { nodeType, type } = (node as any)[contextRef];
 
   return getWarningMessage(nodeType, type);
 };
 
 // Set `missingComponentHandler` on context
-context.provideMissingComponentHandler = missingComponentHandler;
+const provideMissingComponentHandler = missingComponentHandler;
 
 // Using a generator to avoid creating a new array
 function* renderBlocks() {

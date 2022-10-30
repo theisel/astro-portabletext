@@ -1,5 +1,13 @@
 # astro-portabletext
 
+## 0.7.0-next.2
+
+### Patch Changes
+
+- 67cdf4c: Fixes "Cannot redefine property: Symbol(astro-portabletext)" error
+
+  Astro in `dev` mode caused an issue on refresh
+
 ## 0.7.0-next.1
 
 ### Minor Changes

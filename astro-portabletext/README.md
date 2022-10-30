@@ -4,8 +4,10 @@
 
 # astro-portabletext
 
-![license](https://img.shields.io/npm/l/astro-portabletext?style=flat-square)
 [![npm](https://img.shields.io/npm/v/astro-portabletext?style=flat-square)](https://www.npmjs.com/package/astro-portabletext)
+[![prerelease](https://img.shields.io/npm/v/astro-portabletext/next?style=flat-square&colour-blue)](https://www.npmjs.com/package/astro-portabletext)
+
+![license](https://img.shields.io/npm/l/astro-portabletext?style=flat-square)
 
 Render [Portable Text](https://portabletext.org/) with [Astro](https://astro.build/).
 

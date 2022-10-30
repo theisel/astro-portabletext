@@ -4,9 +4,11 @@
 
 # astro-portabletext
 
+[![npm](https://img.shields.io/npm/v/astro-portabletext?style=flat-square)](https://www.npmjs.com/package/astro-portabletext)
+[![prerelease](https://img.shields.io/npm/v/astro-portabletext/next?style=flat-square&colour-blue)](https://www.npmjs.com/package/astro-portabletext)
+
 ![license](https://img.shields.io/npm/l/astro-portabletext?style=flat-square)
 [![build](https://img.shields.io/github/workflow/status/theisel/astro-portabletext/CI?style=flat-square)](https://github.com/theisel/astro-portabletext/actions)
-[![npm](https://img.shields.io/npm/v/astro-portabletext?style=flat-square)](https://www.npmjs.com/package/astro-portabletext)
 
 Render [Portable Text](https://portabletext.org/) with [Astro](https://astro.build/).
 

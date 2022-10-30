@@ -147,9 +147,8 @@ const prepareForRender = (props: ComponentProps) => {
     component,
     children
   ) => {
-    Object.defineProperty(props.node, contextRef, {
-      value: nodeSpec,
-    });
+    // Attach `contextRef` to node
+    props.node = { ...props.node, [contextRef]: nodeSpec };
 
     return [component, children ?? []];
   };

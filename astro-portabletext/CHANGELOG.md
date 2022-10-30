@@ -1,5 +1,11 @@
 # astro-portabletext
 
+## 0.7.0-next.3
+
+### Patch Changes
+
+- c9547e1: Feat: Added [`<menu>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu) to `components` props `list` type
+
 ## 0.7.0-next.2
 
 ### Patch Changes

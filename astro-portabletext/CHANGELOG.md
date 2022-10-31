@@ -1,5 +1,39 @@
 # astro-portabletext
 
+## 0.7.0
+
+### Minor Changes
+
+- 9ba2709: Feat: `usePortableText(node)` utility function returns new properties and some have been deprecated.
+
+  Refer to the `utils docs` for usage.
+
+  **Added**
+
+  | Property                      | Type       | Description                                                                                                                      |
+  | :---------------------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------------- |
+  | getDefaultComponent           | `function` | Returns the `default` component related to the passed in `node`. Use this when you need to fall back to the `default` component. |
+  | getUnknownComponent           | `function` | Returns the counterpart `unknown(Block\|List\|ListItem\|Mark\|Type)` component related to the passed in `node`.                  |
+  | notifyMissingComponentHandler | `function` | Calls `onMissingComponent` handler. Pass in a `string` to override `default` message.                                            |
+
+  **Deprecated**
+
+  | Property           | Type       | Description                         |
+  | :----------------- | :--------- | :---------------------------------- |
+  | next               | `function` | Use `getDefaultComponent`           |
+  | onMissingComponent | `function` | Use `notifyMissingComponentHandler` |
+
+- aa3201a: Updated dependency `@portabletext/types` from v1 to v2
+
+### Patch Changes
+
+- c9547e1: Feat: Added [`<menu>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu) to `components` props `list` type
+- 67cdf4c: Fixes "Cannot redefine property: Symbol(astro-portabletext)" error
+
+  Astro in `dev` mode caused an issue on refresh
+
+- 4f194e6: Fixes missing `components.listItem.menu` default component
+
 ## 0.7.0-next.4
 
 ### Patch Changes

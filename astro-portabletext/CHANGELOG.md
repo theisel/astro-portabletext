@@ -1,5 +1,11 @@
 # astro-portabletext
 
+## 0.7.0-next.4
+
+### Patch Changes
+
+- 4f194e6: Fixes missing `components.listItem.menu` default component
+
 ## 0.7.0-next.3
 
 ### Patch Changes

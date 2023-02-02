@@ -1,0 +1,11 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "astro-portabletext": "0.7.0",
+    "demo": "0.0.1"
+  },
+  "changesets": [
+    "pink-trainers-warn"
+  ]
+}

@@ -59,12 +59,12 @@
     "test": "pnpm test:ci"
   },
   "dependencies": {
-    "@portabletext/toolkit": "^1.0.6",
-    "@portabletext/types": "^2.0.0"
+    "@portabletext/toolkit": "^2.0.1",
+    "@portabletext/types": "^2.0.2"
   },
   "devDependencies": {
     "cheerio": "1.0.0-rc.12",
-    "tsm": "^2.2.2",
+    "tsm": "^2.3.0",
     "uvu": "^0.5.6"
   }
 }

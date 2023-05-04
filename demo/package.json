@@ -10,11 +10,11 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/solid-js": "^2.0.1",
-    "@astrojs/svelte": "^2.0.1",
+    "@astrojs/solid-js": "^2.1.1",
+    "@astrojs/svelte": "^2.1.1",
     "astro-portabletext": "workspace:*",
-    "solid-js": "^1.6.10",
-    "svelte": "^3.55.1"
+    "solid-js": "^1.7.4",
+    "svelte": "^3.58.0"
   },
   "pnpm": {
     "peerDependencyRules": {

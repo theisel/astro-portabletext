@@ -7,13 +7,13 @@ export type Props = ComponentProps;
 
 const props = Astro.props;
 const typeIs = (type: string) => type === props.node._type;
-const { provideUnhandledTypeComponent } = usePortableText(props.node);
+const { getDefaultComponent } = usePortableText(props.node);
 
 const Cmp = typeIs("jsxCounter")
   ? JsxCounter
   : typeIs("svelteCounter")
   ? SvelteCounter
-  : provideUnhandledTypeComponent();
+  : getDefaultComponent();
 ---
 
 <Cmp {...props} />

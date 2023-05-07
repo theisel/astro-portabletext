@@ -1,5 +1,11 @@
 # astro-portabletext
 
+## 0.8.1
+
+### Patch Changes
+
+- e49f2ab: Added `PortableTextBlock` type to `PortableTextProps<Value>` parameter
+
 ## 0.8.0
 
 ### Minor Changes

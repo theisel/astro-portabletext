@@ -25,7 +25,7 @@ export type { TypedObject } from "@portabletext/types";
  * @template Value Portable Text payload
  */
 export interface PortableTextProps<
-  Value extends TypedObject = ArbitraryTypedObject
+  Value extends TypedObject = PortableTextBlock | ArbitraryTypedObject
 > {
   /**
    * Portable Text blocks

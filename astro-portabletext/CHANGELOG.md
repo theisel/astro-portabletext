@@ -1,5 +1,22 @@
 # astro-portabletext
 
+## 0.9.0-next.0
+
+### Minor Changes
+
+- 1eb192e: **BREAKING**
+
+  **astro-portabletext/utils**
+
+  - `usePortableText(node)`
+    - Removed: `getWarningMessage` function
+      - Meant for internal use
+    - Removed: `notifyMissingComponentHandler` function
+      - This is handled for you and has no purpose
+    - Removed: _deprecated_ `next` function
+      - Use `getDefaultComponent`
+    - Removed: _deprecated_ `onMissingComponent` function
+
 ## 0.8.1
 
 ### Patch Changes

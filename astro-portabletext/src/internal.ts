@@ -1,4 +1,4 @@
-import type { Props, SomePortableTextComponents } from "./types";
+import type { Props, SomePortableTextComponents, TypedObject } from "./types";
 
 /**
  * Helper for component to throw an error
@@ -34,13 +34,10 @@ export function mergeComponents<
       : (Overrides & Components)[Key];
   }
 >(components: Components, overrides: Overrides) {
-  const cmps = { ...components } as unknown as Record<
-    string,
-    ComponentOrRecord
-  >;
+  const cmps = { ...components } as Record<string, ComponentOrRecord>;
 
   for (const [key, override] of Object.entries(overrides)) {
-    const current = components[key as keyof Components];
+    const current = components[key as keyof typeof components];
 
     const value =
       !current || isComponent(override) || isComponent(current)
@@ -50,10 +47,10 @@ export function mergeComponents<
             ...override,
           };
 
-    (cmps[key] as typeof value) = value;
+    cmps[key] = value;
   }
 
-  return cmps as unknown as MergedComponents;
+  return cmps as MergedComponents;
 }
 
 /**
@@ -61,15 +58,16 @@ export function mergeComponents<
  * @internal
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type Component<P extends Props = Props> = (props: P) => any;
+export type Component<T extends TypedObject = any> = (props: Props<T>) => any;
 
 /**
  * For internal use
  * @internal
  */
-export type ComponentOrRecord<P extends Props = Props> =
-  | Component<P>
-  | Record<string, Component<P>>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ComponentOrRecord<T extends TypedObject = any> =
+  | Component<T>
+  | Record<string, Component<T>>;
 
 /**
  * @internal

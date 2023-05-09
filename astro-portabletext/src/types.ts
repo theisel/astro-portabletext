@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import type {
   ToolkitListNestMode,
   ToolkitNestedPortableTextSpan,
@@ -66,39 +65,39 @@ export interface PortableTextComponents {
   /**
    * How blocks should be rendered
    */
-  block: ComponentOrRecord<Props<Block>>;
+  block: ComponentOrRecord<Block>;
   /**
    * Used when a `block` handler isn't found
    */
-  unknownBlock: Component<Props<Block>>;
+  unknownBlock: Component<Block>;
   /**
    * How lists should be rendered
    */
-  list: ComponentOrRecord<Props<List>>;
+  list: ComponentOrRecord<List>;
   /**
    * Used when a `list` handler isn't found
    */
-  unknownList: Component<Props<List>>;
+  unknownList: Component<List>;
   /**
    * How list items should be rendered
    */
-  listItem: ComponentOrRecord<Props<ListItem>>;
+  listItem: ComponentOrRecord<ListItem>;
   /**
    * Used when a `listItem` handler isn't found
    */
-  unknownListItem: Component<Props<ListItem>>;
+  unknownListItem: Component<ListItem>;
   /**
    * How marked text should be rendered
    */
-  mark: ComponentOrRecord<Props<Mark>>;
+  mark: ComponentOrRecord<Mark<any>>;
   /**
    * Used when a `mark` handler isn't found
    */
-  unknownMark: Component<Props<Mark>>;
+  unknownMark: Component<Mark<any>>;
   /**
    * How line breaks should be rendered
    */
-  hardBreak: Component<Props<TextNode>>;
+  hardBreak: Component<TextNode>;
 }
 
 /**
@@ -170,16 +169,14 @@ export type ListItem = ToolkitPortableTextListItem;
  * @template MarkDef Object defining what the `markDef` property will receive
  *
  * @example
- * import type { Mark, Props } from "astro-portabletext/types";
- * type Greet = Mark<{ msg: string }>;
- * const props = Astro.props as Props<Greet>;
+ * import type { Mark, Props as $ } from "astro-portabletext/types";
+ *
+ * export type Props = $<Mark<{ msg: string }>>;
  */
 export interface Mark<
   MarkDef extends Record<string, any> | undefined = undefined
 > extends ToolkitNestedPortableTextSpan {
-  markDef: MarkDef extends Record<string, any>
-    ? MarkDef & PortableTextMarkDefinition
-    : undefined;
+  markDef: MarkDef & PortableTextMarkDefinition;
   markKey: string;
 }
 

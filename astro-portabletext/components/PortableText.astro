@@ -122,7 +122,7 @@ const asComponentProps = (
   node: TypedObject,
   index: number,
   isInline: boolean
-): ComponentProps => ({
+): ComponentProps<typeof node> => ({
   node,
   index,
   isInline,

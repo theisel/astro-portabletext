@@ -1,0 +1,9 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "astro-portabletext": "0.8.1",
+    "demo": "0.0.1"
+  },
+  "changesets": []
+}

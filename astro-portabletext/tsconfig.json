@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "outDir": "lib",
-    "importsNotUsedAsValues": "error",
     "isolatedModules": true,
     "declaration": true,
     "target": "ESNext",
@@ -9,9 +8,7 @@
     "moduleResolution": "Node",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    // Option 'importsNotUsedAsValues' is deprecated and will stop functioning in TypeScript 5.5.
-    // Specify compilerOption '"ignoreDeprecations": "5.0"' to silence this error.
-    "ignoreDeprecations": "5.0"
+    "verbatimModuleSyntax": true
   },
   "include": ["src"]
 }

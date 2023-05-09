@@ -1,10 +1,14 @@
 [**`astro-portabletext`**](../README.md) > [**`docs`**](README.md)
 
+&nbsp;
+
 # Utils
 
 ```ts
 import {/* select utility function */} "astro-portabletext/utils";
 ```
+
+&nbsp;
 
 ## usePortableText
 
@@ -18,13 +22,12 @@ Should only be used within a custom `block|list|listItem|mark|type` handler.
 
 &#9656; **Returns `object`**
 
-| Property                        | Type                         | Description                                                                                                                      |
-| :------------------------------ | :--------------------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-| getDefaultComponent             | `() => Component`            | Returns the `default` component related to the passed in `node`. Use this when you need to fall back to the `default` component. |
-| getUnknownComponent             | `() => Component`            | Returns the counterpart `unknown(Block\|List\|ListItem\|Mark\|Type)` component related to the passed in `node`.                  |
-| notifyMissingComponentHandler   | `(message?: string) => void` | Calls `onMissingComponent` handler. Pass in a `string` to override `default` message.                                            |
-| next `deprecated`               | `() => Component`            | Use `getDefaultComponent`                                                                                                        |
-| onMissingComponent `deprecated` | `(message?: string) => void` | Use `notifyMissingComponentHandler`                                                                                              |
+| Property            | Type              | Description                                                                                                                      |
+| :------------------ | :---------------- | :------------------------------------------------------------------------------------------------------------------------------- |
+| getDefaultComponent | `() => Component` | Returns the `default` component related to the passed in `node`. Use this when you need to fall back to the `default` component. |
+| getUnknownComponent | `() => Component` | Returns the counterpart `unknown(Block\|List\|ListItem\|Mark\|Type)` component related to the passed in `node`.                  |
+
+&nbsp;
 
 ## toPlainText
 
@@ -35,6 +38,8 @@ Should only be used within a custom `block|list|listItem|mark|type` handler.
 | blocks | `array` \| `object` | Portable Text payload |
 
 See [https://portabletext.github.io/toolkit/modules.html#toPlainText](https://portabletext.github.io/toolkit/modules.html#toPlainText) for details.
+
+&nbsp;
 
 ## mergeComponents
 

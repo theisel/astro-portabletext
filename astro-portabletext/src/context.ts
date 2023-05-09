@@ -4,12 +4,6 @@ import type { Component } from "./internal";
 export interface Context {
   getDefaultComponent: () => Component;
   getUnknownComponent: () => Component;
-  getWarningMessage: () => string;
-  notifyMissingComponentHandler: (message?: string) => void;
-  /** @deprecated Use `getDefaultComponent` */
-  next: () => Component;
-  /** @deprecated Use `notifyMissingComponentHandler` */
-  onMissingComponent: (message?: string) => void;
 }
 
 export const key = Symbol("astro-portabletext");

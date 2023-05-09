@@ -26,7 +26,7 @@ testMergeComponents("should merge components", () => {
   assert.equal(c, { block: { h1: a.block.h1, h2: b.block.h2 } });
 });
 
-testMergeComponents("should override components", () => {
+testMergeComponents("`block` should be a function", () => {
   const a = {
     block: {
       h1: () => null,
@@ -41,6 +41,23 @@ testMergeComponents("should override components", () => {
   const c = mergeComponents(a, b);
 
   assert.equal(c, { block: b.block });
+});
+
+testMergeComponents("`block` should be a plain object", () => {
+  const a = {
+    block: () => null,
+  };
+
+  const b = {
+    block: {
+      h1: () => null,
+      h2: () => null,
+    },
+  };
+
+  const c = mergeComponents(a, b);
+
+  assert.equal(c, { block: { h1: b.block.h1, h2: b.block.h2 } });
 });
 
 testMergeComponents("should extend components", () => {

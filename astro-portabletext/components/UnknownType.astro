@@ -1,15 +1,11 @@
 ---
 import type { Props as ComponentProps } from "../lib/types";
-import { usePortableText } from "../lib/utils";
+import { getWarningMessage } from "../lib/warnings";
 
 export type Props = ComponentProps;
 
 const { node, isInline } = Astro.props;
-const { getWarningMessage, notifyMissingComponentHandler } =
-  usePortableText(node);
-const warning = getWarningMessage();
-
-notifyMissingComponentHandler(warning);
+const warning = getWarningMessage("type", node._type);
 ---
 
 {

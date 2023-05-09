@@ -1,13 +1,7 @@
 ---
 import type { Block, Props as $ } from "../lib/types";
-import { usePortableText } from "../lib/utils";
 
 export type Props = $<Block>;
-
-const { node } = Astro.props;
-const { notifyMissingComponentHandler } = usePortableText(node);
-
-notifyMissingComponentHandler();
 ---
 
 <p data-portabletext-unknown="block"><slot /></p>

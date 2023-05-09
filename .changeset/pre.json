@@ -5,5 +5,7 @@
     "astro-portabletext": "0.8.1",
     "demo": "0.0.1"
   },
-  "changesets": []
+  "changesets": [
+    "lemon-lies-visit"
+  ]
 }

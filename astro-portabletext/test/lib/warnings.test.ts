@@ -6,7 +6,7 @@ import {
   unknownListWarning,
   unknownListItemWarning,
   unknownBlockWarning,
-} from "../../src/warnings";
+} from "../../lib/warnings";
 
 test("unknownTypeWarning", () => {
   assert.is(

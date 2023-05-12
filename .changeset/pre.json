@@ -6,6 +6,7 @@
     "demo": "0.0.1"
   },
   "changesets": [
-    "lemon-lies-visit"
+    "lemon-lies-visit",
+    "thin-eagles-study"
   ]
 }

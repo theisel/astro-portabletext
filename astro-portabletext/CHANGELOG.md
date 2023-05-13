@@ -1,5 +1,13 @@
 # astro-portabletext
 
+## 0.9.0-next.1
+
+### Patch Changes
+
+- 343552e: Removed compiling step for package release:
+
+  - Pre-compiling isn't necessary as Astro handles Typescript for us
+
 ## 0.9.0-next.0
 
 ### Minor Changes

@@ -1,3 +1,4 @@
+/// <reference types="astro/client" />
 declare module "*.astro" {
   type Props = any;
   const Component: (props: Props) => any;

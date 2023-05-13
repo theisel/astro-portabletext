@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- c643b8c: Fixes _"Package subpath 'undefined' is not defined by "exports""_
+- c643b8c: Fixes `exports` field
 
 ## 0.9.0-next.1
 

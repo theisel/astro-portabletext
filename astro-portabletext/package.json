@@ -12,7 +12,12 @@
     "ui"
   ],
   "license": "ISC",
-  "exports": "./lib/index.ts",
+  "exports": {
+    ".": "./lib/index.ts",
+    "./components": "./lib/components.ts",
+    "./types": "./lib/types.ts",
+    "./utils": "./lib/utils.ts"
+  },
   "typesVersions": {
     "*": {
       "*": [

@@ -1,5 +1,11 @@
 # astro-portabletext
 
+## 0.9.0-next.2
+
+### Patch Changes
+
+- c643b8c: Fixes _"Package subpath 'undefined' is not defined by "exports""_
+
 ## 0.9.0-next.1
 
 ### Patch Changes

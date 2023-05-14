@@ -103,8 +103,6 @@ const missingComponentHandler = ((
   return !handler ? noop : printWarning;
 })(onMissingComponent);
 
-const blocks = Array.isArray(value) ? value : [value];
-
 const serializeNode =
   (isInline: boolean) =>
   (node: TypedObject, index: number = 0) =>
@@ -197,7 +195,7 @@ const prepareForRender = (
   };
 };
 
-// Set `provideDefaultComponent` on context
+// Returns the `default` component related to the passed in node
 const provideDefaultComponent = (node: TypedObject) => {
   return isPortableTextToolkitList(node)
     ? List
@@ -212,7 +210,7 @@ const provideDefaultComponent = (node: TypedObject) => {
     : UnknownType;
 };
 
-// Set `provideUnknownComponent` on context
+// Returns the `unknown` component related to the passed in node
 const provideUnknownComponent = (node: TypedObject) => {
   return isPortableTextToolkitList(node)
     ? components.unknownList
@@ -230,6 +228,9 @@ const provideUnknownComponent = (node: TypedObject) => {
         );
       })();
 };
+
+// Make sure we have an array of blocks
+const blocks = Array.isArray(value) ? value : [value];
 
 // Using a generator to avoid creating a new array
 function* renderBlocks() {

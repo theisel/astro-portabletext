@@ -1,5 +1,12 @@
 # astro-portabletext
 
+## 0.9.0-next.3
+
+### Minor Changes
+
+- 2904f5c: BREAKING CHANGE
+  - `Props` type requires a `TypedObject` to be passed in and no longer defaults to `ArbitraryTypedObject`
+
 ## 0.9.0-next.2
 
 ### Patch Changes

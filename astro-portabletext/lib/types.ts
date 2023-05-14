@@ -110,7 +110,7 @@ export type SomePortableTextComponents = Partial<PortableTextComponents>;
  *
  * @template N Type of Portable Text payload that this component will receive on its `node` property
  */
-export interface Props<N extends TypedObject = ArbitraryTypedObject> {
+export interface Props<N extends TypedObject> {
   /**
    * Portable Text node
    */

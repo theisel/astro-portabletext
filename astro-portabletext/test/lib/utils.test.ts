@@ -1,6 +1,6 @@
 import { suite } from "uvu";
 import * as assert from "uvu/assert";
-import { mergeComponents } from "../../src/utils";
+import { mergeComponents } from "../../lib/utils";
 
 // ----------------------------------------------------------------------------
 // Test `mergeComponents`

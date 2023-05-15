@@ -1,5 +1,26 @@
 # astro-portabletext
 
+## 0.9.0-next.3
+
+### Minor Changes
+
+- 2904f5c: BREAKING CHANGE
+  - `Props` type requires a `TypedObject` to be passed in and no longer defaults to `ArbitraryTypedObject`
+
+## 0.9.0-next.2
+
+### Patch Changes
+
+- c643b8c: Fixes `exports` field
+
+## 0.9.0-next.1
+
+### Patch Changes
+
+- 343552e: Removed compiling step for package release:
+
+  - Pre-compiling isn't necessary as Astro handles Typescript for us
+
 ## 0.9.0-next.0
 
 ### Minor Changes

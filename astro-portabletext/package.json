@@ -1,6 +1,6 @@
 {
   "name": "astro-portabletext",
-  "version": "0.9.0-next.0",
+  "version": "0.9.0-next.3",
   "type": "module",
   "description": "Render Portable Text with Astro",
   "keywords": [
@@ -12,35 +12,16 @@
     "ui"
   ],
   "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/theisel/astro-portabletext.git",
-    "directory": "astro-portabletext"
-  },
-  "bugs": {
-    "url": "https://github.com/theisel/astro-portabletext/issues"
-  },
-  "homepage": "https://github.com/theisel/astro-portabletext#readme",
-  "main": "./lib/index.js",
   "exports": {
-    ".": "./lib/index.js",
-    "./components": "./lib/components.js",
-    "./types": "./lib/types.js",
-    "./utils": "./lib/utils.js"
+    ".": "./lib/index.ts",
+    "./components": "./lib/components.ts",
+    "./types": "./lib/types.ts",
+    "./utils": "./lib/utils.ts"
   },
   "typesVersions": {
     "*": {
-      ".": [
-        "lib/index.d.ts"
-      ],
-      "components": [
-        "lib/components.d.ts"
-      ],
-      "types": [
-        "lib/types.d.ts"
-      ],
-      "utils": [
-        "lib/utils.d.ts"
+      "*": [
+        "lib/*"
       ]
     }
   },
@@ -48,11 +29,18 @@
     "components",
     "lib"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theisel/astro-portabletext.git",
+    "directory": "astro-portabletext"
+  },
+  "bugs": {
+    "url": "https://github.com/theisel/astro-portabletext/issues"
+  },
+  "homepage": "https://github.com/theisel/astro-portabletext#readme",
   "scripts": {
     "build:fixture": "astro --root test/components/fixture/ build --silent",
     "check": "astro check --root components",
-    "compile": "tsc",
-    "prepublishOnly": "pnpm compile",
     "test:component": "pnpm build:fixture && pnpm exec uvu test/components .test.js",
     "test:lib": "pnpm exec uvu -r tsm test/lib ",
     "test:ci": "./scripts/ci.sh",

@@ -1,14 +1,9 @@
 {
+  "extends": "astro/tsconfigs/base",
   "compilerOptions": {
-    "outDir": "lib",
-    "isolatedModules": true,
-    "declaration": true,
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "verbatimModuleSyntax": true
   },
-  "include": ["src"]
+  "include": ["lib"]
 }

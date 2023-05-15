@@ -110,7 +110,7 @@ export type SomePortableTextComponents = Partial<PortableTextComponents>;
  *
  * @template N Type of Portable Text payload that this component will receive on its `node` property
  */
-export interface Props<N extends TypedObject = ArbitraryTypedObject> {
+export interface Props<N extends TypedObject> {
   /**
    * Portable Text node
    */
@@ -149,8 +149,9 @@ export interface Block extends PortableTextBlock {
  * @see {@link https://portabletext.github.io/toolkit/modules.html#ToolkitPortableTextList}
  *
  * @example
- * import type { List, Props } from "astro-portabletext/types";
- * const props = Astro.props as Props<List>;
+ * import type { List, Props as $ } from "astro-portabletext/types";
+ *
+ * export type Props = $<List>;
  */
 export type List = ToolkitPortableTextList;
 
@@ -160,8 +161,9 @@ export type List = ToolkitPortableTextList;
  * @see {@link https://portabletext.github.io/toolkit/interfaces/ToolkitPortableTextListItem.html}
  *
  * @example
- * import type { ListItem, Props } from "astro-portabletext/types";
- * const props = Astro.props as Props<ListItem>;
+ * import type { ListItem, Props as $ } from "astro-portabletext/types";
+ *
+ * export type Props = $<ListItem>;
  */
 export type ListItem = ToolkitPortableTextListItem;
 
@@ -174,6 +176,7 @@ export type ListItem = ToolkitPortableTextListItem;
  * export type Props = $<Mark<{ msg: string }>>;
  */
 export interface Mark<
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   MarkDef extends Record<string, any> | undefined = undefined
 > extends ToolkitNestedPortableTextSpan {
   markDef: MarkDef & PortableTextMarkDefinition;

@@ -1,6 +1,6 @@
 {
   "name": "demo",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,18 +10,11 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "astro": "latest",
     "@astrojs/solid-js": "^2.1.1",
     "@astrojs/svelte": "^2.1.1",
-    "astro-portabletext": "workspace:*",
+    "astro-portabletext": "latest",
     "solid-js": "^1.7.5",
     "svelte": "^3.59.1"
-  },
-  "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "@babel/core",
-        "vite"
-      ]
-    }
   }
 }

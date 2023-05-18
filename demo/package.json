@@ -10,9 +10,10 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "astro": "latest",
     "@astrojs/solid-js": "^2.1.1",
     "@astrojs/svelte": "^2.1.1",
-    "astro-portabletext": "workspace:*",
+    "astro-portabletext": "latest",
     "solid-js": "^1.7.5",
     "svelte": "^3.59.1"
   },

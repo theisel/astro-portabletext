@@ -16,13 +16,5 @@
     "astro-portabletext": "latest",
     "solid-js": "^1.7.5",
     "svelte": "^3.59.1"
-  },
-  "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "@babel/core",
-        "vite"
-      ]
-    }
   }
 }

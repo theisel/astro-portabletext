@@ -3,6 +3,7 @@
   "version": "0.0.3",
   "private": true,
   "type": "module",
+  "author": "Tom Theisel <tom.theisel@gmail.com>",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

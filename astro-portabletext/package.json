@@ -1,6 +1,6 @@
 {
   "name": "astro-portabletext",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "type": "module",
   "description": "Render Portable Text with Astro",
   "keywords": [
@@ -13,7 +13,6 @@
   ],
   "author": "Tom Theisel <tom.theisel@gmail.com>",
   "license": "ISC",
-  "author": "Tom Theisel <tom.theisel@gmail.com>",
   "exports": {
     ".": "./lib/index.ts",
     "./components": "./lib/components.ts",

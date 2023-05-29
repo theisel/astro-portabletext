@@ -1,5 +1,12 @@
 # astro-portabletext
 
+## 0.9.1
+
+### Patch Changes
+
+- fd36945: Added `author` details to `package.json`
+- 2305446: Added `author` to `package.json`
+
 ## 0.9.0
 
 ### Minor Changes

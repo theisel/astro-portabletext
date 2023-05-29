@@ -11,6 +11,7 @@
     "typescript",
     "ui"
   ],
+  "author": "Tom Theisel <tom.theisel@gmail.com>",
   "license": "ISC",
   "author": "Tom Theisel <tom.theisel@gmail.com>",
   "exports": {

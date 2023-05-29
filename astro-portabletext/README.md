@@ -4,36 +4,44 @@
 
 # astro-portabletext
 
-[![npm](https://img.shields.io/npm/v/astro-portabletext?style=flat-square)](https://www.npmjs.com/package/astro-portabletext)
-[![prerelease](https://img.shields.io/npm/v/astro-portabletext/next?style=flat-square&colour-blue)](https://www.npmjs.com/package/astro-portabletext)
-
 ![license](https://img.shields.io/npm/l/astro-portabletext?style=flat-square)
+[![npm](https://img.shields.io/npm/v/astro-portabletext?style=flat-square)](https://www.npmjs.com/package/astro-portabletext)
+
+&nbsp;
 
 Render [Portable Text](https://portabletext.org/) with [Astro](https://astro.build/).
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/theisel/astro-portabletext/tree/main/demo)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/theisel/astro-portabletext/tree/main/demo)
+
+&nbsp;
 
 ## Table of Contents
 
-- [Install](#install)
-- [Usage](#usage)
+- [Getting Started](#getting-started)
 - [Documentation](#documentation)
 - [License](#license)
 
-## Install
+&nbsp;
 
+## Getting Started
+
+### Install
+
+```bash
+$ npm install astro-portabletext
+# $ pnpm add astro-portabletext
+# $ yarn add astro-portabletext
 ```
-npm install astro-portabletext
-```
 
-## Usage
+### Usage
 
-| Import                          | Description                                                                                                                     |
-| :------------------------------ | :------------------------------------------------------------------------------------------------------------------------------ |
-| `astro-portabletext`            | For `PortableText` component. <br>See [PortableText Component](docs/portabletext-component.md) for details.                     |
-| `astro-portabletext/components` | For `Block`, `List`, `ListItem` and `Mark` components. <br> See [Extending Components](docs/extending-components.md) for usage. |
-| `astro-portabletext/types`      | For Typescript [types](docs/types.md)                                                                                           |
-| `astro-portabletext/utils`      | For [utility](docs/utils.md) functions                                                                                          |
+| Import                          | Description                                                                                                                       |
+| :------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------- |
+| `astro-portabletext`            | For `PortableText` component. <br>See [PortableText Component](docs/portabletext-component.md) for details.                       |
+| `astro-portabletext/components` | For `Block`, `List`, `ListItem` and `Mark` components. <br> See [Extending Components](docs/extending-components.md) for details. |
+| `astro-portabletext/types`      | For Typescript [types](docs/types.md)                                                                                             |
+| `astro-portabletext/utils`      | For [utility](docs/utils.md) functions                                                                                            |
 
 ```ts
 /* .astro file */
@@ -88,9 +96,13 @@ import { PortableText } from "astro-portabletext";
 }
 ```
 
+&nbsp;
+
 ## Documentation
 
 See [documentation](docs/README.md) for advanced usage and examples.
+
+&nbsp;
 
 ## License
 

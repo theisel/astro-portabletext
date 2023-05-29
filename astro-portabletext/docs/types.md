@@ -22,7 +22,7 @@ import type {/* select type */} "astro-portabletext/types";
 ### Definition
 
 ```ts
-export interface Props<N extends TypedObject = ArbitraryTypedObject> {
+export interface Props<N extends TypedObject> {
   /**
    * Portable Text node
    */
@@ -46,9 +46,9 @@ export interface Props<N extends TypedObject = ArbitraryTypedObject> {
 
 ```ts
 ---
-import type { Props as ComponentProps } from "astro-portabletex/types";
+import type { Props as $, TypedObject } from "astro-portabletex/types";
 
-export type Props = ComponentProps;
+export type Props = $<TypedObject>;
 
 const props = Astro.props;
 ---
@@ -144,9 +144,7 @@ See [ToolkitNestedPortableTextSpan](https://portabletext.github.io/toolkit/inter
 ```ts
 interface Mark<MarkDef extends Record<string, any> | undefined = undefined>
   extends ToolkitNestedPortableTextSpan {
-  markDef: MarkDef extends Record<string, any>
-    ? MarkDef & PortableTextMarkDefinition
-    : undefined;
+  markDef: MarkDef & PortableTextMarkDefinition;
   markKey: string;
 }
 ```

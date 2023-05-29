@@ -11,10 +11,10 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "latest",
-    "@astrojs/solid-js": "^2.1.1",
-    "@astrojs/svelte": "^2.1.1",
-    "astro-portabletext": "latest",
+    "@astrojs/solid-js": "^2.2.0",
+    "@astrojs/svelte": "^2.2.0",
+    "astro": "*",
+    "astro-portabletext": "*",
     "solid-js": "^1.7.5",
     "svelte": "^3.59.1"
   }

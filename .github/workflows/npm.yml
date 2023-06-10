@@ -7,8 +7,8 @@ defaults:
     shell: bash
 
 env: 
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-  
+  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
 jobs:
   npm:
     name: Publish to NPM
@@ -22,6 +22,13 @@ jobs:
 
       - name: Setup PNPM
         uses: pnpm/action-setup@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'pnpm'
 
       - name: Get Latest Tag
         id: get_latest_tag

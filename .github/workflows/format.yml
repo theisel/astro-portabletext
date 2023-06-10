@@ -1,11 +1,11 @@
 name: Format
 
 on:
-  workflow_call:
-    inputs:
-      ref:
-        required: true
-        type: string
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
 
 jobs:
   format:

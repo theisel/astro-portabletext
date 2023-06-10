@@ -1,0 +1,29 @@
+name: NPM
+
+on: [workflow_call, workflow_dispatch]
+
+defaults:
+  run:
+    shell: bash
+
+env: 
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  
+jobs:
+  npm:
+    name: Publish to NPM
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.CI_TOKEN }}
+
+      - name: Get Latest Tag
+        id: get_latest_tag
+        run: echo "tag=$(git describe --tags --match="astro-portabletext*" --abbrev=0)" >> $GITHUB_OUTPUT
+
+      - name: Publish
+        run: |
+          pnpm publish --tag ${{ steps.get_latest_tag.outputs.tag }} --dry-run

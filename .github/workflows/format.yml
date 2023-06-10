@@ -38,5 +38,4 @@ jobs:
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          branch: ${{ inputs.ref }}
           commit_message: 'style: [ci] format'

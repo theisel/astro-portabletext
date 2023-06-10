@@ -1,0 +1,18 @@
+{
+  "bootstrap-sha": "a7f52d35dafe2ad1c4cf653004fe8113c0da8571",
+  "last-release-sha": "a7f52d35dafe2ad1c4cf653004fe8113c0da8571",
+  "bump-minor-pre-major": true,
+  "include-component-in-tag": true,
+  "include-v-in-tag": true,
+  "pull-request-title-pattern": "chore(release): ${component} ${version}",
+  "pull-request-header": ":robot: release created",
+  "separate-pull-requests": true,
+  "packages": {
+    "astro-portabletext": {
+      "component": "astro-portabletext"
+    },
+    "demo": {
+      "component": "demo"
+    }
+  }
+}

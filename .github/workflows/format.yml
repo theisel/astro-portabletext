@@ -1,11 +1,17 @@
-name: 'Format Code'
+name: Format
 
 on:
-  workflow_call:
-    inputs:
-      ref:
-        required: true
-        type: string
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
 
 jobs:
   format:
@@ -13,11 +19,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          ref: ${{ inputs.ref }}
 
       - name: Setup PNPM
-        uses: pnpm/action-setup@v2.2.2
+        uses: pnpm/action-setup@v2
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -34,5 +38,4 @@ jobs:
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          branch: ${{ inputs.ref }}
-          commit_message: 'style: [ci] format'
+          commit_message: "style(format): [ci] format"

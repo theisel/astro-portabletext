@@ -12,32 +12,18 @@ permissions:
 
 jobs:
   release:
-    name: Release
     runs-on: ubuntu-latest
-    
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v2.2.2
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - uses: google-github-actions/release-please-action@v3
+        id: release
         with:
-          node-version: 18
-          cache: 'pnpm'
-      
-      - name: Install Dependencies
-        run: pnpm install
+          release-type: node
+          command: manifest
 
-      - name: Create Release Pull Request or Publish to NPM
-        uses: changesets/action@v1
-        with:
-          commit: 'chore(release): [ci] release'
-          title: 'chore(release): [ci] release'
-          version: pnpm exec changeset version
-          publish: pnpm exec changeset publish
+      - name: Dispatch NPM
+        if: ${{ steps.release.outputs.releases_created && startsWith('astro-portabletext', steps.release.outputs.tag_name) }}
+        run: gh workflow run NPM
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        
+          GH_TOKEN: ${{ secrets.CI_TOKEN }}

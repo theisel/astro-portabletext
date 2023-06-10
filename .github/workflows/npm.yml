@@ -20,6 +20,9 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.CI_TOKEN }}
 
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+
       - name: Get Latest Tag
         id: get_latest_tag
         run: echo "tag=$(git describe --tags --match="astro-portabletext*" --abbrev=0)" >> $GITHUB_OUTPUT

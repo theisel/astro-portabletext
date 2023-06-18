@@ -33,7 +33,7 @@ $ npm install astro-portabletext
 &nbsp;
 
 ## Sanity Projects
-Refer to `astro-portabletext` [Sanity docs](docs/sanity.md)  page
+Refer to `astro-portabletext` [Sanity docs](astro-portabletext/docs/sanity.md)  page
 
 &nbsp;
 

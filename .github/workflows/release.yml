@@ -23,7 +23,7 @@ jobs:
           command: manifest
 
       - name: Dispatch NPM
-        if: ${{ steps.release.outputs.releases_created && startsWith('astro-portabletext', steps.release.outputs.tag_name) }}
+        if: ${{ steps.release.outputs.releases_created && startsWith(steps.release.outputs.tag_name, 'astro-portabletext') }}
         run: gh workflow run NPM
         env:
           GH_TOKEN: ${{ secrets.CI_TOKEN }}

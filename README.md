@@ -28,6 +28,10 @@ $ npm install astro-portabletext
 
 `How to` and `examples` can be found [here](astro-portabletext/README.md "astro-portabletext documentation").
 
+
+## Sanity Projects
+Refer to `astro-portabletext` [Sanity docs](docs/sanity.md)  page
+
 ## License
 
 ISC

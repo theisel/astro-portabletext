@@ -75,12 +75,12 @@ const image = imageUrlFor(asset);
 ```ts
 ---
 /* @/portabletext/Image.astro */
-import type { Props as $ } from "astro-portabletext/types";
+import type { Props as $, TypedObject } from "astro-portabletext/types";
 import Image from "@/components/Image.astro";
 
 type ImageProps = Parameters<typeof Image>[0];
 
-export type Props = $<ImageProps>;
+export type Props = $<ImageProps & TypedObject>;
 
 const { node /*, isInline, class: cls */ } = Astro.props;
 

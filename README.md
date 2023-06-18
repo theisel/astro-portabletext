@@ -24,17 +24,24 @@ $ npm install astro-portabletext
 # $ yarn add astro-portabletext
 ```
 
+&nbsp;
+
 ## Documentation
 
 `How to` and `examples` can be found [here](astro-portabletext/README.md "astro-portabletext documentation").
 
+&nbsp;
 
 ## Sanity Projects
 Refer to `astro-portabletext` [Sanity docs](docs/sanity.md)  page
 
+&nbsp;
+
 ## License
 
 ISC
+
+&nbsp;
 
 ## See also
 [sanity-template-astro-clean](https://github.com/sanity-io/sanity-template-astro-clean)

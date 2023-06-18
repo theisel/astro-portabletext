@@ -100,7 +100,8 @@ import { PortableText } from "astro-portabletext";
 
 ## Documentation
 
-See [documentation](docs/README.md) for advanced usage and examples.
+Refer to [docs](docs/README.md) page for advanced usage and examples.
+
 
 &nbsp;
 

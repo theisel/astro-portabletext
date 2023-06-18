@@ -1,6 +1,6 @@
 name: NPM
 
-on: [workflow_call, workflow_dispatch]
+on: workflow_dispatch
 
 defaults:
   run:
@@ -33,7 +33,12 @@ jobs:
       - name: Get Latest Tag
         id: get_latest_tag
         run: echo "tag=$(git describe --tags --match="astro-portabletext*" --abbrev=0)" >> $GITHUB_OUTPUT
+      
+      - name: Reset to Latest Tag
+        run: git reset --hard ${{ steps.get_latest_tag.outputs.tag }}
+      
+      - name: Install Dependencies
+        run: pnpm install
 
       - name: Publish
-        run: |
-          pnpm publish --tag ${{ steps.get_latest_tag.outputs.tag }} --dry-run
+        run: pnpm publish --filter astro-portabletext --no-git-checks

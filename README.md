@@ -5,7 +5,6 @@
 # astro-portabletext
 
 ![license](https://img.shields.io/npm/l/astro-portabletext?style=flat-square)
-[![build](https://img.shields.io/github/actions/workflow/status/theisel/astro-portabletext/ci.yml?style=flat-square)](https://github.com/theisel/astro-portabletext/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/astro-portabletext?style=flat-square)](https://www.npmjs.com/package/astro-portabletext)
 
 &nbsp;
@@ -19,8 +18,10 @@ Render [Portable Text](https://portabletext.org/) with [Astro](https://astro.bui
 
 ## Install
 
-```
-npm install astro-portabletext
+```bash
+$ npm install astro-portabletext
+# $ pnpm add astro-portabletext
+# $ yarn add astro-portabletext
 ```
 
 ## Documentation

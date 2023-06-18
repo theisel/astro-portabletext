@@ -1,6 +1,6 @@
 name: NPM
 
-on: [workflow_call, workflow_dispatch]
+on: workflow_dispatch
 
 defaults:
   run:

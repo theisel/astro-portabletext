@@ -18,8 +18,10 @@ Render [Portable Text](https://portabletext.org/) with [Astro](https://astro.bui
 
 ## Install
 
-```
-npm install astro-portabletext
+```bash
+$ npm install astro-portabletext
+# $ pnpm add astro-portabletext
+# $ yarn add astro-portabletext
 ```
 
 ## Documentation

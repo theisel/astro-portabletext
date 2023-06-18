@@ -33,6 +33,7 @@ $ npm install astro-portabletext
 ISC
 
 ## See also
+[sanity-template-astro-clean](https://github.com/sanity-io/sanity-template-astro-clean)
 
 [@portabletext/react](https://github.com/portabletext/react-portabletext)
 

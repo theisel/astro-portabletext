@@ -37,6 +37,9 @@ jobs:
       - name: Reset to Latest Tag
         run: git reset --hard ${{ steps.get_latest_tag.outputs.tag }}
       
+      - name: Install Dependencies
+        run: pnpm install
+
       - name: Publish
         run: |
           pnpm publish --tag ${{ steps.get_latest_tag.outputs.tag }} --dry-run

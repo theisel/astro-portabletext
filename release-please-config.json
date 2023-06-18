@@ -5,9 +5,9 @@
   "include-component-in-tag": true,
   "include-v-in-tag": false,
   "tag-separator": "@",
+  "separate-pull-requests": true,
   "pull-request-title-pattern": "chore(release): ${component} ${version}",
   "pull-request-header": ":robot: release created",
-  "separate-pull-requests": true,
   "packages": {
     "astro-portabletext": {
       "component": "astro-portabletext"

@@ -4,20 +4,18 @@
 
 ```ts
 /* Map.tsx */
-import type { Props as $, TypedObject } from "astro-portabletext/types";
+import type { TypedObject } from "astro-portabletext/types";
 
-interface MapProps extends TypedObject {
+export interface Props extends TypedObject {
   /* some values */
 }
-
-export type Props = $<MapProps>;
 
 export function Map(props: Props) {
   /*
    * some logic to load/use map
    */
   return (
-    <div class={`map ${props.class}`}>
+    <div>
       <!-- ... -->
     </div>
   )
@@ -27,13 +25,11 @@ export function Map(props: Props) {
 ```ts
 /* Map.astro */
 ---
-import type { Props } from "./Map";
-import { Map } from "./Map";
+import type { Props as $ } from "astro-portabletext/types";
+import { Map, type Props as MapProps } from "./Map";
 
-export type { Props };
-
-const props = Astro.props;
+export type Props = $<MapProps>;
 ---
 
-<Map client:idle {...props} />
+<Map client:idle {...Astro.props.node} />
 ```

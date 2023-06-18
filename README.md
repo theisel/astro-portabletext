@@ -16,7 +16,7 @@ Render [Portable Text](https://portabletext.org/) with [Astro](https://astro.bui
 
 &nbsp;
 
-## Install
+## Installation
 
 ```bash
 $ npm install astro-portabletext

@@ -41,5 +41,4 @@ jobs:
         run: pnpm install
 
       - name: Publish
-        run: |
-          pnpm publish --tag ${{ steps.get_latest_tag.outputs.tag }} --dry-run
+        run: pnpm publish --filter astro-portabletext --no-git-checks

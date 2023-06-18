@@ -43,12 +43,5 @@
     "node": ">=16.12.0",
     "pnpm": ">=8.6.0"
   },
-  "packageManager": "pnpm@8.6.0",
-  "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "@babel/core"
-      ]
-    }
-  }
+  "packageManager": "pnpm@8.6.0"
 }

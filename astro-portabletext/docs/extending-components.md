@@ -96,7 +96,6 @@ const Cmp = markTypeIs("hightlight") ? (
 ```ts
 /* MyPortableText.astro */
 ---
-import type { PortableTextProps } from "astro-portabletext/types";
 import { PortableText } from "astro-portabletext";
 // Custom components
 import MyBlock from "path/to/MyBlock.astro";
@@ -104,6 +103,8 @@ import MyList from "path/to/MyList.astro";
 import MyMark from "path/to/MyMark.astro";
 // Utils
 import { mergeComponents } from "astro-portabletext/utils";
+
+type PortableTextProps = Parameters<typeof PortableText>[0];
 
 export type Props = Pick<PortableTextProps, "value" | "components">;
 

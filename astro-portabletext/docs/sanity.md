@@ -9,6 +9,7 @@ For [Sanity](https://sanity.io) projects have a look at [sanity-template-astro-c
 ## Setup
 
 ### Client
+
 ```ts
 /* lib/sanity/client.ts */
 import { createClient } from "@sanity/client";
@@ -22,17 +23,17 @@ export const sanityClient = createClient({
 ```
 
 ### Image Builder
+
 ```ts
 /* lib/sanity/image.ts */
 import imageUrlBuilder from "@sanity/image-url";
 import { sanityClient } from "./client";
 
 type ImageUrlBuilder = ReturnType<typeof imageUrlBuilder>;
-type ImageSource = ImageUrlBuilder["image"];
+type ImageSource = Parameters<ImageUrlBuilder["image"]>[0];
 
 export const imageUrlFor = (source: ImageSource) =>
   imageUrlBuilder(sanityClient).image(source);
-
 ```
 
 ### Export
@@ -98,7 +99,7 @@ const { node /*, isInline, class: cls */ } = Astro.props;
 ---
 import { PortableText } from "astro-portabletext";
 // import `portabletext` component
-import Image from "@/portabletext/Image.astro"; 
+import Image from "@/portabletext/Image.astro";
 
 const value = {/* fetch payload */};
 

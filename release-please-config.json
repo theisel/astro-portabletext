@@ -8,6 +8,7 @@
   "separate-pull-requests": true,
   "pull-request-title-pattern": "chore(release): ${component} ${version}",
   "pull-request-header": ":robot: release created",
+  "plugins": ["node-workspace"],
   "packages": {
     "astro-portabletext": {
       "component": "astro-portabletext"

@@ -5,9 +5,10 @@ on:
     branches:
       - main      
   pull_request:
-    paths-ignore:
-      - ".vscode/**"
-      - "**/*.md"
+    paths:
+      - "astro-portabletext/**"
+      - "!.vscode/**"
+      - "!**/*.md"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}

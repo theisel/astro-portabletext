@@ -2,6 +2,10 @@
 
 # Hydration
 
+## JSX / Svelte / \* Component _(interactive)_
+
+&#9656; **JSX Example**
+
 ```ts
 /* Map.tsx */
 import type { TypedObject } from "astro-portabletext/types";
@@ -22,6 +26,8 @@ export function Map(props: Props) {
 }
 ```
 
+## Astro Component
+
 ```ts
 /* Map.astro */
 ---
@@ -29,7 +35,33 @@ import type { Props as $ } from "astro-portabletext/types";
 import { Map, type Props as MapProps } from "./Map";
 
 export type Props = $<MapProps>;
+
+const { node: props /*, isInline, class */ } = Astro.props;
+
+/* ☝️ Don't forget about `isInline` and `class` */
 ---
 
-<Map client:idle {...Astro.props.node} />
+<Map client:idle {...props} />
 ```
+
+## Astro Page
+
+```ts
+/* pages/*.astro */
+---
+import { PortableText } from "astro-portabletext";
+import Map from "path/to/Map.astro";
+
+const value = /* provide value */
+
+const components = {
+  type: {
+    map: Map
+  }
+};
+---
+
+<PortableText value={value} components={components} />
+```
+
+It's better to extend the `PortableText` component, see [Extending PortableText Component](./extending-components.md#portabletext).

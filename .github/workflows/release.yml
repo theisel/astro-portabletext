@@ -21,13 +21,18 @@ jobs:
           release-type: node
           command: manifest
 
+      - name: Publish to NPM?
+        id: npm
+        run: | 
+          echo "dispatch=${{ steps.release.outputs.releases_created && steps.release.outputs['astro-portabletext--release_created'] || 'false' }}" >> $GITHUB_OUTPUT
+  
       - uses: actions/checkout@v3
-        if: ${{ steps.release.outputs.releases_created && startsWith(steps.release.outputs.tag_name, 'astro-portabletext') }}
+        if: ${{ steps.npm.outputs.dispatch == 'true' }}
         with:
           token: ${{ secrets.CI_TOKEN }}
 
       - name: Dispatch NPM Workflow
-        if: ${{ steps.release.outputs.releases_created && startsWith(steps.release.outputs.tag_name, 'astro-portabletext') }}
+        if: ${{ steps.npm.outputs.dispatch == 'true' }}
         run: gh workflow run NPM
         env:
           GH_TOKEN: ${{ secrets.CI_TOKEN }}

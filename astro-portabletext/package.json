@@ -43,7 +43,7 @@
     "check": "astro check --root components"
   },
   "dependencies": {
-    "@portabletext/toolkit": "^2.0.1",
-    "@portabletext/types": "^2.0.2"
+    "@portabletext/toolkit": "^2.0.4",
+    "@portabletext/types": "^2.0.5"
   }
 }

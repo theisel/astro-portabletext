@@ -65,16 +65,6 @@ importers:
       '@portabletext/types':
         specifier: ^2.0.2
         version: 2.0.2
-    devDependencies:
-      cheerio:
-        specifier: 1.0.0-rc.12
-        version: 1.0.0-rc.12
-      tsm:
-        specifier: ^2.3.0
-        version: 2.3.0
-      uvu:
-        specifier: ^0.5.6
-        version: 0.5.6
 
   demo:
     dependencies:

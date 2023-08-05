@@ -89,11 +89,11 @@ export interface PortableTextComponents {
   /**
    * How marked text should be rendered
    */
-  mark: ComponentOrRecord<Mark<any>>;
+  mark: ComponentOrRecord<Mark<Record<string, unknown>>>;
   /**
    * Used when a `mark` handler isn't found
    */
-  unknownMark: Component<Mark<any>>;
+  unknownMark: Component<Mark<Record<string, unknown>>>;
   /**
    * How line breaks should be rendered
    */
@@ -176,8 +176,7 @@ export type ListItem = ToolkitPortableTextListItem;
  * export type Props = $<Mark<{ msg: string }>>;
  */
 export interface Mark<
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  MarkDef extends Record<string, any> | undefined = undefined
+  MarkDef extends Record<string, unknown> | undefined = undefined
 > extends ToolkitNestedPortableTextSpan {
   markDef: MarkDef & PortableTextMarkDefinition;
   markKey: string;

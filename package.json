@@ -10,8 +10,8 @@
     "format": "prettier -w **/*.{astro,js,jsx,mjs,svelte,ts,tsx}",
     "lint": "npx eslint .",
     "prepare": "husky install",
-    "test:ci": "pnpm --filter astro-portabletext test:ci",
-    "test": "pnpm --filter astro-portabletext test"
+    "test:ci": "pnpm --filter lab test:ci",
+    "test": "pnpm --filter lab test"
   },
   "repository": {
     "type": "git",

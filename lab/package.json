@@ -1,0 +1,25 @@
+{
+  "name": "lab",
+  "description": "Laboratory for testing `astro-portabletext`",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "author": "Tom Theisel <tom.theisel@gmail.com>",
+  "license": "ISC",
+  "scripts": {
+    "build:fixture": "astro build --silent",
+    "check": "astro check",
+    "test:component": "pnpm build:fixture && pnpm exec uvu src/test .test.js",
+    "test:lib": "pnpm exec uvu -r tsm src/lib ",
+    "test:ci": "./scripts/ci.sh",
+    "test": "pnpm test:ci"
+  },
+  "dependencies": {
+    "astro-portabletext": "workspace:*"
+  },
+  "devDependencies": {
+    "cheerio": "1.0.0-rc.12",
+    "tsm": "^2.3.0",
+    "uvu": "^0.5.6"
+  }
+}

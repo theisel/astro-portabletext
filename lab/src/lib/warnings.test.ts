@@ -6,7 +6,7 @@ import {
   unknownListWarning,
   unknownListItemWarning,
   unknownBlockWarning,
-} from "../../lib/warnings";
+} from "../../../astro-portabletext/lib/warnings";
 
 test("unknownTypeWarning", () => {
   assert.is(

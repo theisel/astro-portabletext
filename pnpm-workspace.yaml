@@ -1,3 +1,4 @@
 packages:
   - "astro-portabletext"
   - "demo"
+  - "lab"

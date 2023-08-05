@@ -1,6 +1,6 @@
 import { suite } from "uvu";
 import * as assert from "uvu/assert";
-import { mergeComponents } from "../../lib/utils";
+import { mergeComponents } from "astro-portabletext/utils";
 
 // ----------------------------------------------------------------------------
 // Test `mergeComponents`

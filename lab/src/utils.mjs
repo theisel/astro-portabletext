@@ -8,10 +8,7 @@ import { load } from "cheerio";
  * @returns {Promise<import("cheerio").CheerioAPI>}
  */
 export async function fetchContent(path) {
-  const url = new URL(
-    `components/fixture/dist/${path}/index.html`,
-    import.meta.url
-  );
+  const url = new URL(`../dist/${path}/index.html`, import.meta.url);
   const content = await fs.promises.readFile(fileURLToPath(url), "utf8");
 
   return load(content);

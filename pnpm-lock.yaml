@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -96,6 +96,22 @@ importers:
       svelte:
         specifier: ^3.59.1
         version: 3.59.1
+
+  lab:
+    dependencies:
+      astro-portabletext:
+        specifier: workspace:*
+        version: link:../astro-portabletext
+    devDependencies:
+      cheerio:
+        specifier: 1.0.0-rc.12
+        version: 1.0.0-rc.12
+      tsm:
+        specifier: ^2.3.0
+        version: 2.3.0
+      uvu:
+        specifier: ^0.5.6
+        version: 0.5.6
 
 packages:
 

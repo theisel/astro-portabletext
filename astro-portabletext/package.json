@@ -40,20 +40,10 @@
   },
   "homepage": "https://github.com/theisel/astro-portabletext#readme",
   "scripts": {
-    "build:fixture": "astro --root test/components/fixture/ build --silent",
-    "check": "astro check --root components",
-    "test:component": "pnpm build:fixture && pnpm exec uvu test/components .test.js",
-    "test:lib": "pnpm exec uvu -r tsm test/lib ",
-    "test:ci": "./scripts/ci.sh",
-    "test": "pnpm test:ci"
+    "check": "astro check --root components"
   },
   "dependencies": {
     "@portabletext/toolkit": "^2.0.1",
     "@portabletext/types": "^2.0.2"
-  },
-  "devDependencies": {
-    "cheerio": "1.0.0-rc.12",
-    "tsm": "^2.3.0",
-    "uvu": "^0.5.6"
   }
 }

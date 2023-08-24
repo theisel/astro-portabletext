@@ -43,7 +43,7 @@ jobs:
         run: git reset --hard ${{ steps.get_latest_tag.outputs.tag }}
       
       - name: Install Dependencies
-        run: pnpm install
+        run: pnpm install --filter astro-portabletext
 
       - name: Publish
         run: pnpm publish --filter astro-portabletext --no-git-checks

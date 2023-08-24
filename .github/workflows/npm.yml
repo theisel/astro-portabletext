@@ -30,6 +30,11 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           cache: 'pnpm'
 
+      - name: Setup User
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Get Latest Tag
         id: get_latest_tag
         run: echo "tag=$(git describe --tags --match="astro-portabletext*" --abbrev=0)" >> $GITHUB_OUTPUT

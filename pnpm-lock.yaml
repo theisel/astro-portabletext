@@ -78,7 +78,7 @@ importers:
         specifier: ^2.10.13
         version: 2.10.13(@types/node@20.5.3)
       astro-portabletext:
-        specifier: ^0.9.3
+        specifier: ^0.9.4
         version: link:../astro-portabletext
       solid-js:
         specifier: ^1.7.11

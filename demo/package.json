@@ -14,7 +14,7 @@
     "@astrojs/solid-js": "^2.2.1",
     "@astrojs/svelte": "^3.1.1",
     "astro": "^2.10.13",
-    "astro-portabletext": "^0.9.3",
+    "astro-portabletext": "^0.9.4",
     "solid-js": "^1.7.11",
     "svelte": "^4.2.0"
   }

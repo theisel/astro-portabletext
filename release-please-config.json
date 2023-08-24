@@ -5,9 +5,8 @@
   "include-component-in-tag": true,
   "include-v-in-tag": false,
   "tag-separator": "@",
-  "separate-pull-requests": true,
-  "pull-request-title-pattern": "chore(release): ${component} ${version}",
   "pull-request-header": ":robot: release created",
+  "group-pull-request-title-pattern": "chore: batch release ${branch}",
   "plugins": ["node-workspace"],
   "packages": {
     "astro-portabletext": {

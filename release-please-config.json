@@ -10,10 +10,12 @@
   "plugins": ["node-workspace"],
   "packages": {
     "astro-portabletext": {
-      "component": "astro-portabletext"
+      "component": "astro-portabletext",
+      "release-as": "0.9.3"
     },
     "demo": {
-      "component": "demo"
+      "component": "demo",
+      "release-as": "0.0.5"
     }
   }
 }

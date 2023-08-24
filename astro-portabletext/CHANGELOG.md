@@ -1,5 +1,14 @@
 # astro-portabletext
 
+## [0.9.2](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.9.1...astro-portabletext@0.9.2) (2023-08-24)
+
+
+### Bug Fixes
+
+* **deps:** update `astro-portabletext` dependencies ([#67](https://github.com/theisel/astro-portabletext/issues/67)) ([a712143](https://github.com/theisel/astro-portabletext/commit/a712143cb1d84e262ce98a9093b32611b93d87cc))
+* **deps:** update `astro-portabletext` dependencies ([#73](https://github.com/theisel/astro-portabletext/issues/73)) ([2fbb149](https://github.com/theisel/astro-portabletext/commit/2fbb14991192f04675cc2543aa7084e35891a188))
+* **lib/types:** interface `Mark` ([#62](https://github.com/theisel/astro-portabletext/issues/62)) ([33df21b](https://github.com/theisel/astro-portabletext/commit/33df21b1fe68fc9489c26c94259d1c7affe87dc7))
+
 ## 0.9.1
 
 ### Patch Changes

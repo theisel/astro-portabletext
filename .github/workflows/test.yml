@@ -3,7 +3,9 @@ name: Test
 on:
   push:
     branches:
-      - main      
+      - main
+      - release-please--**
+  
   pull_request:
     paths:
       - "astro-portabletext/**"

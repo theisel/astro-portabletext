@@ -1,5 +1,12 @@
 # astro-portabletext
 
+## [0.9.4](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.9.3...astro-portabletext@0.9.4) (2023-08-24)
+
+
+### Bug Fixes
+
+* **release:** create new release ([#82](https://github.com/theisel/astro-portabletext/issues/82)) ([8504f8f](https://github.com/theisel/astro-portabletext/commit/8504f8fcd19a77518975acbce1ae4b848f503e59))
+
 ## [0.9.3](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.9.2...astro-portabletext@0.9.3) (2023-08-24)
 
 

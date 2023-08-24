@@ -15,11 +15,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Setup User
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -34,6 +29,11 @@ jobs:
           node-version: 18
           registry-url: 'https://registry.npmjs.org'
           cache: 'pnpm'
+
+      - name: Setup User
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Get Latest Tag
         id: get_latest_tag

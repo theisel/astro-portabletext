@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/theisel/astro-portabletext#readme",
   "devDependencies": {
+    "@astrojs/check": "^0.2.0",
     "@changesets/cli": "^2.26.2",
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",

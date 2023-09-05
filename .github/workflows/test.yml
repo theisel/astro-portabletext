@@ -7,10 +7,9 @@ on:
       - release-please--**
   
   pull_request:
-    paths:
-      - "astro-portabletext/**"
-      - "!.vscode/**"
-      - "!**/*.md"
+    paths-ignore:
+      - ".vscode/**"
+      - "**/*.md"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}

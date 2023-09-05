@@ -1,9 +1,4 @@
 {
-  "extends": "astro/tsconfigs/base",
-  "compilerOptions": {
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "verbatimModuleSyntax": true
-  },
+  "extends": "astro/tsconfigs/strict",
   "include": ["lib"]
 }

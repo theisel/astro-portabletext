@@ -1,8 +1,8 @@
 ---
-import type { Props as $ } from "astro-portabletext/types";
+import type { Props as $, TypedObject } from "astro-portabletext/types";
 import { Counter } from "./Counter";
 
-export type Props = $;
+export type Props = $<TypedObject>;
 
 const props = Astro.props;
 const { isInline } = props;
@@ -12,6 +12,7 @@ const { isInline } = props;
   isInline ? (
     <span data-cmp="counter">
       <span>JSX Inline Counter</span>
+      {` `}
       <Counter client:idle {...props} />
     </span>
   ) : (

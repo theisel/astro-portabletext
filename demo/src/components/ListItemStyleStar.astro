@@ -1,7 +1,7 @@
 ---
-import { ListItemProps } from "astro-portabletext/components";
+import type { Props as $, ListItem } from "astro-portabletext/types";
 
-export type Props = ListItemProps;
+export type Props = $<ListItem>;
 
 const { node, index, isInline, ...attrs } = Astro.props;
 ---

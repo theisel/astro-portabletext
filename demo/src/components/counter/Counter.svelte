@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { Props } from "astro-portabletext/types";
+  import type { Props as $, TypedObject } from "astro-portabletext/types";
   import { onDestroy } from "svelte";
 
-  const { node, index, isInline, ...attrs } = $$restProps as Props;
+  const { node, index, isInline, ...attrs } = $$restProps as $<TypedObject>;
 
   let count: number = 0;
 

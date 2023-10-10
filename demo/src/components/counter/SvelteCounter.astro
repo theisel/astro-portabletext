@@ -1,8 +1,8 @@
 ---
-import type { Props as $ } from "astro-portabletext/types";
+import type { Props as $, TypedObject } from "astro-portabletext/types";
 import Counter from "./Counter.svelte";
 
-export type Props = $;
+export type Props = $<TypedObject>;
 
 const props = Astro.props;
 const { isInline } = props;

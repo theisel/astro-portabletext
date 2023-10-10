@@ -1,13 +1,14 @@
 ---
-import { List } from "astro-portabletext/components";
+import type { Props as $, List as List } from "astro-portabletext/types";
+import { List as DefaultList } from "astro-portabletext/components";
 import ListStyleStar from "../ListStyleStar.astro";
 
-export type Props = Parameters<typeof List>[0];
+export type Props = $<List>;
 
 const props = Astro.props;
 const listItemIs = (listItem: string) => listItem === props.node.listItem;
 
-const Cmp = listItemIs("star") ? ListStyleStar : List;
+const Cmp = listItemIs("star") ? ListStyleStar : DefaultList;
 ---
 
 <Cmp {...props}><slot /></Cmp>

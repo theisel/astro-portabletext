@@ -32,7 +32,7 @@ export function mergeComponents<
         ? Overrides[Key]
         : (Overrides & Components)[Key]
       : (Overrides & Components)[Key];
-  }
+  },
 >(components: Components, overrides: Overrides) {
   const cmps = { ...components } as Record<string, ComponentOrRecord>;
 

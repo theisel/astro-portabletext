@@ -6,8 +6,8 @@
   "trailingComma": "es5",
   "arrowParens": "always",
   "plugins": [
-    "./node_modules/prettier-plugin-astro",
-    "./node_modules/prettier-plugin-svelte"
+    "./node_modules/prettier-plugin-astro/dist/index.js",
+    "./node_modules/prettier-plugin-svelte/plugin.js"
   ],
   "overrides": [
     {

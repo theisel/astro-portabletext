@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.0.7](https://github.com/theisel/astro-portabletext/compare/demo@0.0.6...demo@0.0.7) (2023-10-11)
+
+
+### Bug Fixes
+
+* **demo:** add `is:global` directive to style ([#97](https://github.com/theisel/astro-portabletext/issues/97)) ([1b42231](https://github.com/theisel/astro-portabletext/commit/1b422312a11cad3542be0c520cbcc9ec534ed80e))
+* **demo:** fix import declaration ([#95](https://github.com/theisel/astro-portabletext/issues/95)) ([e2168b7](https://github.com/theisel/astro-portabletext/commit/e2168b7399d1366c36c2a9d193e04cee694b5f97))
+* **demo:** fix PortableText is not defined ([#96](https://github.com/theisel/astro-portabletext/issues/96)) ([6765eae](https://github.com/theisel/astro-portabletext/commit/6765eaec24f7f0fc887bb1075869fafe5464a6f1))
+* **demo:** update `demo` package ([#93](https://github.com/theisel/astro-portabletext/issues/93)) ([3efa450](https://github.com/theisel/astro-portabletext/commit/3efa450c86681a504765af75910a550fc4dd66d6))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * astro-portabletext bumped from ^0.9.4 to ^0.9.5
+
 ## [0.0.6](https://github.com/theisel/astro-portabletext/compare/demo@0.0.5...demo@0.0.6) (2023-08-24)
 
 Bumped version to force new release as lockfile was "not up to date" ([#82](https://github.com/theisel/astro-portabletext/issues/82)) ([8504f8f](https://github.com/theisel/astro-portabletext/commit/8504f8fcd19a77518975acbce1ae4b848f503e59))

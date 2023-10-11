@@ -1,6 +1,6 @@
 {
   "name": "demo",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "type": "module",
   "private": true,
   "author": "Tom Theisel <tom.theisel@gmail.com>",
@@ -14,7 +14,7 @@
     "@astrojs/solid-js": "^3.0.2",
     "@astrojs/svelte": "^4.0.3",
     "astro": "^3.2.3",
-    "astro-portabletext": "^0.9.4",
+    "astro-portabletext": "^0.9.5",
     "solid-js": "^1.8.0",
     "svelte": "^4.2.1"
   }

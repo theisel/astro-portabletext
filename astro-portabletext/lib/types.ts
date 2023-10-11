@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type {
   ToolkitListNestMode,
   ToolkitNestedPortableTextSpan,
@@ -24,7 +25,7 @@ export type { TypedObject } from "@portabletext/types";
  * @template Value Portable Text payload
  */
 export interface PortableTextProps<
-  Value extends TypedObject = PortableTextBlock | ArbitraryTypedObject
+  Value extends TypedObject = PortableTextBlock | ArbitraryTypedObject,
 > {
   /**
    * Portable Text blocks
@@ -89,11 +90,11 @@ export interface PortableTextComponents {
   /**
    * How marked text should be rendered
    */
-  mark: ComponentOrRecord<Mark<Record<string, unknown>>>;
+  mark: ComponentOrRecord<Mark<Record<string, any>>> | ComponentOrRecord<Mark>;
   /**
    * Used when a `mark` handler isn't found
    */
-  unknownMark: Component<Mark<Record<string, unknown>>>;
+  unknownMark: Component<Mark<Record<string, any>>> | Component<Mark>;
   /**
    * How line breaks should be rendered
    */
@@ -176,7 +177,7 @@ export type ListItem = ToolkitPortableTextListItem;
  * export type Props = $<Mark<{ msg: string }>>;
  */
 export interface Mark<
-  MarkDef extends Record<string, unknown> | undefined = undefined
+  MarkDef extends Record<string, unknown> | undefined = undefined,
 > extends ToolkitNestedPortableTextSpan {
   markDef: MarkDef & PortableTextMarkDefinition;
   markKey: string;

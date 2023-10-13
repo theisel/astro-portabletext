@@ -81,7 +81,7 @@ importers:
         specifier: ^3.3.0
         version: 3.3.0(@types/node@20.8.4)(typescript@5.2.2)
       astro-portabletext:
-        specifier: ^0.9.5
+        specifier: ^0.9.6
         version: link:../astro-portabletext
       solid-js:
         specifier: ^1.8.1

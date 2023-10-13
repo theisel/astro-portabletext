@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.0.8](https://github.com/theisel/astro-portabletext/compare/demo@0.0.7...demo@0.0.8) (2023-10-13)
+
+
+### Bug Fixes
+
+* **demo:** update dependencies ([#105](https://github.com/theisel/astro-portabletext/issues/105)) ([213686c](https://github.com/theisel/astro-portabletext/commit/213686ca3892e9de7dc0de045f7dfaa05f68e7b0))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * astro-portabletext bumped from ^0.9.5 to ^0.9.6
+
 ## [0.0.7](https://github.com/theisel/astro-portabletext/compare/demo@0.0.6...demo@0.0.7) (2023-10-11)
 
 

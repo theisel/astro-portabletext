@@ -90,11 +90,11 @@ export interface PortableTextComponents {
   /**
    * How marked text should be rendered
    */
-  mark: ComponentOrRecord<Mark<Record<string, any>>> | ComponentOrRecord<Mark>;
+  mark: ComponentOrRecord<Mark<never>>;
   /**
    * Used when a `mark` handler isn't found
    */
-  unknownMark: Component<Mark<Record<string, any>>> | Component<Mark>;
+  unknownMark: Component<Mark<never>>;
   /**
    * How line breaks should be rendered
    */

@@ -36,7 +36,8 @@ export interface Props<N extends TypedObject> {
    */
   isInline: boolean;
   /**
-   * Set when `style` is used within an Astro component, should be used when defined.
+   * ⚠️ As of Astro V3, this has no impact and should be ignored.
+   * It will be dropped in future release.
    */
   class?: string | undefined | null;
 }
@@ -142,7 +143,7 @@ See [ToolkitNestedPortableTextSpan](https://portabletext.github.io/toolkit/inter
 ### Definition
 
 ```ts
-interface Mark<MarkDef extends Record<string, any> | undefined = undefined>
+interface Mark<MarkDef extends Record<string, unknown> | undefined = undefined>
   extends ToolkitNestedPortableTextSpan {
   markDef: MarkDef & PortableTextMarkDefinition;
   markKey: string;

@@ -36,9 +36,9 @@ import { Map, type Props as MapProps } from "./Map";
 
 export type Props = $<MapProps>;
 
-const { node: props /*, isInline, class */ } = Astro.props;
+const { node: props /*, isInline */ } = Astro.props;
 
-/* ☝️ Don't forget about `isInline` and `class` */
+/* ☝️ Don't forget about `isInline` */
 ---
 
 <Map client:idle {...props} />

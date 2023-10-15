@@ -18,11 +18,12 @@ import { Block, List, ListItem, Mark } "astro-portabletext/components";
 ```ts
 /* MyBlock.astro */
 ---
+import type { Props as $, Block as BlockType } from "astro-portabletext/types";
 import { Block } from "astro-portabletext/components";
 import Billboard from "path/to/Billboard.astro";
 import Quote from "path/to/Quote.astro";
 
-export type Props = Parameters<typeof Block>[0];
+export type Props = $<BlockType>;
 
 const props = Astro.props;
 const styleIs = (style: string) => style === props.node.style;
@@ -44,11 +45,12 @@ const Cmp = styleIs("billboard") ? (
 ```ts
 /* MyList.astro */
 ---
+import type { Props as $, List as ListType } from "astro-portabletext/types";
 import { List } from "astro-portabletext/components";
 import BulletListStyle from "path/to/BulletListStyle.astro";
 import SquareListStyle from "path/to/SquareListStyle.astro";
 
-export type Props = Parameters<typeof List>[0];
+export type Props = $<ListType>;
 
 const props = Astro.props;
 const listItemIs = (listItem: string) => listItem === props.node.listItem;
@@ -70,11 +72,12 @@ const Cmp = listItemIs("square") ? (
 ```ts
 /* MyMark.astro */
 ---
+import type { Props as $, Mark as MarkType } from "astro-portabletext/types";
 import { Mark } from "astro-portabletext/components";
 import Emphasis from "path/to/Emphasis";
 import Hightlight from "path/to/Highlight.astro";
 
-export type Props = Parameters<typeof Mark>[0];
+export type Props = $<MarkType<never>>; // 👈 Use `never` for type parameter
 
 const props = Astro.props;
 const markTypeIs = (markType: string) => markType === props.node.markType;

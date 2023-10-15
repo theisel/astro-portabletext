@@ -83,9 +83,9 @@ type ImageProps = Parameters<typeof Image>[0];
 
 export type Props = $<ImageProps & TypedObject>;
 
-const { node /*, isInline, class: cls */ } = Astro.props;
+const { node /*, isInline */ } = Astro.props;
 
-// Do stuff with `isInline` and `class`
+// Do stuff with `isInline`
 ---
 
 <Image {...node} />
@@ -101,7 +101,7 @@ import { PortableText } from "astro-portabletext";
 // import `portabletext` component
 import Image from "@/portabletext/Image.astro";
 
-const value = {/* fetch payload */};
+const value = {/* provide value */};
 
 const components = {
   type: {

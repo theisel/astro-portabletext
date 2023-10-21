@@ -17,5 +17,8 @@
     "astro-portabletext": "^0.9.6",
     "solid-js": "^1.8.3",
     "svelte": "^4.2.2"
+  },
+  "engines": {
+    "node": ">=18.14.1"
   }
 }

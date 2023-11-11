@@ -13,10 +13,10 @@
   "dependencies": {
     "@astrojs/solid-js": "^3.0.2",
     "@astrojs/svelte": "^4.0.3",
-    "astro": "^3.3.2",
+    "astro": "^3.5.2",
     "astro-portabletext": "^0.9.6",
-    "solid-js": "^1.8.3",
-    "svelte": "^4.2.2"
+    "solid-js": "^1.8.5",
+    "svelte": "^4.2.3"
   },
   "engines": {
     "node": ">=18.14.1"

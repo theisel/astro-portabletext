@@ -12,8 +12,8 @@ const { getDefaultComponent } = usePortableText(props.node);
 const Cmp = typeIs("jsxCounter")
   ? JsxCounter
   : typeIs("svelteCounter")
-  ? SvelteCounter
-  : getDefaultComponent();
+    ? SvelteCounter
+    : getDefaultComponent();
 ---
 
 <Cmp {...props} />

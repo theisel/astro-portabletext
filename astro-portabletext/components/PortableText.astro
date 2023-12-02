@@ -153,39 +153,42 @@ const prepareForRender = (
         serializeChildren(node, false),
       ]
     : isPortableTextListItemBlock(node)
-    ? [
-        provideComponent("listItem", node.listItem) ??
-          components.unknownListItem,
-        serializeMarksTree(node).map((children) => {
-          if (node.style !== "normal") {
-            const { listItem, ...blockNode } = node;
-            children = serializeNode(false)(blockNode, 0);
-          }
-          return children;
-        }),
-      ]
-    : isPortableTextToolkitSpan(node)
-    ? [
-        provideComponent("mark", node.markType) ?? components.unknownMark,
-        serializeChildren(node, true),
-      ]
-    : isPortableTextBlock(node)
-    ? [
-        provideComponent(
-          "block",
-          node.style ??
-            (node.style = "normal") /* Make sure style has been set */
-        ) ?? components.unknownBlock,
-        serializeMarksTree(node),
-      ]
-    : isPortableTextToolkitTextNode(node)
-    ? [
-        "\n" === node.text && isComponent(components.hardBreak)
-          ? components.hardBreak
-          : node.text,
-        [],
-      ]
-    : [provideComponent("type", node._type) ?? components.unknownType, []];
+      ? [
+          provideComponent("listItem", node.listItem) ??
+            components.unknownListItem,
+          serializeMarksTree(node).map((children) => {
+            if (node.style !== "normal") {
+              const { listItem, ...blockNode } = node;
+              children = serializeNode(false)(blockNode, 0);
+            }
+            return children;
+          }),
+        ]
+      : isPortableTextToolkitSpan(node)
+        ? [
+            provideComponent("mark", node.markType) ?? components.unknownMark,
+            serializeChildren(node, true),
+          ]
+        : isPortableTextBlock(node)
+          ? [
+              provideComponent(
+                "block",
+                node.style ??
+                  (node.style = "normal") /* Make sure style has been set */
+              ) ?? components.unknownBlock,
+              serializeMarksTree(node),
+            ]
+          : isPortableTextToolkitTextNode(node)
+            ? [
+                "\n" === node.text && isComponent(components.hardBreak)
+                  ? components.hardBreak
+                  : node.text,
+                [],
+              ]
+            : [
+                provideComponent("type", node._type) ?? components.unknownType,
+                [],
+              ];
 };
 
 (globalThis as any)[contextRef] = (node: TypedObject): Context => {
@@ -200,14 +203,14 @@ const provideDefaultComponent = (node: TypedObject) => {
   return isPortableTextToolkitList(node)
     ? List
     : isPortableTextListItemBlock(node)
-    ? ListItem
-    : isPortableTextToolkitSpan(node)
-    ? Mark
-    : isPortableTextBlock(node)
-    ? Block
-    : isPortableTextToolkitTextNode(node)
-    ? HardBreak
-    : UnknownType;
+      ? ListItem
+      : isPortableTextToolkitSpan(node)
+        ? Mark
+        : isPortableTextBlock(node)
+          ? Block
+          : isPortableTextToolkitTextNode(node)
+            ? HardBreak
+            : UnknownType;
 };
 
 // Returns the `unknown` component related to the passed in node
@@ -215,18 +218,18 @@ const provideUnknownComponent = (node: TypedObject) => {
   return isPortableTextToolkitList(node)
     ? components.unknownList
     : isPortableTextListItemBlock(node)
-    ? components.unknownListItem
-    : isPortableTextToolkitSpan(node)
-    ? components.unknownMark
-    : isPortableTextBlock(node)
-    ? components.unknownBlock
-    : !isPortableTextToolkitTextNode(node)
-    ? components.unknownType
-    : (() => {
-        throw new Error(
-          `[PortableText getUnknownComponent] Unable to provide component with node type ${node._type}`
-        );
-      })();
+      ? components.unknownListItem
+      : isPortableTextToolkitSpan(node)
+        ? components.unknownMark
+        : isPortableTextBlock(node)
+          ? components.unknownBlock
+          : !isPortableTextToolkitTextNode(node)
+            ? components.unknownType
+            : (() => {
+                throw new Error(
+                  `[PortableText getUnknownComponent] Unable to provide component with node type ${node._type}`
+                );
+              })();
 };
 
 // Make sure we have an array of blocks

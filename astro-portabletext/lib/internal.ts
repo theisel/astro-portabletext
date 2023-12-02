@@ -29,8 +29,8 @@ export function mergeComponents<
       ? Overrides[Key] extends Component
         ? Overrides[Key]
         : Components[Key] extends Component
-        ? Overrides[Key]
-        : (Overrides & Components)[Key]
+          ? Overrides[Key]
+          : (Overrides & Components)[Key]
       : (Overrides & Components)[Key];
   },
 >(components: Components, overrides: Overrides) {

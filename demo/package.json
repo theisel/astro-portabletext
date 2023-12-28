@@ -11,9 +11,9 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/solid-js": "^3.0.2",
-    "@astrojs/svelte": "^5.0.1",
-    "astro": "^4.0.4",
+    "@astrojs/solid-js": "^3.0.3",
+    "@astrojs/svelte": "^5.0.3",
+    "astro": "^4.0.8",
     "astro-portabletext": "^0.9.6",
     "solid-js": "^1.8.7",
     "svelte": "^4.2.8"

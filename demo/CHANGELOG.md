@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/theisel/astro-portabletext/compare/demo@0.1.1...demo@0.1.2) (2023-12-28)
+
+
+### Bug Fixes
+
+* **deps:** update `demo` dependencies ([#121](https://github.com/theisel/astro-portabletext/issues/121)) ([1494739](https://github.com/theisel/astro-portabletext/commit/1494739f109cc86ded379daf50b5f06aee517a33))
+
 ## [0.1.1](https://github.com/theisel/astro-portabletext/compare/demo@0.1.0...demo@0.1.1) (2023-12-12)
 
 

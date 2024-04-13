@@ -1,5 +1,13 @@
 # astro-portabletext
 
+## [0.9.8](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.9.7...astro-portabletext@0.9.8) (2024-04-13)
+
+
+### Bug Fixes
+
+* add LICENSE ([#133](https://github.com/theisel/astro-portabletext/issues/133)) ([a7b026f](https://github.com/theisel/astro-portabletext/commit/a7b026f77c1bec2b309e8f4d5b42579a33193435))
+* **deps:** update `astro-portabletext` dependencies ([#131](https://github.com/theisel/astro-portabletext/issues/131)) ([8c9612d](https://github.com/theisel/astro-portabletext/commit/8c9612d872b873b14b640fead9e8f24faa7269b6))
+
 ## [0.9.7](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.9.6...astro-portabletext@0.9.7) (2024-03-19)
 
 

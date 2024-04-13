@@ -6,6 +6,12 @@
   * dependencies
     * astro-portabletext bumped from ^0.9.6 to ^0.9.7
 
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * astro-portabletext bumped from ^0.9.7 to ^0.9.8
+
 ## [0.1.2](https://github.com/theisel/astro-portabletext/compare/demo@0.1.1...demo@0.1.2) (2023-12-28)
 
 

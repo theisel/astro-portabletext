@@ -126,4 +126,14 @@ block("merge", async () => {
   assert.is($el.length, 1);
 });
 
+block("block index", async () => {
+  const $ = await fetchContent("block/block-index");
+  const $el = $("[data-block-index]");
+
+  assert.is($el.length, 3);
+  assert.is($el.eq(0).attr("data-block-index"), "0");
+  assert.is($el.eq(1).attr("data-block-index"), "1");
+  assert.is($el.eq(2).attr("data-block-index"), "2");
+});
+
 block.run();

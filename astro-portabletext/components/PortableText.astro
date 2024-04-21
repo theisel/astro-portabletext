@@ -237,8 +237,10 @@ const blocks = Array.isArray(value) ? value : [value];
 
 // Using a generator to avoid creating a new array
 function* renderBlocks() {
+  let index = 0;
+
   for (const it of nestLists(blocks, listNestingMode)) {
-    yield asComponentProps(it, 0, false);
+    yield asComponentProps(it, index++, false);
   }
 }
 ---

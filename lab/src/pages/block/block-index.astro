@@ -1,0 +1,42 @@
+---
+import Layout from "../../layouts/Default.astro";
+import { PortableText } from "astro-portabletext";
+import Block from "../../components/BlockIndex.astro";
+
+const blocks = [
+  {
+    _type: "block",
+    style: "normal",
+    children: [
+      {
+        _type: "span",
+        text: "Paragraph 1",
+      },
+    ],
+  },
+  {
+    _type: "block",
+    style: "normal",
+    children: [
+      {
+        _type: "span",
+        text: "Paragraph 2",
+      },
+    ],
+  },
+  {
+    _type: "block",
+    style: "normal",
+    children: [
+      {
+        _type: "span",
+        text: "Paragraph 3",
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <PortableText value={blocks} components={{ block: Block }} />
+</Layout>

@@ -33,4 +33,13 @@ list("unknown", async () => {
   assert.is($el.attr("data-portabletext-unknown"), "list");
 });
 
+list("nested", async () => {
+  const $ = await fetchContent("list/nested");
+
+  assert.match(
+    $("body").html().trim(),
+    /^<ul>\s*<li>\s*1\s*<ul>\s*<li>\s*1\.1\s*<ul>\s*<li>\s*1\.1\.1\s*<\/li>\s*<\/ul>\s*<\/li>\s*<\/ul>\s*<\/li>\s*<li>\s*2\s*<\/li>\s*<\/ul>$/
+  );
+});
+
 list.run();

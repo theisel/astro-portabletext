@@ -1,0 +1,16 @@
+---
+import type { Block, Props as $ } from "astro-portabletext/types";
+import { usePortableText } from "astro-portabletext/utils";
+
+export type Props = $<Block>;
+
+const props = Astro.props;
+const { getDefaultComponent } = usePortableText(props.node);
+const Default = getDefaultComponent();
+---
+
+<div data-block-index={props.index}>
+  <Default {...props}>
+    <slot />
+  </Default>
+</div>

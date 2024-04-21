@@ -7,6 +7,7 @@
   "pull-request-header": ":robot: release created",
   "group-pull-request-title-pattern": "chore: batch release ${branch}",
   "plugins": ["node-workspace"],
+  "release-type": "node",
   "packages": {
     "astro-portabletext": {
       "package-name": "astro-portabletext"

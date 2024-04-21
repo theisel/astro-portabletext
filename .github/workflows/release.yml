@@ -17,13 +17,11 @@ jobs:
       - name: Release / Pull Request
         uses: google-github-actions/release-please-action@v4
         id: release
-        with:
-          release-type: node
 
       - name: Publish to NPM?
         id: npm
         run: | 
-          echo "dispatch=${{ steps.release.outputs.releases_created && steps.release.outputs['astro-portabletext--release_created'] || 'false' }}" >> $GITHUB_OUTPUT
+          echo "dispatch=${{ steps.release.outputs['astro-portabletext--release_created'] || 'false' }}" >> $GITHUB_OUTPUT
   
       - uses: actions/checkout@v4
         if: ${{ steps.npm.outputs.dispatch == 'true' }}

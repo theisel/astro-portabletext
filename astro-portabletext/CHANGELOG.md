@@ -1,5 +1,12 @@
 # astro-portabletext
 
+## [0.9.9](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.9.8...astro-portabletext@0.9.9) (2024-04-21)
+
+
+### Bug Fixes
+
+* block index ([#138](https://github.com/theisel/astro-portabletext/issues/138)) ([d0f4ed8](https://github.com/theisel/astro-portabletext/commit/d0f4ed8e8bcc9d638527f59ddd8e3ca74441fee0))
+
 ## [0.9.8](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.9.7...astro-portabletext@0.9.8) (2024-04-13)
 
 

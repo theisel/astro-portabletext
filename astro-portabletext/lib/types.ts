@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import type {
   ToolkitListNestMode,
   ToolkitNestedPortableTextSpan,
@@ -22,13 +21,13 @@ export type { TypedObject } from "@portabletext/types";
 /**
  * Properties for the `PortableText` component
  *
- * @template Value Portable Text payload
+ * @typeParam Value - Type of Portable Text payload
  */
 export interface PortableTextProps<
   Value extends TypedObject = PortableTextBlock | ArbitraryTypedObject,
 > {
   /**
-   * Portable Text blocks
+   * Portable Text payload
    */
   value: Value | Value[];
 
@@ -38,15 +37,18 @@ export interface PortableTextProps<
   components?: SomePortableTextComponents;
 
   /**
-   * This function is called when faced with unknown types.
+   * Function to call when faced with unknown types.
    *
-   * Prints a warning message to the console by default.
-   * Pass `false` to disable.
+   * @remarks
+   * - Prints a warning message to the console by default.
+   * - Use `false` to disable.
    */
   onMissingComponent?: MissingComponentHandler | boolean;
 
   /**
-   * `html` or `direct`
+   * Value can be `html` or `direct`, defaults to `html`
+   *
+   * @see {@link https://portabletext.github.io/toolkit/types/ToolkitListNestMode.html ToolkitListNestMode}
    */
   listNestingMode?: ToolkitListNestMode;
 }
@@ -60,7 +62,7 @@ export interface PortableTextComponents {
    */
   type: ComponentOrRecord;
   /**
-   * Used when a `type` handler isn't found
+   * Used when a {@link PortableTextComponents.type type} component isn't found
    */
   unknownType: Component;
   /**
@@ -68,7 +70,7 @@ export interface PortableTextComponents {
    */
   block: ComponentOrRecord<Block>;
   /**
-   * Used when a `block` handler isn't found
+   * Used when a {@link PortableTextComponents.block block} component isn't found
    */
   unknownBlock: Component<Block>;
   /**
@@ -76,7 +78,7 @@ export interface PortableTextComponents {
    */
   list: ComponentOrRecord<List>;
   /**
-   * Used when a `list` handler isn't found
+   * Used when a {@link PortableTextComponents.list list} component isn't found
    */
   unknownList: Component<List>;
   /**
@@ -84,7 +86,7 @@ export interface PortableTextComponents {
    */
   listItem: ComponentOrRecord<ListItem>;
   /**
-   * Used when a `listItem` handler isn't found
+   * Used when a {@link PortableTextComponents.listItem listItem} component isn't found
    */
   unknownListItem: Component<ListItem>;
   /**
@@ -92,7 +94,7 @@ export interface PortableTextComponents {
    */
   mark: ComponentOrRecord<Mark<never>>;
   /**
-   * Used when a `mark` handler isn't found
+   * Used when a {@link PortableTextComponents.mark mark} component isn't found
    */
   unknownMark: Component<Mark<never>>;
   /**
@@ -109,11 +111,11 @@ export type SomePortableTextComponents = Partial<PortableTextComponents>;
 /**
  * Component Props
  *
- * @template N Type of Portable Text payload that this component will receive on its `node` property
+ * @typeParam N - Type of Portable Text payload that this component will receive on its `node` property
  */
 export interface Props<N extends TypedObject> {
   /**
-   * Portable Text node
+   * Portable Text data for this node
    */
   node: N;
   /**
@@ -131,50 +133,71 @@ export interface Props<N extends TypedObject> {
 }
 
 /**
- * Alias to `PortableTextBlock` with `style` set to `normal`
- *
- * @see {@link https://portabletext.github.io/types/interfaces/PortableTextBlock.html}
+ * Alias to {@link https://portabletext.github.io/types/interfaces/PortableTextBlock.html PortableTextBlock} with `style` set to `normal`
  *
  * @example
+ * ```ts
+ * ---
  * import type { Block, Props as $ } from "astro-portabletext/types";
  *
  * export type Props = $<Block>;
+ * ---
+ * ```
  */
 export interface Block extends PortableTextBlock {
   style: "normal" | PortableTextBlockStyle;
 }
 
 /**
- * Alias to `ToolkitPortableTextList`
- *
- * @see {@link https://portabletext.github.io/toolkit/modules.html#ToolkitPortableTextList}
+ * Alias to {@link https://portabletext.github.io/toolkit/types/ToolkitPortableTextList.html ToolkitPortableTextList}
  *
  * @example
+ * ```ts
+ * ---
  * import type { List, Props as $ } from "astro-portabletext/types";
  *
  * export type Props = $<List>;
+ * ---
+ * ```
  */
 export type List = ToolkitPortableTextList;
 
 /**
- * Alias to `ToolkitPortableTextListItem`
- *
- * @see {@link https://portabletext.github.io/toolkit/interfaces/ToolkitPortableTextListItem.html}
+ * Alias to {@link https://portabletext.github.io/toolkit/interfaces/ToolkitPortableTextListItem.html ToolkitPortableTextListItem}
  *
  * @example
+ * ```ts
+ * ---
  * import type { ListItem, Props as $ } from "astro-portabletext/types";
  *
  * export type Props = $<ListItem>;
+ * ---
+ * ```
  */
 export type ListItem = ToolkitPortableTextListItem;
 
 /**
- * @template MarkDef Object defining what the `markDef` property will receive
+ * Extends {@link https://portabletext.github.io/toolkit/interfaces/ToolkitNestedPortableTextSpan.html ToolkitNestedPortableTextSpan}
+ * with consisting `markDef` and `markKey` properties
+ *
+ * @typeParam MarkDef - Object defining the shape of `markDef` property
+ *
+ * @remarks
+ * Refer to {@link https://github.com/portabletext/toolkit/blob/36c51bd360aa7bc9f8b1f47dbe4a8b6adb4b566a/src/buildMarksTree.ts#L92 buildMarksTree}
  *
  * @example
+ * ```ts
+ * ---
  * import type { Mark, Props as $ } from "astro-portabletext/types";
  *
- * export type Props = $<Mark<{ msg: string }>>;
+ * type Greet = { msg: string };
+ *
+ * export type Props = $<Mark<Greet>>;
+ *
+ * const { node } = Astro.props;
+ * // node.markDef.msg is of type `string`
+ * ---
+ * ```
  */
 export interface Mark<
   MarkDef extends Record<string, unknown> | undefined = undefined,
@@ -184,16 +207,22 @@ export interface Mark<
 }
 
 /**
- * Alias to `ToolkitTextNode`
- *
- * @see {@link https://portabletext.github.io/toolkit/interfaces/ToolkitTextNode.html}
+ * Alias to {@link https://portabletext.github.io/toolkit/interfaces/ToolkitTextNode.html ToolkitTextNode}
  *
  * @example
- * import type { TextNode, Props } from "astro-portabletext/types";
- * const props = Astro.props as Props<TextNode>;
+ * ```ts
+ * ---
+ * import type { TextNode, Props as $ } from "astro-portabletext/types";
+ *
+ * export type Props = $<TextNode>;
+ * ---
+ * ```
  */
 export type TextNode = ToolkitTextNode;
 
+/**
+ * The shape of the {@link PortableTextProps.onMissingComponent onMissingComponent} function
+ */
 export type MissingComponentHandler = (
   message: string,
   context: { type: string; nodeType: NodeType }

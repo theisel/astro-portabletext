@@ -39,16 +39,13 @@ import UnknownListItem from "./UnknownListItem.astro";
 import UnknownMark from "./UnknownMark.astro";
 import UnknownType from "./UnknownType.astro";
 
-export interface Props extends PortableTextProps {
-  class?: astroHTML.JSX.HTMLAttributes["class"];
-}
+export type Props = PortableTextProps;
 
 const {
   value,
   components: componentOverrides = {},
   listNestingMode = LIST_NEST_MODE_HTML,
   onMissingComponent = true,
-  class: astroClass,
 } = Astro.props;
 
 const components = mergeComponents(
@@ -124,7 +121,6 @@ const asComponentProps = (
   node,
   index,
   isInline,
-  class: astroClass,
 });
 
 const provideComponent = (

@@ -9,10 +9,7 @@ import Type from "./Type.astro";
 
 type PortableTextProps = Parameters<typeof PT>[0];
 
-export interface Props {
-  value: PortableTextProps["value"];
-  components?: PortableTextProps["components"];
-}
+export type Props = Pick<PortableTextProps, "value" | "components">;
 
 const defaultComponents = {
   block: Block,
@@ -22,7 +19,7 @@ const defaultComponents = {
   type: Type,
 };
 
-const { value, components = {}, ...attrs } = Astro.props;
+const { value, components = {} } = Astro.props;
 
 const portableTextProps = {
   value: value,
@@ -30,4 +27,4 @@ const portableTextProps = {
 };
 ---
 
-<PT {...portableTextProps} {...attrs} />
+<PT {...portableTextProps} />

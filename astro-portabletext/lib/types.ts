@@ -126,10 +126,6 @@ export interface Props<N extends TypedObject> {
    * Whether the component should be layed out as inline or block element
    */
   isInline: boolean;
-  /**
-   * Set when `style` is used within an Astro component, should be used when defined.
-   */
-  class?: string | undefined | null;
 }
 
 /**

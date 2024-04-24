@@ -35,11 +35,6 @@ export interface Props<N extends TypedObject> {
    * Whether the component should be layed out as inline or block element
    */
   isInline: boolean;
-  /**
-   * ⚠️ As of Astro V3, this has no impact and should be ignored.
-   * It will be dropped in future release.
-   */
-  class?: string | undefined | null;
 }
 ```
 

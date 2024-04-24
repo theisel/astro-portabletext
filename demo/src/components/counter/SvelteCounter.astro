@@ -5,18 +5,19 @@ import Counter from "./Counter.svelte";
 export type Props = $<TypedObject>;
 
 const props = Astro.props;
-const { isInline } = props;
+const { node, index, isInline, ...attrs } = props;
 ---
 
 {
   isInline ? (
-    <span>
-      <span>Svelte Inline Counter</span>
+    <span {...attrs} data-inline={String(isInline)}>
+      Svelte Inline Counter
+      {` `}
       <Counter client:idle {...props} />
     </span>
   ) : (
-    <div>
-      <h4>Svelte Block Counter</h4>
+    <div {...attrs} data-inline={String(isInline)}>
+      <h4 class="counter__title">Svelte Block Counter</h4>
       <Counter client:idle {...props} />
     </div>
   )
@@ -26,15 +27,5 @@ const { isInline } = props;
   div,
   span {
     background: lightsteelblue;
-  }
-  div {
-    display: grid;
-    justify-content: center;
-    padding: 0.5rem;
-    text-align: center;
-  }
-  h4 {
-    border: 2px dotted;
-    padding: 2px;
   }
 </style>

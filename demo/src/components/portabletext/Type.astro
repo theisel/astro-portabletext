@@ -1,7 +1,7 @@
 ---
 import type { Props as $, TypedObject } from "astro-portabletext/types";
 import { usePortableText } from "astro-portabletext/utils";
-import { JsxCounter, SvelteCounter } from "../counter";
+import { Counter } from "../counter";
 
 export type Props = $<TypedObject>;
 
@@ -9,10 +9,9 @@ const props = Astro.props;
 const typeIs = (type: string) => type === props.node._type;
 const { getDefaultComponent } = usePortableText(props.node);
 
-const Cmp = typeIs("jsxCounter")
-  ? JsxCounter
-  : typeIs("svelteCounter")
-    ? SvelteCounter
+const Cmp =
+  typeIs("jsxCounter") || typeIs("svelteCounter")
+    ? Counter
     : getDefaultComponent();
 ---
 

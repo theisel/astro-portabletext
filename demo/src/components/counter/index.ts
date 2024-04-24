@@ -1,4 +1,1 @@
-import JsxCounter from "./JsxCounter.astro";
-import SvelteCounter from "./SvelteCounter.astro";
-
-export { JsxCounter, SvelteCounter };
+export { default as Counter } from "./Counter.astro";

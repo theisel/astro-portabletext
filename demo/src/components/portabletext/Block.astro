@@ -11,3 +11,21 @@ const Cmp = styleIs("fancyBorder") ? FancyBorder : DefaultBlock;
 ---
 
 <Cmp {...props}><slot /></Cmp>
+
+<style>
+  h1 {
+    color: salmon;
+  }
+  h2 {
+    color: olivedrab;
+  }
+  h3 {
+    color: blueviolet;
+  }
+  blockquote {
+    border-left: 0.5rem solid #ccc;
+    margin-left: 0;
+    margin-right: 2rem;
+    padding-left: 2rem;
+  }
+</style>

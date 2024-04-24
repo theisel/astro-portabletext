@@ -7,7 +7,8 @@ import { Block, List, ListItem, Mark } "astro-portabletext/components";
 ```
 
 - [`Block`](#block)
-- [`List`/`ListItem`](#list--listitem)
+- [`List`](#list)
+- [`ListItem`](#listitem)
 - [`Mark`](#mark)
 - [`PortableText`](#portabletext)
 
@@ -40,27 +41,56 @@ const Cmp = styleIs("billboard") ? (
 <Cmp {...props}><slot /></Cmp>
 ```
 
-## List & ListItem
+## List
 
 ```ts
 /* MyList.astro */
 ---
 import type { Props as $, List as ListType } from "astro-portabletext/types";
 import { List } from "astro-portabletext/components";
-import BulletListStyle from "path/to/BulletListStyle.astro";
-import SquareListStyle from "path/to/SquareListStyle.astro";
+import BulletList from "path/to/BulletList.astro";
+import SquareList from "path/to/SquareList.astro";
 
 export type Props = $<ListType>;
 
 const props = Astro.props;
+
 const listItemIs = (listItem: string) => listItem === props.node.listItem;
 
 const Cmp = listItemIs("square") ? (
-  SquareListStyle
+  SquareList
 ) : listItemIs("bullet") ? ( // Override default
-  BulletListStyle
+  BulletList
 ) : (
   List  // Fallback to `astro-portabletext`
+)
+---
+
+<Cmp {...props}><slot /></Cmp>
+```
+
+## ListItem
+
+```ts
+/* MyListItem.astro */
+---
+import type { Props as $, ListItem as ListItemType } from "astro-portabletext/types";
+import { ListItem } from "astro-portabletext/components";
+import BulletListItem from "path/to/BulletListItem.astro";
+import SquareListItem from "path/to/SquareListItem.astro";
+
+export type Props = $<ListItemType>;
+
+const props = Astro.props;
+
+const listItemIs = (listItem: string) => listItem === props.node.listItem;
+
+const Cmp = listItemIs("square") ? (
+  SquareListItem
+) : listItemIs("bullet") ? ( // Override default
+  BulletListItem
+) : (
+  ListItem  // Fallback to `astro-portabletext`
 )
 ---
 
@@ -103,6 +133,7 @@ import { PortableText } from "astro-portabletext";
 // Custom components
 import MyBlock from "path/to/MyBlock.astro";
 import MyList from "path/to/MyList.astro";
+import MyListItem from "path/to/MyListItem.astro";
 import MyMark from "path/to/MyMark.astro";
 // Utils
 import { mergeComponents } from "astro-portabletext/utils";
@@ -116,6 +147,7 @@ const { value, components: overrideComponents = {} } = Astro.props;
 const components = mergeComponents({
   block: MyBlock,
   list: MyList,
+  listItem: MyListItem,
   mark: MyMark,
 }, overrideComponents)
 ---

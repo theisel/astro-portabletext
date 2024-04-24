@@ -37,7 +37,7 @@ Should only be used within a custom `block|list|listItem|mark|type` handler.
 | :----- | :------------------ | :-------------------- |
 | blocks | `array` \| `object` | Portable Text payload |
 
-See [https://portabletext.github.io/toolkit/modules.html#toPlainText](https://portabletext.github.io/toolkit/modules.html#toPlainText) for details.
+See [@portabletext/toolkit - toPlainText](https://portabletext.github.io/toolkit/functions/toPlainText.html) for details.
 
 &nbsp;
 

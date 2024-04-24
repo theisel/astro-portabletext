@@ -101,12 +101,7 @@ import { PortableText } from "astro-portabletext";
 
 ## Documentation
 
-Refer to [docs](docs/README.md) page for advanced usage and examples.
-
-&nbsp;
-
-## Sanity Projects
-Refer to `astro-portabletext` [Sanity docs](docs/sanity.md)  page
+Refer to [docs](docs/README.md) page for advanced usage and examples, including implementation with [Sanity](docs/sanity.md).
 
 &nbsp;
 

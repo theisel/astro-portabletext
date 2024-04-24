@@ -24,7 +24,7 @@ import type {/* select type */} "astro-portabletext/types";
 ```ts
 export interface Props<N extends TypedObject> {
   /**
-   * Portable Text node
+   * Portable Text data for this node
    */
   node: N;
   /**
@@ -42,11 +42,10 @@ export interface Props<N extends TypedObject> {
 
 ```ts
 ---
+/* .astro */
 import type { Props as $, TypedObject } from "astro-portabletex/types";
 
 export type Props = $<TypedObject>;
-
-const props = Astro.props;
 ---
 ```
 
@@ -56,7 +55,7 @@ const props = Astro.props;
 
 **Block** is passed in to `block` components on [Props](#interface-propsn) `node` property.
 
-See [PortableTextBlock](https://portabletext.github.io/types/interfaces/PortableTextBlock.html) for details.
+Alias to [PortableTextBlock](https://portabletext.github.io/types/interfaces/PortableTextBlock.html) with `style` set to `normal` if empty
 
 ### Definition
 
@@ -69,21 +68,21 @@ interface Block extends PortableTextBlock {
 ### Example
 
 ```ts
+---
 /* .astro */
 import type { Block, Props as $ } from "astro-portabletext/types";
 
 export type Props = $<Block>;
-
-const props = Astro.props;
+---
 ```
 
 ---
 
-## type List = ToolkitPortableTextList;
+## _type_ List = ToolkitPortableTextList;
 
 **List** is passed in to `list` components on [Props](#interface-propsn) `node` property.
 
-See [ToolkitPortableTextList](https://portabletext.github.io/toolkit/modules.html#ToolkitPortableTextList) for details.
+Alias to [ToolkitPortableTextList](https://portabletext.github.io/toolkit/types/ToolkitPortableTextList.html)
 
 ### Definition
 
@@ -94,21 +93,21 @@ type List = ToolkitPortableTextList;
 ### Example
 
 ```ts
+---
 /* .astro */
 import type { List, Props as $ } from "astro-portabletext/types";
 
 export type Props = $<List>;
-
-const props = Astro.props;
+---
 ```
 
 ---
 
-## type ListItem = ToolkitPortableTextListItem;
+## _type_ ListItem = ToolkitPortableTextListItem;
 
 **ListItem** is passed in to `listItem` components on [Props](#interface-propsn) `node` property.
 
-See [ToolkitPortableTextListItem](https://portabletext.github.io/toolkit/interfaces/ToolkitPortableTextListItem.html) for details.
+Alias to [ToolkitPortableTextListItem](https://portabletext.github.io/toolkit/interfaces/ToolkitPortableTextListItem.html)
 
 ### Definition
 
@@ -119,12 +118,12 @@ type ListItem = ToolkitPortableTextListItem;
 ### Example
 
 ```ts
+---
 /* .astro */
 import type { ListItem, Props as $ } from "astro-portabletext/types";
 
 export type Props = $<ListItem>;
-
-const props = Astro.props;
+---
 ```
 
 ---
@@ -133,7 +132,7 @@ const props = Astro.props;
 
 **Mark** is passed in to `mark` components on [Props](#interface-propsn) `node` property.
 
-See [ToolkitNestedPortableTextSpan](https://portabletext.github.io/toolkit/interfaces/ToolkitNestedPortableTextSpan.html) for details.
+Extends [ToolkitNestedPortableTextSpan](https://portabletext.github.io/toolkit/interfaces/ToolkitNestedPortableTextSpan.html) with consisting `markDef` and `markKey` properties
 
 ### Definition
 
@@ -148,19 +147,23 @@ interface Mark<MarkDef extends Record<string, unknown> | undefined = undefined>
 ### Example 1
 
 ```ts
+---
 /* .astro */
 import type { Mark, Props as $ } from "astro-portabletext/types";
 
-type Greet = Mark<{ msg: string }>;
+type Greet = { msg: string };
 
-export type Props = $<Greet>;
+export type Props = $<Mark<Greet>>;
 
-const props = Astro.props;
+const { node } = Astro.props;
+// node.markDef.msg is of type `string`
+---
 ```
 
 ### Example 2
 
 ```ts
+---
 /* .astro */
 import type { Mark, Props as $ } from "astro-portabletext/types";
 
@@ -170,14 +173,16 @@ interface Greet extends Mark {
 
 export type Props = $<Greet>;
 
-const props = Astro.props;
+const { node } = Astro.props;
+// node.markDef.msg is of type `string`
+---
 ```
 
 ---
 
-## type TextNode = ToolkitTextNode;
+## _type_ TextNode = ToolkitTextNode;
 
-**TextNode** is alias to [ToolkitTextNode](https://portabletext.github.io/toolkit/interfaces/ToolkitTextNode.html)
+Alias to [ToolkitTextNode](https://portabletext.github.io/toolkit/interfaces/ToolkitTextNode.html)
 
 ### Definition
 
@@ -188,10 +193,10 @@ type TextNode = ToolkitTextNode;
 ### Example
 
 ```ts
+---
 /* .astro */
 import type { TextNode, Props as $ } from "astro-portabletext/types";
 
 export type Props = $<TextNode>;
-
-const props = Astro.props;
+---
 ```

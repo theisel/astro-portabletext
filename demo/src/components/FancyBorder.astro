@@ -1,22 +1,6 @@
----
-export type { Props } from "astro-portabletext/types";
-
-const props = Astro.props;
-
-const throwError = () => {
-  throw new Error("Space component can only be [block] not [inline]");
-};
----
-
-{
-  !props.isInline ? (
-    <div data-cmp="fancyborder">
-      <slot />
-    </div>
-  ) : (
-    throwError()
-  )
-}
+<div>
+  <slot />
+</div>
 
 <style>
   :root {
@@ -25,8 +9,7 @@ const throwError = () => {
     --borderPrimaryStyle: dashed;
     --borderImpactStyle: dotted;
   }
-
-  [data-cmp="fancyborder"] {
+  div {
     border: 2px;
     border-color: var(--borderPrimaryColor);
     border-style: var(--borderPrimaryStyle);

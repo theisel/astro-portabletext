@@ -65,7 +65,23 @@
     "children": [
       {
         "_type": "span",
-        "text": "metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt eget nullam non nisi est sit"
+        "text": "metus vulputate eu scelerisque felis imperdiet proin "
+      },
+      {
+        "_type": "span",
+        "marks": ["link"],
+        "text": "fermentum"
+      },
+      {
+        "_type": "span",
+        "text": " leo vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt eget nullam non nisi est sit"
+      }
+    ],
+    "markDefs": [
+      {
+        "_key": "link",
+        "_type": "link",
+        "href": "#"
       }
     ]
   },

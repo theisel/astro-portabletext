@@ -33,19 +33,23 @@ $ npm install astro-portabletext
 &nbsp;
 
 ## Sanity Projects
-Refer to `astro-portabletext` [Sanity docs](astro-portabletext/docs/sanity.md)  page
+
+Refer to [Sanity docs](astro-portabletext/docs/sanity.md) page.
+
+&nbsp;
+
+## Alternative libraries
+
+You will need both related NPM packages.
+
+| Astro                                                                            | Portable Text                                                                |
+| :------------------------------------------------------------------------------- | :--------------------------------------------------------------------------- |
+| [@astrojs/react](https://docs.astro.build/en/guides/integrations-guide/react/)   | [@portabletext/react](https://github.com/portabletext/react-portabletext/)   |
+| [@astrojs/svelte](https://docs.astro.build/en/guides/integrations-guide/svelte/) | [@portabletext/svelte](https://github.com/portabletext/svelte-portabletext/) |
+| [@astrojs/vue](https://docs.astro.build/en/guides/integrations-guide/vue/)       | [@portabletext/vue](https://github.com/portabletext/vue-portabletext)        |
 
 &nbsp;
 
 ## License
 
 ISC
-
-&nbsp;
-
-## See also
-[sanity-template-astro-clean](https://github.com/sanity-io/sanity-template-astro-clean)
-
-[@portabletext/react](https://github.com/portabletext/react-portabletext)
-
-[@portabletext/svelte](https://github.com/portabletext/svelte-portabletext)

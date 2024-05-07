@@ -12,6 +12,20 @@
   * dependencies
     * astro-portabletext bumped from ^0.9.7 to ^0.9.8
 
+## [0.2.0](https://github.com/theisel/astro-portabletext/compare/demo@0.1.5...demo@0.2.0) (2024-05-07)
+
+
+### Features
+
+* add component, add mark definition to portabletext, including fixes and refactoring ([#144](https://github.com/theisel/astro-portabletext/issues/144)) ([e779758](https://github.com/theisel/astro-portabletext/commit/e779758ddc48114f79a377f7d6ad3f9429f9ce61))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * astro-portabletext bumped from ^0.9.9 to ^0.10.0
+
 ## [0.1.5](https://github.com/theisel/astro-portabletext/compare/demo@0.1.4...demo@0.1.5) (2024-04-21)
 
 

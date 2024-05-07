@@ -1,8 +1,12 @@
-[`astro-portabletext`](../README.md)
+[astro-portabletext](../README.md) / readme
+
+&nbsp;
 
 <div>
   <img src="../../logo.svg" width="240" alt="astro-portabletext logo">
 </div>
+
+&nbsp;
 
 # Documentation
 

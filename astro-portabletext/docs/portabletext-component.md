@@ -1,6 +1,6 @@
-[**`astro-portabletext`**](../README.md) > [**`docs`**](README.md)
+[astro-portabletext](README.md) / portabletext-component
 
-# `PortableText` Component
+# PortableText Component
 
 ```ts
 import { PortableText } from "astro-portabletext";

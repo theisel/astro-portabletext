@@ -1,4 +1,4 @@
-[**`astro-portabletext`**](../README.md) > [**`docs`**](README.md)
+[astro-portabletext](README.md) / merge-override-components
 
 # Merge/Override Components
 

@@ -12,6 +12,6 @@
 - [Extending Components](./extending-components.md)
 - [Merge/Override Components](./merge-override-components.md)
 - [Hydration](./hydration.md)
-- [Typescript Types](./types.md)
-- [Utility Functions](./utils.md)
 - [Sanity Projects](./sanity.md)
+- [Typescript Types](./modules/types.md)
+- [Utility Functions](./modules/utils.md)

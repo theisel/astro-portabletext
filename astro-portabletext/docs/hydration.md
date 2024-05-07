@@ -1,4 +1,4 @@
-[**`astro-portabletext`**](../README.md) > [**`docs`**](README.md)
+[astro-portabletext](README.md) / hydration
 
 # Hydration
 
@@ -50,7 +50,7 @@ const { node: props /*, isInline */ } = Astro.props;
 /* pages/*.astro */
 ---
 import { PortableText } from "astro-portabletext";
-import Map from "path/to/Map.astro";
+import Map from "path/to/Map.astro"; // 👈 Import Astro component
 
 const value = /* provide value */
 
@@ -64,4 +64,4 @@ const components = {
 <PortableText value={value} components={components} />
 ```
 
-It's better to extend the `PortableText` component, see [Extending PortableText Component](./extending-components.md#portabletext).
+It's better to extend the [PortableText](./portabletext-component.md) component, see [Extending Components](./extending-components.md).

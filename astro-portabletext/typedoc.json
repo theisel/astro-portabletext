@@ -1,0 +1,14 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["./lib/types.ts", "./lib/utils.ts"],
+  "plugin": ["typedoc-plugin-markdown"],
+  "out": "generated-docs",
+  "theme": "markdown",
+  "readme": "none",
+  "githubPages": false,
+  "disableSources": true,
+  "sort": ["source-order", "required-first"],
+  // typedoc-plugin-markdown options
+  "namedAnchors": true,
+  "preserveAnchorCasing": true
+}

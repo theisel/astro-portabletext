@@ -1,6 +1,6 @@
-[**`astro-portabletext`**](../README.md) > [**`docs`**](README.md)
+[astro-portabletext](README.md) / portabletext-component
 
-# `PortableText` Component
+# PortableText Component
 
 ```ts
 import { PortableText } from "astro-portabletext";
@@ -23,7 +23,7 @@ Portable Text payload
 
 **T `object`**
 
-Override/extend default components.
+Override/extend default components
 
 ```js
 {
@@ -53,16 +53,15 @@ See [Extending Components](extending-components.md) and [Merge/Override Componen
 
 **T `function` | `boolean`**
 
-Disable warning messages or handle unknown types.
+Disable warning messages or handle unknown types; prints to console by default
 
-- `function` to handle unknown types.
-- `false` to disable warning messages.
-- Prints to console by default.
+- `function` to handle unknown types
+- `false` to disable warning messages
 
 ### `listNestingMode`
 
-**T `string`**
+**T `"html"` | `"direct"`**
 
-- `html` or `direct`
+Defaults to `html`
 
-See [ToolkitListNestMode](https://portabletext.github.io/toolkit/modules.html#ToolkitListNestMode)
+See [ToolkitListNestMode](https://portabletext.github.io/toolkit/types/ToolkitListNestMode.html)

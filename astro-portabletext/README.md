@@ -20,7 +20,6 @@ Render [Portable Text](https://portabletext.org/) with [Astro](https://astro.bui
 
 - [Getting Started](#getting-started)
 - [Documentation](#documentation)
-- [Sanity Projects](#sanity-projects)
 - [License](#license)
 
 &nbsp;
@@ -101,12 +100,7 @@ import { PortableText } from "astro-portabletext";
 
 ## Documentation
 
-Refer to [docs](docs/README.md) page for advanced usage and examples.
-
-&nbsp;
-
-## Sanity Projects
-Refer to `astro-portabletext` [Sanity docs](docs/sanity.md)  page
+Refer to [docs](docs/README.md) page for advanced usage and examples, including implementation with [Sanity](docs/sanity.md).
 
 &nbsp;
 

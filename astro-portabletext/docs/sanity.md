@@ -1,8 +1,15 @@
-[**`astro-portabletext`**](../README.md) > [**`docs`**](README.md)
+[astro-portabletext](README.md) / sanity
 
 # Sanity
 
-For [Sanity](https://sanity.io) projects have a look at [sanity-template-astro-clean](https://github.com/sanity-io/sanity-template-astro-clean) Github repo.
+For [Sanity](https://sanity.io) projects have a look at the following comprehensive resources:
+
+- [The Official Sanity integration for Astro](https://www.sanity.io/plugins/sanity-astro)
+- [Build your blog with Astro and Sanity](https://www.sanity.io/guides/sanity-astro-blog)
+
+&nbsp;
+
+Alternatively, have a look at the following quick guide:
 
 &nbsp;
 
@@ -30,7 +37,8 @@ import imageUrlBuilder from "@sanity/image-url";
 import { sanityClient } from "./client";
 
 type ImageUrlBuilder = ReturnType<typeof imageUrlBuilder>;
-type ImageSource = Parameters<ImageUrlBuilder["image"]>[0];
+
+export type ImageSource = Parameters<ImageUrlBuilder["image"]>[0];
 
 export const imageUrlFor = (source: ImageSource) =>
   imageUrlBuilder(sanityClient).image(source);
@@ -41,7 +49,7 @@ export const imageUrlFor = (source: ImageSource) =>
 ```ts
 /* lib/sanity/index.ts */
 export { sanityClient } from "./client";
-export { imageUrlFor } from "./image";
+export { imageUrlFor, type ImageSource } from "./image";
 ```
 
 &nbsp;
@@ -52,43 +60,63 @@ Refer to [Hydration](./hydration.md) page as well.
 
 ### Image
 
+A generic image component intended for use across the app and has no concern about layout.
+
 ```ts
 ---
 /* @/components/Image.astro */
-import { imageUrlFor } from "@/lib/sanity";
-
-type Asset = Parameters<typeof imageUrlFor>[0];
+import { imageUrlFor, type ImageSource } from "@/lib/sanity";
 
 export interface Props {
-  asset: Asset;
-  alt: string;
+  asset: ImageSource;
+  alt?: string | null | undefined;
+  class?: astroHTML.JSX.HTMLAttributes['class'];
 }
 
-const { asset, alt } = Astro.props;
+const { asset, ...rest } = Astro.props;
 const image = imageUrlFor(asset);
 ---
 
-<img src={image} alt={alt} />
+<img src={image} {...rest} />
+
+<style>
+  img {
+    /* Maybe some basic styling? */
+  }
+</style>
 ```
 
 ### PortableText Image
+
+A Portable Text image component to handle the incoming node and deal with the layout utilising the `isInline` prop and passing the node to the [generic image](#image) component
 
 ```ts
 ---
 /* @/portabletext/Image.astro */
 import type { Props as $, TypedObject } from "astro-portabletext/types";
-import Image from "@/components/Image.astro";
-
-type ImageProps = Parameters<typeof Image>[0];
+import Image, {type Props as ImageProps} from "@/components/Image.astro";
 
 export type Props = $<ImageProps & TypedObject>;
 
-const { node /*, isInline */ } = Astro.props;
-
-// Do stuff with `isInline`
+const { node, isInline } = Astro.props;
 ---
 
-<Image {...node} />
+{isInline ? (
+  <Image class="rounded" {...node} />
+) : (
+  <div class="impact">
+    <Image {...node} />
+  </div>
+)}
+
+<style>
+  .rounded {
+    /* some styles */
+  }
+  .impact {
+    /* some styles */
+  }
+</style>
 ```
 
 &nbsp;

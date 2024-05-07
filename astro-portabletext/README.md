@@ -20,7 +20,6 @@ Render [Portable Text](https://portabletext.org/) with [Astro](https://astro.bui
 
 - [Getting Started](#getting-started)
 - [Documentation](#documentation)
-- [Sanity Projects](#sanity-projects)
 - [License](#license)
 
 &nbsp;

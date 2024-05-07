@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - release-please--**
+      - 'release-please--**'
   
   pull_request:
     paths-ignore:

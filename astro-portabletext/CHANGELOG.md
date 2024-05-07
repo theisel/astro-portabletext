@@ -1,5 +1,26 @@
 # astro-portabletext
 
+## [0.10.0](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.9.9...astro-portabletext@0.10.0) (2024-05-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **component:** drop `class` prop from `PortableText` ([#143](https://github.com/theisel/astro-portabletext/issues/143))
+
+### Documentation
+
+* automate documentation and fixes ([#146](https://github.com/theisel/astro-portabletext/issues/146)) ([7a1730a](https://github.com/theisel/astro-portabletext/commit/7a1730a9b66fae80fa25e8e9f4f2f18f40739785))
+
+
+### Bug Fixes
+
+* **types:** fix docblock comments ([#141](https://github.com/theisel/astro-portabletext/issues/141)) ([421afdb](https://github.com/theisel/astro-portabletext/commit/421afdb2122eef9d5162ac1d0e9542dce1a16a1a))
+
+
+### Code Refactoring
+
+* **component:** drop `class` prop from `PortableText` ([#143](https://github.com/theisel/astro-portabletext/issues/143)) ([b0b77c4](https://github.com/theisel/astro-portabletext/commit/b0b77c4e03835a6b479ff7829832164487dcfb82))
+
 ## [0.9.9](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.9.8...astro-portabletext@0.9.9) (2024-04-21)
 
 

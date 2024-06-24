@@ -12,6 +12,13 @@
   * dependencies
     * astro-portabletext bumped from ^0.9.7 to ^0.9.8
 
+## [0.2.1](https://github.com/theisel/astro-portabletext/compare/demo@0.2.0...demo@0.2.1) (2024-06-23)
+
+
+### Bug Fixes
+
+* **demo:** update `dependencies` ([#149](https://github.com/theisel/astro-portabletext/issues/149)) ([00d7133](https://github.com/theisel/astro-portabletext/commit/00d713310f83a452a2addca64f553afc25f17ce0))
+
 ## [0.2.0](https://github.com/theisel/astro-portabletext/compare/demo@0.1.5...demo@0.2.0) (2024-05-07)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "demo",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "private": true,
   "author": "Tom Theisel <tom.theisel@gmail.com>",

@@ -25,9 +25,6 @@
   "packages": {
     "astro-portabletext": {
       "package-name": "astro-portabletext"
-    },
-    "demo": {
-      "package-name": "demo"
     }
   }
 }

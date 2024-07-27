@@ -131,11 +131,11 @@ const provideComponent = (
 
   return isComponent(component)
     ? component
-    : component[type as keyof typeof component] ??
+    : (component[type as keyof typeof component] ??
         (missingComponentHandler(getWarningMessage(nodeType, type), {
           nodeType,
           type,
-        }) as undefined);
+        }) as undefined));
 };
 
 const prepareForRender = (

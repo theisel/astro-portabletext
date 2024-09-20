@@ -1,0 +1,21 @@
+---
+import { PortableText } from "astro-portabletext";
+import Layout from "../../layouts/Default.astro";
+import TextStyleBySplit from "../../components/TextStyleBySplit.astro";
+
+const blocks = [
+  {
+    _type: "block",
+    children: [
+      {
+        _type: "span",
+        text: "Yellow Orange",
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <PortableText value={blocks} components={{ text: TextStyleBySplit }} />
+</Layout>

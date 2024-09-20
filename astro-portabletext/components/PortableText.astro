@@ -33,6 +33,7 @@ import HardBreak from "./HardBreak.astro";
 import List from "./List.astro";
 import ListItem from "./ListItem.astro";
 import Mark from "./Mark.astro";
+import Text from "./Text.astro";
 import UnknownBlock from "./UnknownBlock.astro";
 import UnknownList from "./UnknownList.astro";
 import UnknownListItem from "./UnknownListItem.astro";
@@ -84,6 +85,7 @@ const components = mergeComponents(
       underline: Mark,
     },
     unknownMark: UnknownMark,
+    text: Text,
     hardBreak: HardBreak,
   },
   componentOverrides
@@ -176,9 +178,13 @@ const prepareForRender = (
             ]
           : isPortableTextToolkitTextNode(node)
             ? [
-                "\n" === node.text && isComponent(components.hardBreak)
-                  ? components.hardBreak
-                  : node.text,
+                "\n" === node.text
+                  ? isComponent(components.hardBreak)
+                    ? components.hardBreak
+                    : node.text
+                  : isComponent(components.text)
+                    ? components.text
+                    : node.text,
                 [],
               ]
             : [

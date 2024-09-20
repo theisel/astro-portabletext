@@ -98,6 +98,10 @@ export interface PortableTextComponents {
    */
   unknownMark: Component<Mark<never>>;
   /**
+   * How text should be rendered
+   */
+  text: Component<TextNode>;
+  /**
    * How line breaks should be rendered
    */
   hardBreak: Component<TextNode>;

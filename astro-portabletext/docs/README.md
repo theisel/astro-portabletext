@@ -17,5 +17,5 @@
 - [Merge/Override Components](./merge-override-components.md)
 - [Hydration](./hydration.md)
 - [Sanity Projects](./sanity.md)
-- [Typescript Types](./modules/types.md)
-- [Utility Functions](./modules/utils.md)
+- [Typescript Types](./types/README.md)
+- [Utility Functions](./utils/README.md)

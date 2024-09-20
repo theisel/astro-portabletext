@@ -133,7 +133,7 @@ export interface Props<N extends TypedObject> {
 }
 
 /**
- * Alias to {@link https://portabletext.github.io/types/interfaces/PortableTextBlock.html PortableTextBlock} with `style` set to `normal`
+ * Alias to {@link https://portabletext.github.io/types/interfaces/PortableTextBlock.html PortableTextBlock} with `style` set to `normal` when not provided
  *
  * @example
  * ```ts

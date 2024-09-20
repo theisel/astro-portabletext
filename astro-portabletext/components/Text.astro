@@ -1,0 +1,9 @@
+---
+import type { TextNode, Props as $ } from "../lib/types";
+
+export type Props = $<TextNode>;
+
+const { node } = Astro.props;
+---
+
+{node.text}

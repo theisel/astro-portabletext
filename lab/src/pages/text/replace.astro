@@ -1,0 +1,21 @@
+---
+import { PortableText } from "astro-portabletext";
+import Layout from "../../layouts/Default.astro";
+import TextReplace from '../../components/TextReplace.astro';
+
+const blocks = [
+  {
+    _type: "block",
+    children: [
+      {
+        _type: "span",
+        text: "Why did the programmer quit his job? Because he didn't get arrays.",
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <PortableText value={blocks} components={{text: TextReplace}}/>
+</Layout>

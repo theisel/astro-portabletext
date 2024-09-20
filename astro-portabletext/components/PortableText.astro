@@ -127,70 +127,97 @@ const asComponentProps = (
 
 const provideComponent = (
   nodeType: NodeType,
-  type: string
+  type: string,
+  fallbackComponent: Component
 ): Component | undefined => {
-  const component = components[nodeType];
+  const component = isComponent(components[nodeType])
+    ? components[nodeType]
+    : components[nodeType]?.[type];
 
-  return isComponent(component)
-    ? component
-    : (component[type as keyof typeof component] ??
-        (missingComponentHandler(getWarningMessage(nodeType, type), {
-          nodeType,
-          type,
-        }) as undefined));
+  if (isComponent(component)) {
+    return component;
+  }
+
+  missingComponentHandler(getWarningMessage(nodeType, type), {
+    nodeType,
+    type,
+  });
+
+  return fallbackComponent;
 };
 
 const prepareForRender = (
   props: ComponentProps<TypedObject>
-): [Component | string, ComponentProps<TypedObject>[]] => {
+):
+  | [Component | string, ComponentProps<TypedObject>[]]
+  | [Component | string] => {
   const { node } = props;
 
-  return isPortableTextToolkitList(node)
-    ? [
-        provideComponent("list", node.listItem) ?? components.unknownList,
-        serializeChildren(node, false),
-      ]
-    : isPortableTextListItemBlock(node)
-      ? [
-          provideComponent("listItem", node.listItem) ??
-            components.unknownListItem,
-          serializeMarksTree(node).map((children) => {
-            if (node.style !== "normal") {
-              const { listItem, ...blockNode } = node;
-              children = serializeNode(false)(blockNode, 0);
-            }
-            return children;
-          }),
-        ]
-      : isPortableTextToolkitSpan(node)
-        ? [
-            provideComponent("mark", node.markType) ?? components.unknownMark,
-            serializeChildren(node, true),
-          ]
-        : isPortableTextBlock(node)
-          ? [
-              provideComponent(
-                "block",
-                node.style ??
-                  (node.style = "normal") /* Make sure style has been set */
-              ) ?? components.unknownBlock,
-              serializeMarksTree(node),
-            ]
-          : isPortableTextToolkitTextNode(node)
-            ? [
-                "\n" === node.text
-                  ? isComponent(components.hardBreak)
-                    ? components.hardBreak
-                    : node.text
-                  : isComponent(components.text)
-                    ? components.text
-                    : node.text,
-                [],
-              ]
-            : [
-                provideComponent("type", node._type) ?? components.unknownType,
-                [],
-              ];
+  if (isPortableTextToolkitList(node)) {
+    return [
+      provideComponent(
+        "list",
+        node.listItem,
+        components.unknownList ?? UnknownList
+      ),
+      serializeChildren(node, false),
+    ];
+  }
+
+  if (isPortableTextListItemBlock(node)) {
+    return [
+      provideComponent(
+        "listItem",
+        node.listItem,
+        components.unknownListItem ?? UnknownListItem
+      ),
+      serializeMarksTree(node).map((children) => {
+        if (node.style !== "normal") {
+          const { listItem, ...blockNode } = node;
+          children = serializeNode(false)(blockNode, 0);
+        }
+        return children;
+      }),
+    ];
+  }
+
+  if (isPortableTextToolkitSpan(node)) {
+    return [
+      provideComponent(
+        "mark",
+        node.markType,
+        components.unknownMark ?? UnknownMark
+      ),
+      serializeChildren(node, true),
+    ];
+  }
+
+  if (isPortableTextBlock(node)) {
+    return [
+      provideComponent(
+        "block",
+        (node.style ??= "normal") /* Make sure style has been set */,
+        components.unknownBlock ?? UnknownBlock
+      ),
+      serializeMarksTree(node),
+    ];
+  }
+
+  if (isPortableTextToolkitTextNode(node)) {
+    return [
+      "\n" === node.text
+        ? isComponent(components.hardBreak)
+          ? components.hardBreak
+          : node.text
+        : isComponent(components.text)
+          ? components.text
+          : node.text,
+    ];
+  }
+
+  return [
+    provideComponent("type", node._type, components.unknownType ?? UnknownType),
+  ];
 };
 
 (globalThis as any)[contextRef] = (node: TypedObject): Context => {
@@ -249,7 +276,7 @@ function* renderBlocks() {
 
 {
   [...renderBlocks()].map(function render(props) {
-    const [Cmp, children] = prepareForRender(props);
+    const [Cmp, children = []] = prepareForRender(props);
 
     return !isComponent(Cmp) ? (
       <Fragment set:text={Cmp} />

@@ -75,8 +75,8 @@ importers:
   astro-portabletext:
     dependencies:
       '@portabletext/toolkit':
-        specifier: ^2.0.15
-        version: 2.0.15
+        specifier: ^2.0.16
+        version: 2.0.16
       '@portabletext/types':
         specifier: ^2.0.13
         version: 2.0.13
@@ -761,8 +761,8 @@ packages:
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
-  '@portabletext/toolkit@2.0.15':
-    resolution: {integrity: sha512-KRNEUAd6eOxE9y591qC0sE24ZG2q27OHXe0dsPclj4IoEzf8aEuDcHR64wfFtB0aHq9Wdx3pIinmhZZcl35/vg==}
+  '@portabletext/toolkit@2.0.16':
+    resolution: {integrity: sha512-aBvnD8MscoAlEIuZBn0Aksd+oCuoMGFOT3CtHIgRBaac0Vu4YnnMUF45xo/B/T5vmwWcnDXoJEJdn+SKDg1m+A==}
     engines: {node: ^14.13.1 || >=16.0.0}
 
   '@portabletext/types@2.0.13':
@@ -4047,7 +4047,7 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
-  '@portabletext/toolkit@2.0.15':
+  '@portabletext/toolkit@2.0.16':
     dependencies:
       '@portabletext/types': 2.0.13
 
@@ -4396,7 +4396,7 @@ snapshots:
 
   astro-portabletext@0.10.0:
     dependencies:
-      '@portabletext/toolkit': 2.0.15
+      '@portabletext/toolkit': 2.0.16
       '@portabletext/types': 2.0.13
 
   astro@4.12.2(@types/node@20.14.12)(typescript@5.5.4):

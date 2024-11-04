@@ -1,5 +1,12 @@
 # astro-portabletext
 
+## [0.10.1](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.10.0...astro-portabletext@0.10.1) (2024-11-04)
+
+
+### Bug Fixes
+
+* **deps:** bump @portabletext/toolkit to v2.0.16 ([#159](https://github.com/theisel/astro-portabletext/issues/159)) ([3ab5d15](https://github.com/theisel/astro-portabletext/commit/3ab5d150f4342d7c0ec258d1e21f43912c1f0f20))
+
 ## [0.10.0](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.9.9...astro-portabletext@0.10.0) (2024-05-07)
 
 

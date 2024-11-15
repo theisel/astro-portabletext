@@ -227,3 +227,43 @@ export type MissingComponentHandler = (
   message: string,
   context: { type: string; nodeType: NodeType }
 ) => void;
+
+/**
+ * Properties for the `RenderHandler` function
+ */
+export type RenderHandlerProps<
+  T extends TypedObject = TypedObject,
+  Children = unknown,
+> = {
+  /**
+   * The component to be rendered. This is a function that takes props and returns a rendered output
+   */
+  Component: Component<T>;
+  props: Props<T>;
+  children?: Children;
+};
+
+/**
+ * The shape of the render component function
+ *
+ * @typeParam T - Type of Portable Text payload
+ * @typeParam Children - Type of children
+ */
+export type RenderHandler<
+  T extends TypedObject = TypedObject,
+  Children = unknown,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+> = (props: RenderHandlerProps<T, Children>) => any;
+
+/**
+ * Options for the `render` function accessed via `usePortableText`
+ */
+export type RenderOptions = {
+  type?: RenderHandler<TypedObject, never>;
+  block?: RenderHandler<Block>;
+  list?: RenderHandler<List>;
+  listItem?: RenderHandler<ListItem>;
+  mark?: RenderHandler<Mark>;
+  text?: RenderHandler<TextNode, never>;
+  hardBreak?: RenderHandler<TextNode, never>;
+};

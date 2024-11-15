@@ -1,0 +1,30 @@
+---
+import assert from "node:assert";
+import { PortableText } from "astro-portabletext";
+import UnknownType from "../../../../astro-portabletext/components/UnknownType.astro";
+import Layout from "../../layouts/Default.astro";
+
+const blocks = [
+  {
+    _type: "helloWorld",
+  },
+];
+---
+
+<Layout>
+  <PortableText value={blocks}>
+    <fragment slot="type"
+      >{
+        ({ Component, props }) => {
+          assert(Component === UnknownType, "Component is not UnknownType");
+
+          switch (props.node._type) {
+            case "helloWorld":
+              return <div data-slot="type">Hello World</div>;
+          }
+          return <Component {...props} />;
+        }
+      }</fragment
+    >
+  </PortableText>
+</Layout>

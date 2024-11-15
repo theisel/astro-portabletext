@@ -1,0 +1,37 @@
+---
+import assert from "node:assert";
+import Layout from "../../layouts/Default.astro";
+import { PortableText } from "astro-portabletext";
+import { Block as DefaultBlock } from "astro-portabletext/components";
+
+const blocks = [
+  {
+    _type: "block",
+    style: "normal",
+    children: [
+      {
+        _type: "span",
+        text: "I'm a paragraph",
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <PortableText value={blocks}>
+    <fragment slot="block">
+      {
+        ({ Component, props, children }) => {
+          assert(Component === DefaultBlock, "Component is not DefaultBlock");
+
+          return (
+            <Component {...props} data-slot="block">
+              {children}
+            </Component>
+          );
+        }
+      }
+    </fragment>
+  </PortableText>
+</Layout>

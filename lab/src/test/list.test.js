@@ -42,4 +42,20 @@ list("nested", async () => {
   );
 });
 
+list("styled", async () => {
+  const $ = await fetchContent("list/styled");
+  const $ul = $("ul");
+
+  assert.is($ul.length, 1);
+
+  const $li = $ul.find("li");
+
+  assert.is($li.length, 1);
+
+  const $banner = $li.find("div.banner");
+
+  assert.is($banner.length, 1);
+  assert.is($banner.text(), "List Item 1");
+});
+
 list.run();

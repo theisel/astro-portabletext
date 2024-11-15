@@ -1,0 +1,26 @@
+---
+import type { Block, Props as $ } from "astro-portabletext/types";
+import { usePortableText } from "astro-portabletext/utils";
+
+export type Props = $<Block>;
+
+const props = Astro.props;
+const { node, index, isInline, ...attrs } = props;
+const styleIs = (style: string) => style === node.style;
+
+const { getDefaultComponent } = usePortableText(node);
+
+const Default = getDefaultComponent();
+---
+
+{
+  styleIs("banner") ? (
+    <div class="banner" {...attrs}>
+      <slot />
+    </div>
+  ) : (
+    <Default {...props}>
+      <slot />
+    </Default>
+  )
+}

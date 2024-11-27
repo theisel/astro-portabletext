@@ -1,7 +1,7 @@
 ---
 import { PortableText } from "astro-portabletext";
 import Layout from "../../layouts/Default.astro";
-import TextReplace from '../../components/TextReplace.astro';
+import TextReplace from "../../components/TextReplace.astro";
 
 const blocks = [
   {
@@ -17,5 +17,5 @@ const blocks = [
 ---
 
 <Layout>
-  <PortableText value={blocks} components={{text: TextReplace}}/>
+  <PortableText value={blocks} components={{ text: TextReplace }} />
 </Layout>

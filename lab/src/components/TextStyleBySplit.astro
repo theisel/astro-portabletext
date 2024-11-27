@@ -6,9 +6,17 @@ export type Props = $<TextNode>;
 const { node } = Astro.props;
 ---
 
-{node.text.split(' ').map((it, idx) => idx === 0 ? (
-  <>&nbsp;<span>{it}</span></>
-) : it)}
+{
+  node.text.split(" ").map((it, idx) =>
+    idx === 0 ? (
+      <>
+        &nbsp;<span>{it}</span>
+      </>
+    ) : (
+      it
+    )
+  )
+}
 
 <style>
   span {

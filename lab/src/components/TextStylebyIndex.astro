@@ -5,12 +5,17 @@ export type Props = $<TextNode>;
 
 const { node, index } = Astro.props;
 ---
-{index === 1 ? (
-  <>
-    &nbsp;
-    <span>{node.text.trim()}</span>
-  </>
-) : node.text}
+
+{
+  index === 1 ? (
+    <>
+      &nbsp;
+      <span>{node.text.trim()}</span>
+    </>
+  ) : (
+    node.text
+  )
+}
 
 <style>
   span {

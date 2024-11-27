@@ -4,7 +4,9 @@ import type { TextNode, Props as $ } from "astro-portabletext/types";
 export type Props = $<TextNode>;
 
 const { node } = Astro.props;
-const replacedText = node.text.replace('programmer', 'JavaScript developer').replace('arrays', 'callbacks');
+const replacedText = node.text
+  .replace("programmer", "JavaScript developer")
+  .replace("arrays", "callbacks");
 ---
 
 {replacedText}

@@ -210,7 +210,7 @@ const prepareForRender = (
       "\n" === node.text
         ? isComponent(components.hardBreak)
           ? components.hardBreak
-          : Text
+          : HardBreak
         : isComponent(components.text)
           ? components.text
           : Text,
@@ -235,17 +235,35 @@ const provideDefaultComponent = (node: TypedObject) => {
   if (isPortableTextListItemBlock(node)) return ListItem;
   if (isPortableTextToolkitSpan(node)) return Mark;
   if (isPortableTextBlock(node)) return Block;
-  if (isPortableTextToolkitTextNode(node)) return HardBreak;
+
+  if (isPortableTextToolkitTextNode(node)) {
+    return "\n" === node.text ? HardBreak : Text;
+  }
+
   return UnknownType;
 };
 
 // Returns the `unknown` component related to the passed in node
 const provideUnknownComponent = (node: TypedObject) => {
-  if (isPortableTextToolkitList(node)) return components.unknownList;
-  if (isPortableTextListItemBlock(node)) return components.unknownListItem;
-  if (isPortableTextToolkitSpan(node)) return components.unknownMark;
-  if (isPortableTextBlock(node)) return components.unknownBlock;
-  if (!isPortableTextToolkitTextNode(node)) return components.unknownType;
+  if (isPortableTextToolkitList(node)) {
+    return components.unknownList ?? UnknownList;
+  }
+
+  if (isPortableTextListItemBlock(node)) {
+    return components.unknownListItem ?? UnknownListItem;
+  }
+
+  if (isPortableTextToolkitSpan(node)) {
+    return components.unknownMark ?? UnknownMark;
+  }
+
+  if (isPortableTextBlock(node)) {
+    return components.unknownBlock ?? UnknownBlock;
+  }
+
+  if (!isPortableTextToolkitTextNode(node)) {
+    return components.unknownType ?? UnknownType;
+  }
 
   throw new Error(
     `[PortableText getUnknownComponent] Unable to provide component with node type ${node._type}`

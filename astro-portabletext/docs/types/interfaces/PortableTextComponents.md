@@ -90,6 +90,14 @@ Used when a [mark](PortableTextComponents.md#mark) component isn't found
 
 ***
 
+### text
+
+> **text**: `Component`\<`ToolkitTextNode`\>
+
+How text should be rendered
+
+***
+
 ### hardBreak
 
 > **hardBreak**: `Component`\<`ToolkitTextNode`\>

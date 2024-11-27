@@ -1,0 +1,29 @@
+---
+import { PortableText } from "astro-portabletext";
+import Layout from "../../layouts/Default.astro";
+import TextStylebyIndex from "../../components/TextStylebyIndex.astro";
+
+const blocks = [
+  {
+    _type: "block",
+    children: [
+      {
+        _type: "span",
+        text: "Red",
+      },
+      {
+        _type: "span",
+        text: " Green",
+      },
+      {
+        _type: "span",
+        text: " Blue",
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <PortableText value={blocks} components={{ text: TextStylebyIndex }} />
+</Layout>

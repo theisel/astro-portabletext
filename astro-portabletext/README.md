@@ -92,6 +92,7 @@ import { PortableText } from "astro-portabletext";
     strong: /* <strong {...attrs}><slot /></strong> */,
     underline: /* <span {...attrs} style="text-decoration: underline;"><slot /></span> */
   },
+  text: /* renders string; use custom handler to change output */
   hardBreak: /* <br /> */,
 }
 ```

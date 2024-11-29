@@ -134,6 +134,11 @@ const provideComponent = (
   return fallbackComponent;
 };
 
+const cachedNodes = new WeakMap<
+  TypedObject,
+  { Default?: Component; Unknown?: Component }
+>();
+
 // The local render function will override these options
 let fallbackRenderOptions: Required<RenderOptions> | undefined;
 
@@ -163,6 +168,8 @@ const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
     if (isPortableTextToolkitList(node)) {
       const UnknownComponent = components.unknownList ?? UnknownList;
 
+      cachedNodes.set(node, { Default: List, Unknown: UnknownComponent });
+
       return run(renderOptions.list, {
         Component: provideComponent("list", node.listItem, UnknownComponent),
         props: asComponentProps(node, index, false),
@@ -180,6 +187,8 @@ const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
 
       const UnknownComponent = components.unknownListItem ?? UnknownListItem;
 
+      cachedNodes.set(node, { Default: ListItem, Unknown: UnknownComponent });
+
       return run(renderOptions.listItem, {
         Component: provideComponent(
           "listItem",
@@ -196,6 +205,8 @@ const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
     if (isPortableTextToolkitSpan(node)) {
       const UnknownComponent = components.unknownMark ?? UnknownMark;
 
+      cachedNodes.set(node, { Default: Mark, Unknown: UnknownComponent });
+
       return run(renderOptions.mark, {
         Component: provideComponent("mark", node.markType, UnknownComponent),
         props: asComponentProps(node, index, true),
@@ -208,6 +219,8 @@ const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
       node.children = buildMarksTree(node);
 
       const UnknownComponent = components.unknownBlock ?? UnknownBlock;
+
+      cachedNodes.set(node, { Default: Block, Unknown: UnknownComponent });
 
       return run(renderOptions.block, {
         Component: provideComponent("block", node.style, UnknownComponent),
@@ -261,6 +274,11 @@ const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
 
 // Returns the `default` component related to the passed in node
 const provideDefaultComponent = (node: TypedObject) => {
+  const DefaultComponent = cachedNodes.get(node)?.Default;
+
+  if (DefaultComponent) return DefaultComponent;
+  // Cache missed use manual lookup
+
   if (isPortableTextToolkitList(node)) return List;
   if (isPortableTextListItemBlock(node)) return ListItem;
   if (isPortableTextToolkitSpan(node)) return Mark;
@@ -275,6 +293,11 @@ const provideDefaultComponent = (node: TypedObject) => {
 
 // Returns the `unknown` component related to the passed in node
 const provideUnknownComponent = (node: TypedObject) => {
+  const UnknownComponent = cachedNodes.get(node)?.Unknown;
+
+  if (UnknownComponent) return UnknownComponent;
+  // Cache missed use manual lookup
+
   if (isPortableTextToolkitList(node)) {
     return components.unknownList ?? UnknownList;
   }

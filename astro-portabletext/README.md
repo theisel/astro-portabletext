@@ -7,62 +7,65 @@
 ![license](https://img.shields.io/npm/l/astro-portabletext?style=flat-square)
 [![npm](https://img.shields.io/npm/v/astro-portabletext?style=flat-square)](https://www.npmjs.com/package/astro-portabletext)
 
-&nbsp;
+Effortlessly integrate [Portable Text](https://portabletext.org) into your [Astro](https://astro.build) projects, with extensive customisation options to perfectly match your vision.
 
-Render [Portable Text](https://portabletext.org/) with [Astro](https://astro.build/).
+## 🎮 Play around
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/theisel/astro-portabletext/tree/main/demo)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/theisel/astro-portabletext/tree/main/demo)
+Jump in and see it in action:
 
-&nbsp;
+<div>
+  <a href="https://stackblitz.com/github/theisel/astro-portabletext/tree/main/demo">
+    <img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt="Open in StackBlitz">
+  </a>
+  <a href="https://codesandbox.io/p/sandbox/github/theisel/astro-portabletext/tree/main/demo">
+    <img src="https://assets.codesandbox.io/github/button-edit-lime.svg" alt="Open in CodeSandbox">
+  </a>
+</div>
 
-## Table of Contents
+## ✨ Why use `astro-portabletext`?
 
-- [Getting Started](#getting-started)
-- [Documentation](#documentation)
-- [License](#license)
+It provides a seamless way to render Portable Text in Astro, with a focus on performance, flexibility, and ease of use:
 
-&nbsp;
+- 🚀 **Speed and simplicity:** Minimised client-side JS for faster loads, with Astro's islands working its magic.
+- 🎨 **Make it yours:** Pre-built components are great, but you can tweak them, extend them, and make them totally yours with slots and custom components.
+- 📢 **Recommended by Sanity:** [Officially recommended](https://www.sanity.io/plugins/sanity-astro#rendering-rich-text-and-block-content-with-portable-text) for rendering Portable Text in Astro projects.
 
-## Getting Started
+## 🚀 Features
 
-### Install
+- 🧩 **Core components:** Includes pre-built components for essential Portable Text elements, giving you a solid foundation to build upon.
+- 🔧 **Customisable:** Use `slots` for light tweaks or bring in your custom `components` for complete control.
+- 🛠 **Fine-tune node rendering:** Use the `render` function from `usePortableText` for extra control over child node output.
+- 📘 **Typescript:** Full TypeScript support means you can build with confidence.
+
+## 📦 Install it
+
+Pick your favourite package manager and run one of these:
 
 ```bash
-$ npm install astro-portabletext
-# $ pnpm add astro-portabletext
-# $ yarn add astro-portabletext
+npm install astro-portabletext
+# or
+pnpm add astro-portabletext
+# or
+yarn add astro-portabletext
+# or
+bun add astro-portabletext
 ```
 
-### Usage
+## 🧑‍💻 Let's get coding
 
-| Import                          | Description                                                                                                                       |
-| :------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------- |
-| `astro-portabletext`            | For `PortableText` component. <br>See [PortableText Component](docs/portabletext-component.md) for details.                       |
-| `astro-portabletext/components` | For `Block`, `List`, `ListItem` and `Mark` components. <br> See [Extending Components](docs/extending-components.md) for details. |
-| `astro-portabletext/types`      | For Typescript [types](docs/types.md)                                                                                             |
-| `astro-portabletext/utils`      | For [utility](docs/utils.md) functions                                                                                            |
+Ready to render some Portable Text? Here's a quick start.
 
-```ts
-/* .astro file */
----
-import { PortableText } from "astro-portabletext";
----
+### Basic
 
-<PortableText
-  value=/* Required */
-  components=/* Optional */
-  onMissingComponent=/* Optional */
-  listNestingMode=/* Optional */
-/>
-```
+Import the `PortableText` component into your `.astro` file and start rendering. It's that simple! You can even override the defaults if you want to get fancy.
 
-**astro-portabletext** components will render the following:
+<details>
+  <summary>Peek at the default structure</summary>
 
 ```js
 {
   type: {
-    /* custom types go here */
+    /* Custom types go here */
   },
   block: {
     h1: /* <h1 {...attrs}><slot /></h1> */,
@@ -92,19 +95,192 @@ import { PortableText } from "astro-portabletext";
     strong: /* <strong {...attrs}><slot /></strong> */,
     underline: /* <span {...attrs} style="text-decoration: underline;"><slot /></span> */
   },
-  text: /* renders string; use custom handler to change output */
+  text: /* Renders plain text */
   hardBreak: /* <br /> */,
 }
 ```
 
-&nbsp;
+</details>
 
-## Documentation
+```js
+/* .astro */
+---
+import { PortableText } from "astro-portabletext";
 
-Refer to [docs](docs/README.md) page for advanced usage and examples, including implementation with [Sanity](docs/sanity.md).
+const portableText = [
+  {
+    _type: 'block',
+    _key: 'a1ph4',
+    style: 'normal',
+    markDefs: [],
+    children: [
+      {
+        _type: 'span',
+        _key: 'c961f',
+        text: 'This is a Portable Text example.',
+        marks: [],
+      },
+    ],
+  },
+];
+---
 
-&nbsp;
+<PortableText value={portableText} />
+```
 
-## License
+### Customisation
 
-ISC
+#### Slots - Tweak it just right
+
+Sometimes you just need to nudge things here and there. Use `slots` for those quick customisations without breaking a sweat.
+
+```js
+/* .astro */
+---
+import { PortableText } from "astro-portabletext";
+
+const portableText = [
+  {
+    _type: 'block',
+    _key: 'a1ph4',
+    style: 'normal',
+    markDefs: [],
+    children: [
+      {
+        _type: 'span',
+        _key: 'c961f',
+        text: 'This is a Portable Text example.',
+        marks: [],
+      },
+    ],
+  },
+];
+---
+
+<PortableText value={portableText}>
+  <fragment slot="block">{({ Component, props, children }) => (
+    <Component {...props} class="block">{children}</Component>
+  )}</fragment>
+</PortableText>
+
+<style>
+  .block:where(h1, h2) {
+    /* some styles */
+  }
+</style>
+```
+
+#### Custom components - Full control
+
+Want to take things to the next level? Bring in your own custom components to fully control how each part is rendered.
+
+```js
+/* .astro */
+---
+import { PortableText } from "astro-portabletext";
+import MyCustomBlock from "./MyCustomBlock.astro";
+
+const portableText = [
+  {
+    _type: 'block',
+    _key: 'a1ph4',
+    style: 'normal',
+    markDefs: [],
+    children: [
+      {
+        _type: 'span',
+        _key: 'c961f',
+        text: 'This is a Portable Text example.',
+        marks: [],
+      },
+    ],
+  },
+];
+---
+
+<PortableText
+  value={portableText}
+  components={{ block: MyCustomBlock }}
+/>
+```
+
+#### Mix and match: Ultimate flexibility
+
+Take the best of both worlds! You can use custom components and tweak small details with slots. It's the flexibility you've been looking for.
+
+```js
+/* .astro */
+---
+import { PortableText } from "astro-portabletext";
+import MyCustomBlock from "./MyCustomBlock.astro";
+
+const portableText = [
+  {
+    _type: 'block',
+    _key: 'a1ph4',
+    style: 'normal',
+    markDefs: [],
+    children: [
+      {
+        _type: 'span',
+        _key: 'c961f',
+        text: 'This is a Portable Text example.',
+        marks: [],
+      },
+    ],
+  },
+];
+---
+
+<PortableText
+  value={portableText}
+  components={{ block: MyCustomBlock }}
+>
+  <fragment slot="block">{({ Component /* MyCustomBlock */, props, children }) => (
+    <Component {...props} class="block">{children}</Component>
+  )}</fragment>
+</PortableText>
+
+<style>
+  .block:where(h1, h2) {
+    /* some styles */
+  }
+</style>
+```
+
+```ts
+/* MyCustomBlock.astro */
+---
+import type { Block, Props as $ } from "astro-portabletext/types";
+import { usePortableText } from "astro-portabletext/utils";
+
+export type Props = $<Block>;
+
+const { node, isInline, index, ...attrs} = Astro.props;
+const { render, getDefaultComponent } = usePortableText(node);
+
+const DefaultBlock = getDefaultComponent(); // In this `block` context, it returns `astro-portabletext` block component
+
+const styleIs = (style: string) => style === node.style;
+---
+
+{
+  styleIs("h1") ? (
+    <h1 {...attrs}>{render({
+      text: ({ props }) => props.node.text.replace("fox", "🦊") // Use the render function to customise the output
+    })}</h1>
+  ) : (
+    <DefaultBlock {...Astro.props}>
+      <slot />
+    </DefaultBlock>
+  )
+}
+```
+
+## 📖 Documentation
+
+For all the fine details, check out the [docs](docs/README.md), including guides for integrating with [Sanity](docs/sanity.md).
+
+## 📄 License
+
+This project is licensed under the [ISC License](https://github.com/theisel/astro-portabletext/blob/main/LICENSE).

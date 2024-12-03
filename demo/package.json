@@ -11,12 +11,12 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/solid-js": "^4.4.0",
-    "@astrojs/svelte": "^5.7.0",
-    "astro": "^4.12.2",
-    "astro-portabletext": "^0.10.0",
-    "solid-js": "^1.8.19",
-    "svelte": "^4.2.18"
+    "@astrojs/solid-js": "^5.0.0",
+    "@astrojs/svelte": "^7.0.1",
+    "astro": "^5.0.2",
+    "astro-portabletext": "^0.10.1",
+    "solid-js": "^1.9.3",
+    "svelte": "^5.5.3"
   },
   "engines": {
     "node": ">=20.10.0"

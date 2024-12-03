@@ -1,5 +1,6 @@
 # Directories
 dist
+.astro/
 .changeset
 .husky
 .github

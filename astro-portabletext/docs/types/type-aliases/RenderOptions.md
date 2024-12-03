@@ -12,10 +12,6 @@ Options for the `render` function accessed via `usePortableText`
 
 ## Type declaration
 
-### default?
-
-> `optional` **default**: [`RenderHandler`](RenderHandler.md)
-
 ### type?
 
 > `optional` **type**: [`RenderHandler`](RenderHandler.md)\<[`TypedObject`](../interfaces/TypedObject.md), `never`\>
@@ -39,3 +35,7 @@ Options for the `render` function accessed via `usePortableText`
 ### text?
 
 > `optional` **text**: [`RenderHandler`](RenderHandler.md)\<[`TextNode`](TextNode.md), `never`\>
+
+### hardBreak?
+
+> `optional` **hardBreak**: [`RenderHandler`](RenderHandler.md)\<[`TextNode`](TextNode.md), `never`\>

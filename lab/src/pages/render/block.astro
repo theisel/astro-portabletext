@@ -1,0 +1,22 @@
+---
+import Layout from "../../layouts/Default.astro";
+import { PortableText } from "astro-portabletext";
+import BlockWithRender from "../../components/BlockWithRender.astro";
+
+const blocks = [
+  {
+    _type: "block",
+    style: "normal",
+    children: [
+      {
+        _type: "span",
+        text: "Rocket launch",
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <PortableText value={blocks} components={{ block: BlockWithRender }} />
+</Layout>

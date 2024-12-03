@@ -1,5 +1,5 @@
 ---
-const { isInline } = Astro.props;
+const { node, isInline, index, ...attrs } = Astro.props;
 ---
 
-{isInline ? <span>Hello World</span> : <p>Hello World</p>}
+{isInline ? <span {...attrs}>Hello World</span> : <p {...attrs}>Hello World</p>}

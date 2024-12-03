@@ -1,0 +1,22 @@
+---
+import Layout from "../../layouts/Default.astro";
+import { PortableText } from "astro-portabletext";
+import MarkWithRender from "../../components/MarkWithRender.astro";
+
+const blocks = [
+  {
+    _type: "block",
+    children: [
+      {
+        _type: "span",
+        text: "emphasize",
+        marks: ["em"],
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <PortableText value={blocks} components={{ mark: MarkWithRender }} />
+</Layout>

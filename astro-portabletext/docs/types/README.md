@@ -28,3 +28,6 @@
 | [ListItem](type-aliases/ListItem.md) | Alias to [ToolkitPortableTextListItem](https://portabletext.github.io/toolkit/interfaces/ToolkitPortableTextListItem.html) |
 | [TextNode](type-aliases/TextNode.md) | Alias to [ToolkitTextNode](https://portabletext.github.io/toolkit/interfaces/ToolkitTextNode.html) |
 | [MissingComponentHandler](type-aliases/MissingComponentHandler.md) | The shape of the [onMissingComponent](interfaces/PortableTextProps.md#onMissingComponent) function |
+| [RenderHandlerProps](type-aliases/RenderHandlerProps.md) | Properties for the `RenderHandler` function |
+| [RenderHandler](type-aliases/RenderHandler.md) | The shape of the render component function |
+| [RenderOptions](type-aliases/RenderOptions.md) | Options for the `render` function accessed via `usePortableText` |

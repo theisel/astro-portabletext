@@ -1,0 +1,11 @@
+---
+import type { Props as $, Mark } from "astro-portabletext/types";
+import { usePortableText } from "astro-portabletext/utils";
+
+type Props = $<Mark>;
+
+const { getDefaultComponent } = usePortableText(Astro.props.node);
+const Mrk = getDefaultComponent();
+---
+
+<Mrk {...Astro.props}><slot /></Mrk>

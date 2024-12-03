@@ -1,0 +1,27 @@
+---
+import type { Mark, Props as $ } from "astro-portabletext/types";
+import { usePortableText } from "astro-portabletext/utils";
+
+export type Props = $<Mark>;
+
+const { node, index, isInline, ...attrs } = Astro.props;
+const markTypeIs = (markType: string) => markType === node.markType;
+
+const { getDefaultComponent, render } = usePortableText(node);
+
+const Default = getDefaultComponent();
+---
+
+{
+  markTypeIs("em") ? (
+    <em {...attrs}>
+      {render({
+        text: ({ props }) => <span data-custom="text">{props.node.text}</span>,
+      })}
+    </em>
+  ) : (
+    <Default {...Astro.props}>
+      <slot />
+    </Default>
+  )
+}

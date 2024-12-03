@@ -1,0 +1,26 @@
+---
+import type { List, Props as $ } from "astro-portabletext/types";
+import { usePortableText } from "astro-portabletext/utils";
+
+export type Props = $<List>;
+
+const { node, index, isInline, ...attrs } = Astro.props;
+const listItemIs = (listItem: string) => listItem === node.listItem;
+const { render, getDefaultComponent } = usePortableText(node);
+
+const Default = getDefaultComponent();
+---
+
+{
+  listItemIs("bullet") ? (
+    <ul {...attrs} data-custom="list">
+      {render({
+        text: ({ props }) => <span data-custom="text">{props.node.text}</span>,
+      })}
+    </ul>
+  ) : (
+    <Default {...Astro.props}>
+      <slot />
+    </Default>
+  )
+}

@@ -48,5 +48,8 @@
   "dependencies": {
     "@portabletext/toolkit": "^2.0.16",
     "@portabletext/types": "^2.0.13"
+  },
+  "peerDependencies": {
+    "astro": ">=4.6.0"
   }
 }

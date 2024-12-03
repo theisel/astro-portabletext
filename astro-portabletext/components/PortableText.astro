@@ -10,13 +10,12 @@ import {
   LIST_NEST_MODE_HTML,
 } from "@portabletext/toolkit";
 
-import type { PortableTextBlock } from "@portabletext/types";
-
 import type {
   MissingComponentHandler,
   PortableTextComponents,
   PortableTextProps,
   Props as ComponentProps,
+  RenderOptions,
   TypedObject,
 } from "../lib/types";
 
@@ -104,24 +103,11 @@ const missingComponentHandler = ((
   return !handler ? noop : printWarning;
 })(onMissingComponent);
 
-const serializeNode =
-  (isInline: boolean) =>
-  (node: TypedObject, index: number = 0) =>
-    asComponentProps(node, index, isInline);
-
-const serializeChildren = (
-  node: TypedObject & { children: TypedObject[] },
-  isInline: boolean
-) => node.children.map(serializeNode(isInline));
-
-const serializeMarksTree = (node: PortableTextBlock) =>
-  buildMarksTree(node).map(serializeNode(true));
-
-const asComponentProps = (
-  node: TypedObject,
+const asComponentProps = <T extends TypedObject>(
+  node: T,
   index: number,
   isInline: boolean
-): ComponentProps<typeof node> => ({
+): ComponentProps<T> => ({
   node,
   index,
   isInline,
@@ -148,89 +134,151 @@ const provideComponent = (
   return fallbackComponent;
 };
 
-const prepareForRender = (
-  props: ComponentProps<TypedObject>
-):
-  | [Component | string, ComponentProps<TypedObject>[]]
-  | [Component | string] => {
-  const { node } = props;
+const cachedNodes = new WeakMap<
+  TypedObject,
+  { Default?: Component; Unknown?: Component }
+>();
 
-  if (isPortableTextToolkitList(node)) {
-    return [
-      provideComponent(
-        "list",
-        node.listItem,
-        components.unknownList ?? UnknownList
+// The local render function will override these options
+let fallbackRenderOptions: Required<RenderOptions> | undefined;
+
+const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
+  if (!fallbackRenderOptions) {
+    throw new Error(
+      "[PortableText portableTextRender] fallbackRenderOptions is undefined"
+    );
+  }
+
+  return function renderNode(node: TypedObject, index: number): any {
+    const renderOptions = { ...fallbackRenderOptions, ...(options ?? {}) };
+
+    function run<H extends (...args: any) => any, P = Parameters<H>[0]>(
+      handler: H | undefined,
+      props: P
+    ) {
+      if (!isComponent(handler)) {
+        throw new Error(
+          `[PortableText render] No handler found for node type ${node._type}.`
+        );
+      }
+
+      return handler(props);
+    }
+
+    if (isPortableTextToolkitList(node)) {
+      const UnknownComponent = components.unknownList ?? UnknownList;
+
+      cachedNodes.set(node, { Default: List, Unknown: UnknownComponent });
+
+      return run(renderOptions.list, {
+        Component: provideComponent("list", node.listItem, UnknownComponent),
+        props: asComponentProps(node, index, false),
+        children: node.children?.map(portableTextRender(options, false)),
+      });
+    }
+
+    if (isPortableTextListItemBlock(node)) {
+      const { listItem, ...blockNode } = node;
+      const isStyled = node.style && node.style !== "normal";
+      // Apply block style if defined (and not "normal"), otherwise render with marks.
+      node.children = isStyled
+        ? renderNode(blockNode, index)
+        : buildMarksTree(node);
+
+      const UnknownComponent = components.unknownListItem ?? UnknownListItem;
+
+      cachedNodes.set(node, { Default: ListItem, Unknown: UnknownComponent });
+
+      return run(renderOptions.listItem, {
+        Component: provideComponent(
+          "listItem",
+          node.listItem,
+          UnknownComponent
+        ),
+        props: asComponentProps(node, index, false),
+        children: isStyled
+          ? node.children
+          : node.children.map(portableTextRender(options, true)),
+      });
+    }
+
+    if (isPortableTextToolkitSpan(node)) {
+      const UnknownComponent = components.unknownMark ?? UnknownMark;
+
+      cachedNodes.set(node, { Default: Mark, Unknown: UnknownComponent });
+
+      return run(renderOptions.mark, {
+        Component: provideComponent("mark", node.markType, UnknownComponent),
+        props: asComponentProps(node, index, true),
+        children: node.children?.map(portableTextRender(options, true)),
+      });
+    }
+
+    if (isPortableTextBlock(node)) {
+      node.style ??= "normal"; /* Make sure style has been set */
+      node.children = buildMarksTree(node);
+
+      const UnknownComponent = components.unknownBlock ?? UnknownBlock;
+
+      cachedNodes.set(node, { Default: Block, Unknown: UnknownComponent });
+
+      return run(renderOptions.block, {
+        Component: provideComponent("block", node.style, UnknownComponent),
+        props: asComponentProps(node, index, false),
+        children: node.children.map(portableTextRender(options, true)),
+      });
+    }
+
+    if (isPortableTextToolkitTextNode(node)) {
+      const isHardBreak = "\n" === node.text;
+      const props = asComponentProps(node, index, true);
+
+      if (isHardBreak) {
+        return run(renderOptions.hardBreak, {
+          Component: isComponent(components.hardBreak)
+            ? components.hardBreak
+            : HardBreak,
+          props,
+        });
+      }
+
+      return run(renderOptions.text, {
+        Component: isComponent(components.text) ? components.text : Text,
+        props,
+      });
+    }
+
+    // Custom type
+    const UnknownComponent = components.unknownType ?? UnknownType;
+
+    return run(renderOptions.type, {
+      Component: provideComponent("type", node._type, UnknownComponent),
+      props: asComponentProps(
+        node,
+        index,
+        isInline ?? false /* default to block */
       ),
-      serializeChildren(node, false),
-    ];
-  }
-
-  if (isPortableTextListItemBlock(node)) {
-    return [
-      provideComponent(
-        "listItem",
-        node.listItem,
-        components.unknownListItem ?? UnknownListItem
-      ),
-      serializeMarksTree(node).map((children) => {
-        if (node.style !== "normal") {
-          const { listItem, ...blockNode } = node;
-          children = serializeNode(false)(blockNode, 0);
-        }
-        return children;
-      }),
-    ];
-  }
-
-  if (isPortableTextToolkitSpan(node)) {
-    return [
-      provideComponent(
-        "mark",
-        node.markType,
-        components.unknownMark ?? UnknownMark
-      ),
-      serializeChildren(node, true),
-    ];
-  }
-
-  if (isPortableTextBlock(node)) {
-    return [
-      provideComponent(
-        "block",
-        (node.style ??= "normal") /* Make sure style has been set */,
-        components.unknownBlock ?? UnknownBlock
-      ),
-      serializeMarksTree(node),
-    ];
-  }
-
-  if (isPortableTextToolkitTextNode(node)) {
-    return [
-      "\n" === node.text
-        ? isComponent(components.hardBreak)
-          ? components.hardBreak
-          : HardBreak
-        : isComponent(components.text)
-          ? components.text
-          : Text,
-    ];
-  }
-
-  return [
-    provideComponent("type", node._type, components.unknownType ?? UnknownType),
-  ];
+    });
+  };
 };
 
-(globalThis as any)[contextRef] = (node: TypedObject): Context => {
+(globalThis as any)[contextRef] = (
+  node: TypedObject & { children?: TypedObject[] }
+): Context => {
   return {
     getDefaultComponent: provideDefaultComponent.bind(null, node),
     getUnknownComponent: provideUnknownComponent.bind(null, node),
+    render: (options) => node.children?.map(portableTextRender(options)),
   };
 };
 
 // Returns the `default` component related to the passed in node
 const provideDefaultComponent = (node: TypedObject) => {
+  const DefaultComponent = cachedNodes.get(node)?.Default;
+
+  if (DefaultComponent) return DefaultComponent;
+  // Cache missed use manual lookup
+
   if (isPortableTextToolkitList(node)) return List;
   if (isPortableTextListItemBlock(node)) return ListItem;
   if (isPortableTextToolkitSpan(node)) return Mark;
@@ -245,6 +293,11 @@ const provideDefaultComponent = (node: TypedObject) => {
 
 // Returns the `unknown` component related to the passed in node
 const provideUnknownComponent = (node: TypedObject) => {
+  const UnknownComponent = cachedNodes.get(node)?.Unknown;
+
+  if (UnknownComponent) return UnknownComponent;
+  // Cache missed use manual lookup
+
   if (isPortableTextToolkitList(node)) {
     return components.unknownList ?? UnknownList;
   }
@@ -272,25 +325,57 @@ const provideUnknownComponent = (node: TypedObject) => {
 
 // Make sure we have an array of blocks
 const blocks = Array.isArray(value) ? value : [value];
+const nodes = nestLists(blocks, listNestingMode);
 
-// Using a generator to avoid creating a new array
-function* renderBlocks() {
-  let index = 0;
+const render = (options: NonNullable<typeof fallbackRenderOptions>) => {
+  fallbackRenderOptions = options;
+  return portableTextRender(options);
+};
 
-  for (const it of nestLists(blocks, listNestingMode)) {
-    yield asComponentProps(it, index++, false);
-  }
-}
+const hasTypeSlot = Astro.slots.has("type");
+const hasBlockSlot = Astro.slots.has("block");
+const hasListSlot = Astro.slots.has("list");
+const hasListItemSlot = Astro.slots.has("listItem");
+const hasMarkSlot = Astro.slots.has("mark");
+const hasTextSlot = Astro.slots.has("text");
+const hasHardBreakSlot = Astro.slots.has("hardBreak");
+
+// Create a slot renderer for a specific slot
+const createSlotRenderer = (slotName: string) =>
+  Astro.slots.render.bind(Astro.slots, slotName);
+
+type RenderNode = (
+  slotRenderer: ReturnType<typeof createSlotRenderer> | undefined
+) => (
+  props: Parameters<NonNullable<RenderOptions[keyof RenderOptions]>>[0]
+) => any;
 ---
 
 {
-  [...renderBlocks()].map(function render(props) {
-    const [Cmp, children = []] = prepareForRender(props);
+  (() => {
+    const renderNode: RenderNode = (slotRenderer) => {
+      return ({ Component, props, children }) =>
+        slotRenderer?.([{ Component, props, children }]) ?? (
+          <Component {...(props as any)}>{children}</Component>
+        );
+    };
 
-    return !isComponent(Cmp) ? (
-      <Fragment set:text={Cmp} />
-    ) : (
-      <Cmp {...props}>{children.map(render)}</Cmp>
+    return nodes.map(
+      render({
+        type: renderNode(hasTypeSlot ? createSlotRenderer("type") : undefined),
+        block: renderNode(
+          hasBlockSlot ? createSlotRenderer("block") : undefined
+        ),
+        list: renderNode(hasListSlot ? createSlotRenderer("list") : undefined),
+        listItem: renderNode(
+          hasListItemSlot ? createSlotRenderer("listItem") : undefined
+        ),
+        mark: renderNode(hasMarkSlot ? createSlotRenderer("mark") : undefined),
+        text: renderNode(hasTextSlot ? createSlotRenderer("text") : undefined),
+        hardBreak: renderNode(
+          hasHardBreakSlot ? createSlotRenderer("hardBreak") : undefined
+        ),
+      })
     );
-  })
+  })()
 }

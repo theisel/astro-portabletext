@@ -9,4 +9,6 @@ const { getDefaultComponent } = usePortableText(props.node);
 const Default = getDefaultComponent();
 ---
 
-<Default {...props} />
+<Default {...props}>
+  <slot />
+</Default>

@@ -19,6 +19,8 @@ const Default = getDefaultComponent();
       })}
     </ul>
   ) : (
-    <Default {...Astro.props} />
+    <Default {...Astro.props}>
+      <slot />
+    </Default>
   )
 }

@@ -1,0 +1,37 @@
+---
+import assert from "node:assert";
+import Layout from "../../layouts/Default.astro";
+import { PortableText } from "astro-portabletext";
+import Mark from "../../components/Mark.astro";
+
+const blocks = [
+  {
+    _type: "block",
+    children: [
+      {
+        _type: "span",
+        text: "bold",
+        marks: ["strong"],
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <PortableText value={blocks} components={{ mark: Mark }}>
+    <fragment slot="mark">
+      {
+        ({ Component, props, children }) => {
+          assert(Component === Mark, "Component is not Mark");
+
+          return (
+            <Component {...props} data-slot="custom-mark">
+              {children}
+            </Component>
+          );
+        }
+      }
+    </fragment>
+  </PortableText>
+</Layout>

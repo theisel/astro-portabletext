@@ -1,0 +1,37 @@
+---
+import assert from "node:assert";
+import Layout from "../../layouts/Default.astro";
+import { PortableText } from "astro-portabletext";
+import ListItem from "../../components/ListItem.astro";
+
+const blocks = [
+  {
+    _type: "block",
+    listItem: "bullet",
+    children: [
+      {
+        _type: "span",
+        text: "List Item 1",
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <PortableText value={blocks} components={{ listItem: ListItem }}>
+    <fragment slot="listItem">
+      {
+        ({ Component, props, children }) => {
+          assert(Component === ListItem, "Component is not ListItem");
+
+          return (
+            <Component {...props} data-slot="custom-listitem">
+              {children}
+            </Component>
+          );
+        }
+      }
+    </fragment>
+  </PortableText>
+</Layout>

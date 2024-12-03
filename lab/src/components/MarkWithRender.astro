@@ -20,6 +20,8 @@ const Default = getDefaultComponent();
       })}
     </em>
   ) : (
-    <Default {...Astro.props} />
+    <Default {...Astro.props}>
+      <slot />
+    </Default>
   )
 }

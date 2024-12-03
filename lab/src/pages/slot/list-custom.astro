@@ -1,0 +1,40 @@
+---
+import assert from "node:assert";
+import Layout from "../../layouts/Default.astro";
+import { PortableText } from "astro-portabletext";
+import ListWithRender from "../../components/ListWithRender.astro";
+
+const blocks = [
+  {
+    _type: "block",
+    listItem: "bullet",
+    children: [
+      {
+        _type: "span",
+        text: "List Item 1",
+      },
+    ],
+  },
+];
+---
+
+<Layout>
+  <PortableText value={blocks} components={{ list: ListWithRender }}>
+    <fragment slot="list">
+      {
+        ({ Component, props, children }) => {
+          assert(
+            Component === ListWithRender,
+            "Component is not ListWithRender"
+          );
+
+          return (
+            <Component {...props} data-slot="custom-list">
+              {children}
+            </Component>
+          );
+        }
+      }
+    </fragment>
+  </PortableText>
+</Layout>

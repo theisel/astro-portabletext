@@ -1,4 +1,4 @@
-[**astro-portabletext**](../../README.md) • **Docs**
+[**astro-portabletext**](../../README.md)
 
 ***
 
@@ -6,12 +6,14 @@
 
 # Function: usePortableText()
 
-> **usePortableText**(`node`): `Context`
+> **usePortableText**(`node`): [`Context`](../../types/interfaces/Context.md)
 
 ## Parameters
 
-• **node**: [`TypedObject`](../../types/interfaces/TypedObject.md)
+### node
+
+[`TypedObject`](../../types/interfaces/TypedObject.md)
 
 ## Returns
 
-`Context`
+[`Context`](../../types/interfaces/Context.md)

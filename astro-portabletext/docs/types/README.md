@@ -1,4 +1,4 @@
-[**astro-portabletext**](../README.md) • **Docs**
+[**astro-portabletext**](../README.md)
 
 ***
 
@@ -17,6 +17,7 @@
 | [Props](interfaces/Props.md) | Component Props |
 | [Block](interfaces/Block.md) | Alias to [PortableTextBlock](https://portabletext.github.io/types/interfaces/PortableTextBlock.html) with `style` set to `normal` |
 | [Mark](interfaces/Mark.md) | Extends [ToolkitNestedPortableTextSpan](https://portabletext.github.io/toolkit/interfaces/ToolkitNestedPortableTextSpan.html) with consisting `markDef` and `markKey` properties |
+| [Context](interfaces/Context.md) | Context object providing access to rendering utilities within a Portable Text tree. |
 | [TypedObject](interfaces/TypedObject.md) | Any object with an `_type` property (which is required in portable text arrays), as well as a _potential_ `_key` (highly encouraged) |
 
 ### Type Aliases
@@ -31,3 +32,6 @@
 | [RenderHandlerProps](type-aliases/RenderHandlerProps.md) | Properties for the `RenderHandler` function |
 | [RenderHandler](type-aliases/RenderHandler.md) | The shape of the render component function |
 | [RenderOptions](type-aliases/RenderOptions.md) | Options for the `render` function accessed via `usePortableText` |
+| [Component](type-aliases/Component.md) | Generic Portable Text component |
+| [ComponentOrRecord](type-aliases/ComponentOrRecord.md) | For internal use |
+| [NodeType](type-aliases/NodeType.md) | - |

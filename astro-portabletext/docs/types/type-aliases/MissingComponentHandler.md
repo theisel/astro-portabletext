@@ -1,4 +1,4 @@
-[**astro-portabletext**](../../README.md) • **Docs**
+[**astro-portabletext**](../../README.md)
 
 ***
 
@@ -12,13 +12,19 @@ The shape of the [onMissingComponent](../interfaces/PortableTextProps.md#onMissi
 
 ## Parameters
 
-• **message**: `string`
+### message
 
-• **context**
+`string`
 
-• **context.type**: `string`
+### context
 
-• **context.nodeType**: `NodeType`
+#### type
+
+`string`
+
+#### nodeType
+
+[`NodeType`](NodeType.md)
 
 ## Returns
 

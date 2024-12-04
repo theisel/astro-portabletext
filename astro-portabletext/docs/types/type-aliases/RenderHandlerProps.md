@@ -1,4 +1,4 @@
-[**astro-portabletext**](../../README.md) • **Docs**
+[**astro-portabletext**](../../README.md)
 
 ***
 
@@ -20,7 +20,7 @@ Properties for the `RenderHandler` function
 
 ### Component
 
-> **Component**: `Component`\<`T`\>
+> **Component**: [`Component`](Component.md)\<`T`\>
 
 The component to be rendered. This is a function that takes props and returns a rendered output
 

@@ -1,4 +1,4 @@
-[**astro-portabletext**](../../README.md) • **Docs**
+[**astro-portabletext**](../../README.md)
 
 ***
 
@@ -22,7 +22,9 @@ Type of children
 
 ## Parameters
 
-• **props**: [`RenderHandlerProps`](RenderHandlerProps.md)\<`T`, `Children`\>
+### props
+
+[`RenderHandlerProps`](RenderHandlerProps.md)\<`T`, `Children`\>
 
 ## Returns
 

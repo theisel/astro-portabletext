@@ -2,9 +2,11 @@
   import type { Props as $, TypedObject } from "astro-portabletext/types";
   import { onDestroy } from "svelte";
 
-  const { node, index, isInline, ...attrs } = $$restProps as $<TypedObject>;
+  type Props = $<TypedObject>;
 
-  let count: number = 0;
+  const { node, index, isInline, ...attrs }: Props = $props();
+
+  let count = $state(0);
 
   const interval = setInterval(() => {
     count = count + 1;

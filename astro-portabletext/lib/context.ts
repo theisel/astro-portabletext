@@ -18,7 +18,7 @@ export interface Context {
 
 export const key = Symbol("astro-portabletext");
 
-export function useContext(node: TypedObject) {
+export function usePortableText(node: TypedObject) {
   if (!(key in globalThis)) {
     throw new Error(`PortableText "context" has not been initialised`);
   }

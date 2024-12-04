@@ -1,4 +1,4 @@
-import type { NodeType } from "./internal";
+import type { NodeType } from "./types";
 
 const getTemplate = (prop: string, type: string): string =>
   `PortableText [components.${prop}] is missing "${type}"`;

@@ -17,7 +17,11 @@
     ".": "./lib/index.ts",
     "./components": "./lib/components.ts",
     "./types": "./lib/types.ts",
-    "./utils": "./lib/utils.ts"
+    "./utils": {
+      "types": "./lib/utils.d.ts",
+      "import": "./lib/utils.ts",
+      "default": "./lib/utils.ts"
+    }
   },
   "typesVersions": {
     "*": {

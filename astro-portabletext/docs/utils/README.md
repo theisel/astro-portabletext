@@ -1,4 +1,4 @@
-[**astro-portabletext**](../README.md) • **Docs**
+[**astro-portabletext**](../README.md)
 
 ***
 

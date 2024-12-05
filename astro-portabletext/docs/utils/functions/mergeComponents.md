@@ -1,4 +1,4 @@
-[**astro-portabletext**](../../README.md) • **Docs**
+[**astro-portabletext**](../../README.md)
 
 ***
 
@@ -16,13 +16,17 @@ Helper to merge [SomePortableTextComponents](../../types/type-aliases/SomePortab
 
 • **Overrides** *extends* `Partial`\<[`PortableTextComponents`](../../types/interfaces/PortableTextComponents.md)\>
 
-• **MergedComponents** = \{ \[Key in string \| number \| symbol\]: Key extends keyof Components & keyof Overrides ? Overrides\[Key\<Key\>\] extends Component\<any\> ? any\[any\] : Components\[Key\<Key\>\] extends Component\<any\> ? Overrides\[Key\<Key\>\] : (Overrides & Components)\[Key\<Key\>\] : (Overrides & Components)\[Key\] \}
+• **MergedComponents** = \{ \[Key in string \| number \| symbol\]: Key extends keyof Components & keyof Overrides ? Overrides\[Key\<Key\>\] extends Component ? any\[any\] : Components\[Key\<Key\>\] extends Component ? Overrides\[Key\<Key\>\] : (Overrides & Components)\[Key\<Key\>\] : (Overrides & Components)\[Key\] \}
 
 ## Parameters
 
-• **components**: `Components`
+### components
 
-• **overrides**: `Overrides`
+`Components`
+
+### overrides
+
+`Overrides`
 
 ## Returns
 

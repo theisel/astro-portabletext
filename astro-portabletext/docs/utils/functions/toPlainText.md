@@ -1,4 +1,4 @@
-[**astro-portabletext**](../../README.md) • **Docs**
+[**astro-portabletext**](../../README.md)
 
 ***
 
@@ -17,9 +17,11 @@ custom content types are not included in the output.
 
 ## Parameters
 
-• **block**: `PortableTextBlock`\<`PortableTextMarkDefinition`, `ArbitraryTypedObject` \| `PortableTextSpan`, `string`, `string`\> \| `ArbitraryTypedObject`[] \| `PortableTextBlock`\<`PortableTextMarkDefinition`, `ArbitraryTypedObject` \| `PortableTextSpan`, `string`, `string`\>[]
+### block
 
 Single block or an array of blocks to extract text from
+
+`PortableTextBlock`\<`PortableTextMarkDefinition`, `ArbitraryTypedObject` \| `PortableTextSpan`, `string`, `string`\> | `ArbitraryTypedObject`[] | `PortableTextBlock`\<`PortableTextMarkDefinition`, `ArbitraryTypedObject` \| `PortableTextSpan`, `string`, `string`\>[]
 
 ## Returns
 

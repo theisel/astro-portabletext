@@ -11,7 +11,10 @@ import {
 } from "@portabletext/toolkit";
 
 import type {
+  Component,
+  Context,
   MissingComponentHandler,
+  NodeType,
   PortableTextComponents,
   PortableTextProps,
   Props as ComponentProps,
@@ -19,15 +22,10 @@ import type {
   TypedObject,
 } from "../lib/types";
 
-import {
-  isComponent,
-  mergeComponents,
-  type Component,
-  type NodeType,
-} from "../lib/internal";
+import { isComponent, mergeComponents } from "../lib/internal";
 
 import { getWarningMessage, printWarning } from "../lib/warnings";
-import { key as contextRef, type Context } from "../lib/context";
+import { key as contextRef } from "../lib/context";
 
 import Block from "./Block.astro";
 import HardBreak from "./HardBreak.astro";

@@ -14,8 +14,6 @@ import type {
   TypedObject,
 } from "@portabletext/types";
 
-import type { Component, ComponentOrRecord, NodeType } from "./internal";
-
 export type { TypedObject } from "@portabletext/types";
 
 /**
@@ -267,3 +265,38 @@ export type RenderOptions = {
   text?: RenderHandler<TextNode, never>;
   hardBreak?: RenderHandler<TextNode, never>;
 };
+
+/**
+ * Context object providing access to rendering utilities within a Portable Text tree.
+ *
+ * @property getDefaultComponent - Function to retrieve the default astro-portabletext component associated with a node, such as `Block`, `List`, etc.
+ * @property getUnknownComponent - Function to retrieve the unknown component associated with a node, such as `unknownBlock`, `unknownList`, etc.
+ * @property render - Function to customize the rendering of specific node types.
+ */
+export interface Context {
+  getDefaultComponent: () => Component;
+  getUnknownComponent: () => Component;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  render: (options: RenderOptions) => any;
+}
+
+/**
+ * Generic Portable Text component
+ * @internal
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type Component<T extends TypedObject = any> = (props: Props<T>) => any;
+
+/**
+ * For internal use
+ * @internal
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ComponentOrRecord<T extends TypedObject = any> =
+  | Component<T>
+  | Record<string, Component<T>>;
+
+/**
+ * @internal
+ */
+export type NodeType = "type" | "block" | "list" | "listItem" | "mark";

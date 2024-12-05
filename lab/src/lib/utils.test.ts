@@ -1,6 +1,14 @@
 import { suite } from "uvu";
 import * as assert from "uvu/assert";
-import { mergeComponents } from "astro-portabletext/utils";
+/**
+ * Importing `mergeComponents` from `astro-portabletext/utils` is deprecated and
+ * should be imported via `astro-portabletext` instead.
+ * However, due to the `PortableText` Astro component being part of `astro-portabletext`,
+ * it is not possible to import `mergeComponents` directly, as `tsm` throws an error.
+ * Therefore, importing `mergeComponents` using a relative path to `lib/utils` is necessary
+ * to mitigate the deprecation warning.
+ */
+import { mergeComponents } from "../../../astro-portabletext/lib/utils";
 
 // ----------------------------------------------------------------------------
 // Test `mergeComponents`

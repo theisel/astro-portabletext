@@ -147,6 +147,11 @@ export interface Block extends PortableTextBlock {
 }
 
 /**
+ * Convenience type for {@link Block} component props
+ */
+export type BlockProps = Props<Block>;
+
+/**
  * Alias to {@link https://portabletext.github.io/toolkit/types/ToolkitPortableTextList.html ToolkitPortableTextList}
  *
  * @example
@@ -161,6 +166,11 @@ export interface Block extends PortableTextBlock {
 export type List = ToolkitPortableTextList;
 
 /**
+ * Convenience type for {@link List} component props
+ */
+export type ListProps = Props<List>;
+
+/**
  * Alias to {@link https://portabletext.github.io/toolkit/interfaces/ToolkitPortableTextListItem.html ToolkitPortableTextListItem}
  *
  * @example
@@ -173,6 +183,11 @@ export type List = ToolkitPortableTextList;
  * ```
  */
 export type ListItem = ToolkitPortableTextListItem;
+
+/**
+ * Convenience type for {@link ListItem} component props
+ */
+export type ListItemProps = Props<ListItem>;
 
 /**
  * Extends {@link https://portabletext.github.io/toolkit/interfaces/ToolkitNestedPortableTextSpan.html ToolkitNestedPortableTextSpan}
@@ -205,6 +220,13 @@ export interface Mark<
 }
 
 /**
+ * Convenience type for {@link Mark} component props
+ */
+export type MarkProps<
+  MarkDef extends Record<string, unknown> | undefined = undefined,
+> = Props<Mark<MarkDef>>;
+
+/**
  * Alias to {@link https://portabletext.github.io/toolkit/interfaces/ToolkitTextNode.html ToolkitTextNode}
  *
  * @example
@@ -217,6 +239,11 @@ export interface Mark<
  * ```
  */
 export type TextNode = ToolkitTextNode;
+
+/**
+ * Convenience type for {@link TextNode} component props
+ */
+export type TextNodeProps = Props<TextNode>;
 
 /**
  * The shape of the {@link PortableTextProps.onMissingComponent onMissingComponent} function

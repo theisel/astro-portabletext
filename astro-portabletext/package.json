@@ -44,10 +44,7 @@
   },
   "homepage": "https://github.com/theisel/astro-portabletext#readme",
   "scripts": {
-    "check": "astro check --root components",
-    "clean-docs": "rm -rf docs/types && rm -rf docs/utils",
-    "copy-to-docs": "mv ./generated-docs/types ./docs/ && mv ./generated-docs/utils ./docs/",
-    "generate-docs": "pnpm clean-docs && typedoc && pnpm copy-to-docs"
+    "check": "astro check --root components"
   },
   "dependencies": {
     "@portabletext/toolkit": "^2.0.16",

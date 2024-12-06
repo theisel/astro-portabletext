@@ -1,5 +1,20 @@
 # astro-portabletext
 
+## [0.11.0](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.10.1...astro-portabletext@0.11.0) (2024-12-06)
+
+
+### Features
+
+* **api:** consolidate exports and improve library organisation ([#169](https://github.com/theisel/astro-portabletext/issues/169)) ([0245fee](https://github.com/theisel/astro-portabletext/commit/0245feef8df93adcb1a62212381cc06f53f18b10))
+* **api:** enhance customisation with `slots` and `render` function ([#167](https://github.com/theisel/astro-portabletext/issues/167)) ([9d6a9e8](https://github.com/theisel/astro-portabletext/commit/9d6a9e86640d4bfeaaaebb7d394147df58bf600b)), closes [#158](https://github.com/theisel/astro-portabletext/issues/158)
+* **api:** simplify component prop imports with type aliases ([#171](https://github.com/theisel/astro-portabletext/issues/171)) ([f41f695](https://github.com/theisel/astro-portabletext/commit/f41f6954ae918733dcbe0be09f5dca7f664877a7))
+* **component:** enable custom text rendering in PortableText ([#165](https://github.com/theisel/astro-portabletext/issues/165)) ([80c147a](https://github.com/theisel/astro-portabletext/commit/80c147ac544a0e35270a6bd89fcfa699a2c19cd5))
+
+
+### Performance Improvements
+
+* **component:** cache Portable Text nodes ([#167](https://github.com/theisel/astro-portabletext/issues/167)) ([9d6a9e8](https://github.com/theisel/astro-portabletext/commit/9d6a9e86640d4bfeaaaebb7d394147df58bf600b))
+
 ## [0.10.1](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.10.0...astro-portabletext@0.10.1) (2024-11-04)
 
 

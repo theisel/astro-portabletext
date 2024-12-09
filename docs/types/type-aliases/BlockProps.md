@@ -10,6 +10,10 @@ type BlockProps: Props<Block>;
 
 Convenience type for [Block](../interfaces/Block.md) component props
 
+## Remarks
+
+Added in: `v0.11.0`
+
 ## Example
 
 ```ts

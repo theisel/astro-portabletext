@@ -9,25 +9,6 @@ Context object returned by `usePortableText`, providing utilities for rendering 
 The `Context` type includes functions to retrieve default or unknown components and
 to customize rendering behavior for specific node types.
 
-## Example
-
-```ts
----
-import { usePortableText } from "astro-portabletext";
-
-const { node } = Astro.props;
-const { getDefaultComponent, render } = usePortableText(node);
-const Component = getDefaultComponent();
----
-<Component {...Astro.props}>
- {render({
-   text: ({ props }) => props.node.text.toUpperCase(),
-   mark: ({ Component, props, children }) => (
-     <Component {...props} class="custom-mark">{children}</Component>
-   ),
-</Component>
-```
-
 ## Properties
 
 ### getDefaultComponent()
@@ -108,6 +89,10 @@ such as overriding the default text or mark rendering.
 `any`
 
 The desired output for the Portable Text node
+
+#### Remarks
+
+Added in: `v0.11.0`
 
 #### Example
 

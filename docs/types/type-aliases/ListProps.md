@@ -10,6 +10,10 @@ type ListProps: Props<List>;
 
 Convenience type for [List](List.md) component props
 
+## Remarks
+
+Added in: `v0.11.0`
+
 ## Example
 
 ```ts

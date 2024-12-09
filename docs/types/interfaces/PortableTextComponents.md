@@ -116,6 +116,10 @@ text: Component<ToolkitTextNode>;
 
 Component for rendering `spans` of text.
 
+#### Remarks
+
+Added in: `v0.11.0`
+
 ***
 
 ### hardBreak

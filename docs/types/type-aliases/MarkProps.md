@@ -16,6 +16,10 @@ Convenience type for [Mark](../interfaces/Mark.md) component props
 | ------ | ------ |
 | `MarkDef` *extends* `Record`\<`string`, `unknown`\> \| `undefined` | `undefined` |
 
+## Remarks
+
+Added in: `v0.11.0`
+
 ## Example
 
 ```ts

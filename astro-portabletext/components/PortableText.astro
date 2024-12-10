@@ -117,7 +117,7 @@ const provideComponent = (
   fallbackComponent: Component
 ): Component => {
   const component: Component | undefined = ((component) => {
-    return component[type as keyof typeof component] || component;
+    return components[type as keyof typeof component] || component;
   })(components[nodeType]);
 
   if (isComponent(component)) {

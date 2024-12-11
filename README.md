@@ -28,7 +28,9 @@ $ npm install astro-portabletext
 
 ## Documentation
 
-`How to` and `examples` can be found [here](astro-portabletext/README.md "astro-portabletext documentation").
+`How to` and `examples` can be found here:
+* [Documentation for latest stable version (0.10.1)](https://github.com/theisel/astro-portabletext/tree/astro-portabletext%400.10.1/astro-portabletext "astro-portabletext 0.10.1 documentation")
+* [Documentation for in-development version (`main` branch)](astro-portabletext/README.md "astro-portabletext main branch documentation")
 
 &nbsp;
 

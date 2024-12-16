@@ -1,12 +1,22 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "entryPoints": ["./lib/types.ts", "./lib/utils.ts"],
+  "entryPoints": ["./lib/types.ts"],
   "plugin": ["typedoc-plugin-markdown"],
-  "out": "generated-docs",
+  "out": "docs/types",
   "readme": "none",
   "githubPages": false,
   "disableSources": true,
   "sort": ["source-order", "required-first"],
   "preserveAnchorCasing": true,
-  "indexFormat": "table"
+  "hideBreadcrumbs": true,
+  "useCodeBlocks": true,
+  "parametersFormat": "table",
+  "typeDeclarationFormat": "table",
+  "indexFormat": "table",
+  "pageTitleTemplates": {
+    "index": "Type Definitions"
+  },
+  "textContentMappings": {
+    "header.title": "`{projectName}` • Type Definitions"
+  }
 }

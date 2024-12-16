@@ -1,0 +1,35 @@
+---
+/**
+ * This `block` component customizes the rendering of Portable Text blocks.
+ * It conditionally renders different components based on the `style` value
+ * and provides a fallback to the default `astro-portabletext` Block component.
+ *
+ * Usage:
+ *   <PortableText value={portableTextPayload} components={{ block: Block }} />
+ */
+// @ts-nocheck
+import type { BlockProps } from "astro-portabletext/types";
+import { usePortableText } from "astro-portabletext";
+import Billboard from "./Billboard.astro";
+import Quote from "./Quote.astro";
+
+type Props = BlockProps;
+
+const props = Astro.props;
+const { getDefaultComponent } = usePortableText(props.node);
+const styleIs = (style: string) => style === props.node.style;
+
+const Cmp = styleIs("billboard") // Custom style
+  ? Billboard
+  : styleIs("blockquote") // Override default
+    ? Quote
+    : getDefaultComponent(); // Fallback to `astro-portabletext` Block component
+---
+
+<Cmp {...props} class="block"><slot /></Cmp>
+
+<style>
+  .block:where(h1, h2) {
+    /* some styles */
+  }
+</style>

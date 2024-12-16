@@ -1,0 +1,30 @@
+---
+/**
+ * This example demonstrates how to add custom components to the `PortableText` component.
+ * The custom component will handle rendering of all rich text nodes of the specified type.
+ *
+ * The `components` prop accepts an object with the following keys:
+ * - `type` — Custom type component.
+ * - `block` — Custom block component.
+ * - `list` — Custom list component.
+ * - `listItem` — Custom list item component.
+ * - `mark` — Custom mark component.
+ * - `text` — Custom text component.
+ * - `hardBreak` — Custom hard break component.
+ */
+// @ts-nocheck
+import { PortableText } from "astro-portabletext";
+import Block from "./Block.astro";
+import Type from "./Type.astro";
+
+const portableText = [
+  /* Portable Text payload */
+];
+
+const components = {
+  type: Type,
+  block: Block,
+};
+---
+
+<PortableText value={portableText} {components} />

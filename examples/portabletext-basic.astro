@@ -1,0 +1,18 @@
+---
+/**
+ * This example demonstrates the most basic usage of the `PortableText` component.
+ * You will need to provide custom components when dealing with custom types or
+ * marks for example.
+ *
+ * Refer to the `portabletext-mapped-components.astro` and `portabletext-mapped-types.astro`
+ * examples for more advanced usage.
+ */
+// @ts-nocheck
+import { PortableText } from "astro-portabletext";
+
+const portableText = [
+  /* Portable Text payload */
+];
+---
+
+<PortableText value={portableText} />

@@ -1,0 +1,24 @@
+---
+/**
+ * Works with `v0.11.0+`
+ *
+ * This `text` component handles the output of `text` nodes in Portable Text.
+ * It demonstrates how to modify the text content of all text nodes.
+ *
+ * Note:
+ *   This example affects ALL text nodes. To target specific text nodes,
+ *   use the `render` function from `usePortableText`.
+ *   (See examples/render-function.astro)
+ *
+ * Usage:
+ *   <PortableText value={portableTextPayload} components={{ text: Text }} />
+ */
+// @ts-nocheck
+import type { TextProps } from "astro-portabletext/types";
+
+export type Props = TextProps;
+
+// Replace "rocket" with an emoji in all text nodes
+---
+
+{Astro.props.node.text.replace("rocket", "🚀")}

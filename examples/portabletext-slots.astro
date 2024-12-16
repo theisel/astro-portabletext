@@ -1,0 +1,82 @@
+---
+/**
+ * Works with `v0.11.0+`
+ *
+ * This example demonstrates how to use the `PortableText` component with `slots`.
+ * Slots allow you to add attributes (e.g. classes) for styling or wrap elements.
+ * It also shows how to use custom components with the `components` prop.
+ *
+ * Each slot receives:
+ * - `Component`: The component to render (custom or default).
+ * - `props`: Props for the component.
+ * - `children` (optional): Children to render (only for block, list, listItem, mark) otherwise it's undefined.
+ *
+ * Available slot names:
+ * - `type`
+ * - `block`
+ * - `list`
+ * - `listItem`
+ * - `mark`
+ * - `text`
+ * - `hardBreak`
+ *
+ * Note: There is no `default` slot.
+ */
+// @ts-nocheck
+import { PortableText } from "astro-portabletext";
+import Type from "./Type.astro";
+import Block from "./BlockWithRenderFunction.astro";
+
+const portableText = [
+  /* Portable Text payload */
+];
+
+const components = {
+  type: Type,
+  block: Block,
+};
+---
+
+<PortableText value={portableText} {components}>
+  <fragment slot="type"
+    >{
+      ({ Component /* custom component - Type */, props }) => (
+        <Component {...props} class="type" />
+      )
+    }</fragment
+  >
+  <fragment slot="block"
+    >{
+      ({ Component /* custom component - Block */, props, children }) => (
+        <Component {...props} class="block">
+          {children}
+        </Component>
+      )
+    }</fragment
+  >
+  <fragment slot="mark"
+    >{
+      ({
+        Component /* default component from `astro-portabletext` */,
+        props,
+        children,
+      }) => (
+        <Component {...props} class="mark">
+          {children}
+        </Component>
+      )
+    }</fragment
+  >
+</PortableText>
+
+<style>
+  .block:where(h1, h2) {
+    /* some styles */
+  }
+  .type:where(.hero) {
+    /* some styles */
+  }
+  .mark:where(strong) {
+    /* some styles */
+  }
+</style>

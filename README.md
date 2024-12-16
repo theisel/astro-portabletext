@@ -4,54 +4,59 @@
 
 # astro-portabletext
 
+[![npm version](https://img.shields.io/npm/v/astro-portabletext.svg?style=flat-square)](https://npmjs.com/package/astro-portabletext)
+[![npm downloads](https://img.shields.io/npm/dm/astro-portabletext.svg?style=flat-square)](https://npmjs.com/package/astro-portabletext)
 ![license](https://img.shields.io/npm/l/astro-portabletext?style=flat-square)
-[![npm](https://img.shields.io/npm/v/astro-portabletext?style=flat-square)](https://www.npmjs.com/package/astro-portabletext)
 
-&nbsp;
+A flexible and customizable library for rendering [Portable Text](https://portabletext.org) content in [Astro](https://astro.build) projects.
 
-Render [Portable Text](https://portabletext.org/) with [Astro](https://astro.build/).
+## 🚀 Features
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/theisel/astro-portabletext/tree/main/demo)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/theisel/astro-portabletext/tree/main/demo)
+- **Core components** for common Portable Text elements.
+- **Customizable rendering** using `slots` or your own `components`.
+- **Flexible control** with the `render` function via `usePortableText`.
+- **Built with** TypeScript support.
 
-&nbsp;
+## 🎮 Demonstration
 
-## Installation
+Jump in and see it in action:
 
-```bash
-$ npm install astro-portabletext
-# $ pnpm add astro-portabletext
-# $ yarn add astro-portabletext
-```
+<div>
+  <a href="https://stackblitz.com/github/theisel/astro-portabletext/tree/main/demo">
+    <img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt="Open in StackBlitz">
+  </a>
+  <a href="https://codesandbox.io/p/sandbox/github/theisel/astro-portabletext/tree/main/demo">
+    <img src="https://assets.codesandbox.io/github/button-edit-lime.svg" alt="Open in CodeSandbox">
+  </a>
+</div>
 
-&nbsp;
+## 📖 Resources
 
-## Documentation
+- **Installation & usage docs:** [Read the full documentation](docs/README.md)
+- **TypeScript types:** [Type definitions](docs/types/README.md)
+- **Examples:** [Browse practical examples](examples/README.md)
 
-`How to` and `examples` can be found here:
-* [Documentation for latest stable version (0.10.1)](https://github.com/theisel/astro-portabletext/tree/astro-portabletext%400.10.1/astro-portabletext "astro-portabletext 0.10.1 documentation")
-* [Documentation for in-development version (`main` branch)](astro-portabletext/README.md "astro-portabletext main branch documentation")
+**Versions:**
 
-&nbsp;
+- [Latest stable version (v0.10.1)](https://github.com/theisel/astro-portabletext/tree/astro-portabletext%400.10.1/astro-portabletext "astro-portabletext v0.10.1 documentation")
+- [Development branch](astro-portabletext/README.md "astro-portabletext main branch documentation")
 
-## Sanity Projects
+## ![Sanity Logo](https://avatars.githubusercontent.com/u/17177659?s=24) Sanity Integration
 
-Refer to [Sanity docs](astro-portabletext/docs/sanity.md) page.
+This library is [officially recommended](https://www.sanity.io/plugins/sanity-astro#rendering-rich-text-and-block-content-with-portable-text) by [Sanity](https://sanity.io) for rendering Portable Text in Astro projects.
 
-&nbsp;
+Helpful resources:
 
-## Alternative libraries
+- [Sanity Integration for Astro](https://www.sanity.io/plugins/sanity-astro)
+- [Guide: Building a Blog with Sanity and Astro](https://www.sanity.io/guides/sanity-astro-blog)
 
-You will need both related NPM packages.
+## 🙌 Contributing
 
-| Astro                                                                            | Portable Text                                                                |
-| :------------------------------------------------------------------------------- | :--------------------------------------------------------------------------- |
-| [@astrojs/react](https://docs.astro.build/en/guides/integrations-guide/react/)   | [@portabletext/react](https://github.com/portabletext/react-portabletext/)   |
-| [@astrojs/svelte](https://docs.astro.build/en/guides/integrations-guide/svelte/) | [@portabletext/svelte](https://github.com/portabletext/svelte-portabletext/) |
-| [@astrojs/vue](https://docs.astro.build/en/guides/integrations-guide/vue/)       | [@portabletext/vue](https://github.com/portabletext/vue-portabletext)        |
+We welcome contributions to improve `astro-portabletext`!
 
-&nbsp;
+If you find a bug or have a feature request, please open an [issue](https://github.com/theisel/astro-portabletext/issues).
+If you'd like to contribute code, feel free to submit a [pull request](https://github.com/theisel/astro-portabletext/pulls).
 
-## License
+## 📄 License
 
-ISC
+This project is licensed under the [ISC License](https://github.com/theisel/astro-portabletext/blob/main/LICENSE).

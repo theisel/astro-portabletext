@@ -1,0 +1,12 @@
+---
+import type { BlockProps } from "astro-portabletext/types";
+
+export type Props = BlockProps;
+
+const props = Astro.props;
+const { node, isInline, index, ...attrs } = props;
+---
+
+<div data-block="standfirst" {...attrs}>
+  <slot />
+</div>

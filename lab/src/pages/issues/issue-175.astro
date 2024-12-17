@@ -1,0 +1,38 @@
+---
+// Refer to https://github.com/theisel/astro-portabletext/issues/175
+
+import { PortableText } from "astro-portabletext";
+import BlockStandFirst from "../../components/issues/BlockStandFirst.astro";
+
+const value = {
+  _key: "a8f6c37f1f5d",
+  _type: "block",
+  children: [
+    {
+      _key: "f69fa0972de1",
+      _type: "span",
+      marks: [],
+      text: "list standfirst ",
+    },
+    {
+      _key: "12e6dbf8f10a",
+      _type: "span",
+      marks: ["strong"],
+      text: "bold",
+    },
+  ],
+  level: 1,
+  listItem: "bullet",
+  markDefs: [],
+  style: "standfirst",
+};
+---
+
+<PortableText
+  {value}
+  components={{
+    block: {
+      standfirst: BlockStandFirst,
+    },
+  }}
+/>

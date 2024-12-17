@@ -40,4 +40,4 @@ jobs:
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "docs: [ci] generate"
+          commit_message: "docs: generated documentation"

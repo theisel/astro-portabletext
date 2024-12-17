@@ -1,0 +1,39 @@
+---
+/**
+ * Works with `v0.11.0+`
+ *
+ * This `Block` component demonstrates how to customize Portable Text block rendering
+ * using the `render` function from `usePortableText`.
+ *
+ * `render` allows fine-grained control over child node rendering and can be used
+ * within `block`, `list`, `listItem`, and `mark` components as they contain child nodes.
+ *
+ * This example customizes the rendering of `h1` blocks to replace the word "rocket"
+ * with a 🚀 emoji.
+ */
+// @ts-nocheck
+import type { BlockProps } from "astro-portabletext/types";
+import { usePortableText } from "astro-portabletext";
+
+type Props = BlockProps;
+
+const { node, isInline, index, ...attrs } = Astro.props;
+const { getDefaultComponent, render } = usePortableText(node);
+const styleIs = (style: string) => style === node.style;
+
+const DefaultBlock = getDefaultComponent(); // Returns `astro-portabletext` Block component
+---
+
+{
+  styleIs("h1") ? (
+    <h1 {...attrs}>
+      {render({
+        text: ({ props }) => props.node.text.replace("rocket", "🚀"),
+      })}
+    </h1>
+  ) : (
+    <DefaultBlock {...Astro.props}>
+      <slot />
+    </DefaultBlock>
+  )
+}

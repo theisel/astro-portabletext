@@ -1,0 +1,29 @@
+---
+/**
+ * This `listItem` component customizes the rendering of Portable Text list items.
+ * It conditionally renders different components based on the `listItem` value
+ * and provides a fallback to the default `astro-portabletext` ListItem component.
+ *
+ * Usage:
+ *   <PortableText value={portableTextPayload} components={{ listItem: ListItem }} />
+ */
+// @ts-nocheck
+import type { ListItemProps } from "astro-portabletext/types";
+import { usePortableText } from "astro-portabletext";
+import BulletListItem from "./BulletListItem.astro";
+import SquareListItem from "./SquareListItem.astro";
+
+export type Props = ListItemProps;
+
+const props = Astro.props;
+const { getDefaultComponent } = usePortableText(props.node);
+const listItemIs = (listItem: string) => listItem === props.node.listItem;
+
+const Cmp = listItemIs("square") // Custom list item
+  ? SquareListItem
+  : listItemIs("bullet") // Override default
+    ? BulletListItem
+    : getDefaultComponent(); // Fallback to `astro-portabletext` ListItem component
+---
+
+<Cmp {...props}><slot /></Cmp>

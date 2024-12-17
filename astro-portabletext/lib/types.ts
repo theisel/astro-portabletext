@@ -44,7 +44,11 @@ export interface PortableTextProps<
   onMissingComponent?: MissingComponentHandler | boolean;
 
   /**
-   * Value can be `html` or `direct`, defaults to `html`
+   * Defines the nesting mode for lists. The value can be `html` or `direct`, and defaults to `html`.
+   *
+   * @remarks
+   * - `html` - Deeper list nodes will appear as a child of the last list item in the parent list
+   * - `direct` - Deeper list nodes will appear as a direct child of the parent list
    *
    * @see {@link https://portabletext.github.io/toolkit/types/ToolkitListNestMode.html ToolkitListNestMode}
    */
@@ -52,61 +56,62 @@ export interface PortableTextProps<
 }
 
 /**
- * Object defining how Portable Text types should be rendered
+ * Defines how Portable Text types should be rendered.
  */
 export interface PortableTextComponents {
   /**
-   * How user-defined types should be rendered
+   * Component or mapping of components for rendering `custom` types.
    */
   type: ComponentOrRecord;
   /**
-   * Used when a {@link PortableTextComponents.type type} component isn't found
+   * Used when a {@link PortableTextComponents.type type} component isn't found.
    */
   unknownType: Component;
   /**
-   * How blocks should be rendered
+   * Component or mapping of components for rendering `block` styles.
    */
   block: ComponentOrRecord<Block>;
   /**
-   * Used when a {@link PortableTextComponents.block block} component isn't found
+   * Used when a {@link PortableTextComponents.block block} component isn't found.
    */
   unknownBlock: Component<Block>;
   /**
-   * How lists should be rendered
+   * Component or mapping of components for rendering `list` item type.
    */
   list: ComponentOrRecord<List>;
   /**
-   * Used when a {@link PortableTextComponents.list list} component isn't found
+   * Used when a {@link PortableTextComponents.list list} component isn't found.
    */
   unknownList: Component<List>;
   /**
-   * How list items should be rendered
+   * Component or mapping of components for rendering `list` item type.
    */
   listItem: ComponentOrRecord<ListItem>;
   /**
-   * Used when a {@link PortableTextComponents.listItem listItem} component isn't found
+   * Used when a {@link PortableTextComponents.listItem listItem} component isn't found.
    */
   unknownListItem: Component<ListItem>;
   /**
-   * How marked text should be rendered
+   * Component or mapping of components for rendering `mark` definition type.
    */
   mark: ComponentOrRecord<Mark<never>>;
   /**
-   * Used when a {@link PortableTextComponents.mark mark} component isn't found
+   * Used when a {@link PortableTextComponents.mark mark} component isn't found.
    */
   unknownMark: Component<Mark<never>>;
   /**
-   * How text should be rendered
+   * Component for rendering `spans` of text.
+   * @remarks Added in: `v0.11.0`
    */
   text: Component<TextNode>;
   /**
-   * How line breaks should be rendered
+   * Component for rendering a newline `\n` of text.
    */
   hardBreak: Component<TextNode>;
 }
 
 /**
- * Object defining how some Portable Text types should be rendered
+ * Defines how some Portable Text types should be rendered.
  */
 export type SomePortableTextComponents = Partial<PortableTextComponents>;
 
@@ -121,26 +126,29 @@ export interface Props<N extends TypedObject> {
    */
   node: N;
   /**
-   * Index within its parent
+   * Index of the current node within its parent's child list
    */
   index: number;
   /**
-   * Whether the component should be layed out as inline or block element
+   * Indicates whether the node should render as an inline or block element
    */
   isInline: boolean;
 }
 
 /**
- * Alias to {@link https://portabletext.github.io/types/interfaces/PortableTextBlock.html PortableTextBlock} with `style` set to `normal`
+ * Alias to {@link https://portabletext.github.io/types/interfaces/PortableTextBlock.html PortableTextBlock}
+ * with `style` set to `normal` when undefined
  *
  * @example
  * ```ts
  * ---
  * import type { Block, Props as $ } from "astro-portabletext/types";
  *
- * export type Props = $<Block>;
+ * type Props = $<Block>;
  * ---
  * ```
+ *
+ * @remarks To concisely achieve the same result in the example, use the convenience type {@link BlockProps} instead.
  */
 export interface Block extends PortableTextBlock {
   style: "normal" | PortableTextBlockStyle;
@@ -148,6 +156,18 @@ export interface Block extends PortableTextBlock {
 
 /**
  * Convenience type for {@link Block} component props
+ *
+ * @remarks
+ * Added in: `v0.11.0`
+ *
+ * @example
+ * ```ts
+ * ---
+ * import type { BlockProps } from "astro-portabletext/types";
+ *
+ * type Props = BlockProps;
+ * ---
+ * ```
  */
 export type BlockProps = Props<Block>;
 
@@ -159,14 +179,28 @@ export type BlockProps = Props<Block>;
  * ---
  * import type { List, Props as $ } from "astro-portabletext/types";
  *
- * export type Props = $<List>;
+ * type Props = $<List>;
  * ---
  * ```
+ *
+ * @remarks To concisely achieve the same result in the example, use the convenience type {@link ListProps} instead.
  */
 export type List = ToolkitPortableTextList;
 
 /**
  * Convenience type for {@link List} component props
+ *
+ * @remarks
+ * Added in: `v0.11.0`
+ *
+ * @example
+ * ```ts
+ * ---
+ * import type { ListProps } from "astro-portabletext/types";
+ *
+ * type Props = ListProps;
+ * ---
+ * ```
  */
 export type ListProps = Props<List>;
 
@@ -178,14 +212,28 @@ export type ListProps = Props<List>;
  * ---
  * import type { ListItem, Props as $ } from "astro-portabletext/types";
  *
- * export type Props = $<ListItem>;
+ * type Props = $<ListItem>;
  * ---
  * ```
+ *
+ * @remarks To concisely achieve the same result in the example, use the convenience type {@link ListItemProps} instead.
  */
 export type ListItem = ToolkitPortableTextListItem;
 
 /**
  * Convenience type for {@link ListItem} component props
+ *
+ * @remarks
+ * Added in: `v0.11.0`
+ *
+ * @example
+ * ```ts
+ * ---
+ * import type { ListItemProps } from "astro-portabletext/types";
+ *
+ * type Props = ListItemProps;
+ * ---
+ * ```
  */
 export type ListItemProps = Props<ListItem>;
 
@@ -193,10 +241,10 @@ export type ListItemProps = Props<ListItem>;
  * Extends {@link https://portabletext.github.io/toolkit/interfaces/ToolkitNestedPortableTextSpan.html ToolkitNestedPortableTextSpan}
  * with consisting `markDef` and `markKey` properties
  *
- * @typeParam MarkDef - Object defining the shape of `markDef` property
+ * @typeParam MarkDef - Defines the shape of `markDef` property
  *
  * @remarks
- * Refer to {@link https://github.com/portabletext/toolkit/blob/36c51bd360aa7bc9f8b1f47dbe4a8b6adb4b566a/src/buildMarksTree.ts#L92 buildMarksTree}
+ * To concisely achieve the same result in the example, use the convenience type {@link MarkProps} instead.
  *
  * @example
  * ```ts
@@ -204,11 +252,7 @@ export type ListItemProps = Props<ListItem>;
  * import type { Mark, Props as $ } from "astro-portabletext/types";
  *
  * type Greet = { msg: string };
- *
- * export type Props = $<Mark<Greet>>;
- *
- * const { node } = Astro.props;
- * // node.markDef.msg is of type `string`
+ * type Props = $<Mark<Greet>>;
  * ---
  * ```
  */
@@ -221,6 +265,19 @@ export interface Mark<
 
 /**
  * Convenience type for {@link Mark} component props
+ *
+ * @remarks
+ * Added in: `v0.11.0`
+ *
+ * @example
+ * ```ts
+ * ---
+ * import type { MarkProps } from "astro-portabletext/types";
+ *
+ * type Greet = { msg: string };
+ * type Props = MarkProps<Greet>;
+ * ---
+ * ```
  */
 export type MarkProps<
   MarkDef extends Record<string, unknown> | undefined = undefined,
@@ -234,14 +291,28 @@ export type MarkProps<
  * ---
  * import type { TextNode, Props as $ } from "astro-portabletext/types";
  *
- * export type Props = $<TextNode>;
+ * type Props = $<TextNode>;
  * ---
  * ```
+ *
+ * @remarks To concisely achieve the same result in the example, use the convenience type {@link TextNodeProps} instead.
  */
 export type TextNode = ToolkitTextNode;
 
 /**
  * Convenience type for {@link TextNode} component props
+ *
+ * @remarks
+ * Added in: `v0.11.0`
+ *
+ * @example
+ * ```ts
+ * ---
+ * import type { TextNodeProps } from "astro-portabletext/types";
+ *
+ * type Props = TextNodeProps;
+ * ---
+ * ```
  */
 export type TextNodeProps = Props<TextNode>;
 
@@ -255,16 +326,26 @@ export type MissingComponentHandler = (
 
 /**
  * Properties for the `RenderHandler` function
+ *
+ * @typeParam T - Type of Portable Text payload
+ * @typeParam Children - Type of children
  */
 export type RenderHandlerProps<
   T extends TypedObject = TypedObject,
   Children = unknown,
 > = {
   /**
-   * The component to be rendered. This is a function that takes props and returns a rendered output
+   * The component that is associated with the Portable Text node.
    */
   Component: Component<T>;
+  /**
+   * The component props
+   */
   props: Props<T>;
+  /**
+   * The children related to the Portable Text node.
+   * If the node is a custom {@link PortableTextComponents.type type} or a {@link TextNode}, then children will be `undefined`.
+   */
   children?: Children;
 };
 
@@ -294,15 +375,82 @@ export type RenderOptions = {
 };
 
 /**
- * Context object providing access to rendering utilities within a Portable Text tree.
+ * Context object returned by `usePortableText`, providing utilities for rendering and customizing Portable Text components.
  *
- * @property getDefaultComponent - Function to retrieve the default astro-portabletext component associated with a node, such as `Block`, `List`, etc.
- * @property getUnknownComponent - Function to retrieve the unknown component associated with a node, such as `unknownBlock`, `unknownList`, etc.
- * @property render - Function to customize the rendering of specific node types.
+ * The `Context` type includes functions to retrieve default or unknown components and
+ * to customize rendering behavior for specific node types.
  */
 export interface Context {
+  /**
+   * Retrieves the default `astro-portabletext` component associated with a Portable Text node.
+   *
+   * @returns The default component for the node, such as `Block`, `List`, etc.
+   *
+   * @example
+   * ```ts
+   * ---
+   * const { getDefaultComponent } = usePortableText(node);
+   * const Component = getDefaultComponent();
+   * ---
+   * <Component {...Astro.props}>
+   *    <slot />
+   * </Component>
+   * ```
+   */
   getDefaultComponent: () => Component;
+  /**
+   * Retrieves the `unknown` component associated with a Portable Text node.
+   *
+   * @returns The component used for unknown nodes, such as `unknownBlock` or `unknownList`.
+   *
+   * @example
+   * ```ts
+   * ---
+   * const { getUnknownComponent } = usePortableText(node);
+   * const Component = getUnknownComponent();
+   * ---
+   * <Component {...Astro.props}>
+   *   <slot />
+   * </Component>
+   * ```
+   */
   getUnknownComponent: () => Component;
+  /**
+   * Customizes rendering for specific Portable Text node types.
+   *
+   * The `render` function enables developers to define custom behavior for specific node types,
+   * such as overriding the default text or mark rendering.
+   *
+   * @remarks
+   * Added in: `v0.11.0`
+   *
+   * @param options {@link RenderOptions} - Configuration for customizing node rendering
+   * @returns The desired output for the Portable Text node
+   *
+   * @example Basic usage
+   * ```ts
+   * ---
+   * import { usePortableText } from "astro-portabletext";
+   *
+   * const { node } = Astro.props;
+   * const { getDefaultComponent, render } = usePortableText(node);
+   * const Component = getDefaultComponent();
+   * ---
+   * <Component {...Astro.props}>
+   *  {render({
+   *    text: ({ props }) => props.node.text.toUpperCase(),
+   *    mark: ({ Component, props, children }) => (
+   *      <Component {...props} class="custom-mark">{children}</Component>
+   *    ),
+   * </Component>
+   *
+   * <style>
+   *  .custom-mark {
+   *    // some styles
+   *  }
+   * </style>
+   * ```
+   */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   render: (options: RenderOptions) => any;
 }
@@ -315,7 +463,7 @@ export interface Context {
 export type Component<T extends TypedObject = any> = (props: Props<T>) => any;
 
 /**
- * For internal use
+ * Defines a component or a mapping of components
  * @internal
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -324,6 +472,7 @@ export type ComponentOrRecord<T extends TypedObject = any> =
   | Record<string, Component<T>>;
 
 /**
+ * Defines the type of Portable Text node
  * @internal
  */
 export type NodeType = "type" | "block" | "list" | "listItem" | "mark";

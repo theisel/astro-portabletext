@@ -1,0 +1,22 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["astro-portabletext/lib/types.ts"],
+  "plugin": ["typedoc-plugin-markdown"],
+  "out": "docs/types",
+  "readme": "none",
+  "githubPages": false,
+  "disableSources": true,
+  "sort": ["source-order", "required-first"],
+  "preserveAnchorCasing": true,
+  "hideBreadcrumbs": true,
+  "useCodeBlocks": true,
+  "parametersFormat": "table",
+  "typeDeclarationFormat": "table",
+  "indexFormat": "table",
+  "pageTitleTemplates": {
+    "index": "Type Definitions"
+  },
+  "textContentMappings": {
+    "header.title": "`{projectName}` • Type Definitions"
+  }
+}

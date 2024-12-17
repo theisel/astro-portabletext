@@ -1,0 +1,29 @@
+---
+/**
+ * This `mark` component customizes the rendering of Portable Text marks.
+ * It conditionally renders different components based on the `markType`
+ * and provides a fallback to the default `astro-portabletext` Mark component.
+ *
+ * Usage:
+ *   <PortableText value={portableTextPayload} components={{ mark: Mark }} />
+ */
+// @ts-nocheck
+import type { MarkProps } from "astro-portabletext/types";
+import { usePortableText } from "astro-portabletext";
+import Emphasis from "./Emphasis";
+import Highlight from "./Highlight.astro";
+
+export type Props = MarkProps<never>; // Use `never` for type parameter if the mark doesn't carry additional data
+
+const props = Astro.props;
+const { getDefaultComponent } = usePortableText(props.node);
+const markTypeIs = (markType: string) => markType === props.node.markType;
+
+const Cmp = markTypeIs("highlight") // Custom mark
+  ? Highlight
+  : markTypeIs("em") // Override default
+    ? Emphasis
+    : getDefaultComponent(); // Fallback to `astro-portabletext` Mark component
+---
+
+<Cmp {...props}><slot /></Cmp>

@@ -1,0 +1,50 @@
+---
+/**
+ * This example demonstrates how to map custom components to different
+ * Portable Text node type properties.
+ *
+ * It shows how to use the `components` prop to customize rendering for:
+ * - Custom types (`_type`)
+ * - Block styles (`style`)
+ * - List types (`listItem`)
+ * - Mark types (`markType`)
+ */
+// @ts-nocheck
+import { PortableText } from "astro-portabletext";
+import Hero from "./Hero.astro";
+import Map from "./Map.astro";
+import PageHeading from "./PageHeading.astro";
+import BulletListWrapper from "./BulletListWrapper.astro";
+import BulletListItem from "./BulletListItem.astro";
+import Highlight from "./Highlight.astro";
+
+const portableText = [
+  /* Portable Text payload */
+];
+
+const components = {
+  type: {
+    hero: Hero,
+    map: Map,
+    // [node._type]: Component
+  },
+  block: {
+    h1: PageHeading,
+    // [node.style]: Component
+  },
+  list: {
+    bullet: BulletListWrapper,
+    // [node.listItem]: Component
+  },
+  listItem: {
+    bullet: BulletListItem,
+    // [node.listItem]: Component
+  },
+  mark: {
+    highlight: Highlight,
+    // [node.markType]: Component
+  },
+};
+---
+
+<PortableText value={portableText} {components} />

@@ -20,7 +20,21 @@ export function isComponent(it: unknown): it is Component {
 }
 
 /**
- * Helper to merge {@link SomePortableTextComponents}
+ * Merges two {@link SomePortableTextComponents} objects, giving priority to overrides.
+ *
+ * This function combines two component objects used in Portable Text rendering.
+ * If both objects have the same key, the value from `overrides` takes precedence.
+ * This is useful for customizing the rendering of specific components while keeping
+ * the default behavior for others.
+ *
+ * @typeParam Components - The type of the base components object.
+ * @typeParam Overrides - The type of the overrides components object.
+ * @typeParam MergedComponents - The type of the resulting merged components object.
+ *
+ * @param components - The base components object.
+ * @param overrides - The overrides components object.
+ *
+ * @returns A new object with the merged components.
  */
 export function mergeComponents<
   Components extends SomePortableTextComponents,

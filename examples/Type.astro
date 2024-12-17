@@ -1,0 +1,27 @@
+---
+/**
+ * This `type` component handles custom `node._type` values. `astro-portabletext` uses this to render custom types.
+ * It conditionally renders different components based on the `_type` and provides a fallback for unknown types.
+ *
+ * Note:
+ *   Use the `isInline` prop to determine if the component should be layed out as inline or block.
+ *
+ * Usage:
+ *   <PortableText value={portableTextPayload} components={{ type: Type }} />
+ */
+// @ts-nocheck
+import type { TypedObject, Props as $ } from "astro-portabletext/types";
+import { usePortableText } from "astro-portabletext";
+import Hero from "./Hero.astro";
+import Map from "./Map.astro";
+
+type Props = $<TypedObject>;
+
+const props = Astro.props;
+const { getUnknownComponent } = usePortableText(props.node);
+const typeIs = (type: string) => type === props.node._type;
+
+const Cmp = typeIs("hero") ? Hero : typeIs("map") ? Map : getUnknownComponent(); // Fallback to `components.unknownType` component
+---
+
+<Cmp {...props} />

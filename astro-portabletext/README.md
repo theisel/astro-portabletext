@@ -55,8 +55,8 @@ Jump in and see it in action:
 
 <h2 id="resources">📖 Resources</h2>
 
-- **Documentation:** [Read the full documentation](https://github.com/theisel/astro-portabletext/docs/README.md "Full documentation for astro-portabletext") including TypeScript type definitions.
-- **Examples:** [Browse practical examples](https://github.com/theisel/astro-portabletext/examples/README.md "Browse examples for astro-portabletext") to help you learn.
+- **Documentation:** [Read the full documentation](https://github.com/theisel/astro-portabletext/blob/main/docs/README.md "Full documentation for astro-portabletext") including TypeScript type definitions.
+- **Examples:** [Browse practical examples](https://github.com/theisel/astro-portabletext/tree/main/examples "Browse examples for astro-portabletext") to help you learn.
 
 <h2 id="installation">📦 Installation</h2>
 
@@ -210,7 +210,7 @@ const components = {
 <PortableText value={portableText} components={components} />
 ```
 
-💡 Refer to [`custom` components documentation](https://github.com/theisel/astro-portabletext/docs/portabletext-component.md#custom-components "Custom components documentation for astro-portabletext") for more details.
+💡 Refer to [`custom` components documentation](https://github.com/theisel/astro-portabletext/blob/main/docs/portabletext-component.md#custom-components "Custom components documentation for astro-portabletext") for more details.
 
 #### Slots
 
@@ -247,7 +247,7 @@ const portableText = [
 </style>
 ```
 
-💡 Refer to [`slots` documentation](https://github.com/theisel/astro-portabletext/docs/portabletext-component.md#slots "Slots documentation for astro-portabletext") for more details.
+💡 Refer to [`slots` documentation](https://github.com/theisel/astro-portabletext/blob/main/docs/portabletext-component.md#slots "Slots documentation for astro-portabletext") for more details.
 
 ### `PortableText` component properties
 
@@ -272,13 +272,13 @@ import {
 
 #### `usePortableText`
 
-> **usePortableText**(`node`: [TypedObject](https://github.com/theisel/astro-portabletext/docs/types/interfaces/TypedObject.md)): [Context](https://github.com/theisel/astro-portabletext/docs/types/interfaces/Context.md)
+> **usePortableText**(`node`: [TypedObject](https://github.com/theisel/astro-portabletext/blob/main/docs/types/interfaces/TypedObject.md)): [Context](https://github.com/theisel/astro-portabletext/blob/main/docs/types/interfaces/Context.md)
 
 Gives you access to helper functions like `render` (added in `v0.11.0`), which allows you to fine-tune the output of child nodes in your custom components.
 
 #### `mergeComponents`
 
-> **mergeComponents**(`components`: [SomePortableTextComponents](https://github.com/theisel/astro-portabletext/docs/types/type-aliases/SomePortableTextComponents.md), `overrideComponents`: [SomePortableTextComponents](https://github.com/theisel/astro-portabletext/docs/types/type-aliases/SomePortableTextComponents.md)): `object`
+> **mergeComponents**(`components`: [SomePortableTextComponents](https://github.com/theisel/astro-portabletext/blob/main/docs/types/type-aliases/SomePortableTextComponents.md), `overrideComponents`: [SomePortableTextComponents](https://github.com/theisel/astro-portabletext/blob/main/docs/types/type-aliases/SomePortableTextComponents.md)): `object`
 
 Combines two sets of `components` options, where `overrideComponents` takes precedence.
 

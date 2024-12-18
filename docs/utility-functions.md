@@ -43,3 +43,11 @@ Combines two sets of `components` options, where `overrideComponents` takes prec
 Extracts the text content from Portable Text blocks, preserving spacing.
 
 💡 Refer to `@portabletext/toolkit` [toPlainText](https://portabletext.github.io/toolkit/functions/toPlainText.html) documentation for more details.
+
+## `spanToPlainText`
+
+> **spanToPlainText**(`span`): `string`
+
+Returns plain text from a Portable Text span, useful for extracting text from nested nodes.
+
+💡 Refer to `@portabletext/toolkit` [spanToPlainText](https://portabletext.github.io/toolkit/functions/spanToPlainText.html) documentation for more details.

@@ -6,6 +6,12 @@ declare module "astro-portabletext/utils" {
     ...args: Parameters<typeof import("@portabletext/toolkit").toPlainText>
   ): ReturnType<typeof import("@portabletext/toolkit").toPlainText>;
   /**
+   * @deprecated Use `spanToPlainText` from `astro-portabletext` instead
+   */
+  export function spanToPlainText(
+    ...args: Parameters<typeof import("@portabletext/toolkit").spanToPlainText>
+  ): ReturnType<typeof import("@portabletext/toolkit").spanToPlainText>;
+  /**
    * @deprecated Use `mergeComponents` from `astro-portabletext` instead
    */
   export function mergeComponents(

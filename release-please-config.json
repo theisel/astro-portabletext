@@ -5,7 +5,6 @@
   "include-v-in-tag": false,
   "tag-separator": "@",
   "pull-request-header": ":robot: release created",
-  "group-pull-request-title-pattern": "chore: batch release ${branch}",
   "plugins": ["node-workspace"],
   "release-type": "node",
   "changelog-sections": [

@@ -1,9 +1,10 @@
 ---
-import { PortableText } from "../components/portabletext";
+import { PortableText } from "astro-portabletext";
+import { components } from "../components/portabletext";
 import Layout from "../layouts/Default.astro";
 import value from "../data/portabletext.json";
 ---
 
 <Layout>
-  <PortableText value={value} />
+  <PortableText value={value} {components} />
 </Layout>

@@ -1,9 +1,53 @@
 ---
-import { PortableText } from "../components/portabletext";
+import { PortableText } from "astro-portabletext";
+import { components } from "../components/portabletext";
 import Layout from "../layouts/Default.astro";
 import value from "../data/portabletext.json";
 ---
 
 <Layout>
-  <PortableText value={value} />
+  <PortableText value={value} {components}>
+    {
+      /* Uncomment this section to customize how some block-level elements (e.g., headings) are styled */
+    }
+    <!-- <fragment slot="block"
+      >{
+        ({ Component, props, children }) => (
+          <Component {...props} data-slot>
+            {children}
+          </Component>
+        )
+      }</fragment
+    > -->
+    {
+      /* Uncomment this section to see how some list elements (e.g., ordered lists) are styled */
+    }
+    <!-- <fragment slot="list"
+      >{
+        ({ Component, props, children }) => (
+          <Component {...props} data-slot>
+            {children}
+          </Component>
+        )
+      }</fragment
+    > -->
+  </PortableText>
 </Layout>
+
+<style>
+  [data-slot]:where(h1, h3, h5) {
+    border: 1px solid;
+    padding: 0.5rem;
+    width: fit-content;
+  }
+
+  [data-slot]:where(ol) {
+    background: greenyellow;
+    border: 1px solid;
+    box-shadow:
+      1px 1px,
+      2px 2px,
+      3px 3px;
+    padding-block: 0.5rem;
+  }
+</style>

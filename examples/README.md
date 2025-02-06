@@ -21,8 +21,8 @@ _**Note:** These are not full applications._
 ### PortableText component
 
 - [portabletext-basic.astro](portabletext-basic.astro) — Provides an example of the most basic usage.
-- [portabletext-mapped-type.astro](portabletext-mapped-types.astro) — Shows how to associate custom components to different node types.
-- [portabletext-mapped-type-property.astro](portabletext-mapped-types.astro) — Shows how to associate custom components to different node type properties.
+- [portabletext-mapped-type.astro](portabletext-mapped-type.astro) — Shows how to associate custom components to different node types.
+- [portabletext-mapped-type-property.astro](portabletext-mapped-type-property.astro) — Shows how to associate custom components to different node type properties.
 - [portabletext-slots.astro](portabletext-slots.astro) — `v0.11.0+` Illustrates using the component with slots for enhanced customization.
 
 ### Advanced techniques

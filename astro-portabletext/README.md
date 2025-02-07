@@ -267,28 +267,11 @@ import {
   usePortableText,
   mergeComponents,
   toPlainText,
+  spanToPlainText, // added in `v0.11.0`
 } from "astro-portabletext";
 ```
 
-#### `usePortableText`
-
-> **usePortableText**(`node`: [TypedObject](https://github.com/theisel/astro-portabletext/blob/main/docs/types/interfaces/TypedObject.md)): [Context](https://github.com/theisel/astro-portabletext/blob/main/docs/types/interfaces/Context.md)
-
-Gives you access to helper functions like `render` (added in `v0.11.0`), which allows you to fine-tune the output of child nodes in your custom components.
-
-#### `mergeComponents`
-
-> **mergeComponents**(`components`: [SomePortableTextComponents](https://github.com/theisel/astro-portabletext/blob/main/docs/types/type-aliases/SomePortableTextComponents.md), `overrideComponents`: [SomePortableTextComponents](https://github.com/theisel/astro-portabletext/blob/main/docs/types/type-aliases/SomePortableTextComponents.md)): `object`
-
-Combines two sets of `components` options, where `overrideComponents` takes precedence.
-
-#### `toPlainText`
-
-> **toPlainText**(`block`): `string`
-
-Extracts the text content from Portable Text blocks, preserving spacing.
-
-💡 Refer to `@portabletext/toolkit` [toPlainText](https://portabletext.github.io/toolkit/functions/toPlainText.html) documentation for more details.
+💡 Refer to the [utility functions](https://github.com/theisel/astro-portabletext/blob/main/docs/utility-functions.md) documentation for more details.
 
 <h2 id="contributing">🙌 Contributing</h2>
 

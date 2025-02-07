@@ -2,7 +2,7 @@
   "name": "astro-portabletext",
   "version": "0.11.0",
   "type": "module",
-  "description": "Render Portable Text with Astro",
+  "description": "A flexible and customizable library for rendering Portable Text content in your Astro projects",
   "keywords": [
     "astro",
     "withastro",

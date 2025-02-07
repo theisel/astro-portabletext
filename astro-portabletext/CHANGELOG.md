@@ -7,6 +7,13 @@
 
 * **deps:** update @portabletext/toolkit v2.0.17 ([#195](https://github.com/theisel/astro-portabletext/issues/195)) ([8ebdc47](https://github.com/theisel/astro-portabletext/commit/8ebdc47966aa53b5a0202d8e69f43e4b9004c9f9))
 
+## [0.11.1](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.11.0...astro-portabletext@0.11.1) (2025-02-07)
+
+
+### Bug Fixes
+
+* **deps:** update @portabletext/toolkit v2.0.17 ([#195](https://github.com/theisel/astro-portabletext/issues/195)) ([8ebdc47](https://github.com/theisel/astro-portabletext/commit/8ebdc47966aa53b5a0202d8e69f43e4b9004c9f9))
+
 ## [0.11.0](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.10.1...astro-portabletext@0.11.0) (2024-12-18)
 
 

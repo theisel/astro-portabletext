@@ -23,31 +23,31 @@
   },
   "homepage": "https://github.com/theisel/astro-portabletext#readme",
   "devDependencies": {
-    "@astrojs/check": "^0.8.3",
-    "@changesets/cli": "^2.27.7",
-    "@commitlint/cli": "^19.3.0",
-    "@commitlint/config-conventional": "^19.2.2",
-    "@eslint/eslintrc": "^3.1.0",
-    "@eslint/js": "^9.8.0",
-    "@types/node": "^20.14.12",
-    "@typescript-eslint/eslint-plugin": "^7.17.0",
-    "@typescript-eslint/parser": "^7.17.0",
-    "eslint": "^9.8.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "globals": "^15.8.0",
-    "husky": "^9.1.3",
-    "lint-staged": "^15.2.7",
-    "prettier": "^3.3.3",
+    "@astrojs/check": "^0.9.4",
+    "@changesets/cli": "^2.27.12",
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.19.0",
+    "@types/node": "^22.13.1",
+    "@typescript-eslint/eslint-plugin": "^8.23.0",
+    "@typescript-eslint/parser": "^8.23.0",
+    "eslint": "^9.19.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "globals": "^15.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-svelte": "^3.2.6",
-    "typedoc": "^0.26.5",
-    "typedoc-plugin-markdown": "^4.2.3",
-    "typescript": "^5.5.4"
+    "prettier-plugin-svelte": "^3.3.3",
+    "typedoc": "^0.27.6",
+    "typedoc-plugin-markdown": "^4.4.1",
+    "typescript": "^5.7.3"
   },
   "engines": {
     "node": ">=20.10.0",
-    "pnpm": ">=9.4.0"
+    "pnpm": ">=10.2.1"
   },
-  "packageManager": "pnpm@9.4.0"
+  "packageManager": "pnpm@10.2.1"
 }

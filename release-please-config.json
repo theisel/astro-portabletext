@@ -1,6 +1,7 @@
 {
   "last-release-sha": "f3f2ce5146d3ee5bdf93955a229125b7b783645d",
   "bump-minor-pre-major": true,
+  "separate-pull-requests": false,
   "include-component-in-tag": true,
   "include-v-in-tag": false,
   "tag-separator": "@",

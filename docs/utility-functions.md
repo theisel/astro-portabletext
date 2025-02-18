@@ -12,6 +12,7 @@ import {
   usePortableText,
   mergeComponents,
   toPlainText,
+  spanToPlainText,
 } from "astro-portabletext";
 
 // Deprecated
@@ -47,6 +48,10 @@ Extracts the text content from Portable Text blocks, preserving spacing.
 ## `spanToPlainText`
 
 > **spanToPlainText**(`span`): `string`
+
+
+> Added in v0.11.0
+
 
 Returns plain text from a Portable Text span, useful for extracting text from nested nodes.
 

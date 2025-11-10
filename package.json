@@ -9,7 +9,7 @@
     "install:all": "pnpm recursive install",
     "format": "prettier -w **/*.{astro,js,jsx,mjs,svelte,ts,tsx}",
     "lint": "npx eslint .",
-    "prepare": "husky install",
+    "prepare": "husky || true",
     "generate-docs": "typedoc",
     "test:ci": "pnpm --filter lab test:ci",
     "test": "pnpm --filter lab test"

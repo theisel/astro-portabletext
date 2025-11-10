@@ -1,4 +1,8 @@
 packages:
-  - "astro-portabletext"
-  - "demo"
-  - "lab"
+  - astro-portabletext
+  - demo
+  - lab
+
+onlyBuiltDependencies:
+  - esbuild
+  - sharp

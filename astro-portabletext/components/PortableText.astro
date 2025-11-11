@@ -137,6 +137,10 @@ const cachedNodes = new WeakMap<
   { Default?: Component; Unknown?: Component }
 >();
 
+function cacheNode(node: TypedObject, Default: Component, Unknown: Component) {
+  cachedNodes.set(node, { Default, Unknown });
+}
+
 // The local render function will override these options
 let fallbackRenderOptions: Required<RenderOptions> | undefined;
 
@@ -147,9 +151,13 @@ const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
     );
   }
 
-  return function renderNode(node: TypedObject, index: number): any {
-    const renderOptions = { ...fallbackRenderOptions, ...(options ?? {}) };
+  const renderChildren = (children?: TypedObject[], inline = false) => {
+    return children?.map(portableTextRender(options, inline)) ?? [];
+  };
 
+  const renderOptions = { ...fallbackRenderOptions, ...(options ?? {}) };
+
+  return function renderNode(node: TypedObject, index: number): any {
     function run<H extends (...args: any) => any, P = Parameters<H>[0]>(
       handler: H | undefined,
       props: P
@@ -165,13 +173,12 @@ const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
 
     if (isPortableTextToolkitList(node)) {
       const UnknownComponent = components.unknownList ?? UnknownList;
-
-      cachedNodes.set(node, { Default: List, Unknown: UnknownComponent });
+      cacheNode(node, List, UnknownComponent);
 
       return run(renderOptions.list, {
         Component: provideComponent("list", node.listItem, UnknownComponent),
         props: asComponentProps(node, index, false),
-        children: node.children?.map(portableTextRender(options, false)),
+        children: renderChildren(node.children, false),
       });
     }
 
@@ -184,8 +191,7 @@ const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
         : buildMarksTree(node);
 
       const UnknownComponent = components.unknownListItem ?? UnknownListItem;
-
-      cachedNodes.set(node, { Default: ListItem, Unknown: UnknownComponent });
+      cacheNode(node, ListItem, UnknownComponent);
 
       return run(renderOptions.listItem, {
         Component: provideComponent(
@@ -196,19 +202,18 @@ const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
         props: asComponentProps(node, index, false),
         children: isStyled
           ? node.children
-          : node.children.map(portableTextRender(options, true)),
+          : renderChildren(node.children, true),
       });
     }
 
     if (isPortableTextToolkitSpan(node)) {
       const UnknownComponent = components.unknownMark ?? UnknownMark;
-
-      cachedNodes.set(node, { Default: Mark, Unknown: UnknownComponent });
+      cacheNode(node, Mark, UnknownComponent);
 
       return run(renderOptions.mark, {
         Component: provideComponent("mark", node.markType, UnknownComponent),
         props: asComponentProps(node, index, true),
-        children: node.children?.map(portableTextRender(options, true)),
+        children: renderChildren(node.children, true),
       });
     }
 
@@ -217,13 +222,12 @@ const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
       node.children = buildMarksTree(node);
 
       const UnknownComponent = components.unknownBlock ?? UnknownBlock;
-
-      cachedNodes.set(node, { Default: Block, Unknown: UnknownComponent });
+      cacheNode(node, Block, UnknownComponent);
 
       return run(renderOptions.block, {
         Component: provideComponent("block", node.style, UnknownComponent),
         props: asComponentProps(node, index, false),
-        children: node.children.map(portableTextRender(options, true)),
+        children: renderChildren(node.children, true),
       });
     }
 
@@ -262,20 +266,23 @@ const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
 
 (globalThis as any)[contextRef] = (
   node: TypedObject & { children?: TypedObject[] }
-): Context => {
-  return {
-    getDefaultComponent: provideDefaultComponent.bind(null, node),
-    getUnknownComponent: provideUnknownComponent.bind(null, node),
-    render: (options) => node.children?.map(portableTextRender(options)),
-  };
-};
+): Context => ({
+  getDefaultComponent: provideDefaultComponent.bind(null, node),
+  getUnknownComponent: provideUnknownComponent.bind(null, node),
+  render: (options) => node.children?.map(portableTextRender(options)),
+});
 
 // Returns the `default` component related to the passed in node
 const provideDefaultComponent = (node: TypedObject) => {
   const DefaultComponent = cachedNodes.get(node)?.Default;
-
   if (DefaultComponent) return DefaultComponent;
+
   // Cache missed use manual lookup
+  if (import.meta.env.DEV) {
+    console.warn(
+      `[astro-portabletext] Cache missed for default component on node type "${node._type}". Ensure you are passing in the original "node" prop.`
+    );
+  }
 
   if (isPortableTextToolkitList(node)) return List;
   if (isPortableTextListItemBlock(node)) return ListItem;
@@ -292,9 +299,14 @@ const provideDefaultComponent = (node: TypedObject) => {
 // Returns the `unknown` component related to the passed in node
 const provideUnknownComponent = (node: TypedObject) => {
   const UnknownComponent = cachedNodes.get(node)?.Unknown;
-
   if (UnknownComponent) return UnknownComponent;
+
   // Cache missed use manual lookup
+  if (import.meta.env.DEV) {
+    console.warn(
+      `[astro-portabletext] Cache missed for unknown component on node type "${node._type}". Ensure you are passing in the original "node" prop.`
+    );
+  }
 
   if (isPortableTextToolkitList(node)) {
     return components.unknownList ?? UnknownList;
@@ -322,7 +334,7 @@ const provideUnknownComponent = (node: TypedObject) => {
 };
 
 // Make sure we have an array of blocks
-const blocks = Array.isArray(value) ? value : [value];
+const blocks = Array.isArray(value) ? value : value ? [value] : [];
 const nodes = nestLists(blocks, listNestingMode);
 
 const render = (options: NonNullable<typeof fallbackRenderOptions>) => {
@@ -330,20 +342,30 @@ const render = (options: NonNullable<typeof fallbackRenderOptions>) => {
   return portableTextRender(options);
 };
 
-const hasTypeSlot = Astro.slots.has("type");
-const hasBlockSlot = Astro.slots.has("block");
-const hasListSlot = Astro.slots.has("list");
-const hasListItemSlot = Astro.slots.has("listItem");
-const hasMarkSlot = Astro.slots.has("mark");
-const hasTextSlot = Astro.slots.has("text");
-const hasHardBreakSlot = Astro.slots.has("hardBreak");
-
 // Create a slot renderer for a specific slot
 const createSlotRenderer = (slotName: string) =>
   Astro.slots.render.bind(Astro.slots, slotName);
 
+type SlotRenderer = ReturnType<typeof createSlotRenderer>;
+
+const slots = [
+  "type",
+  "block",
+  "list",
+  "listItem",
+  "mark",
+  "text",
+  "hardBreak",
+].reduce(
+  (obj, name) => {
+    obj[name] = Astro.slots.has(name) ? createSlotRenderer(name) : undefined;
+    return obj;
+  },
+  {} as Record<string, SlotRenderer | undefined>
+);
+
 type RenderNode = (
-  slotRenderer: ReturnType<typeof createSlotRenderer> | undefined
+  slotRenderer: SlotRenderer | undefined
 ) => (
   props: Parameters<NonNullable<RenderOptions[keyof RenderOptions]>>[0]
 ) => any;
@@ -360,19 +382,13 @@ type RenderNode = (
 
     return nodes.map(
       render({
-        type: renderNode(hasTypeSlot ? createSlotRenderer("type") : undefined),
-        block: renderNode(
-          hasBlockSlot ? createSlotRenderer("block") : undefined
-        ),
-        list: renderNode(hasListSlot ? createSlotRenderer("list") : undefined),
-        listItem: renderNode(
-          hasListItemSlot ? createSlotRenderer("listItem") : undefined
-        ),
-        mark: renderNode(hasMarkSlot ? createSlotRenderer("mark") : undefined),
-        text: renderNode(hasTextSlot ? createSlotRenderer("text") : undefined),
-        hardBreak: renderNode(
-          hasHardBreakSlot ? createSlotRenderer("hardBreak") : undefined
-        ),
+        type: renderNode(slots.type),
+        block: renderNode(slots.block),
+        list: renderNode(slots.list),
+        listItem: renderNode(slots.listItem),
+        mark: renderNode(slots.mark),
+        text: renderNode(slots.text),
+        hardBreak: renderNode(slots.hardBreak),
       })
     );
   })()

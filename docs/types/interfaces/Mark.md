@@ -34,36 +34,6 @@ type Props = $<Mark<Greet>>;
 
 ## Properties
 
-### markDef
-
-```ts
-markDef: MarkDef & PortableTextMarkDefinition;
-```
-
-Holds the value (definition) of the mark in the case of annotations.
-`undefined` if the mark is a decorator (strong, em or similar).
-
-#### Overrides
-
-`ToolkitNestedPortableTextSpan.markDef`
-
-***
-
-### markKey
-
-```ts
-markKey: string;
-```
-
-The key of the mark definition (in the case of annotations).
-`undefined` if the mark is a decorator (strong, em or similar).
-
-#### Overrides
-
-`ToolkitNestedPortableTextSpan.markKey`
-
-***
-
 ### \_type
 
 ```ts
@@ -74,7 +44,9 @@ Type name, prefixed with `@` to signal that this is a toolkit-specific node.
 
 #### Inherited from
 
-`ToolkitNestedPortableTextSpan._type`
+```ts
+ToolkitNestedPortableTextSpan._type
+```
 
 ***
 
@@ -88,7 +60,9 @@ Unique key for this span
 
 #### Inherited from
 
-`ToolkitNestedPortableTextSpan._key`
+```ts
+ToolkitNestedPortableTextSpan._key
+```
 
 ***
 
@@ -103,14 +77,19 @@ For decorators, it will hold the name of the decorator (strong, em or similar).
 
 #### Inherited from
 
-`ToolkitNestedPortableTextSpan.markType`
+```ts
+ToolkitNestedPortableTextSpan.markType
+```
 
 ***
 
 ### children
 
 ```ts
-children: (ArbitraryTypedObject | ToolkitTextNode | ToolkitNestedPortableTextSpan<PortableTextMarkDefinition>)[];
+children: (
+  | ArbitraryTypedObject
+  | ToolkitTextNode
+  | ToolkitNestedPortableTextSpan<PortableTextMarkDefinition>)[];
 ```
 
 Child nodes of this span. Can be toolkit-specific text nodes, nested spans
@@ -118,4 +97,40 @@ or any inline object type.
 
 #### Inherited from
 
-`ToolkitNestedPortableTextSpan.children`
+```ts
+ToolkitNestedPortableTextSpan.children
+```
+
+***
+
+### markDef
+
+```ts
+markDef: MarkDef & PortableTextMarkDefinition;
+```
+
+Holds the value (definition) of the mark in the case of annotations.
+`undefined` if the mark is a decorator (strong, em or similar).
+
+#### Overrides
+
+```ts
+ToolkitNestedPortableTextSpan.markDef
+```
+
+***
+
+### markKey
+
+```ts
+markKey: string;
+```
+
+The key of the mark definition (in the case of annotations).
+`undefined` if the mark is a decorator (strong, em or similar).
+
+#### Overrides
+
+```ts
+ToolkitNestedPortableTextSpan.markKey
+```

@@ -5,7 +5,9 @@
 # Type Alias: ComponentOrRecord\<T\>
 
 ```ts
-type ComponentOrRecord<T>: Component<T> | Record<string, Component<T>>;
+type ComponentOrRecord<T> = 
+  | Component<T>
+| Record<string, Component<T>>;
 ```
 
 **`Internal`**

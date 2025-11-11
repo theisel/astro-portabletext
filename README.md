@@ -38,7 +38,7 @@ Jump in and see it in action:
 
 **Versions:**
 
-- [Latest stable version (v0.11.0)](https://github.com/theisel/astro-portabletext/tree/astro-portabletext%400.11.0/astro-portabletext "astro-portabletext v0.10.1 documentation")
+- [Latest stable version (v0.12.0)](https://github.com/theisel/astro-portabletext/tree/astro-portabletext%400.12.0/astro-portabletext "astro-portabletext v0.12.0 documentation")
 - [Development branch](astro-portabletext/README.md "astro-portabletext main branch documentation")
 
 ## ![Sanity Logo](https://avatars.githubusercontent.com/u/17177659?s=24) Sanity Integration

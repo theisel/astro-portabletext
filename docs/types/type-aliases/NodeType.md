@@ -5,12 +5,7 @@
 # Type Alias: NodeType
 
 ```ts
-type NodeType: 
-  | "type"
-  | "block"
-  | "list"
-  | "listItem"
-  | "mark";
+type NodeType = "type" | "block" | "list" | "listItem" | "mark";
 ```
 
 **`Internal`**

@@ -27,21 +27,6 @@ To concisely achieve the same result in the example, use the convenience type [B
 
 ## Properties
 
-### style
-
-```ts
-style: string;
-```
-
-Visual style of the block
-Common values: 'normal', 'blockquote', 'h1'...'h6'
-
-#### Overrides
-
-`PortableTextBlock.style`
-
-***
-
 ### \_type
 
 ```ts
@@ -55,7 +40,9 @@ Usually 'block', but can be customized to other values
 
 #### Inherited from
 
-`PortableTextBlock._type`
+```ts
+PortableTextBlock._type
+```
 
 ***
 
@@ -71,7 +58,9 @@ other rendering frameworks that can use keys to optimize operations.
 
 #### Inherited from
 
-`PortableTextBlock._key`
+```ts
+PortableTextBlock._key
+```
 
 ***
 
@@ -86,7 +75,9 @@ configured to include inline objects of other types as well.
 
 #### Inherited from
 
-`PortableTextBlock.children`
+```ts
+PortableTextBlock.children
+```
 
 ***
 
@@ -102,7 +93,9 @@ with nested marks.
 
 #### Inherited from
 
-`PortableTextBlock.markDefs`
+```ts
+PortableTextBlock.markDefs
+```
 
 ***
 
@@ -117,7 +110,9 @@ Common values: 'bullet', 'number', but can be configured
 
 #### Inherited from
 
-`PortableTextBlock.listItem`
+```ts
+PortableTextBlock.listItem
+```
 
 ***
 
@@ -131,4 +126,23 @@ If this block is a list item, identifies which level of nesting it belongs withi
 
 #### Inherited from
 
-`PortableTextBlock.level`
+```ts
+PortableTextBlock.level
+```
+
+***
+
+### style
+
+```ts
+style: string;
+```
+
+Visual style of the block
+Common values: 'normal', 'blockquote', 'h1'...'h6'
+
+#### Overrides
+
+```ts
+PortableTextBlock.style
+```

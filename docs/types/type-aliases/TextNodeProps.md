@@ -5,7 +5,7 @@
 # Type Alias: TextNodeProps
 
 ```ts
-type TextNodeProps: Props<TextNode>;
+type TextNodeProps = Props<TextNode>;
 ```
 
 Convenience type for [TextNode](TextNode.md) component props

@@ -5,7 +5,7 @@
 # Type Alias: ListProps
 
 ```ts
-type ListProps: Props<List>;
+type ListProps = Props<List>;
 ```
 
 Convenience type for [List](List.md) component props

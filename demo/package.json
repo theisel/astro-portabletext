@@ -6,7 +6,7 @@
   "author": "Tom Theisel <tom.theisel@gmail.com>",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
+    "start": "pnpm up astro-portabletext@latest && pnpm dev",
     "build": "astro build",
     "preview": "astro preview"
   },

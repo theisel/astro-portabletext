@@ -1,5 +1,16 @@
 # astro-portabletext
 
+## [0.12.0](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.11.4...astro-portabletext@0.12.0) (2025-11-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** Upstream dependencies now require Node `>=20.19 <22 || >=22.12`.
+
+### Features
+
+* **deps:** bump dependencies requiring Node &gt;=20.19 ([#215](https://github.com/theisel/astro-portabletext/issues/215)) ([91ce43c](https://github.com/theisel/astro-portabletext/commit/91ce43c85f288270b2756ca226d9e4be32bd08e2))
+
 ## [0.11.4](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.11.3...astro-portabletext@0.11.4) (2025-11-11)
 
 

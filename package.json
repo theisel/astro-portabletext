@@ -9,7 +9,7 @@
     "install:all": "pnpm recursive install",
     "format": "prettier -w **/*.{astro,js,jsx,mjs,svelte,ts,tsx}",
     "lint": "npx eslint .",
-    "prepare": "husky install",
+    "prepare": "husky || true",
     "generate-docs": "typedoc",
     "test:ci": "pnpm --filter lab test:ci",
     "test": "pnpm --filter lab test"
@@ -46,7 +46,7 @@
     "typescript": "^5.9.3"
   },
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=24.0.0"
   },
-  "packageManager": "pnpm@10.15.0"
+  "packageManager": "pnpm@10.21.0"
 }

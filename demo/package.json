@@ -6,19 +6,19 @@
   "author": "Tom Theisel <tom.theisel@gmail.com>",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
+    "start": "pnpm up astro-portabletext@latest && pnpm dev",
     "build": "astro build",
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/solid-js": "^5.0.4",
-    "@astrojs/svelte": "^7.0.4",
-    "astro": "^5.3.0",
-    "astro-portabletext": "^0.11.1",
-    "solid-js": "^1.9.4",
-    "svelte": "^5.20.1"
+    "@astrojs/solid-js": "^5.1.3",
+    "@astrojs/svelte": "^7.2.2",
+    "astro": "^5.15.5",
+    "astro-portabletext": "^0.12.0",
+    "solid-js": "^1.9.10",
+    "svelte": "^5.43.5"
   },
   "engines": {
-    "node": "^18.17.1 || ^20.3.0 || >=22.0.0"
+    "node": ">=20.19 <22 || >=22.12"
   }
 }

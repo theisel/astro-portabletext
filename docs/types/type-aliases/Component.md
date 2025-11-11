@@ -5,7 +5,7 @@
 # Type Alias: Component()\<T\>
 
 ```ts
-type Component<T>: (props) => any;
+type Component<T> = (props) => any;
 ```
 
 **`Internal`**

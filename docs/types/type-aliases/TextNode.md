@@ -5,7 +5,7 @@
 # Type Alias: TextNode
 
 ```ts
-type TextNode: ToolkitTextNode;
+type TextNode = ToolkitTextNode;
 ```
 
 Alias to [ToolkitTextNode](https://portabletext.github.io/toolkit/interfaces/ToolkitTextNode.html)

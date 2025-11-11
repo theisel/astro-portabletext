@@ -5,7 +5,7 @@
 # Type Alias: RenderHandlerProps\<T, Children\>
 
 ```ts
-type RenderHandlerProps<T, Children>: object;
+type RenderHandlerProps<T, Children> = object;
 ```
 
 Properties for the `RenderHandler` function
@@ -17,10 +17,33 @@ Properties for the `RenderHandler` function
 | `T` *extends* [`TypedObject`](../interfaces/TypedObject.md) | [`TypedObject`](../interfaces/TypedObject.md) | Type of Portable Text payload |
 | `Children` | `unknown` | Type of children |
 
-## Type declaration
+## Properties
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| `Component` | [`Component`](Component.md)\<`T`\> | The component that is associated with the Portable Text node. |
-| `props` | [`Props`](../interfaces/Props.md)\<`T`\> | The component props |
-| `children`? | `Children` | The children related to the Portable Text node. If the node is a custom [type](../interfaces/PortableTextComponents.md#type) or a [TextNode](TextNode.md), then children will be `undefined`. |
+### Component
+
+```ts
+Component: Component<T>;
+```
+
+The component that is associated with the Portable Text node.
+
+***
+
+### props
+
+```ts
+props: Props<T>;
+```
+
+The component props
+
+***
+
+### children?
+
+```ts
+optional children: Children;
+```
+
+The children related to the Portable Text node.
+If the node is a custom [type](../interfaces/PortableTextComponents.md#type) or a [TextNode](TextNode.md), then children will be `undefined`.

@@ -5,7 +5,7 @@
 # Type Alias: BlockProps
 
 ```ts
-type BlockProps: Props<Block>;
+type BlockProps = Props<Block>;
 ```
 
 Convenience type for [Block](../interfaces/Block.md) component props

@@ -5,10 +5,10 @@
 # Type Alias: MissingComponentHandler()
 
 ```ts
-type MissingComponentHandler: (message, context) => void;
+type MissingComponentHandler = (message, context) => void;
 ```
 
-The shape of the [onMissingComponent](../interfaces/PortableTextProps.md#onMissingComponent) function
+The shape of the [onMissingComponent](../interfaces/PortableTextProps.md#onmissingcomponent) function
 
 ## Parameters
 

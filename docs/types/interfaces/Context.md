@@ -14,14 +14,14 @@ to customize rendering behavior for specific node types.
 ### getDefaultComponent()
 
 ```ts
-getDefaultComponent: () => Component<any>;
+getDefaultComponent: () => Component;
 ```
 
 Retrieves the default `astro-portabletext` component associated with a Portable Text node.
 
 #### Returns
 
-[`Component`](../type-aliases/Component.md)\<`any`\>
+[`Component`](../type-aliases/Component.md)
 
 The default component for the node, such as `Block`, `List`, etc.
 
@@ -42,14 +42,14 @@ const Component = getDefaultComponent();
 ### getUnknownComponent()
 
 ```ts
-getUnknownComponent: () => Component<any>;
+getUnknownComponent: () => Component;
 ```
 
 Retrieves the `unknown` component associated with a Portable Text node.
 
 #### Returns
 
-[`Component`](../type-aliases/Component.md)\<`any`\>
+[`Component`](../type-aliases/Component.md)
 
 The component used for unknown nodes, such as `unknownBlock` or `unknownList`.
 

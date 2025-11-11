@@ -5,7 +5,7 @@
 # Type Alias: MarkProps\<MarkDef\>
 
 ```ts
-type MarkProps<MarkDef>: Props<Mark<MarkDef>>;
+type MarkProps<MarkDef> = Props<Mark<MarkDef>>;
 ```
 
 Convenience type for [Mark](../interfaces/Mark.md) component props

@@ -5,7 +5,7 @@
 # Type Alias: ListItemProps
 
 ```ts
-type ListItemProps: Props<ListItem>;
+type ListItemProps = Props<ListItem>;
 ```
 
 Convenience type for [ListItem](ListItem.md) component props

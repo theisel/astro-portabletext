@@ -5,7 +5,7 @@
 # Type Alias: ListItem
 
 ```ts
-type ListItem: ToolkitPortableTextListItem;
+type ListItem = ToolkitPortableTextListItem;
 ```
 
 Alias to [ToolkitPortableTextListItem](https://portabletext.github.io/toolkit/interfaces/ToolkitPortableTextListItem.html)

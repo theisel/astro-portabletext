@@ -27,7 +27,7 @@ Portable Text payload
 ### components?
 
 ```ts
-optional components: Partial<PortableTextComponents>;
+optional components: SomePortableTextComponents;
 ```
 
 Components for rendering
@@ -37,7 +37,9 @@ Components for rendering
 ### onMissingComponent?
 
 ```ts
-optional onMissingComponent: boolean | MissingComponentHandler;
+optional onMissingComponent: 
+  | boolean
+  | MissingComponentHandler;
 ```
 
 Function to call when faced with unknown types.

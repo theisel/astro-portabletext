@@ -5,7 +5,7 @@
 # Type Alias: RenderHandler()\<T, Children\>
 
 ```ts
-type RenderHandler<T, Children>: (props) => any;
+type RenderHandler<T, Children> = (props) => any;
 ```
 
 The shape of the render component function

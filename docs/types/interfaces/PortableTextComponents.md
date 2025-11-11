@@ -11,7 +11,7 @@ Defines how Portable Text types should be rendered.
 ### type
 
 ```ts
-type: ComponentOrRecord<any>;
+type: ComponentOrRecord;
 ```
 
 Component or mapping of components for rendering `custom` types.
@@ -21,10 +21,10 @@ Component or mapping of components for rendering `custom` types.
 ### unknownType
 
 ```ts
-unknownType: Component<any>;
+unknownType: Component;
 ```
 
-Used when a [type](PortableTextComponents.md#type) component isn't found.
+Used when a [type](#type) component isn't found.
 
 ***
 
@@ -44,7 +44,7 @@ Component or mapping of components for rendering `block` styles.
 unknownBlock: Component<Block>;
 ```
 
-Used when a [block](PortableTextComponents.md#block) component isn't found.
+Used when a [block](#block) component isn't found.
 
 ***
 
@@ -64,7 +64,7 @@ Component or mapping of components for rendering `list` item type.
 unknownList: Component<ToolkitPortableTextList>;
 ```
 
-Used when a [list](PortableTextComponents.md#list) component isn't found.
+Used when a [list](#list) component isn't found.
 
 ***
 
@@ -84,7 +84,7 @@ Component or mapping of components for rendering `list` item type.
 unknownListItem: Component<ToolkitPortableTextListItem>;
 ```
 
-Used when a [listItem](PortableTextComponents.md#listItem) component isn't found.
+Used when a [listItem](#listitem) component isn't found.
 
 ***
 
@@ -104,7 +104,7 @@ Component or mapping of components for rendering `mark` definition type.
 unknownMark: Component<Mark<never>>;
 ```
 
-Used when a [mark](PortableTextComponents.md#mark) component isn't found.
+Used when a [mark](#mark) component isn't found.
 
 ***
 

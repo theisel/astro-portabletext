@@ -1,5 +1,12 @@
 # astro-portabletext
 
+## [0.11.4](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.11.3...astro-portabletext@0.11.4) (2025-11-11)
+
+
+### Bug Fixes
+
+* **astro-portabletext:** handle nullish values and refactor slot rendering ([#213](https://github.com/theisel/astro-portabletext/issues/213)) ([37a4a27](https://github.com/theisel/astro-portabletext/commit/37a4a276577bc2333c422d39dc3c02977db5122a))
+
 ## [0.11.3](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.11.2...astro-portabletext@0.11.3) (2025-09-09)
 
 

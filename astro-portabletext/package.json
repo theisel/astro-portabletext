@@ -48,8 +48,8 @@
     "check": "astro check --root components"
   },
   "dependencies": {
-    "@portabletext/toolkit": "^4.0.0",
-    "@portabletext/types": "^3.0.0"
+    "@portabletext/toolkit": "^5.0.1",
+    "@portabletext/types": "^4.0.1"
   },
   "peerDependencies": {
     "astro": ">=4.6.0"

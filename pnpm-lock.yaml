@@ -75,11 +75,11 @@ importers:
   astro-portabletext:
     dependencies:
       '@portabletext/toolkit':
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^5.0.1
+        version: 5.0.1
       '@portabletext/types':
-        specifier: ^3.0.0
-        version: 3.0.0
+        specifier: ^4.0.1
+        version: 4.0.1
       astro:
         specifier: '>=4.6.0'
         version: 5.2.5(@types/node@24.10.0)(jiti@2.6.1)(rollup@4.53.2)(typescript@5.9.3)(yaml@2.8.1)
@@ -1111,8 +1111,16 @@ packages:
     resolution: {integrity: sha512-Jj/QIy3vzZCNcxiUGM7KjGhUhyVjch+9pOzotWRARPNe07R6nbF/cRsKL70q5Xizf+6PVtFYwks4CSXKInC+wg==}
     engines: {node: '>=20.19 <22 || >=22.12'}
 
-  '@portabletext/types@3.0.0':
-    resolution: {integrity: sha512-7U8+bFcnguNtXr4rwMDj0EvJJDRzLaaof2mQqCjUcqxuuJpAppFaATZgrKmPI1uBgtFMi4unk1nIaOOmLHrX8Q==}
+  '@portabletext/toolkit@5.0.1':
+    resolution: {integrity: sha512-qcwnWd15J2Ziwi0YfWHRx+DRqp87cPb+EBcYuEbDW0ChZwwxCdfIjDazzFpQeXnqhJn8own1c8UB3iHB61DiWg==}
+    engines: {node: '>=20.19 <22 || >=22.12'}
+
+  '@portabletext/types@3.0.1':
+    resolution: {integrity: sha512-Axessc2mZ6tjbD2qIZdTZIEfBtzJBe/1pzKF372cUar6ccUCfgXU4vaKgIbqB33mB6rI75omx9rrm+SgR4rIAA==}
+    engines: {node: '>=20.19 <22 || >=22.12'}
+
+  '@portabletext/types@4.0.1':
+    resolution: {integrity: sha512-L8PZjVjmdKpW+82c1oNqGMqCOtQD2xORqJfr6Is7X5XXbz38eLYY79IM/1ok+Esf/iGOPtEYORdcf0ETmsWYew==}
     engines: {node: '>=20.19 <22 || >=22.12'}
 
   '@rollup/pluginutils@5.1.4':
@@ -5208,9 +5216,15 @@ snapshots:
 
   '@portabletext/toolkit@4.0.0':
     dependencies:
-      '@portabletext/types': 3.0.0
+      '@portabletext/types': 3.0.1
 
-  '@portabletext/types@3.0.0': {}
+  '@portabletext/toolkit@5.0.1':
+    dependencies:
+      '@portabletext/types': 4.0.1
+
+  '@portabletext/types@3.0.1': {}
+
+  '@portabletext/types@4.0.1': {}
 
   '@rollup/pluginutils@5.1.4(rollup@4.53.2)':
     dependencies:
@@ -5728,7 +5742,7 @@ snapshots:
   astro-portabletext@0.12.0(astro@5.15.5(@types/node@24.10.0)(jiti@2.6.1)(rollup@4.53.2)(typescript@5.9.3)(yaml@2.8.1)):
     dependencies:
       '@portabletext/toolkit': 4.0.0
-      '@portabletext/types': 3.0.0
+      '@portabletext/types': 3.0.1
       astro: 5.15.5(@types/node@24.10.0)(jiti@2.6.1)(rollup@4.53.2)(typescript@5.9.3)(yaml@2.8.1)
 
   astro@5.15.5(@types/node@24.10.0)(jiti@2.6.1)(rollup@4.53.2)(typescript@5.9.3)(yaml@2.8.1):

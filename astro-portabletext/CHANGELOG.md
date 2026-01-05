@@ -1,5 +1,17 @@
 # astro-portabletext
 
+## [0.13.0](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.12.0...astro-portabletext@0.13.0) (2026-01-05)
+
+
+### Features
+
+* **deps:** update dependencies ([#221](https://github.com/theisel/astro-portabletext/issues/221)) ([053b89f](https://github.com/theisel/astro-portabletext/commit/053b89f82a48c887a59ebd35e5cf4f220dad65d1))
+
+
+### Bug Fixes
+
+* **component:** use singleton cache for node components ([#220](https://github.com/theisel/astro-portabletext/issues/220)) ([ea83b59](https://github.com/theisel/astro-portabletext/commit/ea83b595c8dac34d1504e7e9df1b1a38cfd7babe)), closes [#219](https://github.com/theisel/astro-portabletext/issues/219)
+
 ## [0.12.0](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.11.4...astro-portabletext@0.12.0) (2025-11-11)
 
 

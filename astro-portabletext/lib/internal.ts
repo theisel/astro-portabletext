@@ -2,6 +2,7 @@ import type {
   Component,
   ComponentOrRecord,
   SomePortableTextComponents,
+  TypedObject,
 } from "./types";
 
 /**
@@ -69,4 +70,50 @@ export function mergeComponents<
   }
 
   return cmps as MergedComponents;
+}
+
+/**
+ * ========================
+ * Node Components Registry
+ * ========================
+ */
+
+type ResolvedComponents = {
+  Default: Component;
+  Unknown: Component;
+};
+
+const nodeComponentsMap = new WeakMap<TypedObject, ResolvedComponents>();
+
+/**
+ * Binds the resolved components to a specific node object.
+ * @internal
+ *
+ * @remarks
+ * This uses the node's _object reference_ as the key. This enables the `Context` API via
+ * `usePortableText` to look up which components were assigned to this specific node during rendering.
+ *
+ * @param node - The node object to be used as the key.
+ * @param Default - The resolved default component for this node.
+ * @param Unknown - The resolved fallback (unknown) component for this node.
+ */
+export function setNodeComponents(
+  node: TypedObject,
+  Default: Component,
+  Unknown: Component
+): void {
+  nodeComponentsMap.set(node, { Default, Unknown });
+}
+
+/**
+ * Retrieves the components bound to a specific node object.
+ * @internal
+ *
+ * @param node - The node object to look up (by reference).
+ * @returns The component pair, or `undefined` if this exact node object was not registered.
+ */
+export function getNodeComponents(
+  node: TypedObject
+): ResolvedComponents | undefined {
+  return nodeComponentsMap.get(node);
 }

@@ -22,7 +22,12 @@ import type {
   TypedObject,
 } from "../lib/types";
 
-import { isComponent, mergeComponents } from "../lib/internal";
+import {
+  isComponent,
+  mergeComponents,
+  setNodeComponents,
+  getNodeComponents,
+} from "../lib/internal";
 
 import { getWarningMessage, printWarning } from "../lib/warnings";
 import { key as contextRef } from "../lib/context";
@@ -132,15 +137,6 @@ const provideComponent = (
   return fallbackComponent;
 };
 
-const cachedNodes = new WeakMap<
-  TypedObject,
-  { Default?: Component; Unknown?: Component }
->();
-
-function cacheNode(node: TypedObject, Default: Component, Unknown: Component) {
-  cachedNodes.set(node, { Default, Unknown });
-}
-
 // The local render function will override these options
 let fallbackRenderOptions: Required<RenderOptions> | undefined;
 
@@ -173,7 +169,7 @@ const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
 
     if (isPortableTextToolkitList(node)) {
       const UnknownComponent = components.unknownList ?? UnknownList;
-      cacheNode(node, List, UnknownComponent);
+      setNodeComponents(node, List, UnknownComponent);
 
       return run(renderOptions.list, {
         Component: provideComponent("list", node.listItem, UnknownComponent),
@@ -191,7 +187,7 @@ const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
         : buildMarksTree(node);
 
       const UnknownComponent = components.unknownListItem ?? UnknownListItem;
-      cacheNode(node, ListItem, UnknownComponent);
+      setNodeComponents(node, ListItem, UnknownComponent);
 
       return run(renderOptions.listItem, {
         Component: provideComponent(
@@ -208,7 +204,7 @@ const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
 
     if (isPortableTextToolkitSpan(node)) {
       const UnknownComponent = components.unknownMark ?? UnknownMark;
-      cacheNode(node, Mark, UnknownComponent);
+      setNodeComponents(node, Mark, UnknownComponent);
 
       return run(renderOptions.mark, {
         Component: provideComponent("mark", node.markType, UnknownComponent),
@@ -222,7 +218,7 @@ const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
       node.children = buildMarksTree(node);
 
       const UnknownComponent = components.unknownBlock ?? UnknownBlock;
-      cacheNode(node, Block, UnknownComponent);
+      setNodeComponents(node, Block, UnknownComponent);
 
       return run(renderOptions.block, {
         Component: provideComponent("block", node.style, UnknownComponent),
@@ -274,7 +270,7 @@ const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
 
 // Returns the `default` component related to the passed in node
 const provideDefaultComponent = (node: TypedObject) => {
-  const DefaultComponent = cachedNodes.get(node)?.Default;
+  const DefaultComponent = getNodeComponents(node)?.Default;
   if (DefaultComponent) return DefaultComponent;
 
   // Cache missed use manual lookup
@@ -298,7 +294,7 @@ const provideDefaultComponent = (node: TypedObject) => {
 
 // Returns the `unknown` component related to the passed in node
 const provideUnknownComponent = (node: TypedObject) => {
-  const UnknownComponent = cachedNodes.get(node)?.Unknown;
+  const UnknownComponent = getNodeComponents(node)?.Unknown;
   if (UnknownComponent) return UnknownComponent;
 
   // Cache missed use manual lookup

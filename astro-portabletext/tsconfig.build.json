@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowImportingTsExtensions": false,
+    "declaration": false,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": false,
+    "outDir": "lib",
+    "removeComments": true,
+    "rootDir": "lib",
+    "target": "ES2022"
+  },
+  "include": ["lib/context.ts", "lib/internal.ts", "lib/types.ts", "lib/utils.ts"]
+}

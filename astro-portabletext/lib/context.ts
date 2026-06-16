@@ -1,5 +1,5 @@
 import type { TypedObject } from "@portabletext/types";
-import type { Context } from "./types";
+import type { Context } from "./types.js";
 
 export const key = Symbol("astro-portabletext");
 

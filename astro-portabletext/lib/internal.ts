@@ -3,7 +3,7 @@ import type {
   ComponentOrRecord,
   SomePortableTextComponents,
   TypedObject,
-} from "./types";
+} from "./types.js";
 
 /**
  * Helper for component to throw an error
@@ -62,8 +62,8 @@ export function mergeComponents<
       !current || isComponent(override) || isComponent(current)
         ? override
         : {
-            ...current,
-            ...override,
+            ...(current as Record<string, Component>),
+            ...(override as Record<string, Component>),
           };
 
     cmps[key] = value;

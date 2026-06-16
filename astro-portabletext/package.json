@@ -19,8 +19,8 @@
     "./types": "./lib/types.ts",
     "./utils": {
       "types": "./lib/utils.d.ts",
-      "import": "./lib/utils.ts",
-      "default": "./lib/utils.ts"
+      "import": "./lib/utils.js",
+      "default": "./lib/utils.js"
     }
   },
   "typesVersions": {
@@ -45,6 +45,8 @@
   },
   "homepage": "https://github.com/theisel/astro-portabletext#readme",
   "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepack": "npm run build",
     "check": "astro check --root components"
   },
   "dependencies": {

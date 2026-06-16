@@ -1,3 +1,3 @@
 export { toPlainText, spanToPlainText } from "@portabletext/toolkit";
-export { mergeComponents } from "./internal";
-export { usePortableText } from "./context";
+export { mergeComponents } from "./internal.js";
+export { usePortableText } from "./context.js";

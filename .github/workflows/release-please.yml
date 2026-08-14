@@ -1,4 +1,4 @@
-name: Fix lockfile
+name: Release Please PR
 
 on:
   workflow_dispatch:
@@ -37,4 +37,4 @@ jobs:
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: [ci] lockfile"
+          commit_message: "chore(release): sync pnpm lockfile"

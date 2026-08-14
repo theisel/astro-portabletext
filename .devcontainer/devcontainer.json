@@ -1,10 +1,10 @@
 {
   "name": "astro-portabletext development",
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:24",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:26",
   "features": {
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers-extra/features/pnpm:2": {
-      "version": "10.21.0"
+      "version": "11.21.0"
     }
   },
   // Configure tool-specific properties.

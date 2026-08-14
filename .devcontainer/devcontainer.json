@@ -7,14 +7,14 @@
       "version": "11.21.0"
     }
   },
-  // Configure tool-specific properties.
   "customizations": {
     "vscode": {
       "extensions": [
         "astro-build.astro-vscode",
-        "editorconfig.editorconfig",
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode"
+        "editorconfig.editorconfig",
+        "esbenp.prettier-vscode",
+        "svelte.svelte-vscode"
       ],
       "settings": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",

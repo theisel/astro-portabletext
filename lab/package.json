@@ -9,8 +9,8 @@
   "scripts": {
     "build:fixture": "astro build --silent",
     "check": "astro check",
-    "test:component": "pnpm build:fixture && vitest run src/test",
-    "test:lib": "vitest run src/lib",
+    "test:component": "pnpm build:fixture && vitest run tests/integration",
+    "test:lib": "vitest run tests/lib",
     "test:watch": "vitest",
     "test:ci": "pnpm --filter astro-portabletext check && pnpm check && pnpm test:lib && pnpm test:component",
     "test": "pnpm test:ci"

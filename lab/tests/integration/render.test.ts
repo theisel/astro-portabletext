@@ -1,5 +1,5 @@
 import { test, expect } from "vitest";
-import { fetchContent } from "@/utils";
+import { fetchContent } from "../utils";
 
 test("block", async () => {
   const $ = await fetchContent("render/block");

@@ -1,5 +1,5 @@
 import { test, expect } from "vitest";
-import { fetchContent } from "@/utils";
+import { fetchContent } from "../utils";
 
 test("issue-175", async () => {
   const $ = await fetchContent("issues/issue-175");

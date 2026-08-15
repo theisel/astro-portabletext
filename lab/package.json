@@ -10,9 +10,9 @@
     "build:fixture": "astro build --silent",
     "check": "astro check",
     "test:component": "pnpm build:fixture && vitest run tests/integration",
-    "test:lib": "vitest run tests/lib",
+    "test:unit": "vitest run tests/unit",
     "test:watch": "vitest",
-    "test:ci": "pnpm --filter astro-portabletext check && pnpm check && pnpm test:lib && pnpm test:component",
+    "test:ci": "pnpm --filter astro-portabletext check && pnpm check && pnpm test:unit && pnpm test:component",
     "test": "pnpm test:ci"
   },
   "dependencies": {

@@ -1,6 +1,10 @@
 {
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "paths": {
+      "astro-portabletext/*": ["../astro-portabletext/*"],
+      "@/*": ["./fixtures/src/*"]
+    }
   }
 }

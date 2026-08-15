@@ -8,7 +8,7 @@ export default defineConfig({
         import.meta.dirname,
         "../astro-portabletext/"
       ),
-      "@": resolve(import.meta.dirname, "./src/"),
+      "@": resolve(import.meta.dirname, "./fixtures/src/"),
     },
   },
 });

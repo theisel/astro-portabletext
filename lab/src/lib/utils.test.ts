@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { mergeComponents } from "astro-portabletext/utils";
+import { mergeComponents } from "astro-portabletext/lib/utils";
 
 // ----------------------------------------------------------------------------
 // Test `mergeComponents`

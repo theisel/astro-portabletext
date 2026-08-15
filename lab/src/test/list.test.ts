@@ -1,5 +1,5 @@
 import { test, expect } from "vitest";
-import { fetchContent } from "../utils.mjs";
+import { fetchContent } from "@/utils";
 
 test("menu", async () => {
   const $ = await fetchContent("list/menu");
@@ -33,7 +33,7 @@ test("unknown", async () => {
 test("nested", async () => {
   const $ = await fetchContent("list/nested");
 
-  expect($("body").html().trim()).toMatch(
+  expect($("body").html()?.trim()).toMatch(
     /^<ul>\s*<li>\s*1\s*<ul>\s*<li>\s*1\.1\s*<ul>\s*<li>\s*1\.1\.1\s*<\/li>\s*<\/ul>\s*<\/li>\s*<\/ul>\s*<\/li>\s*<li>\s*2\s*<\/li>\s*<\/ul>$/
   );
 });

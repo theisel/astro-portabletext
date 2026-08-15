@@ -1,5 +1,5 @@
 import { test, expect } from "vitest";
-import { fetchContent } from "../utils.mjs";
+import { fetchContent } from "@/utils";
 
 test("block", async () => {
   const $ = await fetchContent("type/block");
@@ -22,7 +22,7 @@ test("unknown.block", async () => {
   const $el = $("[data-portabletext-unknown]");
 
   expect($el.length).toBe(1);
-  expect($el.get(0).name).toBe("div");
+  expect($el.get(0)?.name).toBe("div");
   expect($el.attr("style")).toBe("display:none");
   expect($el.attr("data-portabletext-unknown")).toBe("type");
 });
@@ -32,7 +32,7 @@ test("unknown.inline", async () => {
   const $el = $("[data-portabletext-unknown]");
 
   expect($el.length).toBe(1);
-  expect($el.get(0).name).toBe("span");
+  expect($el.get(0)?.name).toBe("span");
   expect($el.attr("style")).toBe("display:none");
   expect($el.attr("data-portabletext-unknown")).toBe("type");
 });

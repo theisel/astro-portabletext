@@ -1,5 +1,5 @@
 import { test, expect } from "vitest";
-import { fetchContent } from "../utils.mjs";
+import { fetchContent } from "@/utils";
 
 test("with style `h1`", async () => {
   const $ = await fetchContent("block/h1");
@@ -97,7 +97,7 @@ test("with style", async () => {
   const $el = $("p").get(0);
 
   expect($el).toBeTruthy();
-  expect($el.attribs.class?.indexOf("astro-")).not.toBe(-1);
+  expect($el?.attribs.class?.indexOf("astro-")).not.toBe(-1);
 });
 
 test("unknown", async () => {

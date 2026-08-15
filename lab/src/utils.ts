@@ -1,13 +1,8 @@
 import fs from "node:fs";
 import { fileURLToPath } from "node:url";
-import { load } from "cheerio";
+import { load, type CheerioAPI } from "cheerio";
 
-/**
- * @param {string} path
- *
- * @returns {Promise<import("cheerio").CheerioAPI>}
- */
-export async function fetchContent(path) {
+export async function fetchContent(path: string): Promise<CheerioAPI> {
   const url = new URL(`../dist/${path}/index.html`, import.meta.url);
   const content = await fs.promises.readFile(fileURLToPath(url), "utf8");
 

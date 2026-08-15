@@ -5,7 +5,7 @@ import {
   unknownListWarning,
   unknownListItemWarning,
   unknownBlockWarning,
-} from "../../../astro-portabletext/lib/warnings";
+} from "astro-portabletext/lib/warnings";
 
 test("unknownTypeWarning", () => {
   expect(unknownTypeWarning("custom")).toBe(

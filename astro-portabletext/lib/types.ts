@@ -468,8 +468,7 @@ export type Component<T extends TypedObject = any> = (props: Props<T>) => any;
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ComponentOrRecord<T extends TypedObject = any> =
-  | Component<T>
-  | Record<string, Component<T>>;
+  Component<T> | Record<string, Component<T>>;
 
 /**
  * Defines the type of Portable Text node

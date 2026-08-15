@@ -42,8 +42,7 @@ export function mergeComponents<
   Overrides extends SomePortableTextComponents,
   MergedComponents = {
     [Key in keyof (Components & Overrides)]: Key extends keyof (
-      | Overrides
-      | Components
+      Overrides | Components
     )
       ? Overrides[Key] extends Component
         ? Overrides[Key]

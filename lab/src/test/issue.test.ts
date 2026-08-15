@@ -3,12 +3,17 @@ import { fetchContent } from "@/utils";
 
 test("issue-175", async () => {
   const $ = await fetchContent("issues/issue-175");
+  const $elements = $("body > *");
 
-  const $ul = $("ul");
-  const $li = $ul.find("li");
-  const $el = $li.find("div[data-block='standfirst']");
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("ul");
 
-  expect($ul.length).toBe(1);
-  expect($li.length).toBe(1);
-  expect($el.length).toBe(1);
+  const $children = $elements.children();
+  expect($children.length).toBe(1);
+  expect($children.get(0)?.name).toBe("li");
+
+  const $nestedChildren = $children.children();
+  expect($nestedChildren.length).toBe(1);
+  expect($nestedChildren.get(0)?.name).toBe("div");
+  expect($nestedChildren.attr("data-block")).toBe("standfirst");
 });

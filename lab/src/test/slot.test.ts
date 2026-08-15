@@ -3,66 +3,99 @@ import { fetchContent } from "@/utils";
 
 test("block", async () => {
   const $ = await fetchContent("slot/block");
-  const $el = $("p[data-slot='block']");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("p");
+  expect($elements.attr("data-slot")).toBe("block");
 });
 
 test("custom block", async () => {
   const $ = await fetchContent("slot/block-custom");
-  const $el = $("p[data-slot='custom-block']");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("p");
+  expect($elements.attr("data-slot")).toBe("custom-block");
 });
 
 test("list", async () => {
   const $ = await fetchContent("slot/list");
-  const $el = $("ul[data-slot='list']");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("ul");
+  expect($elements.attr("data-slot")).toBe("list");
 });
 
 test("custom list", async () => {
   const $ = await fetchContent("slot/list-custom");
-  const $el = $("ul[data-slot='custom-list']");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("ul");
+  expect($elements.attr("data-slot")).toBe("custom-list");
 });
 
 test("listitem", async () => {
   const $ = await fetchContent("slot/listitem");
-  const $el = $("li[data-slot='listitem']");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("ul");
+
+  const $children = $elements.children();
+  expect($children.length).toBe(1);
+  expect($children.get(0)?.name).toBe("li");
+  expect($children.attr("data-slot")).toBe("listitem");
 });
 
 test("custom listitem", async () => {
   const $ = await fetchContent("slot/listitem-custom");
-  const $el = $("li[data-slot='custom-listitem']");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
-  expect($el.text()).toBe("List Item 1");
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("ul");
+
+  const $children = $elements.children();
+  expect($children.length).toBe(1);
+  expect($children.get(0)?.name).toBe("li");
+  expect($children.attr("data-slot")).toBe("custom-listitem");
+  expect($children.text()).toBe("List Item 1");
 });
 
 test("mark", async () => {
   const $ = await fetchContent("slot/mark");
-  const $el = $("strong[data-slot='mark']");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("p");
+
+  const $children = $elements.children();
+  expect($children.length).toBe(1);
+  expect($children.get(0)?.name).toBe("strong");
+  expect($children.attr("data-slot")).toBe("mark");
 });
 
 test("custom mark", async () => {
   const $ = await fetchContent("slot/mark-custom");
-  const $el = $("strong[data-slot='custom-mark']");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
-  expect($el.text()).toBe("bold");
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("p");
+
+  const $children = $elements.children();
+  expect($children.length).toBe(1);
+  expect($children.get(0)?.name).toBe("strong");
+  expect($children.attr("data-slot")).toBe("custom-mark");
+  expect($children.text()).toBe("bold");
 });
 
 test("type", async () => {
   const $ = await fetchContent("slot/type");
-  const $el = $("[data-slot='type']");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
-  expect($el.text()).toBe("Hello World");
+  expect($elements.length).toBe(1);
+  expect($elements.attr("data-slot")).toBe("type");
+  expect($elements.text()).toBe("Hello World");
 });

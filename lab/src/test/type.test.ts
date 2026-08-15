@@ -3,36 +3,46 @@ import { fetchContent } from "@/utils";
 
 test("block", async () => {
   const $ = await fetchContent("type/block");
-  const $el = $("p");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
-  expect($el.text()).toBe("Hello World");
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("p");
+  expect($elements.text()).toBe("Hello World");
 });
 
 test("inline", async () => {
   const $ = await fetchContent("type/inline");
-  const $el = $("span");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
-  expect($el.text()).toBe("Hello World");
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("p");
+
+  const $children = $elements.children();
+  expect($children.length).toBe(1);
+  expect($children.get(0)?.name).toBe("span");
+  expect($children.text()).toBe("Hello World");
 });
 
 test("unknown.block", async () => {
   const $ = await fetchContent("type/unknown-block");
-  const $el = $("[data-portabletext-unknown]");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
-  expect($el.get(0)?.name).toBe("div");
-  expect($el.attr("style")).toBe("display:none");
-  expect($el.attr("data-portabletext-unknown")).toBe("type");
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("div");
+  expect($elements.attr("style")).toBe("display:none");
+  expect($elements.attr("data-portabletext-unknown")).toBe("type");
 });
 
 test("unknown.inline", async () => {
   const $ = await fetchContent("type/unknown-inline");
-  const $el = $("[data-portabletext-unknown]");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
-  expect($el.get(0)?.name).toBe("span");
-  expect($el.attr("style")).toBe("display:none");
-  expect($el.attr("data-portabletext-unknown")).toBe("type");
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("p");
+
+  const $children = $elements.children();
+  expect($children.length).toBe(1);
+  expect($children.get(0)?.name).toBe("span");
+  expect($children.attr("style")).toBe("display:none");
+  expect($children.attr("data-portabletext-unknown")).toBe("type");
 });

@@ -3,68 +3,107 @@ import { fetchContent } from "@/utils";
 
 test("code", async () => {
   const $ = await fetchContent("mark/code");
-  const $el = $("code");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
-  expect($el.text()).toBe("function test() {}");
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("p");
+
+  const $children = $elements.children();
+  expect($children.length).toBe(1);
+  expect($children.get(0)?.name).toBe("code");
+  expect($children.text()).toBe("function test() {}");
 });
 
 test("em", async () => {
   const $ = await fetchContent("mark/em");
-  const $el = $("em");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
-  expect($el.text()).toBe("emphasize");
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("p");
+
+  const $children = $elements.children();
+  expect($children.length).toBe(1);
+  expect($children.get(0)?.name).toBe("em");
+  expect($children.text()).toBe("emphasize");
 });
 
 test("link", async () => {
   const $ = await fetchContent("mark/link");
-  const $el = $("a");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
-  expect($el.attr("href")).toBe("https://test.com/");
-  expect($el.text()).toBe("test.com");
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("p");
+
+  const $children = $elements.children();
+  expect($children.length).toBe(1);
+  expect($children.get(0)?.name).toBe("a");
+  expect($children.attr("href")).toBe("https://test.com/");
+  expect($children.text()).toBe("test.com");
 });
 
 test("link_missing_href", async () => {
   const $ = await fetchContent("mark/link-missing-href");
-  const $el = $("a");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
-  expect($el.attr("href")).toBe(undefined);
-  expect($el.text()).toBe("test.com");
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("p");
+
+  const $children = $elements.children();
+  expect($children.length).toBe(1);
+  expect($children.get(0)?.name).toBe("a");
+  expect($children.attr("href")).toBe(undefined);
+  expect($children.text()).toBe("test.com");
 });
 
 test("strike-through", async () => {
   const $ = await fetchContent("mark/strike-through");
-  const $el = $("del");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
-  expect($el.text()).toBe("deleted");
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("p");
+
+  const $children = $elements.children();
+  expect($children.length).toBe(1);
+  expect($children.get(0)?.name).toBe("del");
+  expect($children.text()).toBe("deleted");
 });
 
 test("strong", async () => {
   const $ = await fetchContent("mark/strong");
-  const $el = $("strong");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
-  expect($el.text()).toBe("bold");
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("p");
+
+  const $children = $elements.children();
+  expect($children.length).toBe(1);
+  expect($children.get(0)?.name).toBe("strong");
+  expect($children.text()).toBe("bold");
 });
 
 test("underline", async () => {
   const $ = await fetchContent("mark/underline");
-  const $el = $("span");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
-  expect($el.attr("style")).toBe("text-decoration: underline;");
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("p");
+
+  const $children = $elements.children();
+  expect($children.length).toBe(1);
+  expect($children.get(0)?.name).toBe("span");
+  expect($children.attr("style")).toBe("text-decoration: underline;");
 });
 
 test("unknown", async () => {
   const $ = await fetchContent("mark/unknown");
-  const $el = $("[data-portabletext-unknown]");
+  const $elements = $("body > *");
 
-  expect($el.length).toBe(1);
-  expect($el.attr("data-portabletext-unknown")).toBe("mark");
-  expect($el.text()).toBe("highlighted");
-  expect($el[0].name).toBe("span");
+  expect($elements.length).toBe(1);
+  expect($elements.get(0)?.name).toBe("p");
+
+  const $children = $elements.children();
+  expect($children.length).toBe(1);
+  expect($children.get(0)?.name).toBe("span");
+  expect($children.attr("data-portabletext-unknown")).toBe("mark");
+  expect($children.text()).toBe("highlighted");
 });

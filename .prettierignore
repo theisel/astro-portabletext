@@ -1,9 +1,8 @@
 # Directories
-dist
 .astro/
-.changeset
-.husky
-.github
+.github/
+.husky/
+dist/
 
 # Files
 pnpm-lock.yaml

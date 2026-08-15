@@ -1,75 +1,70 @@
-import { suite } from "uvu";
-import * as assert from "uvu/assert";
+import { test, expect } from "vitest";
 import { fetchContent } from "../utils.mjs";
 
-const mark = suite("mark");
-
-mark("code", async () => {
+test("code", async () => {
   const $ = await fetchContent("mark/code");
   const $el = $("code");
 
-  assert.is($el.length, 1);
-  assert.is($el.text(), "function test() {}");
+  expect($el.length).toBe(1);
+  expect($el.text()).toBe("function test() {}");
 });
 
-mark("em", async () => {
+test("em", async () => {
   const $ = await fetchContent("mark/em");
   const $el = $("em");
 
-  assert.is($el.length, 1);
-  assert.is($el.text(), "emphasize");
+  expect($el.length).toBe(1);
+  expect($el.text()).toBe("emphasize");
 });
 
-mark("link", async () => {
+test("link", async () => {
   const $ = await fetchContent("mark/link");
   const $el = $("a");
 
-  assert.is($el.length, 1);
-  assert.is($el.attr("href"), "https://test.com/");
-  assert.is($el.text(), "test.com");
+  expect($el.length).toBe(1);
+  expect($el.attr("href")).toBe("https://test.com/");
+  expect($el.text()).toBe("test.com");
 });
 
-mark("link_missing_href", async () => {
+test("link_missing_href", async () => {
   const $ = await fetchContent("mark/link-missing-href");
   const $el = $("a");
 
-  assert.is($el.length, 1);
-  assert.is($el.attr("href"), undefined);
-  assert.is($el.text(), "test.com");
+  expect($el.length).toBe(1);
+  expect($el.attr("href")).toBe(undefined);
+  expect($el.text()).toBe("test.com");
 });
 
-mark("strike-through", async () => {
+test("strike-through", async () => {
   const $ = await fetchContent("mark/strike-through");
   const $el = $("del");
 
-  assert.is($el.length, 1);
-  assert.is($el.text(), "deleted");
+  expect($el.length).toBe(1);
+  expect($el.text()).toBe("deleted");
 });
 
-mark("strong", async () => {
+test("strong", async () => {
   const $ = await fetchContent("mark/strong");
   const $el = $("strong");
 
-  assert.is($el.length, 1);
-  assert.is($el.text(), "bold");
+  expect($el.length).toBe(1);
+  expect($el.text()).toBe("bold");
 });
 
-mark("underline", async () => {
+test("underline", async () => {
   const $ = await fetchContent("mark/underline");
   const $el = $("span");
 
-  assert.is($el.length, 1);
-  assert.is($el.attr("style"), "text-decoration: underline;");
+  expect($el.length).toBe(1);
+  expect($el.attr("style")).toBe("text-decoration: underline;");
 });
 
-mark("unknown", async () => {
+test("unknown", async () => {
   const $ = await fetchContent("mark/unknown");
   const $el = $("[data-portabletext-unknown]");
 
-  assert.is($el.length, 1);
-  assert.is($el.attr("data-portabletext-unknown"), "mark");
-  assert.is($el.text(), "highlighted");
-  assert.is($el[0].name, "span");
+  expect($el.length).toBe(1);
+  expect($el.attr("data-portabletext-unknown")).toBe("mark");
+  expect($el.text()).toBe("highlighted");
+  expect($el[0].name).toBe("span");
 });
-
-mark.run();

@@ -1,43 +1,38 @@
-import { suite } from "uvu";
-import * as assert from "uvu/assert";
+import { test, expect } from "vitest";
 import { fetchContent } from "../utils.mjs";
 
-const type = suite("type");
-
-type("block", async () => {
+test("block", async () => {
   const $ = await fetchContent("type/block");
   const $el = $("p");
 
-  assert.is($el.length, 1);
-  assert.is($el.text(), "Hello World");
+  expect($el.length).toBe(1);
+  expect($el.text()).toBe("Hello World");
 });
 
-type("inline", async () => {
+test("inline", async () => {
   const $ = await fetchContent("type/inline");
   const $el = $("span");
 
-  assert.is($el.length, 1);
-  assert.is($el.text(), "Hello World");
+  expect($el.length).toBe(1);
+  expect($el.text()).toBe("Hello World");
 });
 
-type("unknown.block", async () => {
+test("unknown.block", async () => {
   const $ = await fetchContent("type/unknown-block");
   const $el = $("[data-portabletext-unknown]");
 
-  assert.is($el.length, 1);
-  assert.is($el.get(0).name, "div");
-  assert.is($el.attr("style"), "display:none");
-  assert.is($el.attr("data-portabletext-unknown"), "type");
+  expect($el.length).toBe(1);
+  expect($el.get(0).name).toBe("div");
+  expect($el.attr("style")).toBe("display:none");
+  expect($el.attr("data-portabletext-unknown")).toBe("type");
 });
 
-type("unknown.inline", async () => {
+test("unknown.inline", async () => {
   const $ = await fetchContent("type/unknown-inline");
   const $el = $("[data-portabletext-unknown]");
 
-  assert.is($el.length, 1);
-  assert.is($el.get(0).name, "span");
-  assert.is($el.attr("style"), "display:none");
-  assert.is($el.attr("data-portabletext-unknown"), "type");
+  expect($el.length).toBe(1);
+  expect($el.get(0).name).toBe("span");
+  expect($el.attr("style")).toBe("display:none");
+  expect($el.attr("data-portabletext-unknown")).toBe("type");
 });
-
-type.run();

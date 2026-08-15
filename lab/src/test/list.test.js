@@ -1,61 +1,55 @@
-import { suite } from "uvu";
-import * as assert from "uvu/assert";
+import { test, expect } from "vitest";
 import { fetchContent } from "../utils.mjs";
 
-const list = suite("list");
-
-list("menu", async () => {
+test("menu", async () => {
   const $ = await fetchContent("list/menu");
   const $el = $("menu");
 
-  assert.is($el.length, 1);
+  expect($el.length).toBe(1);
 });
 
-list("ol", async () => {
+test("ol", async () => {
   const $ = await fetchContent("list/ordered");
   const $el = $("ol");
 
-  assert.is($el.length, 1);
+  expect($el.length).toBe(1);
 });
 
-list("ul", async () => {
+test("ul", async () => {
   const $ = await fetchContent("list/unordered");
   const $el = $("ul");
 
-  assert.is($el.length, 1);
+  expect($el.length).toBe(1);
 });
 
-list("unknown", async () => {
+test("unknown", async () => {
   const $ = await fetchContent("list/unknown");
   const $el = $("ul");
 
-  assert.is($el.length, 1);
-  assert.is($el.attr("data-portabletext-unknown"), "list");
+  expect($el.length).toBe(1);
+  expect($el.attr("data-portabletext-unknown")).toBe("list");
 });
 
-list("nested", async () => {
+test("nested", async () => {
   const $ = await fetchContent("list/nested");
 
-  assert.match(
-    $("body").html().trim(),
+  expect($("body").html().trim()).toMatch(
     /^<ul>\s*<li>\s*1\s*<ul>\s*<li>\s*1\.1\s*<ul>\s*<li>\s*1\.1\.1\s*<\/li>\s*<\/ul>\s*<\/li>\s*<\/ul>\s*<\/li>\s*<li>\s*2\s*<\/li>\s*<\/ul>$/
   );
 });
 
-list("styled", async () => {
+test("styled", async () => {
   const $ = await fetchContent("list/styled");
   const $ul = $("ul");
 
-  assert.is($ul.length, 1);
+  expect($ul.length).toBe(1);
 
   const $li = $ul.find("li");
 
-  assert.is($li.length, 1);
+  expect($li.length).toBe(1);
 
   const $banner = $li.find("div.banner");
 
-  assert.is($banner.length, 1);
-  assert.is($banner.text(), "List Item 1");
+  expect($banner.length).toBe(1);
+  expect($banner.text()).toBe("List Item 1");
 });
-
-list.run();

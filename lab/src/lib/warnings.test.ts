@@ -1,5 +1,4 @@
-import { test } from "uvu";
-import * as assert from "uvu/assert";
+import { test, expect } from "vitest";
 import {
   unknownTypeWarning,
   unknownMarkWarning,
@@ -9,38 +8,31 @@ import {
 } from "../../../astro-portabletext/lib/warnings";
 
 test("unknownTypeWarning", () => {
-  assert.is(
-    unknownTypeWarning("custom"),
+  expect(unknownTypeWarning("custom")).toBe(
     'PortableText [components.type] is missing "custom"'
   );
 });
 
 test("unknownMarkWarning", () => {
-  assert.is(
-    unknownMarkWarning("em"),
+  expect(unknownMarkWarning("em")).toBe(
     'PortableText [components.mark] is missing "em"'
   );
 });
 
 test("unknownListWarning", () => {
-  assert.is(
-    unknownListWarning("bullet"),
+  expect(unknownListWarning("bullet")).toBe(
     'PortableText [components.list] is missing "bullet"'
   );
 });
 
 test("unknownListItemWarning", () => {
-  assert.is(
-    unknownListItemWarning("bullet"),
+  expect(unknownListItemWarning("bullet")).toBe(
     'PortableText [components.listItem] is missing "bullet"'
   );
 });
 
 test("unknownBlockWarning", () => {
-  assert.is(
-    unknownBlockWarning("normal"),
+  expect(unknownBlockWarning("normal")).toBe(
     'PortableText [components.block] is missing "normal"'
   );
 });
-
-test.run();

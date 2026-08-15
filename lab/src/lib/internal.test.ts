@@ -1,9 +1,6 @@
-import { test } from "uvu";
-import * as assert from "uvu/assert";
+import { test, expect } from "vitest";
 import { throwError } from "../../../astro-portabletext/lib/internal";
 
 test("throwError", () => {
-  assert.throws(() => throwError("test"), "test");
+  expect(() => throwError("test")).toThrow("test");
 });
-
-test.run();

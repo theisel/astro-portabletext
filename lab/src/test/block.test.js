@@ -1,139 +1,134 @@
-import { suite } from "uvu";
-import * as assert from "uvu/assert";
+import { test, expect } from "vitest";
 import { fetchContent } from "../utils.mjs";
 
-const block = suite("block");
-
-block("with style `h1`", async () => {
+test("with style `h1`", async () => {
   const $ = await fetchContent("block/h1");
   const $el = $("h1");
 
-  assert.is($el.length, 1);
-  assert.is($el.text(), "Heading L1");
+  expect($el.length).toBe(1);
+  expect($el.text()).toBe("Heading L1");
 });
 
-block("with style `h2`", async () => {
+test("with style `h2`", async () => {
   const $ = await fetchContent("block/h2");
   const $el = $("h2");
 
-  assert.is($el.length, 1);
-  assert.is($el.text(), "Heading L2");
+  expect($el.length).toBe(1);
+  expect($el.text()).toBe("Heading L2");
 });
 
-block("with style `h3`", async () => {
+test("with style `h3`", async () => {
   const $ = await fetchContent("block/h3");
   const $el = $("h3");
 
-  assert.is($el.length, 1);
-  assert.is($el.text(), "Heading L3");
+  expect($el.length).toBe(1);
+  expect($el.text()).toBe("Heading L3");
 });
 
-block("with style `h4`", async () => {
+test("with style `h4`", async () => {
   const $ = await fetchContent("block/h4");
   const $el = $("h4");
 
-  assert.is($el.length, 1);
-  assert.is($el.text(), "Heading L4");
+  expect($el.length).toBe(1);
+  expect($el.text()).toBe("Heading L4");
 });
 
-block("with style `h5`", async () => {
+test("with style `h5`", async () => {
   const $ = await fetchContent("block/h5");
   const $el = $("h5");
 
-  assert.is($el.length, 1);
-  assert.is($el.text(), "Heading L5");
+  expect($el.length).toBe(1);
+  expect($el.text()).toBe("Heading L5");
 });
 
-block("with style `h6`", async () => {
+test("with style `h6`", async () => {
   const $ = await fetchContent("block/h6");
   const $el = $("h6");
 
-  assert.is($el.length, 1);
-  assert.is($el.text(), "Heading L6");
+  expect($el.length).toBe(1);
+  expect($el.text()).toBe("Heading L6");
 });
 
-block("custom-handler", async () => {
+test("custom-handler", async () => {
   const $ = await fetchContent("block/custom-handler");
   const $el = $("[data-portabletext-unknown]");
 
-  assert.is($el.length, 1);
-  assert.is($el.attr("data-portabletext-unknown"), "block");
+  expect($el.length).toBe(1);
+  expect($el.attr("data-portabletext-unknown")).toBe("block");
 });
 
-block("default-handler", async () => {
+test("default-handler", async () => {
   const $ = await fetchContent("block/default-handler");
   const $el = $("[data-portabletext-unknown]");
 
-  assert.is($el.length, 1);
-  assert.is($el.attr("data-portabletext-unknown"), "block");
+  expect($el.length).toBe(1);
+  expect($el.attr("data-portabletext-unknown")).toBe("block");
 });
 
-block("with style `blockquote`", async () => {
+test("with style `blockquote`", async () => {
   const $ = await fetchContent("block/blockquote");
   const $el = $("blockquote");
   const $el2 = $el.children("p");
 
-  assert.is($el.length, 1);
-  assert.is($el.children().length, 1);
-  assert.is($el2.length, 1);
-  assert.is($el2.text(), "Quote");
+  expect($el.length).toBe(1);
+  expect($el.children().length).toBe(1);
+  expect($el2.length).toBe(1);
+  expect($el2.text()).toBe("Quote");
 });
 
-block("with style `normal`", async () => {
+test("with style `normal`", async () => {
   const $ = await fetchContent("block/normal");
   const $el = $("p");
 
-  assert.is($el.length, 1);
-  assert.is($el.text(), "I'm a paragraph");
+  expect($el.length).toBe(1);
+  expect($el.text()).toBe("I'm a paragraph");
 });
 
-block("missing style", async () => {
+test("missing style", async () => {
   const $ = await fetchContent("block/missing-style");
   const $el = $("p");
 
-  assert.is($el.length, 1);
-  assert.is($el.text(), "I'm a paragraph");
+  expect($el.length).toBe(1);
+  expect($el.text()).toBe("I'm a paragraph");
 });
 
-block("with style", async () => {
+test("with style", async () => {
   const $ = await fetchContent("block/with-style");
   const $el = $("p").get(0);
 
-  assert.ok($el);
-  assert.not($el.attribs.class?.indexOf("astro-"), -1);
+  expect($el).toBeTruthy();
+  expect($el.attribs.class?.indexOf("astro-")).not.toBe(-1);
 });
 
-block("unknown", async () => {
+test("unknown", async () => {
   const $ = await fetchContent("block/unknown");
   const $el = $("[data-portabletext-unknown]");
 
-  assert.is($el.length, 1);
-  assert.is($el.attr("data-portabletext-unknown"), "block");
-  assert.is($el[0].name, "p");
+  expect($el.length).toBe(1);
+  expect($el.attr("data-portabletext-unknown")).toBe("block");
+  expect($el[0].name).toBe("p");
 });
 
-block("override", async () => {
+test("override", async () => {
   const $ = await fetchContent("block/override");
   const $el = $("[data-myh1-cmp]");
 
-  assert.is($el.length, 1);
+  expect($el.length).toBe(1);
 });
 
-block("merge", async () => {
+test("merge", async () => {
   const $ = await fetchContent("block/merge");
   const $el = $("[data-grid-cmp]");
 
-  assert.is($el.length, 1);
+  expect($el.length).toBe(1);
 });
 
-block("block index", async () => {
+test("block index", async () => {
   const $ = await fetchContent("block/block-index");
   const $el = $("[data-block-index]");
 
-  assert.is($el.length, 3);
-  assert.is($el.eq(0).attr("data-block-index"), "0");
-  assert.is($el.eq(1).attr("data-block-index"), "1");
-  assert.is($el.eq(2).attr("data-block-index"), "2");
+  expect($el.length).toBe(3);
+  expect($el.eq(0).attr("data-block-index")).toBe("0");
+  expect($el.eq(1).attr("data-block-index")).toBe("1");
+  expect($el.eq(2).attr("data-block-index")).toBe("2");
 });
-
-block.run();

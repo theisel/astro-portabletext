@@ -1,14 +1,9 @@
-import { suite } from "uvu";
-import * as assert from "uvu/assert";
+import { test, expect } from "vitest";
 import { fetchContent } from "../utils.mjs";
 
-const extras = suite("extras");
-
-extras("hardbreak", async () => {
+test("hardbreak", async () => {
   const $ = await fetchContent("hardbreak");
   const $el = $("br");
 
-  assert.is($el.length, 1);
+  expect($el.length).toBe(1);
 });
-
-extras.run();

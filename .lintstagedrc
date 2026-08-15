@@ -1,4 +1,4 @@
 {
-  "*.{js,jsx,mjs,ts,tsx}": ["pnpm lint"],
-  "*.json": "prettier --list-different --write"
+  "*.{js,jsx,mjs,ts,tsx}": ["eslint", "prettier --write"],
+  "*.{astro,svelte,json,md}": ["prettier --write"]
 }

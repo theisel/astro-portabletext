@@ -1,20 +1,20 @@
 {
   "name": "astro-portabletext development",
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:24",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:26",
   "features": {
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers-extra/features/pnpm:2": {
-      "version": "10.21.0"
+      "version": "11.21.0"
     }
   },
-  // Configure tool-specific properties.
   "customizations": {
     "vscode": {
       "extensions": [
         "astro-build.astro-vscode",
-        "editorconfig.editorconfig",
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode"
+        "editorconfig.editorconfig",
+        "esbenp.prettier-vscode",
+        "svelte.svelte-vscode"
       ],
       "settings": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -22,7 +22,7 @@
         "editor.formatOnSaveMode": "file",
         "prettier.prettierPath": "node_modules/prettier",
         "prettier.ignorePath": ".prettierignore",
-        "typescript.tsdk": "node_modules/typescript/lib"
+        "js/ts.tsdk.path": "node_modules/typescript/lib"
       }
     }
   },

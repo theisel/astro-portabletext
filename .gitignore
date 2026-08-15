@@ -1,4 +1,18 @@
-node_modules
-dist
+node_modules/
+
+# Astro
 .astro/
+dist/
+
+# Environment
+.env
+.env.*
+
+# Logging
 *.log
+
+# OS Metadata
+.DS_Store
+
+# PNPM
+.pnpm-store/

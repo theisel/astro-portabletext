@@ -16,7 +16,8 @@
   "pageTitleTemplates": {
     "index": "Type Definitions"
   },
+  "includeVersion": true,
   "textContentMappings": {
-    "header.title": "`{projectName}` • Type Definitions"
+    "header.title": "`{projectName}` {version} • Type Definitions"
   }
 }

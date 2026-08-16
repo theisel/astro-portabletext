@@ -1,6 +1,6 @@
-[**`astro-portabletext` • Type Definitions**](../README.md)
+[**`astro-portabletext` v0.13.0 • Type Definitions**](../README.md)
 
-***
+---
 
 # Type Alias: MarkProps\<MarkDef\>
 
@@ -12,9 +12,9 @@ Convenience type for [Mark](../interfaces/Mark.md) component props
 
 ## Type Parameters
 
-| Type Parameter | Default type |
-| ------ | ------ |
-| `MarkDef` *extends* `Record`\<`string`, `unknown`\> \| `undefined` | `undefined` |
+| Type Parameter                                                     | Default type |
+| ------------------------------------------------------------------ | ------------ |
+| `MarkDef` _extends_ `Record`\<`string`, `unknown`\> \| `undefined` | `undefined`  |
 
 ## Remarks
 

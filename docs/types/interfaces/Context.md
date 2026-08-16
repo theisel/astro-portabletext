@@ -1,6 +1,6 @@
-[**`astro-portabletext` • Type Definitions**](../README.md)
+[**`astro-portabletext` v0.13.0 • Type Definitions**](../README.md)
 
-***
+---
 
 # Interface: Context
 
@@ -11,7 +11,7 @@ to customize rendering behavior for specific node types.
 
 ## Properties
 
-### getDefaultComponent()
+### getDefaultComponent
 
 ```ts
 getDefaultComponent: () => Component;
@@ -37,9 +37,9 @@ const Component = getDefaultComponent();
 </Component>
 ```
 
-***
+---
 
-### getUnknownComponent()
+### getUnknownComponent
 
 ```ts
 getUnknownComponent: () => Component;
@@ -65,9 +65,9 @@ const Component = getUnknownComponent();
 </Component>
 ```
 
-***
+---
 
-### render()
+### render
 
 ```ts
 render: (options) => any;
@@ -80,8 +80,8 @@ such as overriding the default text or mark rendering.
 
 #### Parameters
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
+| Parameter | Type                                                | Description                                                                                      |
+| --------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | `options` | [`RenderOptions`](../type-aliases/RenderOptions.md) | [RenderOptions](../type-aliases/RenderOptions.md) - Configuration for customizing node rendering |
 
 #### Returns
@@ -95,6 +95,8 @@ The desired output for the Portable Text node
 Added in: `v0.11.0`
 
 #### Example
+
+**Basic usage**
 
 ```ts
 ---

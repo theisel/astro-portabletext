@@ -1,6 +1,6 @@
-[**`astro-portabletext` • Type Definitions**](../README.md)
+[**`astro-portabletext` v0.13.0 • Type Definitions**](../README.md)
 
-***
+---
 
 # Type Alias: TextNodeProps
 

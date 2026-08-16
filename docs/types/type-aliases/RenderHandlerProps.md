@@ -1,6 +1,6 @@
-[**`astro-portabletext` • Type Definitions**](../README.md)
+[**`astro-portabletext` v0.13.0 • Type Definitions**](../README.md)
 
-***
+---
 
 # Type Alias: RenderHandlerProps\<T, Children\>
 
@@ -12,10 +12,10 @@ Properties for the `RenderHandler` function
 
 ## Type Parameters
 
-| Type Parameter | Default type | Description |
-| ------ | ------ | ------ |
-| `T` *extends* [`TypedObject`](../interfaces/TypedObject.md) | [`TypedObject`](../interfaces/TypedObject.md) | Type of Portable Text payload |
-| `Children` | `unknown` | Type of children |
+| Type Parameter                                              | Default type                                  | Description                   |
+| ----------------------------------------------------------- | --------------------------------------------- | ----------------------------- |
+| `T` _extends_ [`TypedObject`](../interfaces/TypedObject.md) | [`TypedObject`](../interfaces/TypedObject.md) | Type of Portable Text payload |
+| `Children`                                                  | `unknown`                                     | Type of children              |
 
 ## Properties
 
@@ -27,7 +27,7 @@ Component: Component<T>;
 
 The component that is associated with the Portable Text node.
 
-***
+---
 
 ### props
 
@@ -37,12 +37,12 @@ props: Props<T>;
 
 The component props
 
-***
+---
 
 ### children?
 
 ```ts
-optional children: Children;
+optional children?: Children;
 ```
 
 The children related to the Portable Text node.

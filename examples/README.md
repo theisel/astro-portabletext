@@ -18,14 +18,14 @@ _**Note:** These are not full applications._
 - [Text.astro](Text.astro) — `v0.11.0+` Illustrates handling the output of `@text` nodes in Portable Text.
 - [Type.astro](Type.astro) — Demonstrates handling custom Portable Text types (`node._type`) to render different components for each type, including a fallback for unknown types.
 
-### PortableText component
+### PortableText Component
 
-- [portabletext-basic.astro](portabletext-basic.astro) — Provides an example of the most basic usage.
-- [portabletext-mapped-type.astro](portabletext-mapped-type.astro) — Shows how to associate custom components to different node types.
-- [portabletext-mapped-type-property.astro](portabletext-mapped-type-property.astro) — Shows how to associate custom components to different node type properties.
-- [portabletext-slots.astro](portabletext-slots.astro) — `v0.11.0+` Illustrates using the component with slots for enhanced customization.
+- [PortableTextBasic.astro](PortableTextBasic.astro) — Provides an example of the most basic usage.
+- [PortableTextMappedType.astro](PortableTextMappedType.astro) — Shows how to associate custom components to different node types.
+- [PortableTextMappedTypeProperty.astro](PortableTextMappedTypeProperty.astro) — Shows how to associate custom components to different node type properties.
+- [PortableTextSlots.astro](PortableTextSlots.astro) — `v0.11.0+` Illustrates using the component with slots for enhanced customization.
 
-### Advanced techniques
+### Advanced Techniques
 
 - [BlockWithRenderFunction.astro](BlockWithRenderFunction.astro) — `v0.11.0+` Shows how to use the `render` function from `usePortableText` to target and alter specific child nodes.
 

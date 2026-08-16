@@ -49,10 +49,7 @@ Extracts the text content from Portable Text blocks, preserving spacing.
 
 > **spanToPlainText**(`span`): `string`
 
-
-> Added in v0.11.0
-
-
-Returns plain text from a Portable Text span, useful for extracting text from nested nodes.
+> **Added in `v0.11.0`**
+> Returns plain text from a Portable Text span, useful for extracting text from nested nodes.
 
 💡 Refer to `@portabletext/toolkit` [spanToPlainText](https://portabletext.github.io/toolkit/functions/spanToPlainText.html) documentation for more details.

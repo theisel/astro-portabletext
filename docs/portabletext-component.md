@@ -2,7 +2,7 @@
 
 ---
 
-# PortableText component
+# PortableText Component
 
 ```js
 import { PortableText } from "astro-portabletext";
@@ -13,10 +13,10 @@ using `slots` to custom `components`.
 
 ## Examples
 
-- [Basic example](../examples/portabletext-basic.astro)
-- Custom component [mapped to node type](../examples/portabletext-mapped-type.astro)
-- Custom component [mapped to node type property](../examples/portabletext-mapped-type-property.astro)
-- `v0.11.0+` Using PortableText component with [slots](../examples/portabletext-slots.astro)
+- [Basic example](../examples/PortableTextBasic.astro)
+- Custom component [mapped to node type](../examples/PortableTextMappedType.astro)
+- Custom component [mapped to node type property](../examples/PortableTextMappedTypeProperty.astro)
+- `v0.11.0+` Using PortableText component with [slots](../examples/PortableTextSlots.astro)
 
 ## Basic usage
 
@@ -140,7 +140,7 @@ const components = {
 <PortableText value={portableText} components={components} />
 ```
 
-💡 Refer to mapping [component to node type](../examples/portabletext-mapped-type.astro) and [component to node type property](../examples/portabletext-mapped-type-property.astro) examples for more guidance.
+💡 Refer to mapping [component to node type](../examples/PortableTextMappedType.astro) and [component to node type property](../examples/PortableTextMappedTypeProperty.astro) examples for more guidance.
 
 ### Slots
 
@@ -187,9 +187,9 @@ The available slot names are:
 - `text`
 - `type`
 
-💡 Refer to [slot example](../examples/portabletext-slots.astro) for more details.
+💡 Refer to [slot example](../examples/PortableTextSlots.astro) for more details.
 
-## `PortableText` component properties
+## `PortableText` Component properties
 
 | Property                        | Type                    | Description                                                                                                                                                  |
 | ------------------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |

@@ -38,14 +38,19 @@ const components = {
 <PortableText value={portableText} {components}>
   <fragment slot="type"
     >{
-      ({ Component /* custom component - Type */, props }) => (
-        <Component {...props} class="type" />
-      )
+      ({
+        Component /* custom component based on `components.type` prop - Type */,
+        props,
+      }) => <Component {...props} class="type" />
     }</fragment
   >
   <fragment slot="block"
     >{
-      ({ Component /* custom component - Block */, props, children }) => (
+      ({
+        Component /* custom component based on `components.block` prop - Block */,
+        props,
+        children,
+      }) => (
         <Component {...props} class="block">
           {children}
         </Component>

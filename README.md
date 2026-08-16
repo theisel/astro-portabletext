@@ -6,7 +6,7 @@
 
 A flexible and customizable library for rendering [Portable Text](https://portabletext.org) content in [Astro](https://astro.build) projects.
 
-```bash
+```sh
 npm install astro-portabletext
 ```
 

@@ -15,7 +15,7 @@ import {
   spanToPlainText,
 } from "astro-portabletext";
 
-// Deprecated
+// Removed in `v1.0.0`
 import {
   usePortableText,
   mergeComponents,

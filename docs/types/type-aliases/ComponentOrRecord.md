@@ -1,13 +1,11 @@
-[**`astro-portabletext` • Type Definitions**](../README.md)
+[**`astro-portabletext` v0.13.0 • Type Definitions**](../README.md)
 
-***
+---
 
 # Type Alias: ComponentOrRecord\<T\>
 
 ```ts
-type ComponentOrRecord<T> = 
-  | Component<T>
-| Record<string, Component<T>>;
+type ComponentOrRecord<T> = Component<T> | Record<string, Component<T>>;
 ```
 
 **`Internal`**
@@ -16,6 +14,6 @@ Defines a component or a mapping of components
 
 ## Type Parameters
 
-| Type Parameter | Default type |
-| ------ | ------ |
-| `T` *extends* [`TypedObject`](../interfaces/TypedObject.md) | `any` |
+| Type Parameter                                              | Default type |
+| ----------------------------------------------------------- | ------------ |
+| `T` _extends_ [`TypedObject`](../interfaces/TypedObject.md) | `any`        |

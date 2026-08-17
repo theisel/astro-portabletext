@@ -4,15 +4,12 @@
 
 # `astro-portabletext` Documentation
 
-This directory serves as a dedicated resource for developers
-using `astro-portabletext`. It complements the information provided by the
-[package README](../astro-portabletext/README.md) with in-depth details about type definitions and
-usage examples.
+In-depth documentation for `astro-portabletext` components, utilities, and types.
 
 ## Table of Contents
 
 - **Getting started**: [Installation and basic usage](getting-started.md "Getting started guide for astro-portabletext").
-- **Component documentation**: [PortableText component](portabletext-component.md "PortableText component documentation for astro-portabletext") outlining usage and configuration options.
+- **Component documentation**: [PortableText Component](portabletext-component.md "PortableText component documentation for astro-portabletext") outlining usage and configuration options.
 - **Utility functions**: [Functions documentation](utility-functions.md "Utility functions for astro-portabletext") to help you work with Portable Text content.
 - **TypeScript types**: Get detailed type definitions [here](types/README.md "TypeScript types README for astro-portabletext").
 

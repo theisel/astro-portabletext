@@ -1,6 +1,6 @@
-[**`astro-portabletext` • Type Definitions**](../README.md)
+[**`astro-portabletext` v0.13.0 • Type Definitions**](../README.md)
 
-***
+---
 
 # Interface: Props\<N\>
 
@@ -8,9 +8,9 @@ Component Props
 
 ## Type Parameters
 
-| Type Parameter | Description |
-| ------ | ------ |
-| `N` *extends* [`TypedObject`](TypedObject.md) | Type of Portable Text payload that this component will receive on its `node` property |
+| Type Parameter                                | Description                                                                           |
+| --------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `N` _extends_ [`TypedObject`](TypedObject.md) | Type of Portable Text payload that this component will receive on its `node` property |
 
 ## Properties
 
@@ -22,7 +22,7 @@ node: N;
 
 Portable Text data for this node
 
-***
+---
 
 ### index
 
@@ -32,7 +32,7 @@ index: number;
 
 Index of the current node within its parent's child list
 
-***
+---
 
 ### isInline
 

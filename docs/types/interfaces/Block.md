@@ -1,6 +1,6 @@
-[**`astro-portabletext` • Type Definitions**](../README.md)
+[**`astro-portabletext` v0.13.0 • Type Definitions**](../README.md)
 
-***
+---
 
 # Interface: Block
 
@@ -30,7 +30,7 @@ To concisely achieve the same result in the example, use the convenience type [B
 ### \_type
 
 ```ts
-_type: string;
+_type: "block" | (string & object);
 ```
 
 Type name identifying this as a portable text block.
@@ -41,15 +41,15 @@ Usually 'block', but can be customized to other values
 #### Inherited from
 
 ```ts
-PortableTextBlock._type
+PortableTextBlock._type;
 ```
 
-***
+---
 
 ### \_key?
 
 ```ts
-optional _key: string;
+optional _key?: string;
 ```
 
 A key that identifies this block uniquely within the parent array. Used to more easily address
@@ -59,10 +59,10 @@ other rendering frameworks that can use keys to optimize operations.
 #### Inherited from
 
 ```ts
-PortableTextBlock._key
+PortableTextBlock._key;
 ```
 
-***
+---
 
 ### children
 
@@ -76,15 +76,15 @@ configured to include inline objects of other types as well.
 #### Inherited from
 
 ```ts
-PortableTextBlock.children
+PortableTextBlock.children;
 ```
 
-***
+---
 
 ### markDefs?
 
 ```ts
-optional markDefs: PortableTextMarkDefinition[];
+optional markDefs?: PortableTextMarkDefinition[];
 ```
 
 Array of mark definitions used in child text spans. By having them be on the block level,
@@ -94,15 +94,15 @@ with nested marks.
 #### Inherited from
 
 ```ts
-PortableTextBlock.markDefs
+PortableTextBlock.markDefs;
 ```
 
-***
+---
 
 ### listItem?
 
 ```ts
-optional listItem: string;
+optional listItem?: PortableTextListItemType;
 ```
 
 If this block is a list item, identifies which style of list item this is
@@ -111,15 +111,15 @@ Common values: 'bullet', 'number', but can be configured
 #### Inherited from
 
 ```ts
-PortableTextBlock.listItem
+PortableTextBlock.listItem;
 ```
 
-***
+---
 
 ### level?
 
 ```ts
-optional level: number;
+optional level?: number;
 ```
 
 If this block is a list item, identifies which level of nesting it belongs within
@@ -127,15 +127,15 @@ If this block is a list item, identifies which level of nesting it belongs withi
 #### Inherited from
 
 ```ts
-PortableTextBlock.level
+PortableTextBlock.level;
 ```
 
-***
+---
 
 ### style
 
 ```ts
-style: string;
+style: PortableTextBlockStyle;
 ```
 
 Visual style of the block
@@ -144,5 +144,5 @@ Common values: 'normal', 'blockquote', 'h1'...'h6'
 #### Overrides
 
 ```ts
-PortableTextBlock.style
+PortableTextBlock.style;
 ```

@@ -1,6 +1,6 @@
-[**`astro-portabletext` • Type Definitions**](../README.md)
+[**`astro-portabletext` v0.13.0 • Type Definitions**](../README.md)
 
-***
+---
 
 # Type Alias: RenderOptions
 
@@ -15,53 +15,53 @@ Options for the `render` function accessed via `usePortableText`
 ### type?
 
 ```ts
-optional type: RenderHandler<TypedObject, never>;
+optional type?: RenderHandler<TypedObject, never>;
 ```
 
-***
+---
 
 ### block?
 
 ```ts
-optional block: RenderHandler<Block>;
+optional block?: RenderHandler<Block>;
 ```
 
-***
+---
 
 ### list?
 
 ```ts
-optional list: RenderHandler<List>;
+optional list?: RenderHandler<List>;
 ```
 
-***
+---
 
 ### listItem?
 
 ```ts
-optional listItem: RenderHandler<ListItem>;
+optional listItem?: RenderHandler<ListItem>;
 ```
 
-***
+---
 
 ### mark?
 
 ```ts
-optional mark: RenderHandler<Mark>;
+optional mark?: RenderHandler<Mark>;
 ```
 
-***
+---
 
 ### text?
 
 ```ts
-optional text: RenderHandler<TextNode, never>;
+optional text?: RenderHandler<TextNode, never>;
 ```
 
-***
+---
 
 ### hardBreak?
 
 ```ts
-optional hardBreak: RenderHandler<TextNode, never>;
+optional hardBreak?: RenderHandler<TextNode, never>;
 ```

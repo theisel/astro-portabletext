@@ -1,6 +1,6 @@
-[**`astro-portabletext` • Type Definitions**](../README.md)
+[**`astro-portabletext` v0.13.0 • Type Definitions**](../README.md)
 
-***
+---
 
 # Interface: Mark\<MarkDef\>
 
@@ -28,9 +28,9 @@ type Props = $<Mark<Greet>>;
 
 ## Type Parameters
 
-| Type Parameter | Default type | Description |
-| ------ | ------ | ------ |
-| `MarkDef` *extends* `Record`\<`string`, `unknown`\> \| `undefined` | `undefined` | Defines the shape of `markDef` property |
+| Type Parameter                                                     | Default type | Description                             |
+| ------------------------------------------------------------------ | ------------ | --------------------------------------- |
+| `MarkDef` _extends_ `Record`\<`string`, `unknown`\> \| `undefined` | `undefined`  | Defines the shape of `markDef` property |
 
 ## Properties
 
@@ -45,15 +45,15 @@ Type name, prefixed with `@` to signal that this is a toolkit-specific node.
 #### Inherited from
 
 ```ts
-ToolkitNestedPortableTextSpan._type
+ToolkitNestedPortableTextSpan._type;
 ```
 
-***
+---
 
 ### \_key?
 
 ```ts
-optional _key: string;
+optional _key?: string;
 ```
 
 Unique key for this span
@@ -61,10 +61,10 @@ Unique key for this span
 #### Inherited from
 
 ```ts
-ToolkitNestedPortableTextSpan._key
+ToolkitNestedPortableTextSpan._key;
 ```
 
-***
+---
 
 ### markType
 
@@ -78,10 +78,10 @@ For decorators, it will hold the name of the decorator (strong, em or similar).
 #### Inherited from
 
 ```ts
-ToolkitNestedPortableTextSpan.markType
+ToolkitNestedPortableTextSpan.markType;
 ```
 
-***
+---
 
 ### children
 
@@ -98,10 +98,10 @@ or any inline object type.
 #### Inherited from
 
 ```ts
-ToolkitNestedPortableTextSpan.children
+ToolkitNestedPortableTextSpan.children;
 ```
 
-***
+---
 
 ### markDef
 
@@ -115,10 +115,10 @@ Holds the value (definition) of the mark in the case of annotations.
 #### Overrides
 
 ```ts
-ToolkitNestedPortableTextSpan.markDef
+ToolkitNestedPortableTextSpan.markDef;
 ```
 
-***
+---
 
 ### markKey
 
@@ -132,5 +132,5 @@ The key of the mark definition (in the case of annotations).
 #### Overrides
 
 ```ts
-ToolkitNestedPortableTextSpan.markKey
+ToolkitNestedPortableTextSpan.markKey;
 ```

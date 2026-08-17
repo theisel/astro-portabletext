@@ -1,6 +1,6 @@
-[**`astro-portabletext` • Type Definitions**](../README.md)
+[**`astro-portabletext` v0.13.0 • Type Definitions**](../README.md)
 
-***
+---
 
 # Interface: TypedObject
 
@@ -18,12 +18,12 @@ _type: string;
 Identifies the type of object/span this is, and is used to pick the correct React components
 to use when rendering a span or inline object with this type.
 
-***
+---
 
 ### \_key?
 
 ```ts
-optional _key: string;
+optional _key?: string;
 ```
 
 Uniquely identifies this object within its parent block.

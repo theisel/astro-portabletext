@@ -1,8 +1,8 @@
-[**`astro-portabletext` • Type Definitions**](../README.md)
+[**`astro-portabletext` v0.13.0 • Type Definitions**](../README.md)
 
-***
+---
 
-# Type Alias: Component()\<T\>
+# Type Alias: Component\<T\>
 
 ```ts
 type Component<T> = (props) => any;
@@ -14,15 +14,15 @@ Generic Portable Text component
 
 ## Type Parameters
 
-| Type Parameter | Default type |
-| ------ | ------ |
-| `T` *extends* [`TypedObject`](../interfaces/TypedObject.md) | `any` |
+| Type Parameter                                              | Default type |
+| ----------------------------------------------------------- | ------------ |
+| `T` _extends_ [`TypedObject`](../interfaces/TypedObject.md) | `any`        |
 
 ## Parameters
 
-| Parameter | Type |
-| ------ | ------ |
-| `props` | [`Props`](../interfaces/Props.md)\<`T`\> |
+| Parameter | Type                                     |
+| --------- | ---------------------------------------- |
+| `props`   | [`Props`](../interfaces/Props.md)\<`T`\> |
 
 ## Returns
 

@@ -6,28 +6,20 @@
 
 ## Installation
 
-Pick your favorite package manager and run one of these:
-
-```bash
+```sh
 npm install astro-portabletext
-# or
-pnpm add astro-portabletext
-# or
-yarn add astro-portabletext
-# or
-bun add astro-portabletext
 ```
 
 ## Usage
 
-### `PortableText` component
+### PortableText Component
 
 The `PortableText` component provides a simple and flexible way to render rich text content. It includes:
 
 - **Default rendering** for common Portable Text elements (paragraphs, headings, lists, etc.).
-- **Customizable rendering** with your own components or `slots`.
+- **Custom rendering** using your own components or `slots`.
 
-#### Basic usage
+#### Basic Usage
 
 Here's a minimal example:
 
@@ -65,6 +57,4 @@ const portableText = [
 <PortableText value={portableText} />
 ```
 
-> 📚 **Learn more:**
->
-> For details on **custom components**, **slots**, and advanced usage, check out the [PortableText component documentation](portabletext-component.md).
+💡 **Learn more:** For details on custom components, slots, and advanced usage, check out the [PortableText Component documentation](portabletext-component.md).

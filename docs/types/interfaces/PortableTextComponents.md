@@ -1,6 +1,6 @@
-[**`astro-portabletext` • Type Definitions**](../README.md)
+[**`astro-portabletext` v0.13.0 • Type Definitions**](../README.md)
 
-***
+---
 
 # Interface: PortableTextComponents
 
@@ -16,7 +16,7 @@ type: ComponentOrRecord;
 
 Component or mapping of components for rendering `custom` types.
 
-***
+---
 
 ### unknownType
 
@@ -26,7 +26,7 @@ unknownType: Component;
 
 Used when a [type](#type) component isn't found.
 
-***
+---
 
 ### block
 
@@ -36,7 +36,7 @@ block: ComponentOrRecord<Block>;
 
 Component or mapping of components for rendering `block` styles.
 
-***
+---
 
 ### unknownBlock
 
@@ -46,7 +46,7 @@ unknownBlock: Component<Block>;
 
 Used when a [block](#block) component isn't found.
 
-***
+---
 
 ### list
 
@@ -56,7 +56,7 @@ list: ComponentOrRecord<ToolkitPortableTextList>;
 
 Component or mapping of components for rendering `list` item type.
 
-***
+---
 
 ### unknownList
 
@@ -66,7 +66,7 @@ unknownList: Component<ToolkitPortableTextList>;
 
 Used when a [list](#list) component isn't found.
 
-***
+---
 
 ### listItem
 
@@ -76,7 +76,7 @@ listItem: ComponentOrRecord<ToolkitPortableTextListItem>;
 
 Component or mapping of components for rendering `list` item type.
 
-***
+---
 
 ### unknownListItem
 
@@ -86,7 +86,7 @@ unknownListItem: Component<ToolkitPortableTextListItem>;
 
 Used when a [listItem](#listitem) component isn't found.
 
-***
+---
 
 ### mark
 
@@ -96,7 +96,7 @@ mark: ComponentOrRecord<Mark<never>>;
 
 Component or mapping of components for rendering `mark` definition type.
 
-***
+---
 
 ### unknownMark
 
@@ -106,7 +106,7 @@ unknownMark: Component<Mark<never>>;
 
 Used when a [mark](#mark) component isn't found.
 
-***
+---
 
 ### text
 
@@ -120,7 +120,7 @@ Component for rendering `spans` of text.
 
 Added in: `v0.11.0`
 
-***
+---
 
 ### hardBreak
 

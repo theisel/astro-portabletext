@@ -50,13 +50,13 @@
     "check": "pnpm check:astro && pnpm check:ts"
   },
   "dependencies": {
-    "@portabletext/toolkit": "^5.0.1",
-    "@portabletext/types": "^4.0.1"
+    "@portabletext/toolkit": "^6.0.0",
+    "@portabletext/types": "^4.0.2"
   },
   "peerDependencies": {
     "astro": ">=4.6.0"
   },
   "engines": {
-    "node": ">=20.19 <22 || >=22.12"
+    "node": ">=22.12.0"
   }
 }

@@ -137,7 +137,7 @@ const provideComponent = (
   return fallbackComponent;
 };
 
-// The local render function will override these options
+// Set by `render()` before rendering begins.
 let fallbackRenderOptions: Required<RenderOptions> | undefined;
 
 const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
@@ -268,7 +268,7 @@ const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
   render: (options) => node.children?.map(portableTextRender(options)),
 });
 
-// Returns the `default` component related to the passed in node
+// Returns the default component for the given node.
 const provideDefaultComponent = (node: TypedObject) => {
   const DefaultComponent = getNodeComponents(node)?.Default;
   if (DefaultComponent) return DefaultComponent;
@@ -292,7 +292,7 @@ const provideDefaultComponent = (node: TypedObject) => {
   return UnknownType;
 };
 
-// Returns the `unknown` component related to the passed in node
+// Returns the unknown component for the given node.
 const provideUnknownComponent = (node: TypedObject) => {
   const UnknownComponent = getNodeComponents(node)?.Unknown;
   if (UnknownComponent) return UnknownComponent;

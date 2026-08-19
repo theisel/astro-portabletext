@@ -15,7 +15,7 @@
 import type { BlockProps } from "astro-portabletext/types";
 import { usePortableText } from "astro-portabletext";
 
-type Props = BlockProps;
+export type Props = BlockProps;
 
 const { node, isInline, index, ...attrs } = Astro.props;
 const { getDefaultComponent, render } = usePortableText(node);

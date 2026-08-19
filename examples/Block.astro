@@ -13,7 +13,7 @@ import { usePortableText } from "astro-portabletext";
 import Billboard from "./Billboard.astro";
 import Quote from "./Quote.astro";
 
-type Props = BlockProps;
+export type Props = BlockProps;
 
 const props = Astro.props;
 const { getDefaultComponent } = usePortableText(props.node);

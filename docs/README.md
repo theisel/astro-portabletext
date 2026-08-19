@@ -1,23 +1,26 @@
-`astro-portabletext` • Documentation
+[`astro-portabletext`](../README.md)
 
 ---
 
-# `astro-portabletext` Documentation
+# Documentation
 
-In-depth documentation for `astro-portabletext` components, utilities, and types.
+In-depth documentation for components, utilities, and types.
 
-## Table of Contents
+## Table of contents
 
-- **Getting started**: [Installation and basic usage](getting-started.md "Getting started guide for astro-portabletext").
-- **Component documentation**: [PortableText Component](portabletext-component.md "PortableText component documentation for astro-portabletext") outlining usage and configuration options.
-- **Utility functions**: [Functions documentation](utility-functions.md "Utility functions for astro-portabletext") to help you work with Portable Text content.
-- **TypeScript types**: Get detailed type definitions [here](types/README.md "TypeScript types README for astro-portabletext").
+- [Getting started](getting-started.md) — Installation and basic usage.
+- [PortableText component](portabletext-component.md) — Usage and configuration options.
+- [Utility functions](utility-functions.md) — Helper functions to work with Portable Text content.
+- [TypeScript types](types/README.md) — Detailed type definitions.
 
 ## Resources
 
-- **Examples**: Explore practical usage examples in the
-  [examples directory](../examples/README.md "Examples README for astro-portabletext").
+- [Examples](../examples/README.md) — Explore practical usage examples.
+- [Demo](../demo/README.md) — Explore the interactive live demonstration.
 
 ## Contributing
 
-Has something been missed or needs improvement? Feel free to open a [pull request](https://github.com/theisel/astro-portabletext/pulls) or an [issue](https://github.com/theisel/astro-portabletext/issues) in the main repository. Contributions are always welcome!
+We welcome contributions to improve `astro-portabletext`!
+
+If you find a bug or have a feature request, please open an [issue](https://github.com/theisel/astro-portabletext/issues).
+If you'd like to contribute code, feel free to submit a [pull request](https://github.com/theisel/astro-portabletext/pulls).

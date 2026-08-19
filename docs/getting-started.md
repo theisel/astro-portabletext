@@ -2,7 +2,7 @@
 
 ---
 
-# Getting started
+# Getting Started
 
 ## Installation
 
@@ -12,49 +12,81 @@ npm install astro-portabletext
 
 ## Usage
 
-### PortableText Component
+The `PortableText` component renders rich text with sensible defaults out of the box. You can customize the output using `components` and/or `slots`.
 
-The `PortableText` component provides a simple and flexible way to render rich text content. It includes:
+### Basic usage
 
-- **Default rendering** for common Portable Text elements (paragraphs, headings, lists, etc.).
-- **Custom rendering** using your own components or `slots`.
-
-#### Basic Usage
-
-Here's a minimal example:
-
-```js
-/* .astro */
+```tsx
 ---
 import { PortableText } from "astro-portabletext";
 
-const portableText = [
-  {
-    _type: "block",
-    children: [
-      {
-        _type: "span",
-        marks: [],
-        text: "This is a ",
-      },
-      {
-        _type: "span",
-        marks: ["strong"],
-        text: "bold",
-      },
-      {
-        _type: "span",
-        marks: [],
-        text: " text example!",
-      },
-    ],
-    markDefs: [],
-    style: "normal",
-  },
+const value = [
+  // Portable Text payload
 ];
 ---
 
-<PortableText value={portableText} />
+<PortableText value={value} />
 ```
 
-💡 **Learn more:** For details on custom components, slots, and advanced usage, check out the [PortableText Component documentation](portabletext-component.md).
+### Custom components
+
+Override how specific node types are rendered by passing a `components` prop.
+
+```tsx
+---
+import { PortableText } from "astro-portabletext";
+
+const value = [
+  // Portable Text payload
+];
+
+const components = {
+  // Custom components
+};
+---
+
+<PortableText value={value} {components} />
+```
+
+[Read the custom components documentation](portabletext-component.md#custom-components)
+
+### Slots
+
+Slots provide a flexible way to enhance rendering by passing additional props to the component.
+
+```tsx
+---
+import { PortableText } from "astro-portabletext";
+
+const value = [
+  // Portable Text payload
+];
+
+const components = {
+  // Optional: custom components
+};
+---
+
+<PortableText value={value} {components}>
+  <fragment slot="mark">
+    {({ Component, props, children }) => (
+      <Component {...props} class="mark">{children}</Component>
+    )}
+  </fragment>
+</PortableText>
+
+<style>
+  .mark:where(strong) {
+    /* styles */
+  }
+</style>
+```
+
+[Read the slots documentation](portabletext-component.md#slots)
+
+## Next steps
+
+- [PortableText component](portabletext-component.md) — Full usage and configuration options.
+- [Utility functions](utility-functions.md) — Helper functions for working with Portable Text content.
+- [TypeScript types](types/README.md) — Type definitions.
+- [Examples](../examples/README.md) — Practical usage examples.

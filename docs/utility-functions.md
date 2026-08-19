@@ -2,24 +2,24 @@
 
 ---
 
-# Utility functions
+# Utility Functions
 
-This library provides utility functions to help you work with Portable Text content:
+Utility functions to help you work with Portable Text content:
 
 ```js
 // v0.11.0+
 import {
-  usePortableText,
   mergeComponents,
-  toPlainText,
   spanToPlainText,
+  toPlainText,
+  usePortableText,
 } from "astro-portabletext";
 
 // Removed in `v1.0.0`
 import {
-  usePortableText,
   mergeComponents,
   toPlainText,
+  usePortableText,
 } from "astro-portabletext/utils";
 ```
 
@@ -27,9 +27,9 @@ import {
 
 > **usePortableText**(`node`: [TypedObject](types/interfaces/TypedObject.md)): [Context](types/interfaces/Context.md)
 
-This function gives you access to helper functions like `render` (added in `v0.11.0`), which allows you to fine-tune the output of child nodes in your custom components. It should only be used within an Astro component that has been passed into the PortableText `components` prop. It follows a naming convention similar to React hooks, though it is not a hook as such.
+This function gives you access to helper functions like `render` (added in `v0.11.0`), which allows you to fine-tune the output of child nodes in your custom components. It should only be used within an Astro component that has been passed into the PortableText `components` prop.
 
-💡 Refer to [BlockWithRenderFunction.astro](../examples/BlockWithRenderFunction.astro) example for guidance.
+**See also:** The [BlockWithRenderFunction.astro](../examples/BlockWithRenderFunction.astro) example.
 
 ## `mergeComponents`
 
@@ -43,7 +43,7 @@ Combines two sets of `components` options, where `overrideComponents` takes prec
 
 Extracts the text content from Portable Text blocks, preserving spacing.
 
-💡 Refer to `@portabletext/toolkit` [toPlainText](https://portabletext.github.io/toolkit/functions/toPlainText.html) documentation for more details.
+**See also:** The `@portabletext/toolkit` [toPlainText](https://portabletext.github.io/toolkit/functions/toPlainText.html) documentation.
 
 ## `spanToPlainText`
 
@@ -52,4 +52,4 @@ Extracts the text content from Portable Text blocks, preserving spacing.
 > **Added in `v0.11.0`**
 > Returns plain text from a Portable Text span, useful for extracting text from nested nodes.
 
-💡 Refer to `@portabletext/toolkit` [spanToPlainText](https://portabletext.github.io/toolkit/functions/spanToPlainText.html) documentation for more details.
+**See also:** The `@portabletext/toolkit` [spanToPlainText](https://portabletext.github.io/toolkit/functions/spanToPlainText.html) documentation.

@@ -136,8 +136,17 @@ export interface Props<N extends TypedObject> {
 }
 
 /**
+ * Component props type for a standard Portable Text node.
+ *
+ * @remarks
+ * Added in: `v1.0.0`
+ */
+export type TypedObjectProps = Props<TypedObject>;
+
+/**
  * Alias to {@link https://portabletext.github.io/types/interfaces/PortableTextBlock.html PortableTextBlock}
  * with `style` set to `normal` when undefined
+ *
  *
  * @example
  * ```ts

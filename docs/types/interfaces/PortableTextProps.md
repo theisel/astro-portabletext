@@ -4,13 +4,13 @@
 
 # Interface: PortableTextProps\<Value\>
 
-Properties for the `PortableText` component
+Properties for the `PortableText` component.
 
 ## Type Parameters
 
-| Type Parameter                                    | Default type                                  | Description                   |
-| ------------------------------------------------- | --------------------------------------------- | ----------------------------- |
-| `Value` _extends_ [`TypedObject`](TypedObject.md) | `PortableTextBlock` \| `ArbitraryTypedObject` | Type of Portable Text payload |
+| Type Parameter                                    | Default type                                  | Description                  |
+| ------------------------------------------------- | --------------------------------------------- | ---------------------------- |
+| `Value` _extends_ [`TypedObject`](TypedObject.md) | `PortableTextBlock` \| `ArbitraryTypedObject` | Type of Portable Text value. |
 
 ## Properties
 
@@ -20,7 +20,7 @@ Properties for the `PortableText` component
 value: Value | Value[];
 ```
 
-Portable Text payload
+Portable Text value.
 
 ---
 
@@ -30,7 +30,7 @@ Portable Text payload
 optional components?: Partial<PortableTextComponents>;
 ```
 
-Components for rendering
+Components to render nodes.
 
 ---
 
@@ -42,12 +42,12 @@ optional onMissingComponent?:
   | MissingComponentHandler;
 ```
 
-Function to call when faced with unknown types.
+Function to call when an `unknown` component type is encountered.
 
 #### Remarks
 
 - Prints a warning message to the console by default.
-- Use `false` to disable.
+- Set to `false` to disable warnings.
 
 ---
 
@@ -57,7 +57,7 @@ Function to call when faced with unknown types.
 optional listNestingMode?: ToolkitListNestMode;
 ```
 
-Defines the nesting mode for lists. The value can be `html` or `direct`, and defaults to `html`.
+Defines how nested lists are rendered. Defaults to `html`.
 
 #### Remarks
 

@@ -8,7 +8,7 @@
 type RenderOptions = object;
 ```
 
-Options for the `render` function accessed via `usePortableText`
+Options for the `render` function accessed via `usePortableText`.
 
 ## Properties
 
@@ -18,6 +18,8 @@ Options for the `render` function accessed via `usePortableText`
 optional type?: RenderHandler<TypedObject, never>;
 ```
 
+Custom render function for custom types.
+
 ---
 
 ### block?
@@ -25,6 +27,8 @@ optional type?: RenderHandler<TypedObject, never>;
 ```ts
 optional block?: RenderHandler<Block>;
 ```
+
+Custom render function for block nodes.
 
 ---
 
@@ -34,6 +38,8 @@ optional block?: RenderHandler<Block>;
 optional list?: RenderHandler<List>;
 ```
 
+Custom render function for list nodes.
+
 ---
 
 ### listItem?
@@ -41,6 +47,8 @@ optional list?: RenderHandler<List>;
 ```ts
 optional listItem?: RenderHandler<ListItem>;
 ```
+
+Custom render function for list item nodes.
 
 ---
 
@@ -50,6 +58,8 @@ optional listItem?: RenderHandler<ListItem>;
 optional mark?: RenderHandler<Mark>;
 ```
 
+Custom render function for mark nodes.
+
 ---
 
 ### text?
@@ -58,6 +68,8 @@ optional mark?: RenderHandler<Mark>;
 optional text?: RenderHandler<TextNode, never>;
 ```
 
+Custom render function for text nodes.
+
 ---
 
 ### hardBreak?
@@ -65,3 +77,5 @@ optional text?: RenderHandler<TextNode, never>;
 ```ts
 optional hardBreak?: RenderHandler<TextNode, never>;
 ```
+
+Custom render function for hard breaks.

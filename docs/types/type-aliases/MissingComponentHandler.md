@@ -8,7 +8,7 @@
 type MissingComponentHandler = (message, context) => void;
 ```
 
-The shape of the [onMissingComponent](../interfaces/PortableTextProps.md#onmissingcomponent) function
+Type of the [onMissingComponent](../interfaces/PortableTextProps.md#onmissingcomponent) handler.
 
 ## Parameters
 

@@ -8,7 +8,7 @@
 type MarkProps<MarkDef> = Props<Mark<MarkDef>>;
 ```
 
-Convenience type for [Mark](../interfaces/Mark.md) component props
+Component props type for [Mark](../interfaces/Mark.md).
 
 ## Type Parameters
 
@@ -22,7 +22,7 @@ Added in: `v0.11.0`
 
 ## Example
 
-```ts
+```tsx
 ---
 import type { MarkProps } from "astro-portabletext/types";
 

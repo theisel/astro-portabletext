@@ -8,7 +8,7 @@
 type TextNodeProps = Props<TextNode>;
 ```
 
-Convenience type for [TextNode](TextNode.md) component props
+Component props type for [TextNode](TextNode.md).
 
 ## Remarks
 
@@ -16,7 +16,7 @@ Added in: `v0.11.0`
 
 ## Example
 
-```ts
+```tsx
 ---
 import type { TextNodeProps } from "astro-portabletext/types";
 

@@ -8,7 +8,7 @@
 type ListItemProps = Props<ListItem>;
 ```
 
-Convenience type for [ListItem](ListItem.md) component props
+Component props type for [ListItem](ListItem.md).
 
 ## Remarks
 
@@ -16,7 +16,7 @@ Added in: `v0.11.0`
 
 ## Example
 
-```ts
+```tsx
 ---
 import type { ListItemProps } from "astro-portabletext/types";
 

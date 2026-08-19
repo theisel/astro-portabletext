@@ -8,7 +8,7 @@
 type ListProps = Props<List>;
 ```
 
-Convenience type for [List](List.md) component props
+Component props type for [List](List.md).
 
 ## Remarks
 
@@ -16,7 +16,7 @@ Added in: `v0.11.0`
 
 ## Example
 
-```ts
+```tsx
 ---
 import type { ListProps } from "astro-portabletext/types";
 

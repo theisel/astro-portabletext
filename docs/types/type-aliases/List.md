@@ -8,18 +8,9 @@
 type List = ToolkitPortableTextList;
 ```
 
-Alias to [ToolkitPortableTextList](https://portabletext.github.io/toolkit/types/ToolkitPortableTextList.html)
+Portable Text `list` node.
 
-## Example
+## See
 
-```ts
----
-import type { List, Props as $ } from "astro-portabletext/types";
-
-type Props = $<List>;
----
-```
-
-## Remarks
-
-To concisely achieve the same result in the example, use the convenience type [ListProps](ListProps.md) instead.
+- [ListProps](ListProps.md) for the `list` component props type.
+- [ToolkitPortableTextList](https://portabletext.github.io/toolkit/types/ToolkitPortableTextList.html)

@@ -14,7 +14,7 @@ Defines how Portable Text types should be rendered.
 type: ComponentOrRecord;
 ```
 
-Component or mapping of components for rendering `custom` types.
+Component or mapping of components for rendering custom types.
 
 ---
 
@@ -34,7 +34,7 @@ Used when a [type](#type) component isn't found.
 block: ComponentOrRecord<Block>;
 ```
 
-Component or mapping of components for rendering `block` styles.
+Component or mapping of components for rendering block styles.
 
 ---
 
@@ -54,7 +54,7 @@ Used when a [block](#block) component isn't found.
 list: ComponentOrRecord<ToolkitPortableTextList>;
 ```
 
-Component or mapping of components for rendering `list` item type.
+Component or mapping of components for rendering lists.
 
 ---
 
@@ -74,7 +74,7 @@ Used when a [list](#list) component isn't found.
 listItem: ComponentOrRecord<ToolkitPortableTextListItem>;
 ```
 
-Component or mapping of components for rendering `list` item type.
+Component or mapping of components for rendering list items.
 
 ---
 
@@ -94,7 +94,7 @@ Used when a [listItem](#listitem) component isn't found.
 mark: ComponentOrRecord<Mark<never>>;
 ```
 
-Component or mapping of components for rendering `mark` definition type.
+Component or mapping of components for rendering marks.
 
 ---
 
@@ -114,7 +114,7 @@ Used when a [mark](#mark) component isn't found.
 text: Component<ToolkitTextNode>;
 ```
 
-Component for rendering `spans` of text.
+Component for rendering spans of text.
 
 #### Remarks
 
@@ -128,4 +128,4 @@ Added in: `v0.11.0`
 hardBreak: Component<ToolkitTextNode>;
 ```
 
-Component for rendering a newline `\n` of text.
+Component for rendering a newline (\n).

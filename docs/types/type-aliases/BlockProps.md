@@ -8,7 +8,7 @@
 type BlockProps = Props<Block>;
 ```
 
-Convenience type for [Block](../interfaces/Block.md) component props
+Component props type for [Block](../interfaces/Block.md).
 
 ## Remarks
 
@@ -16,7 +16,7 @@ Added in: `v0.11.0`
 
 ## Example
 
-```ts
+```tsx
 ---
 import type { BlockProps } from "astro-portabletext/types";
 

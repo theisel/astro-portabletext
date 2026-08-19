@@ -1,4 +1,4 @@
-import { test, expect } from "vitest";
+import { expect, test } from "vitest";
 import { fetchContent } from "../utils";
 
 test("with style `h1`", async () => {

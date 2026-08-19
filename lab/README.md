@@ -1,8 +1,8 @@
-# `astro-portabletext` laboratory
+# Laboratory
 
 This directory serves as the testing sandbox and fixture generator for the core `astro-portabletext` package.
 
-## How Testing Works
+## How testing works
 
 To ensure maximum fidelity with real-world usage, this testing sandbox follows a strict two-step integration process:
 
@@ -14,7 +14,7 @@ To ensure maximum fidelity with real-world usage, this testing sandbox follows a
 
 From this directory, you can run:
 
-- `pnpm test` - Runs the full test suite (builds fixtures and runs vitest)
-- `pnpm test:component` - Builds fixtures and runs only the component integration tests
-- `pnpm test:unit` - Runs only the utility unit tests
-- `pnpm test:watch` - Runs Vitest in watch mode (useful for active development)
+- `pnpm test` - Runs the full test suite (builds fixtures and runs vitest).
+- `pnpm test:component` - Builds fixtures and runs only the component integration tests.
+- `pnpm test:unit` - Runs only the utility unit tests.
+- `pnpm test:watch` - Runs Vitest in watch mode (useful for active development).

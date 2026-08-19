@@ -1,7 +1,7 @@
 ---
-import type { ListItem, Props as $ } from "../lib/types";
+import type { ListItemProps } from "../lib/types";
 
-export type Props = $<ListItem>;
+export type Props = ListItemProps;
 
 const { node, index, isInline, ...attrs } = Astro.props;
 ---

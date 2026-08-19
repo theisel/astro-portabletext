@@ -1,7 +1,7 @@
 ---
-import type { List, Props as $ } from "../lib/types";
+import type { ListProps } from "../lib/types";
 
-export type Props = $<List>;
+export type Props = ListProps;
 
 const { node, index, isInline, ...attrs } = Astro.props;
 const listItemIs = (listItem: string) => listItem === node.listItem;

@@ -1,8 +1,8 @@
 ---
-import type { Mark, Props as $ } from "../lib/types";
+import type { Mark, MarkProps } from "../lib/types";
 import { usePortableText } from "../lib/utils";
 
-export type Props = $<Mark>;
+export type Props = MarkProps;
 
 const props = Astro.props;
 const { node, index, isInline, ...attrs } = props;

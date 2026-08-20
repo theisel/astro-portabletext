@@ -6,6 +6,9 @@
   "author": "Tom Theisel <tom.theisel@gmail.com>",
   "license": "ISC",
   "scripts": {
+    "check:astro": "astro check",
+    "check:ts": "pnpm exec tsc --noEmit",
+    "check": "pnpm check:astro && pnpm check:ts",
     "dev": "astro dev",
     "start": "pnpm up astro-portabletext@latest && pnpm dev",
     "build": "astro build",
@@ -14,10 +17,13 @@
   "dependencies": {
     "@astrojs/solid-js": "^7.0.2",
     "@astrojs/svelte": "^9.0.1",
-    "astro": "^7.2.1",
+    "astro": "^7.2.2",
     "astro-portabletext": "^0.13.0",
     "solid-js": "^1.9.14",
     "svelte": "^5.56.9"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3"
   },
   "engines": {
     "node": ">=22.12.0"

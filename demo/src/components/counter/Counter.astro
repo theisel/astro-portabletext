@@ -1,6 +1,9 @@
 ---
+import type { Props as $, TypedObject } from "astro-portabletext/types";
 import JsxCounter from "./JsxCounter.astro";
 import SvelteCounter from "./SvelteCounter.astro";
+
+export type Props = $<TypedObject>;
 
 const props = Astro.props;
 const typeIs = (type: string) => type === props.node._type;

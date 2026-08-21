@@ -1,14 +1,15 @@
 ---
-import type { Props as $, Mark } from "astro-portabletext/types";
-import { Mark as DefaultMark } from "astro-portabletext/components";
+import type { MarkProps } from "astro-portabletext/types";
+import { usePortableText } from "astro-portabletext";
 import Unicorn from "../Unicorn.astro";
 
-export type Props = $<Mark>;
+export type Props = MarkProps;
 
 const props = Astro.props;
+const { getDefaultComponent } = usePortableText(props.node);
 const markTypeIs = (markType: string) => markType === props.node.markType;
 
-const Cmp = markTypeIs("unicorn") ? Unicorn : DefaultMark;
+const Cmp = markTypeIs("unicorn") ? Unicorn : getDefaultComponent();
 ---
 
 <Cmp {...props}><slot /></Cmp>

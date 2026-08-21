@@ -45,7 +45,9 @@
   },
   "homepage": "https://github.com/theisel/astro-portabletext#readme",
   "scripts": {
-    "check": "astro check --root components"
+    "check:astro": "astro check --root components",
+    "check:ts": "pnpm exec tsc --noEmit",
+    "check": "pnpm check:astro && pnpm check:ts"
   },
   "dependencies": {
     "@portabletext/toolkit": "^5.0.1",

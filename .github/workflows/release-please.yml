@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 jobs:
-  format:
+  release-please:
     runs-on: ubuntu-latest
 
     steps:

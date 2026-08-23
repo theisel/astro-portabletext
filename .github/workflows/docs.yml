@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 jobs:
-  format:
+  generate-docs:
     runs-on: ubuntu-latest
 
     steps:

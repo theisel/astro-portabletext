@@ -34,7 +34,6 @@ export function isComponent(it: unknown): it is Component {
  *
  * @param components - The base components object.
  * @param overrides - The overrides components object.
- *
  * @returns A new object with the merged components.
  */
 export function mergeComponents<
@@ -51,7 +50,7 @@ export function mergeComponents<
           : (Overrides & Components)[Key]
       : (Overrides & Components)[Key];
   },
->(components: Components, overrides: Overrides) {
+>(components: Components, overrides: Overrides): MergedComponents {
   const cmps = { ...components } as Record<string, ComponentOrRecord>;
 
   for (const [key, override] of Object.entries(overrides)) {

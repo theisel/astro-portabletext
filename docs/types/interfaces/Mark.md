@@ -4,23 +4,14 @@
 
 # Interface: Mark\<MarkDef\>
 
+Portable Text `mark` node.
+
 Extends [ToolkitNestedPortableTextSpan](https://portabletext.github.io/toolkit/interfaces/ToolkitNestedPortableTextSpan.html)
-with consisting `markDef` and `markKey` properties
+with `markDef` and `markKey` properties.
 
-## Remarks
+## See
 
-To concisely achieve the same result in the example, use the convenience type [MarkProps](../type-aliases/MarkProps.md) instead.
-
-## Example
-
-```ts
----
-import type { Mark, Props as $ } from "astro-portabletext/types";
-
-type Greet = { msg: string };
-type Props = $<Mark<Greet>>;
----
-```
+[MarkProps](../type-aliases/MarkProps.md) for the `mark` component props type.
 
 ## Extends
 
@@ -28,9 +19,9 @@ type Props = $<Mark<Greet>>;
 
 ## Type Parameters
 
-| Type Parameter                                                     | Default type | Description                             |
-| ------------------------------------------------------------------ | ------------ | --------------------------------------- |
-| `MarkDef` _extends_ `Record`\<`string`, `unknown`\> \| `undefined` | `undefined`  | Defines the shape of `markDef` property |
+| Type Parameter                                                     | Default type | Description                              |
+| ------------------------------------------------------------------ | ------------ | ---------------------------------------- |
+| `MarkDef` _extends_ `Record`\<`string`, `unknown`\> \| `undefined` | `undefined`  | Defines the shape of `markDef` property. |
 
 ## Properties
 

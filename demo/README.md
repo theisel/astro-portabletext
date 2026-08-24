@@ -1,66 +1,67 @@
-# `astro-portabletext` Demo
+[`astro-portabletext`](https://github.com/theisel/astro-portabletext/blob/main/README.md)
 
-This demo shows how to use `astro-portabletext` to create richly customized content experiences in your Astro projects. Feel free to experiment with the code and adapt the techniques demonstrated here to your own needs.
+---
+
+# Demonstration
+
+This directory serves as an interactive playground to experiment with `astro-portabletext` and test richly customized content experiences.
 
 ## Features
 
 This demo highlights two key methods for customizing Portable Text content:
 
-1.  **Custom components:** Override the default rendering of Portable Text elements (e.g., `blocks`, `lists`, `marks`, etc.) by providing custom components through the `components` prop of the `PortableText` component. See the `src/components/portabletext` directory for examples.
-2.  **Slot-based customization:** Use Astro's named slot functions for granular control over specific Portable Text elements. This demo shows how to pass `data-*` attributes (e.g., `data-slot`) within these slots to enable targeted CSS styling, avoiding class name conflicts.
+1. **Custom components:** Override the default rendering of rich text elements (e.g., `blocks`, `lists`, `marks`) by providing custom components through the `components` prop. See the `src/components` directory for examples.
+2. **Slot-based customization:** Use Astro's named slot functions for granular control over specific rich text elements. This demo shows how to pass `data-*` attributes (e.g., `data-slot`) within these slots to enable targeted CSS styling.
 
-## Getting Started
+## Getting started
 
-1.  **Prerequisites:**
-    - Node.js (`>=20.19 <22` or `>=22.12`)
-    - Astro (`>=4.6.0`)
+### Local development
 
-2.  **Installation:**
+If you have cloned the repository locally:
 
-    Install the dependencies using your preferred package manager. For example:
+1. **Prerequisites:**
 
-    ```bash
-    # npm
-    npm install
-    ```
+   - Astro (`>=4.6.0`)
+   - Node.js (`>=22.12.0`)
 
-3.  **Development:**
+2. **Installation:**
 
-    Start the Astro development server:
+   Install the dependencies from the repository root:
 
-    ```bash
-    # npm
-    npm run dev
-    ```
+   ```sh
+   pnpm install
+   ```
 
-    Open your browser and navigate to the URL provided in the terminal (typically `http://localhost:4321`).
+3. **Development:**
 
-## Exploring the Demo
+   From the repository root, start the Astro development server for the demo workspace:
 
-The demo page (`src/pages/index.astro`) initially renders Portable Text content with custom components from `src/components/portabletext`.
+   ```sh
+   pnpm launch-demo
+   ```
+
+### Cloud environments
+
+If you are running this demo in an isolated cloud environment like [StackBlitz](https://stackblitz.com/) or [CodeSandbox](https://codesandbox.io/), use the provided start script. This will automatically fetch the latest published version of the package and launch the dev server:
+
+```sh
+pnpm start
+```
+
+## Exploring the demo
+
+The demo page (`src/pages/index.astro`) initially renders Portable Text content with custom components from `src/components`.
 
 To explore slot-based customization:
 
-1.  Open `src/pages/index.astro`.
-2.  Locate the `<PortableText>` component.
-3.  Uncomment the `<fragment slot="block">` or `<fragment slot="list">` sections.
-4.  Observe the updated rendering in your browser.
+1. Open `src/pages/index.astro`.
+2. Locate the `<PortableText>` component.
+3. Uncomment the `<fragment slot="block">` and/or `<fragment slot="list">` sections.
+4. Observe the updated rendering in your browser.
 
-The CSS in `src/pages/index.astro` targets elements with the `data-slot` attribute, demonstrating how to apply specific styles predictably.
-
-## Why use `data-*` attributes?
-
-While `class` attributes can be passed to custom components, `data-*` attributes offer key advantages:
-
-- **Predictability:**
-
-  Custom components might override or ignore `class` attributes, but `data-*` attributes are reliably passed through to rendered elements.
-
-- **Conflict-free styling:**
-
-  `data-*` attributes provide a dedicated mechanism for targeting specific elements, reducing the risk of conflicts with class names used internally or elsewhere in your application.
+The CSS in `src/pages/index.astro` targets elements with the `data-slot` attribute, demonstrating how to apply specific styles predictably without class name conflicts.
 
 ## Resources
 
-- **Documentation:** [Full documentation](https://github.com/theisel/astro-portabletext/blob/main/docs/README.md)
-- **Examples:** [Browse examples](https://github.com/theisel/astro-portabletext/blob/main/examples/README.md)
+- [Documentation](https://github.com/theisel/astro-portabletext/blob/main/docs/README.md)
+- [Examples](https://github.com/theisel/astro-portabletext/blob/main/examples/README.md)

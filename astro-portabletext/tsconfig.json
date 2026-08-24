@@ -1,4 +1,3 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "include": ["lib"]
+  "extends": "astro/tsconfigs/strict"
 }

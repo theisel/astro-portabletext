@@ -10,7 +10,7 @@ type Component<T> = (props) => any;
 
 **`Internal`**
 
-Generic Portable Text component
+Generic Portable Text component.
 
 ## Type Parameters
 

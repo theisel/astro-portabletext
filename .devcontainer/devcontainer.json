@@ -4,7 +4,7 @@
   "features": {
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers-extra/features/pnpm:2": {
-      "version": "11.21.0"
+      "version": "10.34.5"
     }
   },
   "customizations": {

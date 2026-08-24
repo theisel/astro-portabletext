@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 jobs:
-  format:
+  generate-docs:
     runs-on: ubuntu-latest
 
     steps:
@@ -32,7 +32,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install Dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Generate docs
         run: pnpm generate-docs

@@ -1,0 +1,52 @@
+---
+// Refer to https://github.com/portabletext/toolkit/issues/100
+
+import { PortableText } from "astro-portabletext";
+import Layout from "@/layouts/Default.astro";
+
+const value = [
+  // List 1: Pure nested `bullet` list (starts at level 2, pads level 1)
+  {
+    _type: "block",
+    children: [{ _type: "span", text: "pure ul", marks: [], _key: "k1" }],
+    markDefs: [],
+    style: "normal",
+    _key: "b1",
+    level: 2,
+    listItem: "bullet",
+  },
+  // List 2: Pure nested `number` list (starts at level 2, pads level 1)
+  {
+    _type: "block",
+    children: [{ _type: "span", text: "pure ol", marks: [], _key: "k2" }],
+    markDefs: [],
+    style: "normal",
+    _key: "b2",
+    level: 2,
+    listItem: "number",
+  },
+  // List 3: Mixed list (starts at level 1 bullet, descends to level 3 number)
+  {
+    _type: "block",
+    children: [{ _type: "span", text: "mixed root", marks: [], _key: "k3" }],
+    markDefs: [],
+    style: "normal",
+    _key: "b3",
+    level: 1,
+    listItem: "bullet",
+  },
+  {
+    _type: "block",
+    children: [{ _type: "span", text: "mixed nested", marks: [], _key: "k4" }],
+    markDefs: [],
+    style: "normal",
+    _key: "b4",
+    level: 3,
+    listItem: "number",
+  },
+];
+---
+
+<Layout>
+  <PortableText {value} />
+</Layout>

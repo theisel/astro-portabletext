@@ -1,8 +1,8 @@
 ---
-import type { Block, Props as $ } from "../lib/types";
+import type { BlockProps } from "../lib/types";
 import { usePortableText } from "../lib/utils";
 
-export type Props = $<Block>;
+export type Props = BlockProps;
 
 const props = Astro.props;
 const { node, index, isInline, ...attrs } = props;

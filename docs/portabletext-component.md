@@ -13,14 +13,14 @@ using `slots` to custom `components`.
 
 ## Examples
 
-- [Basic example](../examples/PortableTextBasic.astro)
-- Custom component [mapped to node type](../examples/PortableTextMappedType.astro)
-- Custom component [mapped to node type property](../examples/PortableTextMappedTypeProperty.astro)
-- `v0.11.0+` Using PortableText component with [slots](../examples/PortableTextSlots.astro)
+- [Basic usage](../examples/PortableTextBasic.astro)
+- [Mapping custom components to node types](../examples/PortableTextMappedType.astro)
+- [Mapping custom components to node type properties](../examples/PortableTextMappedTypeProperty.astro)
+- [Enhancing rendering with slots](../examples/PortableTextSlots.astro)
 
 ## Basic usage
 
-Import the `PortableText` component and start rendering. This library provides sensible defaults for rendering common Portable Text elements, which you can easily override.
+Import the `PortableText` component and start rendering. This library provides sensible defaults for rendering common rich text elements, which you can easily override.
 
 > Use the following default mapping to understand what each node type outputs.
 
@@ -60,58 +60,35 @@ Import the `PortableText` component and start rendering. This library provides s
     strong: /* <strong {...attrs}><slot /></strong> */,
     underline: /* <span {...attrs} style="text-decoration: underline;"><slot /></span> */
   },
-  text: /* Renders plain text */
+  text: /* Renders plain text */,
   hardBreak: /* <br /> */,
 }
 ```
 
 </details>
 
-```js
-/* .astro */
+```tsx
 ---
 import { PortableText } from "astro-portabletext";
 
-const portableText = [
-  {
-    _type: "block",
-    children: [
-      {
-        _type: "span",
-        marks: [],
-        text: "This is a ",
-      },
-      {
-        _type: "span",
-        marks: ["strong"],
-        text: "bold",
-      },
-      {
-        _type: "span",
-        marks: [],
-        text: " text example!",
-      },
-    ],
-    markDefs: [],
-    style: "normal",
-  },
+const payload = [
+  // Portable Text payload
 ];
 ---
 
-<PortableText value={portableText} />
+<PortableText value={payload} />
 ```
 
 ## Custom components
 
-Custom components allow for better control over rendering of rich text elements. You can map a component to a node type or map the component to the property of the node type.
+Custom components provide full control over rendering rich text elements. You can map components directly to specific node types or to individual node properties.
 
-```js
-/* .astro */
+```tsx
 ---
 import { PortableText } from "astro-portabletext";
 
-const portableText = [
-  // ... your Portable Text content
+const payload = [
+  // Portable Text payload
 ];
 
 const components = {
@@ -137,42 +114,46 @@ const components = {
 };
 ---
 
-<PortableText value={portableText} components={components} />
+<PortableText value={payload} {components} />
 ```
 
-💡 Refer to mapping [component to node type](../examples/PortableTextMappedType.astro) and [component to node type property](../examples/PortableTextMappedTypeProperty.astro) examples for more guidance.
+**See also:** The mapping [component to node type](../examples/PortableTextMappedType.astro) and [component to node type property](../examples/PortableTextMappedTypeProperty.astro) examples.
 
 ### Slots
 
 > **Added in `v0.11.0`**
 
-Slots provide a flexible way to enhance the rendering of Portable Text elements by passing additional props to the component. This allows you to customize the output in various ways, such as:
+Slots provide a flexible way to intercept and enhance the rendering of rich text elements. This allows you to customize the output in various ways, such as:
 
-- Applying custom styles or classes
-- Wrapping elements in custom components
-- Modifying the output based on specific conditions
+- Applying HTML attributes.
+- Modifying the output based on specific conditions.
 
 Here's an example of using a slot to apply custom styles to `strong` elements:
 
-```ts
-/* .astro */
+```tsx
 ---
 import { PortableText } from "astro-portabletext";
 
-const portableText = [
-  // ... your Portable Text content
+const payload = [
+  // Portable Text payload
 ];
+
+const components = {
+  // Optional: custom components
+};
 ---
 
-<PortableText value={portableText}>
-  <fragment slot="mark">{({ Component, props, children }) => (
-    <Component {...props} class="mark">{children}</Component>
-  )}</fragment>
+<PortableText value={payload} {components}>
+  <fragment slot="mark">
+    {({ Component, props, children }) => (
+      <Component {...props} class="mark">{children}</Component>
+    )}
+  </fragment>
 </PortableText>
 
 <style>
   .mark:where(strong) {
-    /* some styles */
+    /* styles */
   }
 </style>
 ```
@@ -187,13 +168,13 @@ The available slot names are:
 - `text`
 - `type`
 
-💡 Refer to [slot example](../examples/PortableTextSlots.astro) for more details.
+**See also:** The [slot example](../examples/PortableTextSlots.astro).
 
-## `PortableText` Component properties
+## `PortableText` component properties
 
-| Property                        | Type                    | Description                                                                                                                                                  |
-| ------------------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `value`                         | `array` or `object`     | Portable Text payload                                                                                                                                        |
-| `components (optional)`         | `object`                | Mapping of components to node types or its properties.                                                                                                       |
-| `onMissingComponent (optional)` | `function` or `boolean` | Disable warning messages or handle unknown types. **Default** prints to console.                                                                             |
-| `listNestingMode (optional)`    | `"html"` or `"direct"`  | List nesting mode. **Default** is `html`. See [ToolkitListNestMode](https://portabletext.github.io/toolkit/types/ToolkitListNestMode.html) for more details. |
+| Property             | Type                    | Description                                                                                                                                             |
+| -------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `value`              | `array` \| `object`     | Portable Text payload.                                                                                                                                  |
+| `components`         | `object`                | Optional. Map components to node types or properties.                                                                                                   |
+| `onMissingComponent` | `function` \| `boolean` | Optional. Handle unknown types or disable warnings. <br/>Defaults to console warnings.                                                                  |
+| `listNestingMode`    | `"html"` \| `"direct"`  | Optional. List nesting mode. Defaults to `html`. <br/> See [ToolkitListNestMode](https://portabletext.github.io/toolkit/types/ToolkitListNestMode.html) |

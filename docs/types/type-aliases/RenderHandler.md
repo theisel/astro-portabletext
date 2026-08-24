@@ -8,14 +8,14 @@
 type RenderHandler<T, Children> = (props) => any;
 ```
 
-The shape of the render component function
+The shape of the render component function.
 
 ## Type Parameters
 
-| Type Parameter                                              | Default type                                  | Description                   |
-| ----------------------------------------------------------- | --------------------------------------------- | ----------------------------- |
-| `T` _extends_ [`TypedObject`](../interfaces/TypedObject.md) | [`TypedObject`](../interfaces/TypedObject.md) | Type of Portable Text payload |
-| `Children`                                                  | `unknown`                                     | Type of children              |
+| Type Parameter                                              | Default type                                  | Description                  |
+| ----------------------------------------------------------- | --------------------------------------------- | ---------------------------- |
+| `T` _extends_ [`TypedObject`](../interfaces/TypedObject.md) | [`TypedObject`](../interfaces/TypedObject.md) | Type of Portable Text value. |
+| `Children`                                                  | `unknown`                                     | Type of children.            |
 
 ## Parameters
 

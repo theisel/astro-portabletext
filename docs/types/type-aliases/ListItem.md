@@ -8,18 +8,9 @@
 type ListItem = ToolkitPortableTextListItem;
 ```
 
-Alias to [ToolkitPortableTextListItem](https://portabletext.github.io/toolkit/interfaces/ToolkitPortableTextListItem.html)
+Portable Text `listItem` node.
 
-## Example
+## See
 
-```ts
----
-import type { ListItem, Props as $ } from "astro-portabletext/types";
-
-type Props = $<ListItem>;
----
-```
-
-## Remarks
-
-To concisely achieve the same result in the example, use the convenience type [ListItemProps](ListItemProps.md) instead.
+- [ListItemProps](ListItemProps.md) for the `listItem` component props type.
+- [ToolkitPortableTextListItem](https://portabletext.github.io/toolkit/interfaces/ToolkitPortableTextListItem.html)

@@ -7,19 +7,9 @@
 Alias to [PortableTextBlock](https://portabletext.github.io/types/interfaces/PortableTextBlock.html)
 with `style` set to `normal` when undefined
 
-## Example
+## See
 
-```ts
----
-import type { Block, Props as $ } from "astro-portabletext/types";
-
-type Props = $<Block>;
----
-```
-
-## Remarks
-
-To concisely achieve the same result in the example, use the convenience type [BlockProps](../type-aliases/BlockProps.md) instead.
+[BlockProps](../type-aliases/BlockProps.md) for the `block` component props type.
 
 ## Extends
 

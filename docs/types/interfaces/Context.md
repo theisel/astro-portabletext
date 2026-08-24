@@ -4,10 +4,10 @@
 
 # Interface: Context
 
-Context object returned by `usePortableText`, providing utilities for rendering and customizing Portable Text components.
+Context returned by `usePortableText` for rendering and customizing Portable Text components.
 
-The `Context` type includes functions to retrieve default or unknown components and
-to customize rendering behavior for specific node types.
+Provides utility functions for resolving components and a `render` function
+for fine-grained control over how nested children are rendered.
 
 ## Properties
 
@@ -17,7 +17,7 @@ to customize rendering behavior for specific node types.
 getDefaultComponent: () => Component;
 ```
 
-Retrieves the default `astro-portabletext` component associated with a Portable Text node.
+Retrieves the default component associated with a Portable Text node.
 
 #### Returns
 
@@ -27,7 +27,7 @@ The default component for the node, such as `Block`, `List`, etc.
 
 #### Example
 
-```ts
+```tsx
 ---
 const { getDefaultComponent } = usePortableText(node);
 const Component = getDefaultComponent();
@@ -45,7 +45,7 @@ const Component = getDefaultComponent();
 getUnknownComponent: () => Component;
 ```
 
-Retrieves the `unknown` component associated with a Portable Text node.
+Retrieves the unknown component associated with a Portable Text node.
 
 #### Returns
 
@@ -55,7 +55,7 @@ The component used for unknown nodes, such as `unknownBlock` or `unknownList`.
 
 #### Example
 
-```ts
+```tsx
 ---
 const { getUnknownComponent } = usePortableText(node);
 const Component = getUnknownComponent();
@@ -73,22 +73,19 @@ const Component = getUnknownComponent();
 render: (options) => any;
 ```
 
-Customizes rendering for specific Portable Text node types.
-
-The `render` function enables developers to define custom behavior for specific node types,
-such as overriding the default text or mark rendering.
+Allows for fine-grained control over how nested Portable Text children are rendered.
 
 #### Parameters
 
-| Parameter | Type                                                | Description                                                                                      |
-| --------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `options` | [`RenderOptions`](../type-aliases/RenderOptions.md) | [RenderOptions](../type-aliases/RenderOptions.md) - Configuration for customizing node rendering |
+| Parameter | Type                                                | Description                                                                                       |
+| --------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `options` | [`RenderOptions`](../type-aliases/RenderOptions.md) | [RenderOptions](../type-aliases/RenderOptions.md) - Configuration for customizing node rendering. |
 
 #### Returns
 
 `any`
 
-The desired output for the Portable Text node
+The desired output for the Portable Text node.
 
 #### Remarks
 
@@ -98,7 +95,7 @@ Added in: `v0.11.0`
 
 **Basic usage**
 
-```ts
+```tsx
 ---
 import { usePortableText } from "astro-portabletext";
 
@@ -112,6 +109,7 @@ const Component = getDefaultComponent();
    mark: ({ Component, props, children }) => (
      <Component {...props} class="custom-mark">{children}</Component>
    ),
+ })}
 </Component>
 
 <style>

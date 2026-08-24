@@ -7,16 +7,20 @@
  * Note:
  *   Use the `isInline` prop to determine if the component should be layed out as inline or block.
  *
+ *   For pre-v1.0.0 usage, import types using the legacy syntax:
+ *   `import type { Props as $, TypedObject } from "astro-portabletext/types";`
+ *   `type Props = $<TypedObject>;`
+ *
  * Usage:
  *   <PortableText value={portableTextPayload} components={{ type: Type }} />
  */
 // @ts-nocheck
-import type { TypedObject, Props as $ } from "astro-portabletext/types";
+import type { TypedObjectProps } from "astro-portabletext/types";
 import { usePortableText } from "astro-portabletext";
 import Hero from "./Hero.astro";
 import Map from "./Map.astro";
 
-type Props = $<TypedObject>;
+export type Props = TypedObjectProps;
 
 const props = Astro.props;
 const { getUnknownComponent } = usePortableText(props.node);

@@ -1,8 +1,8 @@
 ---
-import type { Mark, Props as $ } from "astro-portabletext/types";
+import type { MarkProps } from "astro-portabletext/types";
 import { usePortableText } from "astro-portabletext";
 
-export type Props = $<Mark>;
+export type Props = MarkProps;
 
 const { node, index, isInline, ...attrs } = Astro.props;
 const markTypeIs = (markType: string) => markType === node.markType;

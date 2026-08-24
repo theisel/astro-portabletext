@@ -1,8 +1,8 @@
 ---
-import type { TypedObject, Props as $ } from "../lib/types";
+import type { TypedObjectProps } from "../lib/types";
 import { getWarningMessage } from "../lib/warnings";
 
-export type Props = $<TypedObject>;
+export type Props = TypedObjectProps;
 
 const { node, isInline } = Astro.props;
 const warning = getWarningMessage("type", node._type);

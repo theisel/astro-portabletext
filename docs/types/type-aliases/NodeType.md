@@ -10,4 +10,4 @@ type NodeType = "type" | "block" | "list" | "listItem" | "mark";
 
 **`Internal`**
 
-Defines the type of Portable Text node
+Defines the type of Portable Text node.

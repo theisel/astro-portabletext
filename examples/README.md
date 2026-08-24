@@ -1,10 +1,14 @@
-# `astro-portabletext` Examples
+[`astro-portabletext`](../README.md)
+
+---
+
+# Examples
 
 This directory provides concise code examples demonstrating specific techniques
 and features of the `astro-portabletext` library. These examples are designed to
 help you learn and adapt the code snippets for your own Astro projects.
 
-💡 **Looking for documentation?** Refer to the [package documentation](../astro-portabletext/README.md).
+**See also:** The [package documentation](../astro-portabletext/README.md).
 
 _**Note:** These are not full applications._
 
@@ -31,4 +35,7 @@ _**Note:** These are not full applications._
 
 ## Contributing
 
-Have suggestions for new examples or improvements? Feel free to open a [pull request](https://github.com/theisel/astro-portabletext/pulls) or an [issue](https://github.com/theisel/astro-portabletext/issues) in the main repository. Contributions are always welcome!
+We welcome contributions to improve `astro-portabletext`!
+
+If you find a bug or have a feature request, please open an [issue](https://github.com/theisel/astro-portabletext/issues).
+If you'd like to contribute code, feel free to submit a [pull request](https://github.com/theisel/astro-portabletext/pulls).

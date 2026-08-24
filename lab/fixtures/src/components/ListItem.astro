@@ -1,8 +1,8 @@
 ---
-import type { Props as $, ListItem } from "astro-portabletext/types";
+import type { ListItemProps } from "astro-portabletext/types";
 import { usePortableText } from "astro-portabletext";
 
-type Props = $<ListItem>;
+type Props = ListItemProps;
 
 const { getDefaultComponent } = usePortableText(Astro.props.node);
 const Li = getDefaultComponent();

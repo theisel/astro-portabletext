@@ -4,13 +4,21 @@
 
 # Interface: Props\<N\>
 
-Component Props
+Base props type for Portable Text components.
+
+## See
+
+- [BlockProps](../type-aliases/BlockProps.md) for `block` component props type.
+- [ListProps](../type-aliases/ListProps.md) for `list` component props type.
+- [ListItemProps](../type-aliases/ListItemProps.md) for `listItem` component props type.
+- [MarkProps](../type-aliases/MarkProps.md) for `mark` component props type.
+- [TextNodeProps](../type-aliases/TextNodeProps.md) for `text` component props type.
 
 ## Type Parameters
 
-| Type Parameter                                | Description                                                                           |
-| --------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `N` _extends_ [`TypedObject`](TypedObject.md) | Type of Portable Text payload that this component will receive on its `node` property |
+| Type Parameter                                | Description                                                 |
+| --------------------------------------------- | ----------------------------------------------------------- |
+| `N` _extends_ [`TypedObject`](TypedObject.md) | Type of Portable Text node received on the `node` property. |
 
 ## Properties
 
@@ -20,7 +28,7 @@ Component Props
 node: N;
 ```
 
-Portable Text data for this node
+Portable Text node.
 
 ---
 
@@ -30,7 +38,7 @@ Portable Text data for this node
 index: number;
 ```
 
-Index of the current node within its parent's child list
+Index of the current node within its parent's child list.
 
 ---
 
@@ -40,4 +48,4 @@ Index of the current node within its parent's child list
 isInline: boolean;
 ```
 
-Indicates whether the node should render as an inline or block element
+Indicates whether the node should render as an inline or block element.

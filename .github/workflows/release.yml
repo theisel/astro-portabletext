@@ -17,6 +17,8 @@ jobs:
       - name: Release / Pull Request
         uses: googleapis/release-please-action@v5
         id: release
+        with:
+          token: ${{ secrets.CI_TOKEN }}
 
       - name: Publish to NPM?
         id: npm

@@ -1,5 +1,33 @@
 # astro-portabletext
 
+## [1.0.0](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.13.0...astro-portabletext@1.0.0) (2026-08-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **engines:** require Node.js >=22.12.0 ([#229](https://github.com/theisel/astro-portabletext/issues/229))
+* **api:** remove deprecated `astro-portabletext/utils` export ([#229](https://github.com/theisel/astro-portabletext/issues/229))
+* **deps:** `@portabletext/toolkit` fix changes list AST ([#229](https://github.com/theisel/astro-portabletext/issues/229))
+
+### Build System
+
+* **engines:** require Node.js &gt;=22.12.0 ([#229](https://github.com/theisel/astro-portabletext/issues/229)) ([ef03020](https://github.com/theisel/astro-portabletext/commit/ef03020a0a948d4748f286b1f8243855a5fca4da))
+
+
+### Features
+
+* **types:** introduce `TypedObjectProps` alias ([#229](https://github.com/theisel/astro-portabletext/issues/229)) ([ef03020](https://github.com/theisel/astro-portabletext/commit/ef03020a0a948d4748f286b1f8243855a5fca4da))
+
+
+### Bug Fixes
+
+* **deps:** `@portabletext/toolkit` fix changes list AST ([#229](https://github.com/theisel/astro-portabletext/issues/229)) ([ef03020](https://github.com/theisel/astro-portabletext/commit/ef03020a0a948d4748f286b1f8243855a5fca4da))
+
+
+### Code Refactoring
+
+* **api:** remove deprecated `astro-portabletext/utils` export ([#229](https://github.com/theisel/astro-portabletext/issues/229)) ([ef03020](https://github.com/theisel/astro-portabletext/commit/ef03020a0a948d4748f286b1f8243855a5fca4da))
+
 ## [0.13.0](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.12.0...astro-portabletext@0.13.0) (2026-01-05)
 
 

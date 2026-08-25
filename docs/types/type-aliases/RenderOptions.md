@@ -1,4 +1,4 @@
-[**`astro-portabletext` v0.13.0 • Type Definitions**](../README.md)
+[**`astro-portabletext` v1.0.0 • Type Definitions**](../README.md)
 
 ---
 

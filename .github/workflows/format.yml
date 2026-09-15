@@ -5,6 +5,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 concurrency: 
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -41,4 +44,4 @@ jobs:
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          commit_message: "style(format): [ci] format"
+          commit_message: "style(ci): auto-format code"

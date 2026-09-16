@@ -8,14 +8,12 @@ const { node, isInline } = Astro.props;
 const warning = getWarningMessage("type", node._type);
 ---
 
-{
-  isInline ? (
-    <span style="display:none" data-portabletext-unknown="type">
-      {warning}
-    </span>
-  ) : (
-    <div style="display:none" data-portabletext-unknown="type">
-      {warning}
-    </div>
-  )
-}
+{isInline ? (
+  <span style="display:none" data-portabletext-unknown="type">
+    {warning}
+  </span>
+) : (
+  <div style="display:none" data-portabletext-unknown="type">
+    {warning}
+  </div>
+)}

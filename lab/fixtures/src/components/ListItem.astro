@@ -8,4 +8,6 @@ const { getDefaultComponent } = usePortableText(Astro.props.node);
 const Li = getDefaultComponent();
 ---
 
-<Li {...Astro.props}><slot /></Li>
+<Li {...Astro.props}>
+  <slot />
+</Li>

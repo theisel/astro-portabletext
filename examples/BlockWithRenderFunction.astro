@@ -24,16 +24,14 @@ const styleIs = (style: string) => style === node.style;
 const DefaultBlock = getDefaultComponent(); // Returns `astro-portabletext` Block component
 ---
 
-{
-  styleIs("h1") ? (
-    <h1 {...attrs}>
-      {render({
-        text: ({ props }) => props.node.text.replace("rocket", "🚀"),
-      })}
-    </h1>
-  ) : (
-    <DefaultBlock {...Astro.props}>
-      <slot />
-    </DefaultBlock>
-  )
-}
+{styleIs("h1") ? (
+  <h1 {...attrs}>
+    {render({
+      text: ({ props }) => props.node.text.replace("rocket", "🚀"),
+    })}
+  </h1>
+) : (
+  <DefaultBlock {...Astro.props}>
+    <slot />
+  </DefaultBlock>
+)}

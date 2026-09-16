@@ -6,16 +6,14 @@ export type Props = TextNodeProps;
 const { node, index } = Astro.props;
 ---
 
-{
-  index === 1 ? (
-    <>
-      &nbsp;
-      <span>{node.text.trim()}</span>
-    </>
-  ) : (
-    node.text
-  )
-}
+{index === 1 ? (
+  <>
+    &nbsp;
+    <span>{node.text.trim()}</span>
+  </>
+) : (
+  node.text
+)}
 
 <style>
   span {

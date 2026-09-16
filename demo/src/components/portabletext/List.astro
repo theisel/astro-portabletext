@@ -12,4 +12,6 @@ const listItemIs = (listItem: string) => listItem === props.node.listItem;
 const Cmp = listItemIs("star") ? ListStyleStar : getDefaultComponent();
 ---
 
-<Cmp {...props}><slot /></Cmp>
+<Cmp {...props}>
+  <slot />
+</Cmp>

@@ -21,20 +21,15 @@ const blocks = [
 <Layout>
   <PortableText value={blocks} components={{ list: ListWithRender }}>
     <fragment slot="list">
-      {
-        ({ Component, props, children }) => {
-          assert(
-            Component === ListWithRender,
-            "Component is not ListWithRender"
-          );
+      {({ Component, props, children }) => {
+        assert(Component === ListWithRender, "Component is not ListWithRender");
 
-          return (
-            <Component {...props} data-slot="custom-list">
-              {children}
-            </Component>
-          );
-        }
-      }
+        return (
+          <Component {...props} data-slot="custom-list">
+            {children}
+          </Component>
+        );
+      }}
     </fragment>
   </PortableText>
 </Layout>

@@ -11,9 +11,7 @@ const { render } = usePortableText(node);
 ---
 
 <div data-custom="block">
-  {
-    render({
-      text: ({ props }) => <span data-custom="text">{props.node.text} 🚀</span>,
-    })
-  }
+  {render({
+    text: ({ props }) => <span data-custom="text">{props.node.text} 🚀</span>,
+  })}
 </div>

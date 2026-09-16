@@ -7,18 +7,16 @@ const { node, index, isInline, ...attrs } = Astro.props;
 const listItemIs = (listItem: string) => listItem === node.listItem;
 ---
 
-{
-  listItemIs("menu") ? (
-    <menu {...attrs}>
-      <slot />
-    </menu>
-  ) : listItemIs("number") ? (
-    <ol {...attrs}>
-      <slot />
-    </ol>
-  ) : (
-    <ul {...attrs}>
-      <slot />
-    </ul>
-  )
-}
+{listItemIs("menu") ? (
+  <menu {...attrs}>
+    <slot />
+  </menu>
+) : listItemIs("number") ? (
+  <ol {...attrs}>
+    <slot />
+  </ol>
+) : (
+  <ul {...attrs}>
+    <slot />
+  </ul>
+)}

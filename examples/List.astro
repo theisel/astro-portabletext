@@ -26,4 +26,6 @@ const Cmp = listItemIs("square") // Custom list item
     : getDefaultComponent(); // Fallback to `astro-portabletext` List component
 ---
 
-<Cmp {...props}><slot /></Cmp>
+<Cmp {...props}>
+  <slot />
+</Cmp>

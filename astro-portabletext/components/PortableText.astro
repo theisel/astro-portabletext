@@ -179,26 +179,25 @@ const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
     }
 
     if (isPortableTextListItemBlock(node)) {
-      const { listItem, ...blockNode } = node;
-      const isStyled = node.style && node.style !== "normal";
+      // Shallow copy `node` to avoid mutating the inbound payload.
+      // The `render` API requires the node's children to be the parsed marks tree.
+      const nodeCopy = { ...node };
+      const { listItem, ...blockNode } = nodeCopy;
+      const isStyled = nodeCopy.style && nodeCopy.style !== "normal";
       // Apply block style if defined (and not "normal"), otherwise render with marks.
-      node.children = isStyled
+      nodeCopy.children = isStyled
         ? renderNode(blockNode, index)
-        : buildMarksTree(node);
+        : buildMarksTree(nodeCopy);
 
       const UnknownComponent = components.unknownListItem ?? UnknownListItem;
-      setNodeComponents(node, ListItem, UnknownComponent);
+      setNodeComponents(nodeCopy, ListItem, UnknownComponent);
 
       return run(renderOptions.listItem, {
-        Component: provideComponent(
-          "listItem",
-          node.listItem,
-          UnknownComponent
-        ),
-        props: asComponentProps(node, index, false),
+        Component: provideComponent("listItem", listItem, UnknownComponent),
+        props: asComponentProps(nodeCopy, index, false),
         children: isStyled
-          ? node.children
-          : renderChildren(node.children, true),
+          ? nodeCopy.children
+          : renderChildren(nodeCopy.children, true),
       });
     }
 
@@ -214,16 +213,19 @@ const portableTextRender = (options: RenderOptions, isInline?: boolean) => {
     }
 
     if (isPortableTextBlock(node)) {
-      node.style ??= "normal"; /* Make sure style has been set */
-      node.children = buildMarksTree(node);
+      // Shallow copy `node` to avoid mutating the inbound payload.
+      // The `render` API requires the node's children to be the parsed marks tree.
+      const nodeCopy = { ...node };
+      nodeCopy.style ??= "normal"; /* Ensure style has been set */
+      nodeCopy.children = buildMarksTree(nodeCopy);
 
       const UnknownComponent = components.unknownBlock ?? UnknownBlock;
-      setNodeComponents(node, Block, UnknownComponent);
+      setNodeComponents(nodeCopy, Block, UnknownComponent);
 
       return run(renderOptions.block, {
-        Component: provideComponent("block", node.style, UnknownComponent),
-        props: asComponentProps(node, index, false),
-        children: renderChildren(node.children, true),
+        Component: provideComponent("block", nodeCopy.style, UnknownComponent),
+        props: asComponentProps(nodeCopy, index, false),
+        children: renderChildren(nodeCopy.children, true),
       });
     }
 
@@ -367,25 +369,23 @@ type RenderNode = (
 ) => any;
 ---
 
-{
-  (() => {
-    const renderNode: RenderNode = (slotRenderer) => {
-      return ({ Component, props, children }) =>
-        slotRenderer?.([{ Component, props, children }]) ?? (
-          <Component {...(props as any)}>{children}</Component>
-        );
-    };
+{(() => {
+  const renderNode: RenderNode = (slotRenderer) => {
+    return ({ Component, props, children }) =>
+      slotRenderer?.([{ Component, props, children }]) ?? (
+        <Component {...(props as any)}>{children}</Component>
+      );
+  };
 
-    return nodes.map(
-      render({
-        type: renderNode(slots.type),
-        block: renderNode(slots.block),
-        list: renderNode(slots.list),
-        listItem: renderNode(slots.listItem),
-        mark: renderNode(slots.mark),
-        text: renderNode(slots.text),
-        hardBreak: renderNode(slots.hardBreak),
-      })
-    );
-  })()
-}
+  return nodes.map(
+    render({
+      type: renderNode(slots.type),
+      block: renderNode(slots.block),
+      list: renderNode(slots.list),
+      listItem: renderNode(slots.listItem),
+      mark: renderNode(slots.mark),
+      text: renderNode(slots.text),
+      hardBreak: renderNode(slots.hardBreak),
+    })
+  );
+})()}

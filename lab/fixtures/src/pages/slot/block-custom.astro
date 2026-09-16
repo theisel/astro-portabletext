@@ -21,17 +21,15 @@ const blocks = [
 <Layout>
   <PortableText value={blocks} components={{ block: MyBlock }}>
     <fragment slot="block">
-      {
-        ({ Component, props, children }) => {
-          assert(Component === MyBlock, "Component is not MyBlock");
+      {({ Component, props, children }) => {
+        assert(Component === MyBlock, "Component is not MyBlock");
 
-          return (
-            <Component {...props} data-slot="custom-block">
-              {children}
-            </Component>
-          );
-        }
-      }
+        return (
+          <Component {...props} data-slot="custom-block">
+            {children}
+          </Component>
+        );
+      }}
     </fragment>
   </PortableText>
 </Layout>

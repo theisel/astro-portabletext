@@ -21,20 +21,18 @@ const blocks = [
 <Layout>
   <PortableText value={blocks}>
     <fragment slot="listItem">
-      {
-        ({ Component, props, children }) => {
-          assert(
-            Component === DefaultListItem,
-            "Component is not DefaultListItem"
-          );
+      {({ Component, props, children }) => {
+        assert(
+          Component === DefaultListItem,
+          "Component is not DefaultListItem"
+        );
 
-          return (
-            <Component {...props} data-slot="listitem">
-              {children}
-            </Component>
-          );
-        }
-      }
+        return (
+          <Component {...props} data-slot="listitem">
+            {children}
+          </Component>
+        );
+      }}
     </fragment>
   </PortableText>
 </Layout>

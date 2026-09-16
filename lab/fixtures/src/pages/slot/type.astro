@@ -13,18 +13,16 @@ const blocks = [
 
 <Layout>
   <PortableText value={blocks}>
-    <fragment slot="type"
-      >{
-        ({ Component, props }) => {
-          assert(Component === UnknownType, "Component is not UnknownType");
+    <fragment slot="type">
+      {({ Component, props }) => {
+        assert(Component === UnknownType, "Component is not UnknownType");
 
-          switch (props.node._type) {
-            case "helloWorld":
-              return <div data-slot="type">Hello World</div>;
-          }
-          return <Component {...props} />;
+        switch (props.node._type) {
+          case "helloWorld":
+            return <div data-slot="type">Hello World</div>;
         }
-      }</fragment
-    >
+        return <Component {...props} />;
+      }}
+    </fragment>
   </PortableText>
 </Layout>

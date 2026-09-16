@@ -4,17 +4,15 @@ export type { Props } from "astro-portabletext/types";
 const props = Astro.props;
 ---
 
-{
-  props.isInline ? (
-    <span class="unicorn">
-      <slot />
-    </span>
-  ) : (
-    <div class="unicorn">
-      <slot />
-    </div>
-  )
-}
+{props.isInline ? (
+  <span class="unicorn">
+    <slot />
+  </span>
+) : (
+  <div class="unicorn">
+    <slot />
+  </div>
+)}
 
 <style>
   .unicorn::before {

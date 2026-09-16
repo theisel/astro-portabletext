@@ -17,15 +17,13 @@ const error = () => {
 };
 ---
 
-{
-  typeIs("jsxCounter") ? (
-    <JsxCounter {...props} />
-  ) : typeIs("svelteCounter") ? (
-    <SvelteCounter {...props} />
-  ) : (
-    error()
-  )
-}
+{typeIs("jsxCounter") ? (
+  <JsxCounter {...props} />
+) : typeIs("svelteCounter") ? (
+  <SvelteCounter {...props} />
+) : (
+  error()
+)}
 
 <style>
   [data-inline="true"] {

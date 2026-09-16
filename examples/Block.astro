@@ -26,7 +26,9 @@ const Cmp = styleIs("billboard") // Custom style
     : getDefaultComponent(); // Fallback to `astro-portabletext` Block component
 ---
 
-<Cmp {...props} class="block"><slot /></Cmp>
+<Cmp {...props} class="block">
+  <slot />
+</Cmp>
 
 <style>
   .block:where(h1, h2) {

@@ -8,20 +8,18 @@ const props = Astro.props;
 const { node, index, isInline, ...attrs } = props;
 ---
 
-{
-  isInline ? (
-    <span {...attrs} data-inline={String(isInline)}>
-      Svelte Inline Counter
-      {` `}
-      <Counter client:idle {...props} />
-    </span>
-  ) : (
-    <div {...attrs} data-inline={String(isInline)}>
-      <h4 class="counter__title">Svelte Block Counter</h4>
-      <Counter client:idle {...props} />
-    </div>
-  )
-}
+{isInline ? (
+  <span {...attrs} data-inline={String(isInline)}>
+    Svelte Inline Counter
+    {` `}
+    <Counter client:idle {...props} />
+  </span>
+) : (
+  <div {...attrs} data-inline={String(isInline)}>
+    <h4 class="counter__title">Svelte Block Counter</h4>
+    <Counter client:idle {...props} />
+  </div>
+)}
 
 <style>
   div,

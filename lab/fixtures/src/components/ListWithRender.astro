@@ -11,16 +11,14 @@ const { render, getDefaultComponent } = usePortableText(node);
 const Default = getDefaultComponent();
 ---
 
-{
-  listItemIs("bullet") ? (
-    <ul {...attrs} data-custom="list">
-      {render({
-        text: ({ props }) => <span data-custom="text">{props.node.text}</span>,
-      })}
-    </ul>
-  ) : (
-    <Default {...Astro.props}>
-      <slot />
-    </Default>
-  )
-}
+{listItemIs("bullet") ? (
+  <ul {...attrs} data-custom="list">
+    {render({
+      text: ({ props }) => <span data-custom="text">{props.node.text}</span>,
+    })}
+  </ul>
+) : (
+  <Default {...Astro.props}>
+    <slot />
+  </Default>
+)}

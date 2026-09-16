@@ -26,4 +26,6 @@ const Cmp = markTypeIs("highlight") // Custom mark
     : getDefaultComponent(); // Fallback to `astro-portabletext` Mark component
 ---
 
-<Cmp {...props}><slot /></Cmp>
+<Cmp {...props}>
+  <slot />
+</Cmp>

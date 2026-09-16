@@ -12,7 +12,9 @@ const markTypeIs = (markType: string) => markType === props.node.markType;
 const Cmp = markTypeIs("unicorn") ? Unicorn : getDefaultComponent();
 ---
 
-<Cmp {...props}><slot /></Cmp>
+<Cmp {...props}>
+  <slot />
+</Cmp>
 
 <style>
   code {

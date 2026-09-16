@@ -6,4 +6,6 @@ export type Props = ListItemProps;
 const { node, index, isInline, ...attrs } = Astro.props;
 ---
 
-<li {...attrs}><slot /></li>
+<li {...attrs}>
+  <slot />
+</li>

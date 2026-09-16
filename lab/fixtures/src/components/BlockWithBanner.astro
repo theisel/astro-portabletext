@@ -13,14 +13,12 @@ const { getDefaultComponent } = usePortableText(node);
 const Default = getDefaultComponent();
 ---
 
-{
-  styleIs("banner") ? (
-    <div class="banner" {...attrs}>
-      <slot />
-    </div>
-  ) : (
-    <Default {...props}>
-      <slot />
-    </Default>
-  )
-}
+{styleIs("banner") ? (
+  <div class="banner" {...attrs}>
+    <slot />
+  </div>
+) : (
+  <Default {...props}>
+    <slot />
+  </Default>
+)}

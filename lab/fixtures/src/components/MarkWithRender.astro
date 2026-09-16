@@ -12,16 +12,14 @@ const { getDefaultComponent, render } = usePortableText(node);
 const Default = getDefaultComponent();
 ---
 
-{
-  markTypeIs("em") ? (
-    <em {...attrs}>
-      {render({
-        text: ({ props }) => <span data-custom="text">{props.node.text}</span>,
-      })}
-    </em>
-  ) : (
-    <Default {...Astro.props}>
-      <slot />
-    </Default>
-  )
-}
+{markTypeIs("em") ? (
+  <em {...attrs}>
+    {render({
+      text: ({ props }) => <span data-custom="text">{props.node.text}</span>,
+    })}
+  </em>
+) : (
+  <Default {...Astro.props}>
+    <slot />
+  </Default>
+)}

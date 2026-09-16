@@ -1,5 +1,12 @@
 # astro-portabletext
 
+## [1.0.1](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@1.0.0...astro-portabletext@1.0.1) (2026-09-16)
+
+
+### Bug Fixes
+
+* **PortableText:** prevent mutation of inbound payload ([#234](https://github.com/theisel/astro-portabletext/issues/234)) ([5c408f1](https://github.com/theisel/astro-portabletext/commit/5c408f1af6c6e94429c59eff300f6b28700a6c25)), closes [#233](https://github.com/theisel/astro-portabletext/issues/233)
+
 ## [1.0.0](https://github.com/theisel/astro-portabletext/compare/astro-portabletext@0.13.0...astro-portabletext@1.0.0) (2026-08-25)
 
 

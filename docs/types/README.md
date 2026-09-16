@@ -1,4 +1,4 @@
-**`astro-portabletext` v1.0.0 • Type Definitions**
+**`astro-portabletext` v1.0.1 • Type Definitions**
 
 ---
 

@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - 'astro-portabletext/lib/**'
+      - 'astro-portabletext/package.json'
 
 concurrency: 
   group: ${{ github.workflow }}-${{ github.ref }}
